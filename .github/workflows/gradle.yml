@@ -33,6 +33,13 @@ jobs:
       run: gradle build
 
     - run: ls -lR plantuml-core/build/libs
+	
+    - name: Convert to Javascript
+      run: |
+        wget https://d3415aa6bfa4.leaningtech.com/cheerpj_linux_2.3.tar.gz -O - | tar -xz
+        cp plantuml-core/build/libs/plantuml-core.jar plantuml-core.jar
+        cheerpj_2.3/cheerpjfy.py --deps cheerpj_2.3/cheerpj-dom.jar plantuml-core.jar
+        ls -l plantuml-core.jar.js
 
     - uses: actions/upload-artifact@v3
       with:
