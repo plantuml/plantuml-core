@@ -33,7 +33,7 @@ jobs:
       run: gradle build
 
     - run: ls -lR plantuml-core/build/libs
-	
+
     - name: Convert to Javascript
       run: |
         wget https://d3415aa6bfa4.leaningtech.com/cheerpj_linux_2.3.tar.gz -O - | tar -xz
