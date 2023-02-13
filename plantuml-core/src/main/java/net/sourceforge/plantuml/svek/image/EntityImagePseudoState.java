@@ -1,0 +1,86 @@
+package net.sourceforge.plantuml.svek.image;
+
+import net.sourceforge.plantuml.ISkinParam;
+import net.sourceforge.plantuml.awt.geom.XDimension2D;
+import net.sourceforge.plantuml.baraye.Entity;
+import net.sourceforge.plantuml.cucadiagram.Display;
+import net.sourceforge.plantuml.cucadiagram.Stereotype;
+import net.sourceforge.plantuml.graphic.TextBlock;
+import net.sourceforge.plantuml.klimt.UStroke;
+import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.font.FontConfiguration;
+import net.sourceforge.plantuml.klimt.font.FontParam;
+import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.style.PName;
+import net.sourceforge.plantuml.style.SName;
+import net.sourceforge.plantuml.style.Style;
+import net.sourceforge.plantuml.style.StyleSignatureBasic;
+import net.sourceforge.plantuml.svek.AbstractEntityImage;
+import net.sourceforge.plantuml.svek.ShapeType;
+import net.sourceforge.plantuml.ugraphic.UEllipse;
+import net.sourceforge.plantuml.ugraphic.UGraphic;
+
+public class EntityImagePseudoState extends AbstractEntityImage {
+
+	private static final int SIZE = 22;
+	private final TextBlock desc;
+	private final SName sname;
+
+	public EntityImagePseudoState(Entity entity, ISkinParam skinParam, SName sname) {
+		this(entity, skinParam, "H", sname);
+	}
+
+	private Style getStyle() {
+		return getStyleSignature().getMergedStyle(getSkinParam().getCurrentStyleBuilder());
+	}
+
+	private StyleSignatureBasic getStyleSignature() {
+		return StyleSignatureBasic.of(SName.root, SName.element, sname, SName.diamond);
+	}
+
+	public EntityImagePseudoState(Entity entity, ISkinParam skinParam, String historyText, SName sname) {
+		super(entity, skinParam);
+		this.sname = sname;
+		final Stereotype stereotype = entity.getStereotype();
+
+		final FontConfiguration fontConfiguration = FontConfiguration.create(getSkinParam(), FontParam.STATE,
+				stereotype);
+
+		this.desc = Display.create(historyText).create(fontConfiguration, HorizontalAlignment.CENTER, skinParam);
+	}
+
+	public XDimension2D calculateDimension(StringBounder stringBounder) {
+		return new XDimension2D(SIZE, SIZE);
+	}
+
+	final public void drawU(UGraphic ug) {
+		final UEllipse circle = new UEllipse(SIZE, SIZE);
+
+		final Style style = getStyle();
+		final HColor borderColor = style.value(PName.LineColor).asColor(getSkinParam().getIHtmlColorSet());
+		final HColor backgroundColor = style.value(PName.BackGroundColor).asColor(getSkinParam().getIHtmlColorSet());
+		final double shadow = style.value(PName.Shadowing).asDouble();
+		final UStroke stroke = style.getStroke();
+
+		circle.setDeltaShadow(shadow);
+		ug = ug.apply(stroke);
+		ug = ug.apply(backgroundColor.bg()).apply(borderColor);
+		ug.draw(circle);
+		// ug = ug.apply(new UStroke());
+
+		final XDimension2D dimDesc = desc.calculateDimension(ug.getStringBounder());
+		final double widthDesc = dimDesc.getWidth();
+		final double heightDesc = dimDesc.getHeight();
+
+		final double x = (SIZE - widthDesc) / 2;
+		final double y = (SIZE - heightDesc) / 2;
+		desc.drawU(ug.apply(new UTranslate(x, y)));
+	}
+
+	public ShapeType getShapeType() {
+		return ShapeType.CIRCLE;
+	}
+
+}

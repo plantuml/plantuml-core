@@ -1,0 +1,104 @@
+package net.sourceforge.plantuml.objectdiagram.command;
+
+import net.sourceforge.plantuml.baraye.Entity;
+import net.sourceforge.plantuml.command.CommandExecutionResult;
+import net.sourceforge.plantuml.command.SingleLineCommand2;
+import net.sourceforge.plantuml.creole.CreoleMode;
+import net.sourceforge.plantuml.cucadiagram.BodierJSon;
+import net.sourceforge.plantuml.cucadiagram.Display;
+import net.sourceforge.plantuml.cucadiagram.LeafType;
+import net.sourceforge.plantuml.cucadiagram.Stereotype;
+import net.sourceforge.plantuml.json.Json.DefaultHandler;
+import net.sourceforge.plantuml.json.JsonParser;
+import net.sourceforge.plantuml.json.JsonValue;
+import net.sourceforge.plantuml.klimt.color.ColorParser;
+import net.sourceforge.plantuml.klimt.color.ColorType;
+import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
+import net.sourceforge.plantuml.klimt.font.FontParam;
+import net.sourceforge.plantuml.objectdiagram.AbstractClassOrObjectDiagram;
+import net.sourceforge.plantuml.plasma.Quark;
+import net.sourceforge.plantuml.regex.IRegex;
+import net.sourceforge.plantuml.regex.RegexConcat;
+import net.sourceforge.plantuml.regex.RegexLeaf;
+import net.sourceforge.plantuml.regex.RegexResult;
+import net.sourceforge.plantuml.url.UrlBuilder;
+import net.sourceforge.plantuml.utils.LineLocation;
+
+public class CommandCreateJsonSingleLine extends SingleLineCommand2<AbstractClassOrObjectDiagram> {
+
+	public CommandCreateJsonSingleLine() {
+		super(getRegexConcat());
+	}
+
+	private static IRegex getRegexConcat() {
+		return RegexConcat.build(CommandCreateJsonSingleLine.class.getName(), RegexLeaf.start(), //
+				new RegexLeaf("TYPE", "json"), //
+				RegexLeaf.spaceOneOrMore(), //
+				new RegexLeaf("NAME", "(?:[%g]([^%g]+)[%g][%s]+as[%s]+)?([%pLN_.]+)"), //
+				RegexLeaf.spaceZeroOrMore(), //
+				new RegexLeaf("STEREO", "(\\<\\<.+\\>\\>)?"), //
+				RegexLeaf.spaceZeroOrMore(), //
+				UrlBuilder.OPTIONAL, //
+				RegexLeaf.spaceZeroOrMore(), //
+				ColorParser.exp1(), //
+				RegexLeaf.spaceZeroOrMore(), //
+				new RegexLeaf("DATA", "(\\{.*\\})"), //
+				RegexLeaf.end());
+	}
+
+	@Override
+	protected CommandExecutionResult executeArg(AbstractClassOrObjectDiagram diagram, LineLocation location,
+			RegexResult arg) throws NoSuchColorException {
+		final String name = arg.get("NAME", 1);
+		final String data = arg.get("DATA", 0);
+		final Entity entity1 = executeArg0(diagram, arg);
+		if (entity1 == null)
+			return CommandExecutionResult.error("No such entity");
+
+		final JsonValue json = getJsonValue(data);
+
+		if (json == null)
+			return CommandExecutionResult.error("Bad data");
+		((BodierJSon) entity1.getBodier()).setJson(json);
+
+		return CommandExecutionResult.ok();
+	}
+
+	private JsonValue getJsonValue(String data) {
+		try {
+			final DefaultHandler handler = new DefaultHandler();
+			new JsonParser(handler).parse(data);
+			final JsonValue json = handler.getValue();
+			return json;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	private Entity executeArg0(AbstractClassOrObjectDiagram diagram, RegexResult line0) throws NoSuchColorException {
+		final String name = line0.get("NAME", 1);
+
+		final Quark<Entity> quark = diagram.quarkInContext(diagram.cleanId(name), true);
+		if (quark.getData() != null)
+			return null;
+
+		final String displayString = line0.get("NAME", 0);
+		final String stereotype = line0.get("STEREO", 0);
+
+		Display display = Display.getWithNewlines(displayString);
+		if (Display.isNull(display))
+			display = Display.getWithNewlines(name).withCreoleMode(CreoleMode.SIMPLE_LINE);
+
+		final Entity entity = diagram.reallyCreateLeaf(quark, display, LeafType.JSON, null);
+		if (stereotype != null)
+			entity.setStereotype(Stereotype.build(stereotype, diagram.getSkinParam().getCircledCharacterRadius(),
+					diagram.getSkinParam().getFont(null, false, FontParam.CIRCLED_CHARACTER),
+					diagram.getSkinParam().getIHtmlColorSet()));
+
+		final String s = line0.get("COLOR", 0);
+		entity.setSpecificColorTOBEREMOVED(ColorType.BACK,
+				s == null ? null : diagram.getSkinParam().getIHtmlColorSet().getColor(s));
+		return entity;
+	}
+
+}

@@ -1,0 +1,163 @@
+package net.sourceforge.plantuml.descdiagram.command;
+
+import net.sourceforge.plantuml.StringUtils;
+import net.sourceforge.plantuml.baraye.Entity;
+import net.sourceforge.plantuml.classdiagram.ClassDiagram;
+import net.sourceforge.plantuml.command.CommandExecutionResult;
+import net.sourceforge.plantuml.command.SingleLineCommand2;
+import net.sourceforge.plantuml.cucadiagram.Display;
+import net.sourceforge.plantuml.cucadiagram.LeafType;
+import net.sourceforge.plantuml.cucadiagram.Stereotype;
+import net.sourceforge.plantuml.graphic.USymbol;
+import net.sourceforge.plantuml.graphic.USymbols;
+import net.sourceforge.plantuml.graphic.color.Colors;
+import net.sourceforge.plantuml.klimt.color.ColorParser;
+import net.sourceforge.plantuml.klimt.color.ColorType;
+import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
+import net.sourceforge.plantuml.klimt.font.FontParam;
+import net.sourceforge.plantuml.plasma.Quark;
+import net.sourceforge.plantuml.regex.IRegex;
+import net.sourceforge.plantuml.regex.RegexConcat;
+import net.sourceforge.plantuml.regex.RegexLeaf;
+import net.sourceforge.plantuml.regex.RegexOptional;
+import net.sourceforge.plantuml.regex.RegexOr;
+import net.sourceforge.plantuml.regex.RegexResult;
+import net.sourceforge.plantuml.url.Url;
+import net.sourceforge.plantuml.url.UrlBuilder;
+import net.sourceforge.plantuml.url.UrlMode;
+import net.sourceforge.plantuml.utils.LineLocation;
+
+public class CommandCreateElementParenthesis extends SingleLineCommand2<ClassDiagram> {
+
+	public CommandCreateElementParenthesis() {
+		super(getRegexConcat());
+	}
+
+	private static IRegex getRegexConcat() {
+		return RegexConcat.build(CommandCreateElementParenthesis.class.getName(), RegexLeaf.start(), //
+				new RegexLeaf("\\(\\)[%s]+"), //
+				color2().getRegex(), //
+				RegexLeaf.spaceZeroOrMore(), //
+				new RegexOr(//
+						new RegexLeaf("CODE1", CommandCreateElementFull.CODE_WITH_QUOTE), //
+						new RegexConcat(//
+								new RegexLeaf("DISPLAY2", CommandCreateElementFull.DISPLAY), //
+								new RegexOptional( //
+										new RegexConcat( //
+												RegexLeaf.spaceOneOrMore(), //
+												new RegexLeaf("STEREOTYPE2", "(\\<\\<.+\\>\\>)")//
+										)), //
+								RegexLeaf.spaceZeroOrMore(), //
+								new RegexLeaf("as"), //
+								RegexLeaf.spaceOneOrMore(), //
+								new RegexLeaf("CODE2", CommandCreateElementFull.CODE)), //
+						new RegexConcat(//
+								new RegexLeaf("CODE3", CommandCreateElementFull.CODE), //
+								new RegexOptional( //
+										new RegexConcat( //
+												RegexLeaf.spaceOneOrMore(), //
+												new RegexLeaf("STEREOTYPE3", "(\\<\\<.+\\>\\>)") //
+										)), //
+								RegexLeaf.spaceOneOrMore(), //
+								new RegexLeaf("as"), //
+								RegexLeaf.spaceZeroOrMore(), //
+								new RegexLeaf("DISPLAY3", CommandCreateElementFull.DISPLAY)), //
+						new RegexConcat(//
+								new RegexLeaf("DISPLAY4", CommandCreateElementFull.DISPLAY_WITHOUT_QUOTE), //
+								new RegexOptional( //
+										new RegexConcat( //
+												RegexLeaf.spaceOneOrMore(), //
+												new RegexLeaf("STEREOTYPE4", "(\\<\\<.+\\>\\>)") //
+										)), //
+								RegexLeaf.spaceZeroOrMore(), //
+								new RegexLeaf("as"), //
+								RegexLeaf.spaceOneOrMore(), //
+								new RegexLeaf("CODE4", CommandCreateElementFull.CODE)) //
+				), //
+				new RegexOptional( //
+						new RegexConcat( //
+								RegexLeaf.spaceZeroOrMore(), //
+								new RegexLeaf("STEREOTYPE", "(\\<\\<.+\\>\\>)") //
+						)), //
+				RegexLeaf.spaceZeroOrMore(), //
+				UrlBuilder.OPTIONAL, //
+				RegexLeaf.spaceZeroOrMore(), //
+				color().getRegex(), RegexLeaf.end());
+	}
+
+	private static ColorParser color() {
+		return ColorParser.simpleColor(ColorType.BACK);
+	}
+
+	private static ColorParser color2() {
+		return ColorParser.simpleColor(ColorType.BACK, "COLOR2");
+	}
+
+	@Override
+	final protected boolean isForbidden(CharSequence line) {
+		if (line.toString().matches("^[\\p{L}0-9_.]+$")) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	protected CommandExecutionResult executeArg(ClassDiagram diagram, LineLocation location, RegexResult arg)
+			throws NoSuchColorException {
+		String codeRaw = arg.getLazzy("CODE", 0);
+		final String displayRaw = arg.getLazzy("DISPLAY", 0);
+		final String symbol = "interface";
+		final LeafType type;
+		final USymbol usymbol;
+
+		type = LeafType.DESCRIPTION;
+		usymbol = USymbols.fromString(symbol, diagram.getSkinParam());
+
+		final Quark<Entity> quark = diagram.quarkInContext(diagram.cleanId(codeRaw), true);
+		if (quark.getData() != null)
+			return CommandExecutionResult.error("This element (" + quark.getName() + ") is already defined");
+
+		String display = displayRaw;
+		if (display == null)
+			display = quark.getName();
+
+		display = StringUtils.eventuallyRemoveStartingAndEndingDoubleQuote(display);
+		final String stereotype = arg.getLazzy("STEREOTYPE", 0);
+		if (CommandCreateElementFull.existsWithBadType3(diagram, quark, type, usymbol))
+			return CommandExecutionResult.error("This element (" + quark.getName() + ") is already defined");
+
+		final Entity entity = diagram.reallyCreateLeaf(quark, Display.getWithNewlines(display), type, usymbol);
+		entity.setDisplay(Display.getWithNewlines(display));
+		entity.setUSymbol(usymbol);
+		if (stereotype != null)
+			entity.setStereotype(Stereotype.build(stereotype, diagram.getSkinParam().getCircledCharacterRadius(),
+					diagram.getSkinParam().getFont(null, false, FontParam.CIRCLED_CHARACTER),
+					diagram.getSkinParam().getIHtmlColorSet()));
+
+		final String urlString = arg.get("URL", 0);
+		if (urlString != null) {
+			final UrlBuilder urlBuilder = new UrlBuilder(diagram.getSkinParam().getValue("topurl"), UrlMode.STRICT);
+			final Url url = urlBuilder.getUrl(urlString);
+			entity.addUrl(url);
+		}
+
+		Colors colors = color().getColor(arg, diagram.getSkinParam().getIHtmlColorSet());
+		final String s = arg.get("LINECOLOR", 1);
+
+		final HColor lineColor = s == null ? null : diagram.getSkinParam().getIHtmlColorSet().getColor(s);
+		if (lineColor != null)
+			colors = colors.add(ColorType.LINE, lineColor);
+
+		entity.setColors(colors);
+
+		// entity.setSpecificColorTOBEREMOVED(ColorType.BACK,
+		// diagram.getSkinParam().getIHtmlColorSet().getColorIfValid(arg.get("COLOR",
+		// 0)));
+		return CommandExecutionResult.ok();
+	}
+
+	private char getCharEncoding(final String codeRaw) {
+		return codeRaw != null && codeRaw.length() > 2 ? codeRaw.charAt(0) : 0;
+	}
+}

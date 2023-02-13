@@ -1,0 +1,58 @@
+package net.sourceforge.plantuml.activitydiagram3.command;
+
+import net.sourceforge.plantuml.activitydiagram3.ActivityDiagram3;
+import net.sourceforge.plantuml.activitydiagram3.ftile.BoxStyle;
+import net.sourceforge.plantuml.command.CommandExecutionResult;
+import net.sourceforge.plantuml.command.CommandMultilines3;
+import net.sourceforge.plantuml.command.MultilinesStrategy;
+import net.sourceforge.plantuml.command.Trim;
+import net.sourceforge.plantuml.graphic.color.Colors;
+import net.sourceforge.plantuml.klimt.color.ColorParser;
+import net.sourceforge.plantuml.klimt.color.ColorType;
+import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
+import net.sourceforge.plantuml.regex.IRegex;
+import net.sourceforge.plantuml.regex.RegexConcat;
+import net.sourceforge.plantuml.regex.RegexLeaf;
+import net.sourceforge.plantuml.regex.RegexResult;
+import net.sourceforge.plantuml.utils.BlocLines;
+
+public class CommandActivityLong3 extends CommandMultilines3<ActivityDiagram3> {
+
+	public CommandActivityLong3() {
+		super(getRegexConcat(), MultilinesStrategy.REMOVE_STARTING_QUOTE, Trim.NONE);
+	}
+
+	@Override
+	public RegexConcat getPatternEnd2() {
+		return new RegexConcat(//
+				new RegexLeaf("TEXT", "(.*)"), //
+				new RegexLeaf("END", CommandActivity3.endingGroup()), //
+				RegexLeaf.end());
+	}
+
+	private static ColorParser color() {
+		return ColorParser.simpleColor(ColorType.BACK);
+	}
+
+	static IRegex getRegexConcat() {
+		return RegexConcat.build(CommandActivityLong3.class.getName(), RegexLeaf.start(), //
+				color().getRegex(), //
+				new RegexLeaf(":"), //
+				new RegexLeaf("DATA", "(.*)"), //
+				RegexLeaf.end());
+	}
+
+	@Override
+	protected CommandExecutionResult executeNow(ActivityDiagram3 diagram, BlocLines lines) throws NoSuchColorException {
+		lines = lines.removeEmptyColumns();
+		final RegexResult line0 = getStartingPattern().matcher(lines.getFirst().getTrimmed().getString());
+		final Colors colors = color().getColor(line0, diagram.getSkinParam().getIHtmlColorSet());
+
+		final RegexResult lineLast = getPatternEnd2().matcher(lines.getLast().getString());
+		final String end = lineLast.get("END", 0);
+
+		final BoxStyle style = BoxStyle.fromString(end);
+		lines = lines.removeStartingAndEnding(line0.get("DATA", 0), end.length());
+		return diagram.addActivity(lines.toDisplay(), style, null, colors, null);
+	}
+}

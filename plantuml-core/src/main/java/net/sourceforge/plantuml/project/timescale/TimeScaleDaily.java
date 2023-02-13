@@ -1,0 +1,36 @@
+package net.sourceforge.plantuml.project.timescale;
+
+import net.sourceforge.plantuml.project.core.PrintScale;
+import net.sourceforge.plantuml.project.time.Day;
+
+public final class TimeScaleDaily implements TimeScale {
+
+	private final TimeScaleWink basic;
+	private final double delta;
+
+	public TimeScaleDaily(Day startingDay, double scale, Day zeroDay) {
+		this.basic = new TimeScaleWink(scale, PrintScale.DAILY);
+		if (zeroDay == null)
+			this.delta = basic.getStartingPosition(startingDay);
+		else
+			this.delta = basic.getStartingPosition(zeroDay);
+
+	}
+
+	public double getStartingPosition(Day instant) {
+		return basic.getStartingPosition(instant) - delta;
+	}
+
+	public double getEndingPosition(Day instant) {
+		return basic.getEndingPosition(instant) - delta;
+	}
+
+	public double getWidth(Day instant) {
+		return basic.getWidth(instant);
+	}
+
+	public boolean isBreaking(Day instant) {
+		return true;
+	}
+
+}

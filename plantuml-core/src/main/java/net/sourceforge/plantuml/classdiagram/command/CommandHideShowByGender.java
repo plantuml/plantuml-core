@@ -1,0 +1,204 @@
+package net.sourceforge.plantuml.classdiagram.command;
+
+import net.sourceforge.plantuml.StringUtils;
+import net.sourceforge.plantuml.UmlDiagram;
+import net.sourceforge.plantuml.baraye.Entity;
+import net.sourceforge.plantuml.command.CommandExecutionResult;
+import net.sourceforge.plantuml.command.SingleLineCommand2;
+import net.sourceforge.plantuml.cucadiagram.EntityGender;
+import net.sourceforge.plantuml.cucadiagram.EntityGenderUtils;
+import net.sourceforge.plantuml.cucadiagram.EntityPortion;
+import net.sourceforge.plantuml.cucadiagram.LeafType;
+import net.sourceforge.plantuml.descdiagram.DescriptionDiagram;
+import net.sourceforge.plantuml.objectdiagram.AbstractClassOrObjectDiagram;
+import net.sourceforge.plantuml.plasma.Quark;
+import net.sourceforge.plantuml.regex.IRegex;
+import net.sourceforge.plantuml.regex.RegexConcat;
+import net.sourceforge.plantuml.regex.RegexLeaf;
+import net.sourceforge.plantuml.regex.RegexOptional;
+import net.sourceforge.plantuml.regex.RegexResult;
+import net.sourceforge.plantuml.sequencediagram.SequenceDiagram;
+import net.sourceforge.plantuml.utils.LineLocation;
+
+public class CommandHideShowByGender extends SingleLineCommand2<UmlDiagram> {
+
+	public static final CommandHideShowByGender ME = new CommandHideShowByGender();
+
+	private CommandHideShowByGender() {
+		super(getRegexConcat());
+	}
+
+	static IRegex getRegexConcat() {
+		return RegexConcat.build(CommandHideShowByGender.class.getName(), RegexLeaf.start(), //
+				new RegexLeaf("COMMAND", "(hide|show)"), //
+				RegexLeaf.spaceOneOrMore(), //
+				new RegexLeaf("GENDER",
+						"(?:(class|object|interface|enum|annotation|abstract|[%pLN_.]+|[%g][^%g]+[%g]|\\<\\<.*\\>\\>)[%s]+)*?"), //
+				new RegexOptional( //
+						new RegexConcat( //
+								new RegexLeaf("EMPTY", "(empty)"), //
+								RegexLeaf.spaceOneOrMore()) //
+				), //
+				new RegexLeaf("PORTION", "(members?|attributes?|fields?|methods?|circles?|circled?|stereotypes?)"), //
+				RegexLeaf.end());
+	}
+
+	private final EntityGender emptyByGender(EntityPortion portion) {
+		if (portion == EntityPortion.METHOD) {
+			return EntityGenderUtils.emptyMethods();
+		}
+		if (portion == EntityPortion.FIELD) {
+			return EntityGenderUtils.emptyFields();
+		}
+		if (portion == EntityPortion.MEMBER) {
+			throw new IllegalArgumentException();
+			// return EntityGenderUtils.emptyMembers();
+		}
+		return EntityGenderUtils.all();
+	}
+
+	@Override
+	protected CommandExecutionResult executeArg(UmlDiagram diagram, LineLocation location, RegexResult arg) {
+		if (diagram instanceof AbstractClassOrObjectDiagram) {
+			return executeClassDiagram((AbstractClassOrObjectDiagram) diagram, arg);
+		}
+		if (diagram instanceof DescriptionDiagram) {
+			return executeDescriptionDiagram((DescriptionDiagram) diagram, arg);
+		}
+		if (diagram instanceof SequenceDiagram) {
+			return executeSequenceDiagram((SequenceDiagram) diagram, arg);
+		}
+		// Just ignored
+		return CommandExecutionResult.ok();
+	}
+
+	private CommandExecutionResult executeSequenceDiagram(SequenceDiagram diagram, RegexResult arg) {
+		final EntityPortion portion = getEntityPortion(arg.get("PORTION", 0));
+		diagram.hideOrShow(portion.asSet(), arg.get("COMMAND", 0).equalsIgnoreCase("show"));
+		return CommandExecutionResult.ok();
+	}
+
+	private CommandExecutionResult executeDescriptionDiagram(DescriptionDiagram diagram, RegexResult arg) {
+		final EntityPortion portion = getEntityPortion(arg.get("PORTION", 0));
+		final EntityGender gender;
+		final String arg1 = arg.get("GENDER", 0);
+		if (arg1 == null) {
+			gender = EntityGenderUtils.all();
+		} else if (arg1.equalsIgnoreCase("class")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.CLASS);
+		} else if (arg1.equalsIgnoreCase("object")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.OBJECT);
+		} else if (arg1.equalsIgnoreCase("interface")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.INTERFACE);
+		} else if (arg1.equalsIgnoreCase("enum")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.ENUM);
+		} else if (arg1.equalsIgnoreCase("abstract")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.ABSTRACT_CLASS);
+		} else if (arg1.equalsIgnoreCase("annotation")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.ANNOTATION);
+		} else if (arg1.equalsIgnoreCase("protocol")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.PROTOCOL);
+		} else if (arg1.equalsIgnoreCase("struct")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.STRUCT);
+		} else if (arg1.equalsIgnoreCase("exception")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.EXCEPTION);
+		} else if (arg1.equalsIgnoreCase("metaclass")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.METACLASS);
+		} else if (arg1.equalsIgnoreCase("stereotype")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.STEREOTYPE);
+		} else if (arg1.startsWith("<<")) {
+			gender = EntityGenderUtils.byStereotype(arg1);
+		} else {
+			final Quark<Entity> quark = diagram.quarkInContext(diagram.cleanId(arg1), false);
+			if (quark.getData() == null)
+				return CommandExecutionResult.error("No such element " + quark.getName());
+			final Entity entity = quark.getData();
+			gender = EntityGenderUtils.byEntityAlone(entity);
+		}
+
+		diagram.hideOrShow(gender, portion, arg.get("COMMAND", 0).equalsIgnoreCase("show"));
+		return CommandExecutionResult.ok();
+	}
+
+	private CommandExecutionResult executeClassDiagram(AbstractClassOrObjectDiagram diagram, RegexResult arg) {
+
+		final EntityPortion portion = getEntityPortion(arg.get("PORTION", 0));
+
+		EntityGender gender = null;
+		String arg1 = arg.get("GENDER", 0);
+		if (arg1 == null) {
+			gender = EntityGenderUtils.all();
+		} else if (arg1.equalsIgnoreCase("class")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.CLASS);
+		} else if (arg1.equalsIgnoreCase("object")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.OBJECT);
+		} else if (arg1.equalsIgnoreCase("interface")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.INTERFACE);
+		} else if (arg1.equalsIgnoreCase("enum")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.ENUM);
+		} else if (arg1.equalsIgnoreCase("abstract")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.ABSTRACT_CLASS);
+		} else if (arg1.equalsIgnoreCase("annotation")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.ANNOTATION);
+		} else if (arg1.equalsIgnoreCase("protocol")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.PROTOCOL);
+		} else if (arg1.equalsIgnoreCase("struct")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.STRUCT);
+		} else if (arg1.equalsIgnoreCase("exception")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.EXCEPTION);
+		} else if (arg1.equalsIgnoreCase("metaclass")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.METACLASS);
+		} else if (arg1.equalsIgnoreCase("stereotype")) {
+			gender = EntityGenderUtils.byEntityType(LeafType.STEREOTYPE);
+		} else if (arg1.startsWith("<<")) {
+			gender = EntityGenderUtils.byStereotype(arg1);
+		} else {
+			arg1 = StringUtils.eventuallyRemoveStartingAndEndingDoubleQuote(arg1);
+			final Quark<Entity> quark = diagram.quarkInContext(diagram.cleanId(arg1), false);
+			Entity entity = quark.getData();
+			if (entity == null)
+				return CommandExecutionResult.error("No such element " + quark.getName());
+			gender = EntityGenderUtils.byEntityAlone(entity);
+		}
+		if (gender != null) {
+			final boolean empty = arg.get("EMPTY", 0) != null;
+			final boolean emptyMembers = empty && portion == EntityPortion.MEMBER;
+			if (empty == true && emptyMembers == false)
+				gender = EntityGenderUtils.and(gender, emptyByGender(portion));
+
+			if (diagram.getCurrentGroup().isRoot() == false)
+				gender = EntityGenderUtils.and(gender, EntityGenderUtils.byPackage(diagram.getCurrentGroup()));
+
+			if (emptyMembers) {
+				diagram.hideOrShow(EntityGenderUtils.and(gender, emptyByGender(EntityPortion.FIELD)),
+						EntityPortion.FIELD, arg.get("COMMAND", 0).equalsIgnoreCase("show"));
+				diagram.hideOrShow(EntityGenderUtils.and(gender, emptyByGender(EntityPortion.METHOD)),
+						EntityPortion.METHOD, arg.get("COMMAND", 0).equalsIgnoreCase("show"));
+			} else {
+				diagram.hideOrShow(gender, portion, arg.get("COMMAND", 0).equalsIgnoreCase("show"));
+			}
+		}
+		return CommandExecutionResult.ok();
+	}
+
+	private EntityPortion getEntityPortion(String s) {
+		final String sub = StringUtils.goLowerCase(s.substring(0, 3));
+		if (sub.equals("met"))
+			return EntityPortion.METHOD;
+
+		if (sub.equals("mem"))
+			return EntityPortion.MEMBER;
+
+		if (sub.equals("att") || sub.equals("fie"))
+			return EntityPortion.FIELD;
+
+		if (sub.equals("cir"))
+			return EntityPortion.CIRCLED_CHARACTER;
+
+		if (sub.equals("ste"))
+			return EntityPortion.STEREOTYPE;
+
+		throw new IllegalArgumentException();
+	}
+
+}

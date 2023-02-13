@@ -1,0 +1,112 @@
+package net.sourceforge.plantuml.style;
+
+import java.awt.Font;
+import java.util.Objects;
+
+import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.color.HColorSet;
+import net.sourceforge.plantuml.klimt.color.HColors;
+import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+
+public class ValueImpl implements Value {
+
+	private final DarkString value;
+
+	public static ValueImpl dark(String value, AutomaticCounter counter) {
+		return new ValueImpl(new DarkString(null, Objects.requireNonNull(value), counter.getNextInt()));
+	}
+
+	public static ValueImpl regular(String value, AutomaticCounter counter) {
+		return new ValueImpl(new DarkString(Objects.requireNonNull(value), null, counter.getNextInt()));
+	}
+
+	public static ValueImpl regular(String value, int priority) {
+		return new ValueImpl(new DarkString(Objects.requireNonNull(value), null, priority));
+	}
+
+	public Value mergeWith(Value other) {
+		if (other == null)
+			return this;
+		if (other instanceof ValueImpl)
+			return new ValueImpl(value.mergeWith(((ValueImpl) other).value));
+		if (other instanceof ValueColor) {
+			if (other.getPriority() > getPriority())
+				return other;
+			return this;
+		}
+		throw new UnsupportedOperationException();
+	}
+
+	private ValueImpl(DarkString value) {
+		this.value = value;
+	}
+
+	public Value addPriority(int delta) {
+		return new ValueImpl(value.addPriority(delta));
+	}
+
+	@Override
+	public String toString() {
+		return value.toString();
+	}
+
+	public String asString() {
+		return value.getValue1();
+	}
+
+	public HColor asColor(HColorSet set) {
+		final String value1 = value.getValue1();
+		if ("none".equalsIgnoreCase(value1))
+			return HColors.transparent();
+
+		if ("transparent".equalsIgnoreCase(value1))
+			return HColors.transparent();
+
+		if (value1 == null)
+			throw new IllegalArgumentException(value.toString());
+
+		final HColor result = set.getColorOrWhite(value1);
+		if (value.getValue2() != null) {
+			final HColor dark = set.getColorOrWhite(value.getValue2());
+			return result.withDark(dark);
+		}
+		return result;
+	}
+
+	public boolean asBoolean() {
+		return "true".equalsIgnoreCase(value.getValue1());
+	}
+
+	public int asInt(boolean minusOneIfError) {
+		String s = value.getValue1();
+		s = s.replaceAll("[^0-9]", "");
+		if (s.length() == 0)
+			return minusOneIfError ? -1 : 0;
+		return Integer.parseInt(s);
+	}
+
+	public double asDouble() {
+		String s = value.getValue1();
+		s = s.replaceAll("[^.0-9]", "");
+		return Double.parseDouble(s);
+	}
+
+	public int asFontStyle() {
+		if (value.getValue1().equalsIgnoreCase("bold"))
+			return Font.BOLD;
+
+		if (value.getValue1().equalsIgnoreCase("italic"))
+			return Font.ITALIC;
+
+		return Font.PLAIN;
+	}
+
+	public HorizontalAlignment asHorizontalAlignment() {
+		return HorizontalAlignment.fromString(asString());
+	}
+
+	public int getPriority() {
+		return value.getPriority();
+	}
+
+}

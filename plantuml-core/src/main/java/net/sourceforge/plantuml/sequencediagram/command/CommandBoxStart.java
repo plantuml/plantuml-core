@@ -1,0 +1,69 @@
+package net.sourceforge.plantuml.sequencediagram.command;
+
+import net.sourceforge.plantuml.ISkinParam;
+import net.sourceforge.plantuml.command.CommandExecutionResult;
+import net.sourceforge.plantuml.command.SingleLineCommand2;
+import net.sourceforge.plantuml.cucadiagram.Display;
+import net.sourceforge.plantuml.cucadiagram.Stereotype;
+import net.sourceforge.plantuml.graphic.color.Colors;
+import net.sourceforge.plantuml.klimt.color.ColorParser;
+import net.sourceforge.plantuml.klimt.color.ColorType;
+import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
+import net.sourceforge.plantuml.regex.IRegex;
+import net.sourceforge.plantuml.regex.RegexConcat;
+import net.sourceforge.plantuml.regex.RegexLeaf;
+import net.sourceforge.plantuml.regex.RegexOptional;
+import net.sourceforge.plantuml.regex.RegexOr;
+import net.sourceforge.plantuml.regex.RegexResult;
+import net.sourceforge.plantuml.sequencediagram.SequenceDiagram;
+import net.sourceforge.plantuml.utils.LineLocation;
+
+public class CommandBoxStart extends SingleLineCommand2<SequenceDiagram> {
+
+	public CommandBoxStart() {
+		super(getRegexConcat());
+	}
+
+	static IRegex getRegexConcat() {
+		return RegexConcat.build(CommandBoxStart.class.getName(), RegexLeaf.start(), //
+				new RegexLeaf("box"), //
+				new RegexOptional(new RegexOr( //
+						new RegexConcat( //
+								RegexLeaf.spaceOneOrMore(), //
+								new RegexLeaf("NAME1", "[%g]([^%g]+)[%g]")), //
+						new RegexConcat( //
+								RegexLeaf.spaceOneOrMore(), //
+								new RegexLeaf("NAME2", "([^#]+)")))), //
+				RegexLeaf.spaceZeroOrMore(), //
+				new RegexLeaf("STEREO", "(\\<\\<.*\\>\\>)?"), //
+				color().getRegex(), //
+				RegexLeaf.end());
+	}
+
+	private static ColorParser color() {
+		return ColorParser.simpleColor(ColorType.BACK);
+	}
+
+	@Override
+	protected CommandExecutionResult executeArg(SequenceDiagram diagram, LineLocation location, RegexResult arg)
+			throws NoSuchColorException {
+//		if (diagram.isBoxPending())
+//			return CommandExecutionResult.error("Box cannot be nested");
+
+		final String argTitle = arg.getLazzy("NAME", 0);
+		final String argColor = arg.get("COLOR", 0);
+
+		final String stereo = arg.get("STEREO", 0);
+		Stereotype stereotype = null;
+		if (stereo != null) {
+			final ISkinParam skinParam = diagram.getSkinParam();
+			stereotype = Stereotype.build(stereo);
+		}
+
+		Colors colors = color().getColor(arg, diagram.getSkinParam().getIHtmlColorSet());
+		final String title = argTitle == null ? "" : argTitle;
+		diagram.boxStart(Display.getWithNewlines(title), colors.getColor(ColorType.BACK), stereotype);
+		return CommandExecutionResult.ok();
+	}
+
+}

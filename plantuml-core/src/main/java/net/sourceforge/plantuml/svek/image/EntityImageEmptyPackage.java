@@ -1,0 +1,137 @@
+package net.sourceforge.plantuml.svek.image;
+
+import net.sourceforge.plantuml.AlignmentParam;
+import net.sourceforge.plantuml.ISkinParam;
+import net.sourceforge.plantuml.activitydiagram3.ftile.EntityImageLegend;
+import net.sourceforge.plantuml.awt.geom.XDimension2D;
+import net.sourceforge.plantuml.baraye.Entity;
+import net.sourceforge.plantuml.cucadiagram.Display;
+import net.sourceforge.plantuml.cucadiagram.DisplayPositioned;
+import net.sourceforge.plantuml.cucadiagram.EntityPortion;
+import net.sourceforge.plantuml.cucadiagram.PortionShower;
+import net.sourceforge.plantuml.cucadiagram.Stereotype;
+import net.sourceforge.plantuml.graphic.TextBlock;
+import net.sourceforge.plantuml.graphic.TextBlockUtils;
+import net.sourceforge.plantuml.graphic.color.Colors;
+import net.sourceforge.plantuml.klimt.UStroke;
+import net.sourceforge.plantuml.klimt.color.ColorType;
+import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.font.FontConfiguration;
+import net.sourceforge.plantuml.klimt.font.FontParam;
+import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.geom.ClusterPosition;
+import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.style.PName;
+import net.sourceforge.plantuml.style.SName;
+import net.sourceforge.plantuml.style.Style;
+import net.sourceforge.plantuml.style.StyleSignatureBasic;
+import net.sourceforge.plantuml.svek.AbstractEntityImage;
+import net.sourceforge.plantuml.svek.ClusterDecoration;
+import net.sourceforge.plantuml.svek.ShapeType;
+import net.sourceforge.plantuml.text.Guillemet;
+import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.url.Url;
+
+public class EntityImageEmptyPackage extends AbstractEntityImage {
+
+	private final TextBlock desc;
+	private final static int MARGIN = 10;
+
+	private final Stereotype stereotype;
+	private final TextBlock stereoBlock;
+	private final Url url;
+	private final SName sname;
+	private final double shadowing;
+	private final HColor borderColor;
+	private final UStroke stroke;
+	private final double roundCorner;
+	private final double diagonalCorner;
+	private final HColor back;
+
+	private Style getStyle() {
+		return StyleSignatureBasic.of(SName.root, SName.element, sname, SName.package_, SName.title)
+				.withTOBECHANGED(stereotype).getMergedStyle(getSkinParam().getCurrentStyleBuilder());
+	}
+
+	public EntityImageEmptyPackage(Entity entity, ISkinParam skinParam, PortionShower portionShower, SName sname) {
+		super(entity, skinParam);
+		this.sname = sname;
+
+		final Colors colors = entity.getColors();
+		final HColor specificBackColor = colors.getColor(ColorType.BACK);
+		this.stereotype = entity.getStereotype();
+		this.url = entity.getUrl99();
+
+		Style style = getStyle();
+		style = style.eventuallyOverride(colors);
+		this.borderColor = style.value(PName.LineColor).asColor(getSkinParam().getIHtmlColorSet());
+		this.shadowing = style.value(PName.Shadowing).asDouble();
+		this.stroke = style.getStroke(colors);
+		this.roundCorner = style.value(PName.RoundCorner).asDouble();
+		this.diagonalCorner = style.value(PName.DiagonalCorner).asDouble();
+		if (specificBackColor == null)
+			this.back = style.value(PName.BackGroundColor).asColor(getSkinParam().getIHtmlColorSet());
+		else
+			this.back = specificBackColor;
+
+		final FontConfiguration titleFontConfiguration = style.getFontConfiguration(getSkinParam().getIHtmlColorSet());
+		final HorizontalAlignment titleHorizontalAlignment = style.getHorizontalAlignment();
+
+		this.desc = entity.getDisplay().create(titleFontConfiguration, titleHorizontalAlignment, skinParam);
+
+		final DisplayPositioned legend = ((Entity) entity).getLegend();
+		if (legend != null) {
+			final TextBlock legendBlock = EntityImageLegend.create(legend.getDisplay(), skinParam);
+			stereoBlock = legendBlock;
+		} else {
+			if (stereotype == null || stereotype.getLabel(Guillemet.DOUBLE_COMPARATOR) == null
+					|| portionShower.showPortion(EntityPortion.STEREOTYPE, entity) == false)
+				stereoBlock = TextBlockUtils.empty(0, 0);
+			else
+				stereoBlock = TextBlockUtils.withMargin(Display.create(stereotype.getLabels(skinParam.guillemet()))
+						.create(FontConfiguration.create(getSkinParam(), FontParam.PACKAGE_STEREOTYPE, stereotype),
+								titleHorizontalAlignment, skinParam),
+						1, 0);
+		}
+
+	}
+
+	public XDimension2D calculateDimension(StringBounder stringBounder) {
+		final XDimension2D dimDesc = desc.calculateDimension(stringBounder);
+		XDimension2D dim = TextBlockUtils.mergeTB(desc, stereoBlock, HorizontalAlignment.LEFT)
+				.calculateDimension(stringBounder);
+		dim = dim.atLeast(0, 2 * dimDesc.getHeight());
+		return dim.delta(MARGIN * 2, MARGIN * 2);
+	}
+
+	final public void drawU(UGraphic ug) {
+		if (url != null)
+			ug.startUrl(url);
+
+		final StringBounder stringBounder = ug.getStringBounder();
+		final XDimension2D dimTotal = calculateDimension(stringBounder);
+
+		final double widthTotal = dimTotal.getWidth();
+		final double heightTotal = dimTotal.getHeight();
+
+		final ClusterPosition clusterPosition = new ClusterPosition(0, 0, widthTotal, heightTotal);
+		final ClusterDecoration decoration = new ClusterDecoration(getSkinParam().packageStyle(), null, desc,
+				stereoBlock, clusterPosition, stroke);
+
+		final HorizontalAlignment horizontalAlignment = getSkinParam()
+				.getHorizontalAlignment(AlignmentParam.packageTitleAlignment, null, false, null);
+		final HorizontalAlignment stereotypeAlignment = getSkinParam().getStereotypeAlignment();
+
+		decoration.drawU(ug, back, borderColor, shadowing, roundCorner, horizontalAlignment, stereotypeAlignment,
+				diagonalCorner);
+
+		if (url != null)
+			ug.closeUrl();
+
+	}
+
+	public ShapeType getShapeType() {
+		return ShapeType.RECTANGLE;
+	}
+
+}

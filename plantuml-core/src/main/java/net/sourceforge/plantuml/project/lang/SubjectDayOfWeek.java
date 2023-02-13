@@ -1,0 +1,80 @@
+package net.sourceforge.plantuml.project.lang;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import net.sourceforge.plantuml.command.CommandExecutionResult;
+import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.project.Failable;
+import net.sourceforge.plantuml.project.GanttDiagram;
+import net.sourceforge.plantuml.project.time.DayOfWeek;
+import net.sourceforge.plantuml.regex.IRegex;
+import net.sourceforge.plantuml.regex.RegexLeaf;
+import net.sourceforge.plantuml.regex.RegexResult;
+
+public class SubjectDayOfWeek implements Subject {
+
+	public static final Subject ME = new SubjectDayOfWeek();
+
+	private SubjectDayOfWeek() {
+	}
+
+	public IRegex toRegex() {
+		return new RegexLeaf("SUBJECT", "(" + DayOfWeek.getRegexString() + ")");
+	}
+
+	public Failable<? extends Object> getMe(GanttDiagram project, RegexResult arg) {
+		final String s = arg.get("SUBJECT", 0);
+		return Failable.ok(DayOfWeek.fromString(s));
+	}
+
+	public Collection<? extends SentenceSimple> getSentences() {
+		return Arrays.asList(new AreClose(), new AreOpen(), new InColor());
+	}
+
+	class AreOpen extends SentenceSimple {
+		public AreOpen() {
+			super(SubjectDayOfWeek.this, Verbs.are, new ComplementOpen());
+		}
+
+		@Override
+		public CommandExecutionResult execute(GanttDiagram project, Object subject, Object complement) {
+			final DayOfWeek day = (DayOfWeek) subject;
+			project.openDayOfWeek(day, (String) complement);
+			return CommandExecutionResult.ok();
+		}
+	}
+
+	class AreClose extends SentenceSimple {
+
+		public AreClose() {
+			super(SubjectDayOfWeek.this, Verbs.are, new ComplementClose());
+		}
+
+		@Override
+		public CommandExecutionResult execute(GanttDiagram project, Object subject, Object complement) {
+			final DayOfWeek day = (DayOfWeek) subject;
+			project.closeDayOfWeek(day, (String) complement);
+			return CommandExecutionResult.ok();
+		}
+
+	}
+
+	class InColor extends SentenceSimple {
+
+		public InColor() {
+			super(SubjectDayOfWeek.this, Verbs.isOrAre, new ComplementInColors2());
+		}
+
+		@Override
+		public CommandExecutionResult execute(GanttDiagram project, Object subject, Object complement) {
+			final HColor color = ((CenterBorderColor) complement).getCenter();
+			final DayOfWeek day = (DayOfWeek) subject;
+			project.colorDay(day, color);
+
+			return CommandExecutionResult.ok();
+		}
+
+	}
+
+}

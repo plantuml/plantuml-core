@@ -1,0 +1,58 @@
+package net.sourceforge.plantuml.project.solver;
+
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import net.sourceforge.plantuml.project.Load;
+import net.sourceforge.plantuml.project.Value;
+import net.sourceforge.plantuml.project.core.TaskAttribute;
+import net.sourceforge.plantuml.project.time.Day;
+
+public abstract class AbstractSolver implements Solver {
+
+	protected final Map<TaskAttribute, Value> values = new LinkedHashMap<TaskAttribute, Value>();
+
+	final public void setData(TaskAttribute attribute, Value value) {
+		final Value previous = values.remove(attribute);
+		if (previous != null && attribute == TaskAttribute.START) {
+			final Day previousInstant = (Day) previous;
+			if (previousInstant.compareTo((Day) value) > 0)
+				value = previous;
+
+		}
+		values.put(attribute, value);
+		if (values.size() > 2)
+			removeFirstElement();
+
+		assert values.size() <= 2;
+
+	}
+
+	private void removeFirstElement() {
+		final Iterator<Entry<TaskAttribute, Value>> it = values.entrySet().iterator();
+		it.next();
+		it.remove();
+	}
+
+	final public Value getData(TaskAttribute attribute) {
+		Value result = values.get(attribute);
+		if (result == null) {
+			if (attribute == TaskAttribute.END)
+				return computeEnd();
+
+			if (attribute == TaskAttribute.START)
+				return computeStart();
+
+			return Load.inWinks(1);
+			// throw new UnsupportedOperationException(attribute.toString());
+		}
+		return result;
+	}
+
+	abstract protected Value computeEnd();
+
+	abstract protected Value computeStart();
+
+}

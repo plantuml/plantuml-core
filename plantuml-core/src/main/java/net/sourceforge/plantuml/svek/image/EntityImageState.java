@@ -1,0 +1,110 @@
+package net.sourceforge.plantuml.svek.image;
+
+import java.util.Collections;
+
+import net.sourceforge.plantuml.ISkinParam;
+import net.sourceforge.plantuml.awt.geom.XDimension2D;
+import net.sourceforge.plantuml.baraye.Entity;
+import net.sourceforge.plantuml.creole.CreoleMode;
+import net.sourceforge.plantuml.cucadiagram.Display;
+import net.sourceforge.plantuml.cucadiagram.Stereotype;
+import net.sourceforge.plantuml.graphic.TextBlock;
+import net.sourceforge.plantuml.klimt.UGroupType;
+import net.sourceforge.plantuml.klimt.ULine;
+import net.sourceforge.plantuml.klimt.UStroke;
+import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.font.FontConfiguration;
+import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.ugraphic.UEllipse;
+import net.sourceforge.plantuml.ugraphic.UGraphic;
+
+public class EntityImageState extends EntityImageStateCommon {
+
+	final private TextBlock fields;
+
+	final private static int MIN_WIDTH = 50;
+	final private static int MIN_HEIGHT = 50;
+
+	final private boolean withSymbol;
+
+	final static private double smallRadius = 3;
+	final static private double smallLine = 3;
+	final static private double smallMarginX = 7;
+	final static private double smallMarginY = 4;
+
+	public EntityImageState(Entity entity, ISkinParam skinParam) {
+		super(entity, skinParam);
+
+		final Stereotype stereotype = entity.getStereotype();
+
+		this.withSymbol = stereotype != null && stereotype.isWithOOSymbol();
+		final Display list = Display.create(entity.getBodier().getRawBody());
+
+		final FontConfiguration fieldsFontConfiguration = getStyleStateHeader()
+				.getFontConfiguration(getSkinParam().getIHtmlColorSet());
+
+		this.fields = list.create8(fieldsFontConfiguration, HorizontalAlignment.LEFT, skinParam, CreoleMode.FULL,
+				getStyleState().wrapWidth());
+
+	}
+
+	public XDimension2D calculateDimension(StringBounder stringBounder) {
+		final XDimension2D dim = title.calculateDimension(stringBounder)
+				.mergeTB(fields.calculateDimension(stringBounder));
+		double heightSymbol = 0;
+		if (withSymbol)
+			heightSymbol += 2 * smallRadius + smallMarginY;
+
+		final XDimension2D result = dim.delta(MARGIN * 2 + 2 * MARGIN_LINE + heightSymbol);
+		return result.atLeast(MIN_WIDTH, MIN_HEIGHT);
+	}
+
+	final public void drawU(UGraphic ug) {
+		ug.startGroup(Collections.singletonMap(UGroupType.ID, getEntity().getQuark().toStringPoint()));
+		if (url != null)
+			ug.startUrl(url);
+
+		final StringBounder stringBounder = ug.getStringBounder();
+		final XDimension2D dimTotal = calculateDimension(stringBounder);
+		final XDimension2D dimDesc = title.calculateDimension(stringBounder);
+
+		final UStroke stroke = getStyleState().getStroke(lineConfig.getColors());
+
+		ug = applyColor(ug);
+		ug = ug.apply(stroke);
+		ug.draw(getShape(dimTotal));
+
+		final double yLine = MARGIN + dimDesc.getHeight() + MARGIN_LINE;
+		ug.apply(UTranslate.dy(yLine)).draw(ULine.hline(dimTotal.getWidth()));
+
+		if (withSymbol) {
+			final double xSymbol = dimTotal.getWidth();
+			final double ySymbol = dimTotal.getHeight();
+			drawSymbol(ug, xSymbol, ySymbol);
+		}
+
+		final double xDesc = (dimTotal.getWidth() - dimDesc.getWidth()) / 2;
+		final double yDesc = MARGIN;
+		title.drawU(ug.apply(new UTranslate(xDesc, yDesc)));
+
+		final double xFields = MARGIN;
+		final double yFields = yLine + MARGIN_LINE;
+		fields.drawU(ug.apply(new UTranslate(xFields, yFields)));
+
+		if (url != null)
+			ug.closeUrl();
+
+		ug.closeGroup();
+	}
+
+	public static void drawSymbol(UGraphic ug, double xSymbol, double ySymbol) {
+		xSymbol -= 4 * smallRadius + smallLine + smallMarginX;
+		ySymbol -= 2 * smallRadius + smallMarginY;
+		final UEllipse small = new UEllipse(2 * smallRadius, 2 * smallRadius);
+		ug.apply(new UTranslate(xSymbol, ySymbol)).draw(small);
+		ug.apply(new UTranslate(xSymbol + smallLine + 2 * smallRadius, ySymbol)).draw(small);
+		ug.apply(new UTranslate(xSymbol + 2 * smallRadius, ySymbol + smallLine)).draw(ULine.hline(smallLine));
+	}
+
+}

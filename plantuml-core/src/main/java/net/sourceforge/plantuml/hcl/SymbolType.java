@@ -1,0 +1,18 @@
+package net.sourceforge.plantuml.hcl;
+
+public enum SymbolType {
+	STRING_SIMPLE, //
+	STRING_QUOTED, //
+	FUNCTION_NAME, //
+	SQUARE_BRACKET_OPEN, //
+	SQUARE_BRACKET_CLOSE, //
+	CURLY_BRACKET_OPEN, //
+	CURLY_BRACKET_CLOSE, //
+	PARENTHESIS_OPEN, //
+	PARENTHESIS_CLOSE, //
+	TWO_POINTS, //
+	EQUALS, //
+	COMMA, //
+	SPACE; //
+
+}

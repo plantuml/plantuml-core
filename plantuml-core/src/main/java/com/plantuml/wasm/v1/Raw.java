@@ -1,0 +1,130 @@
+package com.plantuml.wasm.v1;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
+
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.StringReader;
+import java.util.Collections;
+import java.util.List;
+
+import com.plantuml.wasm.JsonResult;
+import com.plantuml.wasm.WasmLog;
+
+import net.sourceforge.plantuml.BlockUml;
+import net.sourceforge.plantuml.BlockUmlBuilder;
+import net.sourceforge.plantuml.EmptyImageBuilder;
+import net.sourceforge.plantuml.ErrorUml;
+import net.sourceforge.plantuml.FileFormat;
+import net.sourceforge.plantuml.core.Diagram;
+import net.sourceforge.plantuml.error.PSystemError;
+import net.sourceforge.plantuml.klimt.URectangle;
+import net.sourceforge.plantuml.klimt.color.ColorMapper;
+import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.color.HColors;
+import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.preproc.Defines;
+import net.sourceforge.plantuml.ugraphic.g2d.UGraphicG2d;
+
+public class Raw {
+
+	static private BufferedImage im;
+	static private Graphics2D g2d;
+
+	public static Object convert(String mode, String text) {
+		final long start = System.currentTimeMillis();
+		WasmLog.start = start;
+		WasmLog.log("Starting processing");
+
+		try {
+			text = cleanText(text);
+			final BlockUmlBuilder builder = new BlockUmlBuilder(Collections.<String>emptyList(), UTF_8,
+					Defines.createEmpty(), new StringReader(text), null, "string");
+			List<BlockUml> blocks = builder.getBlockUmls();
+
+			if (blocks.size() == 0)
+				return JsonResult.noDataFound(start);
+
+			WasmLog.log("...loading data...");
+
+			final Diagram system = blocks.get(0).getDiagram();
+			if (system instanceof PSystemError) {
+				final ErrorUml error = ((PSystemError) system).getFirstError();
+				WasmLog.log("[" + error.getPosition() + "] " + error.getError());
+				return JsonResult.fromError(start, (PSystemError) system);
+			}
+
+			WasmLog.log("...processing...");
+
+			final boolean dark = "dark".equalsIgnoreCase(mode);
+
+			final StringBounder stringBounder = FileFormat.PNG.getDefaultStringBounder();
+
+			if (im == null) {
+				final EmptyImageBuilder imageBuilder = new EmptyImageBuilder(null, 1000, 1000, Color.WHITE,
+						stringBounder);
+				im = imageBuilder.getBufferedImage();
+				g2d = im.createGraphics();
+			}
+
+			final HColor back;
+			final ColorMapper mapper;
+			if (dark) {
+				back = HColors.simple(Color.BLACK);
+				mapper = ColorMapper.DARK_MODE;
+			} else {
+				back = HColors.simple(Color.WHITE);
+				mapper = ColorMapper.IDENTITY;
+			}
+			final UGraphicG2d ug = new UGraphicG2d(back, mapper, stringBounder, g2d, 1.0, FileFormat.RAW);
+			WasmLog.log("...cleaning...");
+			ug.apply(back).apply(back.bg()).draw(new URectangle(1000, 1000));
+			ug.resetMax();
+			WasmLog.log("...drawing...");
+
+			system.exportDiagramGraphic(ug);
+
+			final int width = (int) (2 + ug.getMaxX());
+			final int height = (int) (2 + ug.getMaxY());
+			WasmLog.log("...size is " + width + " x " + height + " ...");
+
+			final byte[] data = new byte[width * height * 4];
+			WasmLog.log("...allocating array...");
+
+			int pos = 0;
+			data[pos++] = (byte) ((width & 0xFF00) >> 8);
+			data[pos++] = (byte) (width & 0xFF);
+			data[pos++] = (byte) ((height & 0xFF00) >> 8);
+			data[pos++] = (byte) (height & 0xFF);
+
+			for (int j = 0; j < height; j++)
+				for (int i = 0; i < width; i++) {
+					int pixel = im.getRGB(i, j);
+					data[pos++] = (byte) ((pixel & 0xFF0000) >> 16);
+					data[pos++] = (byte) ((pixel & 0x00FF00) >> 8);
+					data[pos++] = (byte) (pixel & 0xFF);
+					data[pos++] = (byte) (255);
+//					// line.scanline[j++] = (((sample & 0xFF000000) >> 24) & 0xFF); // A
+				}
+
+			WasmLog.log("done!");
+
+			return data;
+
+		} catch (Throwable t) {
+			WasmLog.log("Fatal error " + t);
+			return JsonResult.fromCrash(start, t);
+		}
+	}
+
+	private static String cleanText(String text) {
+		if (text.endsWith("\n") == false)
+			text = text + "\n";
+		if (text.endsWith("@start") == false)
+			text = "@startuml\n" + text + "@enduml\n";
+
+		return text;
+	}
+
+}

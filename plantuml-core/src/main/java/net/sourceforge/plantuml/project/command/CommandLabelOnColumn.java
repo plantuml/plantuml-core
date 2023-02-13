@@ -1,0 +1,53 @@
+package net.sourceforge.plantuml.project.command;
+
+import net.sourceforge.plantuml.command.CommandExecutionResult;
+import net.sourceforge.plantuml.command.SingleLineCommand2;
+import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.project.GanttDiagram;
+import net.sourceforge.plantuml.project.LabelPosition;
+import net.sourceforge.plantuml.project.LabelStrategy;
+import net.sourceforge.plantuml.regex.IRegex;
+import net.sourceforge.plantuml.regex.RegexConcat;
+import net.sourceforge.plantuml.regex.RegexLeaf;
+import net.sourceforge.plantuml.regex.RegexOptional;
+import net.sourceforge.plantuml.regex.RegexResult;
+import net.sourceforge.plantuml.utils.LineLocation;
+
+public class CommandLabelOnColumn extends SingleLineCommand2<GanttDiagram> {
+
+	public CommandLabelOnColumn() {
+		super(getRegexConcat());
+	}
+
+	static IRegex getRegexConcat() {
+		return RegexConcat.build(CommandLabelOnColumn.class.getName(), RegexLeaf.start(), //
+				new RegexLeaf("labels?"), //
+				RegexLeaf.spaceOneOrMore(), //
+				new RegexLeaf("on"), //
+				RegexLeaf.spaceZeroOrMore(), //
+				new RegexLeaf("POSITION", "(first|last)"), //
+				RegexLeaf.spaceZeroOrMore(), //
+				new RegexLeaf("column"), //
+				new RegexOptional(new RegexConcat( //
+						RegexLeaf.spaceZeroOrMore(), //
+						new RegexLeaf("and"), //
+						RegexLeaf.spaceZeroOrMore(), //
+						new RegexLeaf("ALIGNED", "(left|right)"), //
+						RegexLeaf.spaceZeroOrMore(), //
+						new RegexLeaf("aligned") //
+				)), RegexLeaf.end()); //
+	}
+
+	@Override
+	protected CommandExecutionResult executeArg(GanttDiagram diagram, LineLocation location, RegexResult arg) {
+		final LabelPosition position = "first".equalsIgnoreCase(arg.get("POSITION", 0)) ? LabelPosition.FIRST_COLUMN
+				: LabelPosition.LAST_COLUMN;
+		final HorizontalAlignment alignment = "right".equalsIgnoreCase(arg.get("ALIGNED", 0))
+				? HorizontalAlignment.RIGHT
+				: HorizontalAlignment.LEFT;
+		final LabelStrategy strategy = new LabelStrategy(position, alignment);
+		diagram.setLabelStrategy(strategy);
+		return CommandExecutionResult.ok();
+	}
+
+}
