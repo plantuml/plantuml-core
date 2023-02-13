@@ -32,7 +32,7 @@ jobs:
     - name: Compile
       run: gradle build
 
-    - run: ls -lR
+    - run: ls -lR plantuml-core/build/libs
 
     - uses: actions/upload-artifact@v3
       with:
