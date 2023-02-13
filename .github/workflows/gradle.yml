@@ -30,7 +30,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Compile
-      run: gradle build
+      run: gradle --no-daemon build
 
     - run: ls -lR plantuml-core/build/libs
 
@@ -41,7 +41,12 @@ jobs:
         cheerpj_2.3/cheerpjfy.py --deps cheerpj_2.3/cheerpj-dom.jar plantuml-core.jar
         ls -l plantuml-core.jar.js
 
+    - run: ls -lR
+
     - uses: actions/upload-artifact@v3
       with:
         name: plantumlcore
-        path: plantuml-core/build/libs
+        path: |
+          plantuml-core.jar
+          plantuml-core.jar.js
+		  
