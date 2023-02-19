@@ -56,7 +56,7 @@ background-color: #444;
 
 <body>
 	<div id=popup>ERROR</div>
-	<div id=debugjava>(INIT)</div>
+	<div id=debugjava>(...init in progress...)</div>
 
 	<div class=container>
 		<div class=cell>
@@ -85,7 +85,7 @@ function done() {
 	const current = version_input;
 	if (_inprogress) return;
 	_inprogress = true;
-	cjCall("com.plantuml.api.cheerpj.v1.Raw", "convert", "light", text).then((raw) => {
+	cjCall("com.plantuml.api.cheerpj.v1.Raw", "convert", "dark", text).then((raw) => {
 		if (raw.constructor.name=='Int8Array') {
 			document.getElementById("popup").style.visibility = "hidden";
 			const canvas = document.getElementById('canvas');

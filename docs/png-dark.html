@@ -40,7 +40,7 @@ visibility: hidden;
   
 <body>
 <div id=popup>ERROR</div>
-	<div id=debugjava>(...INIT...)</div>
+	<div id=debugjava>(...init in progress...)</div>
 
 <div class=container>
 <div class=cell>
@@ -84,7 +84,7 @@ function done() {
 }
 
 cheerpjInit({disableLoadTimeReporting:true,disableErrorReporting:true}).then( (val0) => {
-	cheerpjRunMain("com.plantuml.api.cheerpj.v1.RunInit", "/app/plantuml-core.jar", "/app/", "debugjava").then ( (val1) => {
+	cheerpjRunMain("com.plantuml.api.cheerpj.v1.RunInit", "/app/plantuml-core/plantuml-core.jar", "/app/", "debugjava").then ( (val1) => {
 		done();
 	});
 });
