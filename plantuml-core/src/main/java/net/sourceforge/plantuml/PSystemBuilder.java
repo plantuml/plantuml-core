@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import com.plantuml.wasm.WasmLog;
+import com.plantuml.api.cheerpj.WasmLog;
 
 import net.sourceforge.plantuml.activitydiagram.ActivityDiagramFactory;
 import net.sourceforge.plantuml.activitydiagram3.ActivityDiagramFactory3;
@@ -116,10 +116,7 @@ public class PSystemBuilder {
 		factories.add(new NwDiagramFactory(DiagramType.NW));
 		factories.add(new MindMapDiagramFactory());
 		factories.add(new WBSDiagramFactory());
-		if (License.getCurrent() == License.GPL || License.getCurrent() == License.GPLV2) {
-			// factories.add(new PSystemLogoFactory());
-			factories.add(new PSystemSudokuFactory());
-		}
+		 factories.add(new PSystemSudokuFactory());
 		factories.add(new PSystemCharlieFactory());
 		factories.add(new GanttDiagramFactory());
 		factories.add(new FlowDiagramFactory());

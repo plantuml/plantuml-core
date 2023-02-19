@@ -6,7 +6,6 @@ import static gen.lib.dotgen.fastgr__c.virtual_edge;
 import static gen.lib.dotgen.fastgr__c.virtual_node;
 import static gen.lib.dotgen.mincross__c.rec_reset_vlists;
 import static gen.lib.dotgen.mincross__c.rec_save_vlists;
-import static smetana.core.JUtils.EQ;
 import static smetana.core.Macro.ED_adjacent;
 import static smetana.core.Macro.ED_dist;
 import static smetana.core.Macro.ED_edge_type;
@@ -22,8 +21,6 @@ import static smetana.core.Macro.GD_n_cluster;
 import static smetana.core.Macro.GD_nlist;
 import static smetana.core.Macro.GD_rank;
 import static smetana.core.Macro.GD_ranksep;
-import static smetana.core.Macro.MAX;
-import static smetana.core.Macro.N;
 import static smetana.core.Macro.ND_alg;
 import static smetana.core.Macro.ND_coord;
 import static smetana.core.Macro.ND_flat_in;
@@ -56,6 +53,8 @@ import h.ST_pointf;
 import h.ST_rank_t;
 import smetana.core.CArray;
 import smetana.core.CArrayOfStar;
+import smetana.core.Globals;
+import smetana.core.ZType;
 import smetana.core.debug.SmetanaDebug;
 
 public class flat__c {
@@ -77,7 +76,7 @@ try {
     CArrayOfStar<ST_Agnode_s> v;
     
     ST_Agnode_s n;
-	v = CArrayOfStar.<ST_Agnode_s>REALLOC(GD_rank(g).get__(r).n + 2, GD_rank(g).get__(r).v, ST_Agnode_s.class);
+	v = CArrayOfStar.<ST_Agnode_s>REALLOC(GD_rank(g).get__(r).n + 2, GD_rank(g).get__(r).v, ZType.ST_Agnode_s);
     GD_rank(g).get__(r).v = v;
     for (i = GD_rank(g).get__(r).n; i > pos; i--) {
 	v.set_(i, v.get_(i - 1));
@@ -306,13 +305,13 @@ try {
     /* 3 = one for new rank, one for sentinel, one for off-by-one */
     r = GD_maxrank(g) + 3;
     
-    rptr = CArray.<ST_rank_t> REALLOC__(r, GD_rank(g), ST_rank_t.class);
+    rptr = CArray.<ST_rank_t> REALLOC__(r, GD_rank(g), ZType.ST_rank_t);
     GD_rank(g, rptr.plus_(1));
     for (r = GD_maxrank(g); r >= 0; r--)
 	GD_rank(g).get__(r).___(GD_rank(g).get__(r - 1));
     GD_rank(g).get__(r).n = 0;
     GD_rank(g).get__(r).an = 0;
-    GD_rank(g).get__(r).v = CArrayOfStar.<ST_Agnode_s>ALLOC(2, ST_Agnode_s.class);
+    GD_rank(g).get__(r).v = CArrayOfStar.<ST_Agnode_s>ALLOC(2, ZType.ST_Agnode_s);
     GD_rank(g).get__(r).av = GD_rank(g).get__(r).v;
     GD_rank(g).get__(r).flat = null;
     GD_rank(g).get__(r).ht1 = 1;
@@ -394,7 +393,7 @@ LEAVING("ctujx6e8k3rzv08h6gswdcaqs","checkFlatAdjacent");
  */
 @Reviewed(when = "16/11/2020")
 @Original(version="2.38.0", path="lib/dotgen/flat.c", name="flat_edges", key="bjwwj6ftkm0gv04cf1edqeaw6", definition="int  flat_edges(graph_t * g)")
-public static boolean flat_edges(ST_Agraph_s g) {
+public static boolean flat_edges(Globals zz, ST_Agraph_s g) {
 ENTERING("bjwwj6ftkm0gv04cf1edqeaw6","flat_edges");
 try {
     int i, j; boolean reset = false;
@@ -418,7 +417,7 @@ try {
     if ((GD_rank(g).get__(0).flat!=null) || (GD_n_cluster(g) > 0)) {
 	for (i = 0; (n = GD_rank(g).get__(0).v.get_(i))!=null; i++) {
 	    for (j = 0; (e = ND_flat_in(n).list.get_(j))!=null; j++) {
-		if ((ED_label(e)!=null) && N(ED_adjacent(e))) {
+		if ((ED_label(e)!=null) && ED_adjacent(e) == 0) {
 		    abomination(g);
 		    found = true;
 		    break;
@@ -453,7 +452,7 @@ try {
 		e = ND_other(n).list.get_(j);
 		SmetanaDebug.LOG("e="+e.NAME);
 		if (ND_rank(agtail(e)) != ND_rank(aghead(e))) continue;
-		if (EQ(agtail(e), aghead(e))) continue; /* skip loops */
+		if (agtail(e) == aghead(e)) continue; /* skip loops */
 		le = e;
 		while (ED_to_virt(le)!=null) le = ED_to_virt(le);
 		ED_adjacent(e, ED_adjacent(le)); 
@@ -465,7 +464,7 @@ try {
 			double lw;
 			if (GD_flip(g)) lw = ED_label(e).dimen.y;
 			else lw = ED_label(e).dimen.x; 
-			ED_dist(le, MAX(lw,ED_dist(le)));
+			ED_dist(le, Math.max(lw,ED_dist(le)));
 		    }
 		    else {
 		    	SmetanaDebug.LOG("reset2 true");
@@ -477,7 +476,7 @@ try {
 	}
     }
     if (reset)
-	rec_reset_vlists(g);
+	rec_reset_vlists(zz, g);
     return reset;
 } finally {
 LEAVING("bjwwj6ftkm0gv04cf1edqeaw6","flat_edges");

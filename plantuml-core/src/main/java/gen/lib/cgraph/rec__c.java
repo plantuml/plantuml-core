@@ -2,18 +2,12 @@ package gen.lib.cgraph;
 import static gen.lib.cgraph.edge__c.agopp;
 import static gen.lib.cgraph.obj__c.agraphof;
 import static gen.lib.cgraph.refstr__c.agstrdup;
-import static smetana.core.JUtils.EQ;
-import static smetana.core.JUtils.NEQ;
 import static smetana.core.JUtils.strcmp;
 import static smetana.core.Macro.AGDATA;
 import static smetana.core.Macro.AGINEDGE;
 import static smetana.core.Macro.AGNODE;
 import static smetana.core.Macro.AGOUTEDGE;
 import static smetana.core.Macro.AGRAPH;
-import static smetana.core.Macro.AGTYPE;
-import static smetana.core.Macro.ASINT;
-import static smetana.core.Macro.N;
-import static smetana.core.Macro.NOT;
 import static smetana.core.debug.SmetanaDebug.ENTERING;
 import static smetana.core.debug.SmetanaDebug.LEAVING;
 
@@ -27,6 +21,7 @@ import h.ST_Agtag_s;
 import smetana.core.CString;
 import smetana.core.__ptr__;
 import smetana.core.size_t;
+import smetana.core.Globals;
 
 public class rec__c {
 
@@ -39,7 +34,7 @@ try {
     ST_Agedge_s e;
     obj.data = data;
     (obj.tag).mtflock = mtflock;
-    if ((AGTYPE(obj) == AGINEDGE) || (AGTYPE(obj) == AGOUTEDGE)) {
+    if ((obj.tag.objtype == AGINEDGE) || (obj.tag.objtype == AGOUTEDGE)) {
 	e = (ST_Agedge_s) agopp(obj);
 	AGDATA(e, data);
 	(e.base.tag).mtflock = mtflock;
@@ -62,21 +57,21 @@ try {
     hdr = (ST_Agobj_s) obj;
     first = d = (ST_Agrec_s) hdr.data;
     while (d!=null) {
-	if (N(strcmp(name,d.name)))
+	if (strcmp(name,d.name) == 0)
 	    break;
 	d = (ST_Agrec_s) d.next;
-	if (EQ(d, first)) {
+	if (d == first) {
 	    d = null;
 	    break;
 	}
     }
     if (d!=null) {
 	if (((ST_Agtag_s)hdr.tag).mtflock!=0) {
-	    if (mtf && NEQ(hdr.data, d))
+	    if (mtf && (hdr.data != d))
 		System.err.println("move to front lock inconsistency");
 	} else {
-	    if (NEQ(d, first) || (mtf != ((((ST_Agtag_s)hdr.tag).mtflock)!=0)))
-		set_data(hdr, d, ASINT(mtf));	/* Always optimize */
+	    if ((d != first) || (mtf != ((((ST_Agtag_s)hdr.tag).mtflock)!=0)))
+		set_data(hdr, d, mtf ? 1 : 0);	/* Always optimize */
 	}
     }
     return d;
@@ -99,7 +94,7 @@ try {
     if (firstrec == null)
 	newrec.next = newrec;	/* 0 elts */
     else {
-	if (EQ(firstrec.next, firstrec)) {
+	if (firstrec.next == firstrec) {
 	    firstrec.next = newrec;	/* 1 elt */
 	    newrec.next = firstrec;
 	} else {
@@ -107,7 +102,7 @@ try {
 	    firstrec.next = newrec;
 	}
     }
-    if (NOT(((ST_Agtag_s)obj.tag).mtflock))
+    if (((ST_Agtag_s)obj.tag).mtflock == 0)
 	set_data(obj, newrec, (0));
 } finally {
 LEAVING("7sk4k5ipm2jnd244556g1kr6","objputrec");
@@ -119,7 +114,7 @@ LEAVING("7sk4k5ipm2jnd244556g1kr6","objputrec");
 
 @Original(version="2.38.0", path="lib/cgraph/rec.c", name="agbindrec", key="dmh5i83l15mnn1pnu6f5dfv8l", definition = "void *agbindrec(void *arg_obj, char *recname, unsigned int recsize, int mtf)")
 @Reviewed(when = "10/11/2020")
-public static __ptr__ agbindrec(__ptr__ arg_obj, CString recname, size_t recsize, boolean mtf) {
+public static __ptr__ agbindrec(Globals zz, __ptr__ arg_obj, CString recname, size_t recsize, boolean mtf) {
 ENTERING("dmh5i83l15mnn1pnu6f5dfv8l","agbindrec");
 try {
     ST_Agraph_s g;
@@ -132,7 +127,7 @@ try {
     rec = (ST_Agrec_s) ((__ptr__)recsize.malloc());
 	// rec = (ST_Agrec_s) ((__ptr__)agalloc(g, recsize)).castTo(ST_Agrec_s.class);
     // rec = (Agrec_s) Memory.malloc(Agrec_s.class);
-	rec.name = agstrdup(g, recname);
+	rec.name = agstrdup(zz, g, recname);
 	switch (((ST_Agtag_s)obj.tag).objtype) {
 	case AGRAPH:
 	    objputrec(g, obj, rec);
@@ -147,7 +142,7 @@ try {
 	}
     }
     if (mtf)
-	aggetrec(arg_obj, recname, (N(0)));
+	aggetrec(arg_obj, recname, (true));
     return rec;
 } finally {
 LEAVING("dmh5i83l15mnn1pnu6f5dfv8l","agbindrec");

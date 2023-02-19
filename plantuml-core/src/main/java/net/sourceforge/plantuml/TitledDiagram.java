@@ -165,6 +165,7 @@ public abstract class TitledDiagram extends AbstractPSystem implements Diagram, 
 		if (FORCE_SMETANA)
 			return true;
 		return useSmetana;
+		 // return true;
 	}
 
 	@Override

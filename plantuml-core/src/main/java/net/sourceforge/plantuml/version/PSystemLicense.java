@@ -12,7 +12,10 @@ import net.sourceforge.plantuml.core.UmlSource;
 import net.sourceforge.plantuml.graphic.GraphicStrings;
 import net.sourceforge.plantuml.graphic.UDrawable;
 import net.sourceforge.plantuml.klimt.UImage;
+import net.sourceforge.plantuml.klimt.UText;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.font.FontConfiguration;
+import net.sourceforge.plantuml.klimt.font.UFont;
 import net.sourceforge.plantuml.svek.TextBlockBackcolored;
 import net.sourceforge.plantuml.ugraphic.AffineTransformType;
 import net.sourceforge.plantuml.ugraphic.PixelImage;
@@ -41,9 +44,23 @@ public class PSystemLicense extends PlainDiagram implements UDrawable {
 		return new DiagramDescription("(License)");
 	}
 
+	@Override
+	public void exportDiagramGraphic(UGraphic ug) {
+		final LicenseInfo licenseInfo = LicenseInfo.retrieveQuick();
+		getTextBlock(licenseInfo).drawU(ug);
+	}
+
 	public void drawU(UGraphic ug) {
 
-			final List<String> strings = new ArrayList<>();
-			getGraphicStrings(strings).drawU(ug);
+		final LicenseInfo licenseInfo = LicenseInfo.retrieveQuick();
+			getTextBlock(licenseInfo).drawU(ug);
 	}
+
+	protected TextBlockBackcolored getTextBlock(final LicenseInfo licenseInfo) {
+		final List<String> strings = new ArrayList<>();
+		strings.addAll(License.getCurrent().getText1(licenseInfo));
+		strings.addAll(License.getCurrent().getText2(licenseInfo));
+		return getGraphicStrings(strings);
+	}
+
 }

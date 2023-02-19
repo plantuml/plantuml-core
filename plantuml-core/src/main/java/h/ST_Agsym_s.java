@@ -1,7 +1,7 @@
 package h;
 
 import smetana.core.CString;
-import smetana.core.OFFSET;
+import smetana.core.FieldOffset;
 import smetana.core.UnsupportedStarStruct;
 import smetana.core.__ptr__;
 
@@ -17,34 +17,25 @@ final public class ST_Agsym_s extends UnsupportedStarStruct {
 	public int fixed; /* immutable value */
 	public int print; /* always print */
 
-	public static OFFSET createOFFSET(String field) {
-		return new OFFSET(field);
-	}
-
 	@Override
-	public Object getTheField(OFFSET offset) {
-		if (offset == null || offset.getSign()==0) {
+	public Object getTheField(FieldOffset offset) {
+		if (offset == null || offset.getSign() == 0) 
 			return this;
-		}
-		if (offset.getField().equals("name")) {
+		
+		if (offset == FieldOffset.name) 
 			return name;
-		}
-		if (offset.getField().equals("link")) {
+		
+		if (offset == FieldOffset.link) 
 			return link;
-		}
+		
 		throw new UnsupportedOperationException();
 	}
 
-	
 	@Override
 	public boolean isSameThan(__ptr__ other) {
 		ST_Agsym_s other2 = (ST_Agsym_s) other;
 		return this == other2;
 	}
-
-
-
-
 
 }
 

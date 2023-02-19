@@ -33,7 +33,7 @@ import net.sourceforge.plantuml.utils.Base64Coder;
 import net.sourceforge.plantuml.utils.Log;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import static com.plantuml.wasm.Memory.cheerpjPath;
+import static com.plantuml.api.cheerpj.StaticMemory.cheerpjPath;
 
 public class Stdlib {
 

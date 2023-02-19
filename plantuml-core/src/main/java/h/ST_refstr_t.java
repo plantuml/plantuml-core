@@ -1,22 +1,21 @@
 package h;
 
 import smetana.core.CString;
-import smetana.core.OFFSET;
+import smetana.core.FieldOffset;
 
 final public class ST_refstr_t extends ST_dtlink_s {
 
 	public int refcnt;
 	public CString s;
 
-
 	@Override
-	public Object getTheField(OFFSET offset) {
-		if (offset == null || offset.getSign()==0) {
+	public Object getTheField(FieldOffset offset) {
+		if (offset == null || offset.getSign() == 0)
 			return this;
-		}
-		if (offset.getField().equals("s")) {
+
+		if (offset == FieldOffset.s)
 			return s;
-		}
+
 		throw new UnsupportedOperationException();
 	}
 

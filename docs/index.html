@@ -1,3 +1,295 @@
-<html>
-Hello world
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PlantUML going serverless</title>
+<script src="https://cjrtnc.leaningtech.com/2.3/loader.js"></script>
+</head>
+
+
+<h1>PlantUML going serverless</h1>
+
+<p>
+Up to now, you need either a local installation of PlantUML or a server (remote or local) to be able to generate diagrams.
+
+<p>
+Thanks for <a href=https://docs.leaningtech.com/cheerpj>CheerpJ</a>, we have published a pure Javascript implementation of PlantUML.
+<p>
+This implementation runs within a simple browser.
+
+<h2>What is CheerpJ?</h2>
+
+<p>
+<a href=https://docs.leaningtech.com/cheerpj>CheerpJ</a> is a Java bytecode to WebAssembly and JavaScript compiler, compatible with 100% of Java, which allows to
+compile any Java SE application, library or Java applet into a WebAssembly/JavaScript application.
+
+<p>
+We are going to use the two following components from <a href=https://docs.leaningtech.com/cheerpj>CheerpJ</a>:
+<ul>
+<li>The CheerpJ AOT compiler, an LLVM-based Java-bytecode to JavaScript compiler. This can be used to convert Java archives (e.g. <code>plantuml-core.jar</code>) files
+to JavaScript.
+<li>The CheerpJ runtime library, a full Java SE runtime in WebAssembly and JavaScript, that can be distributed in part or in full with applications converted with CheerpJ.
+</ul>
+
+<p>
+Note that it does not work with a local file (with double-clicking on the file). Files must be served by some webserver (even if it is a local one).
+
+<h2>How it works?</h2>
+
+<p>
+The <a href=https://github.com/plantuml/plantuml-core>plantuml-core</a> project provides a dedicated version of PlantUML that can be compiled to Javascript with CheerpJ.
+
+The jar file <code>plantuml-core.jar</code> can be compiled to javascript with the simple command:
+
+<p>
+<code>
+cheerpj_2.3/cheerpjfy.py --deps cheerpj_2.3/cheerpj-dom.jar plantuml-core.jar
+</code>
+
+<p>
+You can get both files <a href=https://github.com/plantuml/plantuml-core/releases><code>plantuml-core.jar</code> and <code>plantuml-core.jar.js</code> from Github.</a>
+
+
+<h2>Online demo for the impatient</h2>
+
+<p>
+All those pages are intentionally as simple as possible, so that people could quickly understand how they work and develop their own libraries:
+
+<ul>
+<li><a href=raw.html>Using a raw canvas</a>, the fastest solution (same <a href=raw-dark.html>in dark mode</a>)</li>
+<li><a href=svg.html>Generating SVG</a> (same <a href=svg-dark.html>in dark mode</a>)</li>
+<li><a href=png.html>Generating PNG</a> (same <a href=png-dark.html>in dark mode</a>)</li>
+</ul>
+
+<h2>Javascript API</h2>
+
+
+<h3>SVG generation</h3>
+
+<p>
+First, you have to load the runtime provided by Leaning Technology:
+<p>
+<code>
+&lt;script src="https://cjrtnc.leaningtech.com/2.3/loader.js"&gt;&lt;/script&gt;
+</code>
+
+<p>
+Then, you have to init PlantUML itself:
+
+<p>
+<code>
+cheerpjRunMain("com.plantuml.api.cheerpj.v1.RunInit", "/app/plantuml-core.jar")
+</code>
+
+<p>
+The <code>/app/</code> is a <a href=https://docs.leaningtech.com/cheerpj/File-System-support>virtual file-system that is the root of your webserver.</a>
+In the previous example, it means that both files <code>plantuml-core.jar</code> and <code>plantuml-core.jar.js</code> must be stored at
+the root of your server (so something like <code>http://127.0.0.1:8080/plantuml-core.jar.js</code>). 
+<p>
+
+Finally, you can get the SVG version of any diagram:
+<p>
+<code>
+cjCall("com.plantuml.api.cheerpj.v1.Svg", "convert", "light", text);
+</code>
+
+<p>
+where:
+<ul>
+<li><code>"light"</code>: could be either <code>dark</code> or <code>light</code> depending of the theme you want to use.</li> 
+<li><code>text</code>: <code>String</code> that contains the diagram source text.</li> 
+</ul>
+
+<p>
+<a href=svg.html>Working demo</a>
+
+
+<h3>PNG generation (Base64)</h3>
+
+<p>
+Note that PNG generation is slow, because data compression takes time.
+
+<p>
+Once again, you have to load the runtime provided by Leaning Technology:
+<p>
+<code>
+&lt;script src="https://cjrtnc.leaningtech.com/2.3/loader.js"&gt;&lt;/script&gt;
+</code>
+
+<p>
+Then, you have to init PlantUML itself:
+
+<p>
+<code>
+cheerpjRunMain("com.plantuml.api.cheerpj.v1.RunInit", "/app/plantuml-core.jar")
+</code>
+
+<p>
+
+Finally, you can get the PNG version of any diagram:
+<p>
+<code>
+cjCall("com.plantuml.api.cheerpj.v1.Png", "convertToBase64", "light", text);
+</code>
+
+<p>
+where:
+<ul>
+<li><code>"light"</code>: could be either <code>dark</code> or <code>light</code> depending of the theme you want to use.</li> 
+<li><code>text</code>: <code>String</code> that contains the diagram source text.</li> 
+</ul>
+
+<p>
+<a href=png64.html>Working demo</a>
+
+
+<h3>Complete list of available functions</h3>
+
+<table width=100% border=1 cellpadding=5 cellspacing=0>
+
+<tr>
+
+<td colspan=5><b>com.plantuml.api.cheerpj.v1</b></td>
+</tr>
+
+<tr>
+<td><b>Class</b></td>
+<td><b>Method</b></td>
+<td><b>Description</b></td>
+<td><b>Arguments</b></td>
+<td><b>Return</b></td>
+</tr>
+
+<tr valign=top>
+<td><code>Svg</code></td>
+<td><code>convert</code></td>
+
+<td>
+Generate an diagram using SVG format
+</td>
+
+<td>
+<ol>
+<li><code>mode</code>: either <code>"dark"</code> or <code>"light"</code></li>
+<li><code>text</code>: the text source of the diagram</li>
+</ol>
+</td>
+<td>
+Either:
+<ul>
+<li>The SVG source code generated if everything is ok</li>
+<li>Or a JSON description of what was wrong</li>
+</ul>
+</td>
+</tr>
+
+<tr valign=top>
+<td><code>Png</code></td>
+<td><code>convertToBase64</code></td>
+
+<td>
+Generate an diagram using PNG format encoded in Base64
+</td>
+
+<td>
+<ol>
+<li><code>mode</code>: either <code>"dark"</code> or <code>"light"</code></li>
+<li><code>text</code>: the text source of the diagram</li>
+</ol>
+</td>
+<td>
+Either:
+<ul>
+<li>A Base64 String of a PNG image</li>
+<li>Or a JSON description of what was wrong</li>
+</ul>
+</td>
+</tr>
+
+
+<tr valign=top>
+<td><code>Png</code></td>
+<td><code>convertToBlob</code></td>
+
+<td>
+Generate an diagram in PNG to a Blob
+</td>
+
+<td>
+<ol>
+<li><code>mode</code>: either <code>"dark"</code> or <code>"light"</code></li>
+<li><code>text</code>: the text source of the diagram</li>
+<li><code>pathOut</code>: path of the Blob</li>
+</ol>
+</td>
+<td>
+A JSON description of the conversion.
+<p>
+The image itself is in the Blob.
+</td>
+</tr>
+<tr valign=top>
+<td><code>Raw</code></td>
+<td><code>convertToBlob</code></td>
+
+<td>
+Generate an diagram in raw (uncompressed) graphics to a Blob
+</td>
+
+<td>
+<ol>
+<li><code>mode</code>: either <code>"dark"</code> or <code>"light"</code></li>
+<li><code>text</code>: the text source of the diagram</li>
+<li><code>pathOut</code>: path of the Blob</li>
+</ol>
+</td>
+<td>
+A JSON description of the conversion.
+<p>
+The image itself is in the Blob in raw format (RGBA).
+</td>
+</tr>
+
+
+<tr valign=top>
+<td><code>Info</code></td>
+<td><code>decode</code></td>
+
+<td>
+Decode a <a href=https://plantuml.com/text-encoding>PlantUML Text Encoding encoded String</a>.
+</td>
+
+<td>
+<ol>
+<li><code>text</code>: some encoded String</li>
+</ol>
+</td>
+<td>
+The decoded text of the diagram.
+</td>
+</tr>
+
+
+<tr valign=top>
+<td><code>Info</code></td>
+<td><code>syntaxCheck</code></td>
+
+<td>
+Check if a text diagram is syntaxically  correct.
+</td>
+
+<td>
+<ol>
+<li><code>text</code>: the text source of the diagram</li>
+</ol>
+</td>
+<td>
+A JSON description of the syntax.
+</td>
+</tr>
+
+
+
+</table>
+
+
 </html>

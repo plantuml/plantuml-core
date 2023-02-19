@@ -1,5 +1,4 @@
 package gen.lib.label;
-import static smetana.core.Macro.N;
 import static smetana.core.Macro.UNSUPPORTED;
 import static smetana.core.debug.SmetanaDebug.ENTERING;
 import static smetana.core.debug.SmetanaDebug.LEAVING;
@@ -225,7 +224,7 @@ try {
  	    || s.boundary[i] > r.boundary[j])
  	    return false;
      }
-     return (N(0));
+     return (true);
 } finally {
 LEAVING("9glce34jzknoqj98agg96k03o","Overlap");
 }

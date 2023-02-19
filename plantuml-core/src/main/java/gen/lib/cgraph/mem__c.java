@@ -10,6 +10,7 @@ import h.ST_Agdisc_s;
 import h.ST_Agraph_s;
 import smetana.core.CFunction;
 import smetana.core.CFunctionAbstract;
+import smetana.core.Globals;
 import smetana.core.__ptr__;
 import smetana.core.size_t;
 
@@ -17,7 +18,7 @@ public class mem__c {
 
 public static CFunction memopen = new CFunctionAbstract("memopen") {
 	
-	public Object exe(Object... args) {
+	public Object exe(Globals zz, Object... args) {
 		return memopen((ST_Agdisc_s)args[0]);
 	}};
 	
@@ -35,7 +36,7 @@ LEAVING("akq0jgwdspf75ypeatgcnfn8w","memopen");
 
 public static CFunction memalloc = new CFunctionAbstract("memalloc") {
 	
-	public Object exe(Object... args) {
+	public Object exe(Globals zz, Object... args) {
 		return memalloc((__ptr__)args[0], (size_t)args[1]);
 	}};
 	
@@ -56,7 +57,7 @@ LEAVING("9mtjrx0vjzwuecjwpxylr9tag","memalloc");
 
 public static CFunction memresize = new CFunctionAbstract("memresize") {
 	
-	public Object exe(Object... args) {
+	public Object exe(Globals zz, Object... args) {
 		return memresize((__ptr__)args[0], (__ptr__)args[1], (size_t)args[2], (size_t)args[3]);
 	}};
 	
@@ -75,7 +76,7 @@ LEAVING("18v2hhjculhnb3b7fc4tx3yjw","memresize");
 
 public static CFunction memfree = new CFunctionAbstract("memfree") {
 	
-	public Object exe(Object... args) {
+	public Object exe(Globals zz, Object... args) {
 		return memfree(args);
 	}};
 	

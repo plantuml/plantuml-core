@@ -1,7 +1,6 @@
 package gen.lib.cdt;
 import static gen.lib.cdt.dtflatten__c.dtflatten;
 import static gen.lib.cdt.dtrestore__c.dtrestore;
-import static smetana.core.Macro.N;
 import static smetana.core.Macro.UNSUPPORTED;
 import static smetana.core.debug.SmetanaDebug.ENTERING;
 import static smetana.core.debug.SmetanaDebug.LEAVING;
@@ -15,13 +14,14 @@ import smetana.core.CFunction;
 import smetana.core.CFunctionAbstract;
 import smetana.core.CString;
 import smetana.core.Memory;
+import smetana.core.Globals;
 import smetana.core.size_t;
 
 public class dtdisc__c {
 
 public static CFunction dtmemory = new CFunctionAbstract("dtmemory") {
 	
-	public Object exe(Object... args) {
+	public Object exe(Globals zz, Object... args) {
 		return dtmemory((ST_dt_s)args[0], (Object)args[1], (size_t)args[2], (ST_dtdisc_s)args[3]);
 	}};
 
@@ -51,27 +51,27 @@ LEAVING("507t9jcy6v9twvl30rs9i2nwi","dtmemory");
 // Dtdisc_t* dtdisc(Dt_t* dt, Dtdisc_t* disc, int type)       
 @Unused
 @Original(version="2.38.0", path="lib/cdt/dtdisc.c", name="dtdisc", key="axpvuswclmi9bx3qtlh4quyah", definition="Dtdisc_t* dtdisc(Dt_t* dt, Dtdisc_t* disc, int type)")
-public static ST_dtdisc_s dtdisc(ST_dt_s dt, ST_dtdisc_s disc, int type) {
+public static ST_dtdisc_s dtdisc(Globals zz, ST_dt_s dt, ST_dtdisc_s disc, int type) {
 ENTERING("axpvuswclmi9bx3qtlh4quyah","dtdisc");
 try {
 	CFunction	searchf;
 	ST_dtlink_s	r, t;
 	CString	k;
 	ST_dtdisc_s	old;
-	if(N(old = (ST_dtdisc_s) dt.disc) )	/* initialization call from dtopen() */
+	if((old = (ST_dtdisc_s) dt.disc) == null )	/* initialization call from dtopen() */
 	{	dt.disc = disc;
-		if(N(dt.memoryf = disc.memoryf ))
+		if((dt.memoryf = disc.memoryf ) == null)
 			dt.memoryf = dtdisc__c.dtmemory;
 		return disc;
 	}
-	if(N(disc))	/* only want to know current discipline */
+	if((disc) == null)	/* only want to know current discipline */
 		return old;
  	searchf = dt.meth.searchf;
  	if((dt.data.type&010000)!=0) dtrestore(dt,null);
- 	if(old.eventf!=null && ((Integer)old.eventf.exe(dt,3, disc,old)) < 0)
+ 	if(old.eventf!=null && ((Integer)old.eventf.exe(zz, dt,3, disc,old)) < 0)
  		return null;
  	dt.disc = disc;
- 	if(N(dt.memoryf = disc.memoryf))
+ 	if((dt.memoryf = disc.memoryf) == null)
  		dt.memoryf = dtdisc__c.dtmemory;
  	if((dt.data.type&(0000040|0000100|0000020))!=0)
 UNSUPPORTED("e2tzh95k1lvjl6wbtpwizam8q"); // 		goto done;

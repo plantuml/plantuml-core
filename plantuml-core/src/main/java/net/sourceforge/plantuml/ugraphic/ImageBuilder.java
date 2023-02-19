@@ -15,7 +15,7 @@ import java.util.Set;
 
 import javax.swing.ImageIcon;
 
-import com.plantuml.wasm.WasmLog;
+import com.plantuml.api.cheerpj.WasmLog;
 
 import net.sourceforge.plantuml.AnnotatedBuilder;
 import net.sourceforge.plantuml.AnnotatedWorker;

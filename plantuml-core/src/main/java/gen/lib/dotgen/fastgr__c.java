@@ -3,8 +3,6 @@ import static gen.lib.cgraph.edge__c.aghead;
 import static gen.lib.cgraph.edge__c.agtail;
 import static gen.lib.cgraph.obj__c.agroot;
 import static gen.lib.dotgen.dotinit__c.dot_root;
-import static smetana.core.JUtils.EQ;
-import static smetana.core.JUtils.NEQ;
 import static smetana.core.Macro.AGINEDGE;
 import static smetana.core.Macro.AGNODE;
 import static smetana.core.Macro.AGOUTEDGE;
@@ -78,11 +76,11 @@ try {
     if ((uL.size > 0) && (vL.size > 0)) {
 	if (uL.size < vL.size) {
 	    for (i = 0; (e = (ST_Agedge_s) uL.list.get_(i))!=null; i++)
-		if (EQ(aghead(e), v))
+		if (aghead(e) == v)
 		    break;
 	} else {
 	    for (i = 0; (e = (ST_Agedge_s) vL.list.get_(i))!=null; i++)
-		if (EQ(agtail(e), u))
+		if (agtail(e) == u)
 		    break;
 	}
     } else
@@ -116,7 +114,7 @@ ENTERING("1yw7ahdnxnexnicj552zqyyej","find_fast_node");
 try {
     ST_Agnode_s v;
     for (v = GD_nlist(g); v!=null; v = ND_next(v))
-	if (EQ(v, n))
+	if (v == n)
 	    break;
     return v;
 } finally {
@@ -149,7 +147,7 @@ try {
      int i;
      
      for (i = 0; i < L.size; i++)
-     if (EQ(e, L.list.get_(i)))
+     if (e == L.list.get_(i))
  	 	return;
      elist_append(e, L);
 } finally {
@@ -185,7 +183,7 @@ ENTERING("dxb0q8ajb7iv25aj6zdqnbwh5","zapinlist");
 try {
     int i;
     for (i = 0; i < L.size; i++) {
-	if (EQ(L.list.get_(i), e)) {
+	if (L.list.get_(i) == e) {
 	    L.size = L.size-1;
 	    L.list.set_(i, L.list.get_(L.size));
 	    L.list.set_(L.size, null);
@@ -275,19 +273,19 @@ try {
     
     
     if (orig!=null) {
-	AGSEQ(e, AGSEQ(orig));
-	AGSEQ(e2.in, AGSEQ(orig));
+	AGSEQ(e, orig.tag.seq);
+	AGSEQ(e2.in, orig.tag.seq);
 	ED_count(e, ED_count(orig));
 	ED_xpenalty(e, ED_xpenalty(orig));
 	ED_weight(e, ED_weight(orig));
 	ED_minlen(e, ED_minlen(orig));
-	if (EQ(agtail(e), agtail(orig)))
+	if (agtail(e) == agtail(orig))
 	    ED_tail_port(e, ED_tail_port(orig));
-	else if (EQ(agtail(e), aghead(orig)))
+	else if (agtail(e) == aghead(orig))
 	    ED_tail_port(e, ED_head_port(orig));
-	if (EQ(aghead(e), aghead(orig)))
+	if (aghead(e) == aghead(orig))
 	    ED_head_port(e, ED_head_port(orig));
-	else if (EQ(aghead(e), agtail(orig)))
+	else if (aghead(e) == agtail(orig))
 	    ED_head_port(e, ED_tail_port(orig));
 	
 	
@@ -333,7 +331,7 @@ try {
 	ND_prev(ND_next(n), n);
     GD_nlist(g, n);
     ND_prev(n, null);
-    assert(NEQ(n, ND_next(n)));
+    assert((n != ND_next(n)));
 } finally {
 LEAVING("98hkec8t6fjk10bjpstumw0ey","fast_node");
 }
@@ -417,7 +415,7 @@ public static void delete_flat_edge(ST_Agedge_s e) {
 ENTERING("clspalhiuedfnk9g9rlvfqpg7","delete_flat_edge");
 try {
     assert(e != null);
-    if (ED_to_orig(e)!=null && EQ(ED_to_virt(ED_to_orig(e)), e))
+    if (ED_to_orig(e)!=null && ED_to_virt(ED_to_orig(e)) == e)
 	ED_to_virt(ED_to_orig(e), null);
     zapinlist((ND_flat_out(agtail(e))), e);
     zapinlist((ND_flat_in(aghead(e))), e);
@@ -455,7 +453,7 @@ LEAVING("dcfpol11cvlt6aaa6phqbp6fo","basic_merge");
 public static void merge_oneway(ST_Agedge_s e, ST_Agedge_s rep) {
 ENTERING("6dxgtoii76tmonlnvz4rmiytd","merge_oneway");
 try {
-    if (EQ(rep, ED_to_virt(e))) {
+    if (rep == ED_to_virt(e)) {
 UNSUPPORTED("84xxsh1cgsif42hgizyxw36ul"); // 	agerr(AGWARN, "merge_oneway glitch\n");
 UNSUPPORTED("a7fgam0j0jm7bar0mblsv3no4"); // 	return;
     }

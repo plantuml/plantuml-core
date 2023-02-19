@@ -50,14 +50,16 @@ public class GraphicsSudoku {
 		return ImageDataSimple.ok();
 	}
 
+	final StringBounder stringBounder = FileFormat.PNG.getDefaultStringBounder();
+
 	public ImageData writeImagePng(OutputStream os) throws IOException {
-		final StringBounder stringBounder = FileFormat.PNG.getDefaultStringBounder();
 		final EmptyImageBuilder builder = new EmptyImageBuilder(null, sudoWidth, sudoHeight + textTotalHeight,
 				Color.WHITE, stringBounder);
 		final BufferedImage im = builder.getBufferedImage();
 		final Graphics2D g3d = builder.getGraphics2D();
 
-		final UGraphic ug = new UGraphicG2d(HColors.WHITE, ColorMapper.IDENTITY, stringBounder, g3d, 1.0, FileFormat.PNG);
+		final UGraphic ug = new UGraphicG2d(HColors.WHITE, ColorMapper.IDENTITY, stringBounder, g3d, 1.0,
+				FileFormat.PNG);
 
 		drawInternal(ug);
 		g3d.dispose();
@@ -80,7 +82,7 @@ public class GraphicsSudoku {
 	final private int sudoHeight = 9 * cellHeight + 2 * yOffset + boldWidth;
 	final private int sudoWidth = 9 * cellWidth + 2 * xOffset + boldWidth;
 
-	private void drawInternal(UGraphic ug) {
+	public void drawInternal(UGraphic ug) {
 		ug = ug.apply(new UTranslate(xOffset, yOffset));
 
 		for (int x = 0; x < 9; x++) {
@@ -109,7 +111,7 @@ public class GraphicsSudoku {
 
 		ug = ug.apply(UTranslate.dy(sudoHeight));
 		final List<String> texts = new ArrayList<>();
-		texts.add("http://plantuml.com");
+		texts.add("https://plantuml.com");
 		texts.add("Seed " + Long.toString(sudoku.getSeed(), 36));
 		texts.add("Difficulty " + sudoku.getRatting());
 		final TextBlock textBlock = Display.create(texts).create(FontConfiguration.blackBlueTrue(font),

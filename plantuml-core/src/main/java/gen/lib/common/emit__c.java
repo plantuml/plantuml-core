@@ -2,7 +2,6 @@ package gen.lib.common;
 import static gen.lib.cgraph.attr__c.agget;
 import static gen.lib.common.geom__c.ptToLine2;
 import static gen.lib.common.utils__c.Bezier;
-import static smetana.core.Macro.N;
 import static smetana.core.Macro.UNSUPPORTED;
 import static smetana.core.debug.SmetanaDebug.ENTERING;
 import static smetana.core.debug.SmetanaDebug.LEAVING;
@@ -15,6 +14,8 @@ import h.ST_boxf;
 import h.ST_pointf;
 import smetana.core.CArray;
 import smetana.core.CString;
+import smetana.core.Globals;
+import smetana.core.ZType;
 import smetana.core.__ptr__;
 
 public class emit__c {
@@ -24,13 +25,13 @@ public class emit__c {
 
 @Reviewed(when = "12/11/2020")
 @Original(version="2.38.0", path="lib/common/emit.c", name="init_xdot", key="7udip7yo3ddkp9ocjftokpm9y", definition="void* init_xdot (Agraph_t* g)")
-public static __ptr__ init_xdot(ST_Agraph_s g) {
+public static __ptr__ init_xdot(Globals zz, ST_Agraph_s g) {
 ENTERING("7udip7yo3ddkp9ocjftokpm9y","init_xdot");
 try {
     CString p;
     __ptr__ xd = null;
-    if (N((p = agget(g, new CString("_background")))!=null && p.charAt(0)!='\0')) {
-	if (N((p = agget(g, new CString("_draw_")))!=null  && p.charAt(0)!='\0')) {
+	if (!((p = agget(zz, g, new CString("_background")))!=null && p.charAt(0)!='\0')) {
+	if (!((p = agget(zz, g, new CString("_draw_")))!=null  && p.charAt(0)!='\0')) {
 	    return null;
 	}
     }
@@ -111,8 +112,8 @@ try {
             }
         }
         else { /* else refine the segment */
-		    final CArray<ST_pointf> left = CArray.<ST_pointf>ALLOC__(4, ST_pointf.class);
-		    final CArray<ST_pointf> right = CArray.<ST_pointf>ALLOC__(4, ST_pointf.class);
+		    final CArray<ST_pointf> left = CArray.<ST_pointf>ALLOC__(4, ZType.ST_pointf);
+		    final CArray<ST_pointf> right = CArray.<ST_pointf>ALLOC__(4, ZType.ST_pointf);
             Bezier (cp, 3, 0.5, left, right);
             update_bb_bz(bb, left);
             update_bb_bz(bb, right);

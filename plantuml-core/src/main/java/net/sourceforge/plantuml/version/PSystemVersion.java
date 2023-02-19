@@ -27,9 +27,13 @@ public class PSystemVersion extends PlainStringsDiagram {
 	PSystemVersion(UmlSource source, boolean withImage, List<String> args) {
 		super(source);
 		this.strings.addAll(args);
-		if (withImage) {
-			this.image = getPlantumlImage();
-			this.imagePosition = BACKGROUND_CORNER_BOTTOM_RIGHT;
+		try {
+			if (withImage) {
+				this.image = getPlantumlImage();
+				this.imagePosition = BACKGROUND_CORNER_BOTTOM_RIGHT;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -44,16 +48,16 @@ public class PSystemVersion extends PlainStringsDiagram {
 		return getImage("logo.png");
 	}
 
-	public static BufferedImage getCharlieImage() {
-		return getImage("charlie.png");
-	}
-
 	public static BufferedImage getTime01() {
 		return getImage("time01.png");
 	}
 
 	public static BufferedImage getTime15() {
 		return getImage("time15.png");
+	}
+
+	public static BufferedImage getCharlieImage() {
+		return getImage("charlie.png");
 	}
 
 	public static BufferedImage getPlantumlSmallIcon() {
@@ -99,6 +103,10 @@ public class PSystemVersion extends PlainStringsDiagram {
 	public static PSystemVersion createShowVersion2(UmlSource source) {
 		final List<String> strings = new ArrayList<>();
 		strings.add("<b>PlantUML version " + Version.versionString() + "</b> (" + Version.compileTimeString() + ")");
+		strings.add("(" + License.getCurrent() + " source distribution)");
+		strings.add(" ");
+		strings.add("Compiled with CheerpJ 2.3");
+		strings.add("Powered by CheerpJ, a Leaning Technologies Java tool");
 
 		return new PSystemVersion(source, true, strings);
 	}

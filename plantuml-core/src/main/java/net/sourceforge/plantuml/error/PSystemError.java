@@ -293,7 +293,7 @@ public abstract class PSystemError extends PlainDiagram {
 		final HColor backColor = HColorSet.instance().getColorOrWhite("#eff4d2");
 
 		final Display disp = Display.create("<b>Adopt-a-Word and put your message here!", " ",
-				"Details on <i>[[http://plantuml.com/adopt]]", " ");
+				"Details on <i>[[https://plantuml.com/adopt]]", " ");
 
 		final UFont font = UFont.sansSerif(14);
 		final FontConfiguration fc = FontConfiguration.create(font, HColors.BLACK, HColors.BLACK, null);

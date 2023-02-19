@@ -5,13 +5,14 @@ import gen.annotation.Original;
 import gen.annotation.Unused;
 import smetana.core.CFunction;
 import smetana.core.CFunctionAbstract;
+import smetana.core.Globals;
 
 public class agerror__c {
 
 	
 public static CFunction agerrorf = new CFunctionAbstract("agerrorf") {
 	
-	public Object exe(Object... args) {
+	public Object exe(Globals zz, Object... args) {
 		return agerrorf(args);
 	}};
 @Unused

@@ -7,7 +7,7 @@ public interface __ptr__  {
 
 	public __ptr__ castTo(Class dest);
 	
-	public Object getTheField(OFFSET bytes);
+	public Object getTheField(FieldOffset bytes);
 	
 	public __ptr__ unsupported();
 	

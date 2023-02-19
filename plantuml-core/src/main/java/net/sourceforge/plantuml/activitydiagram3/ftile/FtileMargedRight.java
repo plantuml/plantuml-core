@@ -1,8 +1,11 @@
 package net.sourceforge.plantuml.activitydiagram3.ftile;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 
 import net.sourceforge.plantuml.activitydiagram3.LinkRendering;
+import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.ugraphic.UGraphic;
 
@@ -50,6 +53,18 @@ public class FtileMargedRight extends AbstractFtile {
 
 	public void drawU(UGraphic ug) {
 		ug.draw(tile);
+	}
+
+	@Override
+	public Collection<Ftile> getMyChildren() {
+		return Collections.singleton(tile);
+	}
+
+	@Override
+	public UTranslate getTranslateFor(Ftile child, StringBounder stringBounder) {
+		if (child == tile)
+			return new UTranslate();
+		return super.getTranslateFor(child, stringBounder);
 	}
 
 }

@@ -31,9 +31,6 @@ import static gen.lib.dotgen.sameport__c.dot_sameports;
 import static gen.lib.pack.pack__c.getPack;
 import static gen.lib.pack.pack__c.getPackInfo;
 import static gen.lib.pack.pack__c.getPackModeInfo;
-import static smetana.core.JUtils.EQ;
-import static smetana.core.JUtils.NEQ;
-import static smetana.core.JUtils.sizeof;
 import static smetana.core.Macro.CL_OFFSET;
 import static smetana.core.Macro.ED_count;
 import static smetana.core.Macro.ED_minlen;
@@ -62,18 +59,17 @@ import gen.annotation.Reviewed;
 import gen.annotation.Unused;
 import h.EN_pack_mode;
 import h.ST_Agedge_s;
-import h.ST_Agedgeinfo_t;
 import h.ST_Agnode_s;
-import h.ST_Agnodeinfo_t;
 import h.ST_Agobj_s;
 import h.ST_Agraph_s;
-import h.ST_Agraphinfo_t;
 import h.ST_aspect_t;
 import h.ST_pack_info;
 import smetana.core.CFunction;
 import smetana.core.CFunctionAbstract;
 import smetana.core.CString;
-import smetana.core.Z;
+import smetana.core.Globals;
+import smetana.core.ZType;
+import smetana.core.size_t;
 
 public class dotinit__c {
 
@@ -81,18 +77,18 @@ public class dotinit__c {
 
 @Reviewed(when = "12/11/2020")
 @Original(version="2.38.0", path="lib/dotgen/dotinit.c", name="dot_init_subg", key="cmr94z4p2bdeiply1d4wrqwes", definition="static void dot_init_subg(graph_t * g, graph_t* droot)")
-public static void dot_init_subg(ST_Agraph_s g, ST_Agraph_s droot) {
+public static void dot_init_subg(Globals zz, ST_Agraph_s g, ST_Agraph_s droot) {
 ENTERING("cmr94z4p2bdeiply1d4wrqwes","dot_init_subg");
 try {
     ST_Agraph_s subg;
     
-    if (NEQ(g, agroot(g)))
-	agbindrec(g, new CString("Agraphinfo_t"), sizeof(ST_Agraphinfo_t.class), true);
-    if (EQ(g, droot))
+    if ((g != agroot(g)))
+	agbindrec(zz, g, new CString("Agraphinfo_t"), new size_t(ZType.ST_Agraphinfo_t), true);
+    if (g == droot)
 	GD_dotroot(agroot(g), droot);
     
-    for (subg = agfstsubg(g); subg!=null; subg = agnxtsubg(subg)) {
-	dot_init_subg(subg, droot);
+    for (subg = agfstsubg(zz, g); subg!=null; subg = agnxtsubg(zz, subg)) {
+	dot_init_subg(zz, subg, droot);
     }
 } finally {
 LEAVING("cmr94z4p2bdeiply1d4wrqwes","dot_init_subg");
@@ -104,11 +100,11 @@ LEAVING("cmr94z4p2bdeiply1d4wrqwes","dot_init_subg");
 
 @Reviewed(when = "12/11/2020")
 @Original(version="2.38.0", path="lib/dotgen/dotinit.c", name="dot_init_node", key="3hk92jbrfjmn6no3svn9jvje9", definition="static void  dot_init_node(node_t * n)")
-public static void dot_init_node(ST_Agnode_s n) {
+public static void dot_init_node(Globals zz, ST_Agnode_s n) {
 ENTERING("3hk92jbrfjmn6no3svn9jvje9","dot_init_node");
 try {
-    agbindrec(n, new CString("Agnodeinfo_t"), sizeof(ST_Agnodeinfo_t.class), true);	//graph custom data
-    common_init_node(n);
+    agbindrec(zz, n, new CString("Agnodeinfo_t"), new size_t(ZType.ST_Agnodeinfo_t), true);	//graph custom data
+    common_init_node(zz, n);
     gv_nodesize(n, GD_flip(agraphof(n)));
     alloc_elist(4, ND_in(n));
     alloc_elist(4, ND_out(n));
@@ -125,31 +121,31 @@ LEAVING("3hk92jbrfjmn6no3svn9jvje9","dot_init_node");
 
 @Reviewed(when = "13/11/2020")
 @Original(version="2.38.0", path="lib/dotgen/dotinit.c", name="dot_init_edge", key="zbvhnhd78bppq8wb872847bj", definition="static void  dot_init_edge(edge_t * e)")
-public static void dot_init_edge(ST_Agedge_s e) {
+public static void dot_init_edge(Globals zz, ST_Agedge_s e) {
 ENTERING("zbvhnhd78bppq8wb872847bj","dot_init_edge");
 try {
     CString tailgroup, headgroup;
-    agbindrec(e, new CString("Agedgeinfo_t"), sizeof(ST_Agedgeinfo_t.class), true);	//graph custom data
-    common_init_edge(e);
+    agbindrec(zz, e, new CString("Agedgeinfo_t"), new size_t(ZType.ST_Agedgeinfo_t), true);	//graph custom data
+    common_init_edge(zz, e);
     
     
-    ED_weight(e, late_int(e, Z.z().E_weight, 1, 0));
-    tailgroup = late_string(agtail(e), Z.z().N_group, new CString(""));
-    headgroup = late_string(aghead(e), Z.z().N_group, new CString(""));
+    ED_weight(e, late_int(e, zz.E_weight, 1, 0));
+    tailgroup = late_string(agtail(e), zz.N_group, new CString(""));
+    headgroup = late_string(aghead(e), zz.N_group, new CString(""));
     ED_count(e, 1);
     ED_xpenalty(e, 1);
     if (tailgroup.charAt(0)!='\0' && (tailgroup.isSame(headgroup))) {
 	UNSUPPORTED("atjraranegsdjegclykesn5gx"); // 	(((Agedgeinfo_t*)(((Agobj_t*)(e))->data))->xpenalty) = 1000;
 	UNSUPPORTED("5y0yunmvmngg67c9exlbn6jbk"); // 	(((Agedgeinfo_t*)(((Agobj_t*)(e))->data))->weight) *= 100;
     }
-    if (nonconstraint_edge(e)) {
+    if (nonconstraint_edge(zz, e)) {
 	UNSUPPORTED("54niz21n2omf1i9v67brdid9w"); // 	(((Agedgeinfo_t*)(((Agobj_t*)(e))->data))->xpenalty) = 0;
 	UNSUPPORTED("2v5u5jdguhhn7vjihniotrml0"); // 	(((Agedgeinfo_t*)(((Agobj_t*)(e))->data))->weight) = 0;
     }
     
     
-    ED_showboxes(e, late_int(e, Z.z().E_showboxes, 0, 0));
-    ED_minlen(e, late_int(e, Z.z().E_minlen, 1, 0));
+    ED_showboxes(e, late_int(e, zz.E_showboxes, 0, 0));
+    ED_minlen(e, late_int(e, zz.E_minlen, 1, 0));
 } finally {
 LEAVING("zbvhnhd78bppq8wb872847bj","dot_init_edge");
 }
@@ -160,16 +156,16 @@ LEAVING("zbvhnhd78bppq8wb872847bj","dot_init_edge");
 
 @Reviewed(when = "12/11/2020")
 @Original(version="2.38.0", path="lib/dotgen/dotinit.c", name="dot_init_node_edge", key="2ylyhz7macit0ts1hap2tg3wy", definition="void  dot_init_node_edge(graph_t * g)")
-public static void dot_init_node_edge(ST_Agraph_s g) {
+public static void dot_init_node_edge(Globals zz, ST_Agraph_s g) {
 ENTERING("2ylyhz7macit0ts1hap2tg3wy","dot_init_node_edge");
 try {
 	ST_Agnode_s n;
 	ST_Agedge_s e;
-    for (n = agfstnode(g); n!=null; n = agnxtnode(g, n))
-	dot_init_node(n);
-    for (n = agfstnode(g); n!=null; n = agnxtnode(g, n)) {
-	for (e = agfstout(g, n); e!=null; e = agnxtout(g, e))
-	    dot_init_edge(e);
+    for (n = agfstnode(zz, g); n!=null; n = agnxtnode(zz, g, n))
+	dot_init_node(zz, n);
+    for (n = agfstnode(zz, g); n!=null; n = agnxtnode(zz, g, n)) {
+	for (e = agfstout(zz, g, n); e!=null; e = agnxtout(zz, g, e))
+	    dot_init_edge(zz, e);
     }
 } finally {
 LEAVING("2ylyhz7macit0ts1hap2tg3wy","dot_init_node_edge");
@@ -183,7 +179,7 @@ LEAVING("2ylyhz7macit0ts1hap2tg3wy","dot_init_node_edge");
 
 public static CFunction dot_cleanup = new CFunctionAbstract("dot_cleanup") {
 	
-	public Object exe(Object... args) {
+	public Object exe(Globals zz, Object... args) {
 		return dot_cleanup(args);
 	}};
 @Unused
@@ -298,21 +294,21 @@ throw new UnsupportedOperationException();
 
 @Reviewed(when = "12/11/2020")
 @Original(version="2.38.0", path="lib/dotgen/dotinit.c", name="dotLayout", key="7t18nggek2s9vvb5opwqa8rwr", definition="static void dotLayout(Agraph_t * g)")
-public static void dotLayout(ST_Agraph_s g) {
+public static void dotLayout(Globals zz, ST_Agraph_s g) {
 ENTERING("7t18nggek2s9vvb5opwqa8rwr","dotLayout");
 try {
 	ST_aspect_t aspect = new ST_aspect_t();
 	ST_aspect_t asp;
-    int maxphase = late_int(g, agfindgraphattr(g,"phase"), -1, 1);
+    int maxphase = late_int(g, agfindgraphattr(zz, g,"phase"), -1, 1);
     
-    setEdgeType (g, ET_SPLINE);
-    asp = setAspect (g, aspect);
+    setEdgeType (zz, g, ET_SPLINE);
+    asp = setAspect (zz, g, aspect);
     
-    dot_init_subg(g,g);
-    dot_init_node_edge(g);
+    dot_init_subg(zz, g,g);
+    dot_init_node_edge(zz, g);
     
     do {
-        dot_rank(g, asp);
+        dot_rank(zz, g, asp);
 	if (maxphase == 1) {
 	    attach_phase_attrs (g, 1);
 	    return;
@@ -322,12 +318,12 @@ UNSUPPORTED("1yu5j8tk43i6jlmu8wk9jks15"); // 	    agerr(AGWARN, "dot does not su
 UNSUPPORTED("5uwp9z6jkv5uc30iyfszyg6dw"); // 	    asp = NULL;
 UNSUPPORTED("28kbszyxsjoj03gb134ov4hag"); // 	    aspect.nextIter = 0;
 	}
-        dot_mincross(g, (asp != null));
+        dot_mincross(zz, g, (asp != null));
 	if (maxphase == 2) {
 	    attach_phase_attrs (g, 2);
 	    return;
 	}
-        dot_position(g, asp);
+        dot_position(zz, g, asp);
 	if (maxphase == 3) {
 	    attach_phase_attrs (g, 2);  /* positions will be attached on output */
 	    return;
@@ -336,9 +332,9 @@ UNSUPPORTED("28kbszyxsjoj03gb134ov4hag"); // 	    aspect.nextIter = 0;
     } while (aspect.nextIter!=0 && aspect.nPasses!=0);
     if ((GD_flags(g) & NEW_RANK)!=0)
 	removeFill (g);
-    dot_sameports(g);
-    dot_splines(g);
-    if (mapbool(agget(g, new CString("compound"))))
+    dot_sameports(zz, g);
+    dot_splines(zz, g);
+    if (mapbool(agget(zz, g, new CString("compound"))))
 	dot_compoundEdges(g);
 } finally {
 LEAVING("7t18nggek2s9vvb5opwqa8rwr","dotLayout");
@@ -429,7 +425,7 @@ throw new UnsupportedOperationException();
  */
 @Reviewed(when = "12/11/2020")
 @Original(version="2.38.0", path="lib/dotgen/dotinit.c", name="doDot", key="nedairhdof6qkmjjoh4h68zy", definition="static void doDot (Agraph_t* g)")
-public static void doDot(ST_Agraph_s g) {
+public static void doDot(Globals zz, ST_Agraph_s g) {
 ENTERING("nedairhdof6qkmjjoh4h68zy","doDot");
 try {
     ST_Agraph_s ccs[];
@@ -437,14 +433,14 @@ try {
     int ncc;
     int i;
     final ST_pack_info pinfo = new ST_pack_info();
-    int Pack = getPack(g, -1, CL_OFFSET);
-    EN_pack_mode mode = getPackModeInfo (g, EN_pack_mode.l_undef, pinfo);
-    getPackInfo(g, EN_pack_mode.l_node, 8, pinfo);
+    int Pack = getPack(zz, g, -1, CL_OFFSET);
+    EN_pack_mode mode = getPackModeInfo (zz, g, EN_pack_mode.l_undef, pinfo);
+    getPackInfo(zz, g, EN_pack_mode.l_node, 8, pinfo);
     if ((mode == EN_pack_mode.l_undef) && (Pack < 0)) {
 	/* No pack information; use old dot with components
          * handled during layout
          */
-	dotLayout(g);
+	dotLayout(zz, g);
     } else {
 UNSUPPORTED("952usp51fee2pbidl2frwpq2x"); // 	/* fill in default values */
 UNSUPPORTED("7d8flcn5zht92nop46f168hf9"); // 	if (mode == l_undef) 
@@ -490,17 +486,17 @@ LEAVING("nedairhdof6qkmjjoh4h68zy","doDot");
 
 public static CFunction dot_layout = new CFunctionAbstract("dot_layout") {
 	
-	public Object exe(Object... args) {
-		dot_layout((ST_Agraph_s)args[0]);
+	public Object exe(Globals zz, Object... args) {
+		dot_layout(zz, (ST_Agraph_s)args[0]);
 		return null;
 	}};
 @Reviewed(when = "12/11/2020")
 @Original(version="2.38.0", path="lib/dotgen/dotinit.c", name="dot_layout", key="euvc3uoksq3e24augkwebfkcv", definition="void dot_layout(Agraph_t * g)")
-public static void dot_layout(ST_Agraph_s g) {
+public static void dot_layout(Globals zz, ST_Agraph_s g) {
 ENTERING("euvc3uoksq3e24augkwebfkcv","dot_layout");
 try {
-    if (agnnodes(g)!=0) doDot (g);
-    dotneato_postprocess(g);
+    if (agnnodes(g)!=0) doDot (zz, g);
+    dotneato_postprocess(zz, g);
 } finally {
 LEAVING("euvc3uoksq3e24augkwebfkcv","dot_layout");
 }

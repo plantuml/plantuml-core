@@ -2,7 +2,7 @@ package h;
 
 import smetana.core.ACCESS;
 import smetana.core.CStarStar;
-import smetana.core.OFFSET;
+import smetana.core.FieldOffset;
 import smetana.core.UnsupportedStarStruct;
 import smetana.core.__ptr__;
 
@@ -13,6 +13,7 @@ final public class ST_Agsubnode_s extends UnsupportedStarStruct {
 	public ST_Agnode_s node;
 
 	public ST_dtlink_s in_id;
+
 	public CStarStar<ST_dtlink_s> in_id_AMP() {
 		return CStarStar.<ST_dtlink_s>BUILD(new ACCESS<ST_dtlink_s>() {
 			public ST_dtlink_s get() {
@@ -26,6 +27,7 @@ final public class ST_Agsubnode_s extends UnsupportedStarStruct {
 	}
 
 	public ST_dtlink_s out_id;
+
 	public CStarStar<ST_dtlink_s> out_id_AMP() {
 		return CStarStar.<ST_dtlink_s>BUILD(new ACCESS<ST_dtlink_s>() {
 			public ST_dtlink_s get() {
@@ -39,6 +41,7 @@ final public class ST_Agsubnode_s extends UnsupportedStarStruct {
 	}
 
 	public ST_dtlink_s in_seq;
+
 	public CStarStar<ST_dtlink_s> in_seq_AMP() {
 		return CStarStar.<ST_dtlink_s>BUILD(new ACCESS<ST_dtlink_s>() {
 			public ST_dtlink_s get() {
@@ -52,6 +55,7 @@ final public class ST_Agsubnode_s extends UnsupportedStarStruct {
 	}
 
 	public ST_dtlink_s out_seq;
+
 	public CStarStar<ST_dtlink_s> out_seq_AMP() {
 		return CStarStar.<ST_dtlink_s>BUILD(new ACCESS<ST_dtlink_s>() {
 			public ST_dtlink_s get() {
@@ -64,23 +68,22 @@ final public class ST_Agsubnode_s extends UnsupportedStarStruct {
 		});
 	}
 
-
 	@Override
 	public boolean isSameThan(__ptr__ other) {
 		return this == (ST_Agsubnode_s) other;
 	}
 
 	@Override
-	public Object getTheField(OFFSET offset) {
-		if (offset == null || offset.getSign()==0) {
+	public Object getTheField(FieldOffset offset) {
+		if (offset == null || offset.getSign() == 0)
 			return this;
-		}
-		if (offset.getField().equals("id_link")) {
+
+		if (offset == FieldOffset.id_link)
 			return id_link;
-		}
-		if (offset.getField().equals("seq_link")) {
+
+		if (offset == FieldOffset.seq_link)
 			return seq_link;
-		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -92,7 +95,6 @@ final public class ST_Agsubnode_s extends UnsupportedStarStruct {
 		System.err.println("dest=" + dest);
 		return super.castTo(dest);
 	}
-
 
 }
 

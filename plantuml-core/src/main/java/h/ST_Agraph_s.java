@@ -1,6 +1,6 @@
 package h;
 
-import smetana.core.OFFSET;
+import smetana.core.FieldOffset;
 import smetana.core.__ptr__;
 import smetana.core.__struct__;
 import smetana.core.debug.SmetanaDebug;
@@ -27,25 +27,24 @@ final public class ST_Agraph_s extends ST_Agobj_s {
 	public String toString() {
 		return super.toString() + " " + NAME;
 	}
-	
+
 	public ST_Agraph_s() {
 		this.NAME = "G" + CPT;
 		CPT++;
 		SmetanaDebug.LOG("creation " + this);
 	}
 
-
 	@Override
-	public Object getTheField(OFFSET offset) {
-		if (offset == null || offset.getSign()==0) {
+	public Object getTheField(FieldOffset offset) {
+		if (offset == null || offset.getSign() == 0)
 			return this;
-		}
-		if (offset.getField().equals("link")) {
+
+		if (offset == FieldOffset.link)
 			return link;
-		}
+
 		throw new UnsupportedOperationException();
 	}
-	
+
 	@Override
 	public void ___(__struct__ arg) {
 		throw new UnsupportedOperationException();

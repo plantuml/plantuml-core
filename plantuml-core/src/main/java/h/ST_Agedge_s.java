@@ -1,6 +1,6 @@
 package h;
 
-import smetana.core.OFFSET;
+import smetana.core.FieldOffset;
 import smetana.core.__ptr__;
 import smetana.core.__struct__;
 
@@ -38,16 +38,16 @@ final public class ST_Agedge_s extends ST_Agobj_s {
 	}
 
 	@Override
-	public Object getTheField(OFFSET offset) {
-		if (offset == null || offset.getSign()==0) {
+	public Object getTheField(FieldOffset offset) {
+		if (offset == null || offset.getSign() == 0) {
 			return this;
 		}
-		if (offset.getField().equals("seq_link")) {
+		if (offset == FieldOffset.seq_link)
 			return seq_link;
-		}
-		if (offset.getField().equals("id_link")) {
+
+		if (offset == FieldOffset.id_link)
 			return id_link;
-		}
+
 		throw new UnsupportedOperationException();
 	}
 

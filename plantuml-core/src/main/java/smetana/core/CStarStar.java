@@ -1,7 +1,7 @@
 
 package smetana.core;
 
-public class CStarStar<O> extends UnsupportedC {
+final public class CStarStar<O> extends UnsupportedC {
 
 	private final ACCESS<O> access;
 

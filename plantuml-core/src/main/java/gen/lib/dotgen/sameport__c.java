@@ -1,7 +1,6 @@
 package gen.lib.dotgen;
 import static gen.lib.cgraph.attr__c.agattr;
 import static smetana.core.Macro.AGEDGE;
-import static smetana.core.Macro.N;
 import static smetana.core.Macro.UNSUPPORTED;
 import static smetana.core.debug.SmetanaDebug.ENTERING;
 import static smetana.core.debug.SmetanaDebug.LEAVING;
@@ -12,7 +11,7 @@ import h.ST_Agedge_s;
 import h.ST_Agnode_s;
 import h.ST_Agraph_s;
 import smetana.core.CString;
-import smetana.core.Z;
+import smetana.core.Globals;
 
 public class sameport__c {
 
@@ -23,7 +22,7 @@ public class sameport__c {
 // void dot_sameports(graph_t * g) 
 @Unused
 @Original(version="2.38.0", path="lib/dotgen/sameport.c", name="dot_sameports", key="eu2yvovb9xx4rzic3gllij2bv", definition="void dot_sameports(graph_t * g)")
-public static void dot_sameports(ST_Agraph_s g) {
+public static void dot_sameports(Globals zz, ST_Agraph_s g) {
 ENTERING("eu2yvovb9xx4rzic3gllij2bv","dot_sameports");
 try {
     ST_Agnode_s n;
@@ -34,9 +33,9 @@ try {
     int n_samehead;		/* number of same_t groups on current node */
     int n_sametail;		/* number of same_t groups on current node */
     int i;
-    Z.z().E_samehead = agattr(g, AGEDGE, new CString("samehead"),null);
-    Z.z().E_sametail = agattr(g, AGEDGE, new CString("sametail"),null);
-    if (N(Z.z().E_samehead!=null || Z.z().E_sametail!=null))
+    zz.E_samehead = agattr(zz, g, AGEDGE, new CString("samehead"),null);
+    zz.E_sametail = agattr(zz, g, AGEDGE, new CString("sametail"),null);
+    if (!(zz.E_samehead!=null || zz.E_sametail!=null))
 	return;
 UNSUPPORTED("44thr6ep72jsj3fksjiwdx3yr"); //     for (n = agfstnode(g); n; n = agnxtnode(g, n)) {
 UNSUPPORTED("4roxmr5lxkjz6gn1j9mndurq2"); // 	n_samehead = n_sametail = 0;

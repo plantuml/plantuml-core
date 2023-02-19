@@ -21,4 +21,13 @@ import net.sourceforge.plantuml.utils.SignatureUtils;
 
 public class LicenseInfo {
 
+	public static synchronized LicenseInfo retrieveQuick() {
+		 return new LicenseInfo();
+	}
+
+	public boolean isValid() {
+		 return false;
+	}
+
+
 }

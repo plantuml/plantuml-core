@@ -139,7 +139,8 @@ public abstract class AbstractUGraphic<O> extends AbstractCommonUGraphic {
 		} else if (shape instanceof UPixel) {
 			addPoint(x, y);
 		} else {
-			throw new UnsupportedOperationException(shape.getClass().getName());
+			System.err.println("ERROR ignoring " + shape.getClass().getName());
+			// throw new UnsupportedOperationException(shape.getClass().getName());
 		}
 	}
 

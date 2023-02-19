@@ -175,7 +175,7 @@ public class SmetanaPath implements UDrawable {
 	}
 
 	private URectangle getLabelURectangle() {
-		final ST_Agedgeinfo_t data = (ST_Agedgeinfo_t) Macro.AGDATA(edge).castTo(ST_Agedgeinfo_t.class);
+		final ST_Agedgeinfo_t data = (ST_Agedgeinfo_t) edge.data.castTo(ST_Agedgeinfo_t.class);
 		ST_textlabel_t label = (ST_textlabel_t) data.label;
 		if (label == null)
 			return null;
@@ -192,7 +192,7 @@ public class SmetanaPath implements UDrawable {
 
 	private UTranslate getLabelRectangleTranslate(String fieldName) {
 		// final String fieldName = "label";
-		final ST_Agedgeinfo_t data = (ST_Agedgeinfo_t) Macro.AGDATA(edge);
+		final ST_Agedgeinfo_t data = (ST_Agedgeinfo_t) edge.data;
 		ST_textlabel_t label = null;
 		if (fieldName.equals("label"))
 			label = data.label;
@@ -224,7 +224,7 @@ public class SmetanaPath implements UDrawable {
 	}
 
 	private ST_splines getSplines(ST_Agedge_s e) {
-		final ST_Agedgeinfo_t data = (ST_Agedgeinfo_t) Macro.AGDATA(e);
+		final ST_Agedgeinfo_t data = (ST_Agedgeinfo_t) e.data;
 		final ST_splines splines = (ST_splines) data.spl;
 		return splines;
 	}

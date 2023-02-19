@@ -5,13 +5,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class UnsupportedStarStruct implements __struct__, __ptr__ {
 
-	public final static AtomicInteger CPT = new AtomicInteger();
+	 public static int CPT;
 	public final int UID;
-	
+
 	public static UnsupportedStarStruct SPY_ME;
 
 	public UnsupportedStarStruct() {
-		this.UID = CPT.incrementAndGet();
+		 this.UID = CPT++;
 	}
 
 	final public __ptr__ unsupported() {
@@ -27,7 +27,7 @@ public class UnsupportedStarStruct implements __struct__, __ptr__ {
 		throw new UnsupportedOperationException(dest + " " + getClass().toString());
 	}
 
-	public Object getTheField(OFFSET virtualBytes) {
+	public Object getTheField(FieldOffset virtualBytes) {
 		throw new UnsupportedOperationException(getClass().toString());
 	}
 

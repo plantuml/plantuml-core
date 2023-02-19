@@ -3,7 +3,7 @@ package smetana.core;
 
 import static smetana.core.Macro.UNSUPPORTED;
 
-public class jmp_buf {
+final public class jmp_buf {
 
 	private boolean hasBeenCalled;
 

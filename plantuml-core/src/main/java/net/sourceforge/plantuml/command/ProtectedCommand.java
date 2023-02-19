@@ -2,7 +2,7 @@ package net.sourceforge.plantuml.command;
 
 import java.util.Objects;
 
-import com.plantuml.wasm.WasmLog;
+import com.plantuml.api.cheerpj.WasmLog;
 
 import net.sourceforge.plantuml.core.Diagram;
 import net.sourceforge.plantuml.log.Logme;
@@ -30,7 +30,7 @@ public class ProtectedCommand<S extends Diagram> implements Command<S> {
 		} catch (Throwable t) {
 			Log.error("Error " + t);
 			Logme.error(t);
-			String msg = "You should send a mail to plantuml@gmail.com or post to http://plantuml.com/qa with this log (V"
+			String msg = "You should send a mail to plantuml@gmail.com or post to https://plantuml.com/qa with this log (V"
 					+ Version.versionString() + ")";
 			Log.error(msg);
 			msg += " " + t.toString();

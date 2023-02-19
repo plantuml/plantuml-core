@@ -15,6 +15,8 @@ import java.util.Set;
 
 import net.atmp.ISkinSimple;
 import net.sourceforge.plantuml.code.AsciiEncoder;
+import net.sourceforge.plantuml.code.Transcoder;
+import net.sourceforge.plantuml.code.TranscoderUtil;
 import net.sourceforge.plantuml.core.Diagram;
 import net.sourceforge.plantuml.error.PSystemErrorPreprocessor;
 import net.sourceforge.plantuml.log.Logme;

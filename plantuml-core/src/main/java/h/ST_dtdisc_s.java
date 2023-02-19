@@ -1,14 +1,14 @@
 package h;
 
 import smetana.core.CFunction;
-import smetana.core.OFFSET;
+import smetana.core.FieldOffset;
 import smetana.core.UnsupportedStarStruct;
 
 final public class ST_dtdisc_s extends UnsupportedStarStruct {
 
-	public OFFSET key; /* where the key begins in an object */
+	public FieldOffset key; /* where the key begins in an object */
 	public int size; /* key size and type */
-	public OFFSET link; /* offset to Dtlink_t field */
+	public FieldOffset link; /* offset to Dtlink_t field */
 	public CFunction makef; /* object constructor */
 	public CFunction freef; /* object destructor */
 	public CFunction comparf;/* to compare two objects */

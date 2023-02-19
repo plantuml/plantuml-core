@@ -56,20 +56,20 @@ public class FtileAssemblySimple extends AbstractTextBlock implements Ftile {
 	}
 
 	private UTranslate getTranslateForSlow(Ftile child, StringBounder stringBounder) {
-		if (child == tile1) {
+		if (child == tile1) 
 			return getTranslated1(stringBounder);
-		}
-		if (child == tile2) {
+		
+		if (child == tile2) 
 			return getTranslated2(stringBounder);
-		}
+		
 		UTranslate tmp = tile1.getTranslateFor(child, stringBounder);
-		if (tmp != null) {
+		if (tmp != null) 
 			return tmp.compose(getTranslated1(stringBounder));
-		}
+		
 		tmp = tile2.getTranslateFor(child, stringBounder);
-		if (tmp != null) {
+		if (tmp != null) 
 			return tmp.compose(getTranslated2(stringBounder));
-		}
+		
 		throw new UnsupportedOperationException();
 	}
 

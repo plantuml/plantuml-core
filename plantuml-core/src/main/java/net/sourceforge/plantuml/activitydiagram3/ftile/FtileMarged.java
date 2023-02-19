@@ -58,9 +58,9 @@ public class FtileMarged extends AbstractFtile {
 	}
 
 	public UTranslate getTranslateFor(Ftile child, StringBounder stringBounder) {
-		if (child == tile) {
+		if (child == tile)
 			return getTranslate();
-		}
+
 		UTranslate result = tile.getTranslateFor(child, stringBounder);
 		result = result.compose(getTranslate());
 		return result;

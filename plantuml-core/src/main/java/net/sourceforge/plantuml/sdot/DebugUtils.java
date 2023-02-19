@@ -14,7 +14,7 @@ public class DebugUtils {
 
 	public static void printDebugEdge(ST_Agedge_s e) {
 		// System.err.println("*********** PRINT EDGE ********** " + getUID(e));
-		final ST_Agedgeinfo_t data = (ST_Agedgeinfo_t) Macro.AGDATA(e).castTo(ST_Agedgeinfo_t.class);
+		final ST_Agedgeinfo_t data = (ST_Agedgeinfo_t) e.data.castTo(ST_Agedgeinfo_t.class);
 		final ST_splines splines = (ST_splines) data.spl;
 		//ST_boxf bb = (ST_boxf) splines.bb;
 		// final bezier list = (bezier) splines.getPtr("list");
@@ -53,7 +53,7 @@ public class DebugUtils {
 
 	public static void printDebugNode(ST_Agnode_s n) {
 		System.err.println("*********** PRINT NODE ********** ");
-		final ST_Agnodeinfo_t data = (ST_Agnodeinfo_t) Macro.AGDATA(n).castTo(ST_Agnodeinfo_t.class);
+		final ST_Agnodeinfo_t data = (ST_Agnodeinfo_t) n.data.castTo(ST_Agnodeinfo_t.class);
 		System.err.println("width=" + data.width);
 		System.err.println("height=" + data.height);
 		System.err.println("ht=" + data.ht);

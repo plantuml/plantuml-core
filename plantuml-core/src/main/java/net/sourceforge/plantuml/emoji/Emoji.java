@@ -19,7 +19,7 @@ import net.sourceforge.plantuml.ugraphic.UGraphic;
 // Emojji from https://twemoji.twitter.com/
 // Shorcut from https://api.github.com/emojis
 
-import static com.plantuml.wasm.Memory.cheerpjPath;
+import static com.plantuml.api.cheerpj.StaticMemory.cheerpjPath;
 import java.io.FileInputStream;
 
 public class Emoji {

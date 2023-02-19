@@ -1,0 +1,96 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>PNG in dark mode</title>
+    <script src="https://cjrtnc.leaningtech.com/2.3/loader.js"></script>
+  </head>
+<style>
+body {
+background-color: #1B1B1B;
+xcolor: #8CB4FF;
+color: #FFFFFF;
+}
+textarea {
+background-color: #1B1B1B;
+color: #FFFFFF;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 80%;
+}
+.cell {
+  width: 50%;
+  margin: 2px;
+}
+#popup {
+background-color: #444;
+padding: 10px;
+position: absolute;
+top: 0px;
+right: 0px;
+visibility: hidden;
+}
+#uml {
+  width: 100%;
+  height: 100%;
+}
+</style>
+  
+<body>
+<div id=popup>ERROR</div>
+	<div id=debugjava>(...INIT...)</div>
+
+<div class=container>
+<div class=cell>
+<textarea spellcheck=false id=uml oninput="done()">
+@startuml
+Alice -> Bob : Hello!
+@enduml
+</textarea>
+</div>
+
+<div class=cell><img id="render-image"></div>
+
+</div><!--container-->
+
+<script>
+var _inprogress = false;
+var version_input = 0;
+var version_displayed = 0;
+
+function done() {
+	text = document.getElementById('uml').value;
+	version_input++;
+	const current = version_input;
+	if (_inprogress) return;
+	_inprogress = true;
+	cjCall("com.plantuml.api.cheerpj.v1.Png", "convertToBlob", "dark", text, "/files/result.png").then((res) => {
+			const obj = JSON.parse(res);
+			if (obj.status=='ok') {
+				document.getElementById("popup").style.visibility = "hidden";
+				cjFileBlob("result.png").then((blob) => {
+					document.getElementById('render-image').src = window.URL.createObjectURL(blob);
+				});
+			} else {
+				document.getElementById('popup').innerText=res;
+				document.getElementById("popup").style.visibility = "visible";
+			}
+			version_displayed = current;
+			_inprogress = false;
+			if (version_displayed<version_input) done();
+	});
+}
+
+cheerpjInit({disableLoadTimeReporting:true,disableErrorReporting:true}).then( (val0) => {
+	cheerpjRunMain("com.plantuml.api.cheerpj.v1.RunInit", "/app/plantuml-core.jar", "/app/", "debugjava").then ( (val1) => {
+		done();
+	});
+});
+  </script>
+
+</body>
+
+
+</html>

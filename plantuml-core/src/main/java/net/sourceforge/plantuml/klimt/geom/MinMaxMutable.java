@@ -22,7 +22,7 @@ public class MinMaxMutable {
 
 	@Override
 	public String toString() {
-		return "X=" + minX + " " + maxX + " Y=" + minY + " " + maxY;
+		return "X=" + minX + " to " + maxX + " and Y=" + minY + " to " + maxY;
 	}
 
 	private MinMaxMutable(double minX, double minY, double maxX, double maxY) {

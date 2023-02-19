@@ -9,6 +9,7 @@ import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.core.DiagramDescription;
 import net.sourceforge.plantuml.core.ImageData;
 import net.sourceforge.plantuml.core.UmlSource;
+import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class PSystemSudoku extends AbstractPSystem {
 
@@ -23,6 +24,12 @@ public class PSystemSudoku extends AbstractPSystem {
 			return sud.writeImageSvg(os);
 
 		return sud.writeImagePng(os);
+	}
+	
+	@Override
+	public void exportDiagramGraphic(UGraphic ug) {
+		final GraphicsSudoku sud = new GraphicsSudoku(sudoku);
+		sud.drawInternal(ug);
 	}
 
 	public DiagramDescription getDescription() {
