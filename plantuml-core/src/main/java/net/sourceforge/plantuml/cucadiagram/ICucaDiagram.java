@@ -3,16 +3,16 @@ package net.sourceforge.plantuml.cucadiagram;
 import java.io.IOException;
 import java.util.Collection;
 
+import net.atmp.ImageBuilder;
+import net.atmp.Link;
 import net.sourceforge.plantuml.Annotated;
 import net.sourceforge.plantuml.FileFormatOption;
-import net.sourceforge.plantuml.ISkinParam;
-import net.sourceforge.plantuml.Pragma;
-import net.sourceforge.plantuml.UmlDiagramType;
-import net.sourceforge.plantuml.baraye.Entity;
 import net.sourceforge.plantuml.baraye.EntityFactory;
 import net.sourceforge.plantuml.core.UmlSource;
+import net.sourceforge.plantuml.skin.Pragma;
+import net.sourceforge.plantuml.skin.UmlDiagramType;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.style.StyleBuilder;
-import net.sourceforge.plantuml.ugraphic.ImageBuilder;
 
 public interface ICucaDiagram extends GroupHierarchy, PortionShower, Annotated {
 

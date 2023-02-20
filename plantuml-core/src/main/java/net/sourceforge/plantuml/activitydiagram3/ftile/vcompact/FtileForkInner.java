@@ -11,10 +11,10 @@ import net.sourceforge.plantuml.activitydiagram3.ftile.AbstractFtile;
 import net.sourceforge.plantuml.activitydiagram3.ftile.Ftile;
 import net.sourceforge.plantuml.activitydiagram3.ftile.FtileGeometry;
 import net.sourceforge.plantuml.activitydiagram3.ftile.Swimlane;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 class FtileForkInner extends AbstractFtile {
 
@@ -26,12 +26,11 @@ class FtileForkInner extends AbstractFtile {
 			this.forks.add(ftile);
 		}
 	}
-	
+
 	@Override
 	public Collection<Ftile> getMyChildren() {
 		return Collections.unmodifiableCollection(forks);
 	}
-
 
 	public Swimlane getSwimlaneIn() {
 		return forks.get(0).getSwimlaneIn();

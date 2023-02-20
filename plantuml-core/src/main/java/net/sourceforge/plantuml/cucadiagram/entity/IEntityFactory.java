@@ -3,7 +3,7 @@ package net.sourceforge.plantuml.cucadiagram.entity;
 import java.util.Collection;
 
 import net.sourceforge.plantuml.baraye.Entity;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
+import net.sourceforge.plantuml.stereo.Stereotype;
 
 public interface IEntityFactory {
 

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import net.sourceforge.plantuml.core.ImageData;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 
 public interface FileMaker {
 

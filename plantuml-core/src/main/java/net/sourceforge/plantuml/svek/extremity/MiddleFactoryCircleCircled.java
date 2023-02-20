@@ -1,7 +1,7 @@
 package net.sourceforge.plantuml.svek.extremity;
 
-import net.sourceforge.plantuml.graphic.UDrawable;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.shape.UDrawable;
 
 public class MiddleFactoryCircleCircled implements MiddleFactory {
 

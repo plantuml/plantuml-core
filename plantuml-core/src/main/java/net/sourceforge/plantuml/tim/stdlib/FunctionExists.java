@@ -22,7 +22,8 @@ public class FunctionExists extends SimpleReturnFunction {
 		return nbArg == 1;
 	}
 
-	public TValue executeReturnFunction(TContext context, TMemory memory, LineLocation location, List<TValue> values, Map<String, TValue> named) throws EaterException, EaterExceptionLocated {
+	public TValue executeReturnFunction(TContext context, TMemory memory, LineLocation location, List<TValue> values,
+			Map<String, TValue> named) throws EaterException, EaterExceptionLocated {
 		final String name = values.get(0).toString();
 		return TValue.fromBoolean(context.doesFunctionExist(name));
 	}

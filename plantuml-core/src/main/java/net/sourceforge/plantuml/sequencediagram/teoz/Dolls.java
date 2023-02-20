@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.real.Real;
 import net.sourceforge.plantuml.real.RealUtils;
@@ -12,7 +13,6 @@ import net.sourceforge.plantuml.sequencediagram.Doll;
 import net.sourceforge.plantuml.sequencediagram.Participant;
 import net.sourceforge.plantuml.sequencediagram.ParticipantEnglober;
 import net.sourceforge.plantuml.skin.Context2D;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class Dolls {
 

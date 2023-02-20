@@ -15,10 +15,9 @@ public class RegexOptional extends RegexComposed implements IRegex {
 		sb.append(")?");
 		return sb.toString();
 	}
-	
+
 	public boolean match(StringLocated full) {
 		throw new UnsupportedOperationException();
 	}
-
 
 }

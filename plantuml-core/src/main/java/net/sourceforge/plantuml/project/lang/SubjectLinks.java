@@ -12,10 +12,9 @@ import net.sourceforge.plantuml.regex.RegexResult;
 
 // Removed
 public class SubjectLinks implements Subject {
-	
+
 	private SubjectLinks() {
 	}
-
 
 	public IRegex toRegex() {
 		return new RegexLeaf("SUBJECT", "links?");

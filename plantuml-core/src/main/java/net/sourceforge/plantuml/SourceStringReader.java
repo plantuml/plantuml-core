@@ -1,7 +1,7 @@
 package net.sourceforge.plantuml;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static net.sourceforge.plantuml.ugraphic.ImageBuilder.plainImageBuilder;
+import static net.atmp.ImageBuilder.plainImageBuilder;
 import static net.sourceforge.plantuml.utils.CharsetUtils.charsetOrDefault;
 
 import java.io.IOException;
@@ -15,7 +15,7 @@ import java.util.List;
 import net.sourceforge.plantuml.core.Diagram;
 import net.sourceforge.plantuml.core.DiagramDescription;
 import net.sourceforge.plantuml.core.ImageData;
-import net.sourceforge.plantuml.graphic.GraphicStrings;
+import net.sourceforge.plantuml.klimt.shape.GraphicStrings;
 import net.sourceforge.plantuml.preproc.Defines;
 import net.sourceforge.plantuml.security.SFile;
 import net.sourceforge.plantuml.svek.TextBlockBackcolored;

@@ -2,8 +2,6 @@ package net.sourceforge.plantuml.klimt.geom;
 
 import java.util.Objects;
 
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-
 public class MinFinder {
 
 	private double minX = Double.MAX_VALUE;

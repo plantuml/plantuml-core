@@ -11,8 +11,7 @@ public interface Pushable {
 	double getCenterX(StringBounder stringBounder);
 
 	void pushToLeft(double deltaX);
-	
-	public Collection<Segment> getDelays(StringBounder stringBounder);
 
+	public Collection<Segment> getDelays(StringBounder stringBounder);
 
 }

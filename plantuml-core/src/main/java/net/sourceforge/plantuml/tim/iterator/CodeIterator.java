@@ -11,7 +11,7 @@ public interface CodeIterator {
 	public void next() throws EaterException, EaterExceptionLocated;
 
 	public CodePosition getCodePosition();
-	
+
 	public void jumpToCodePosition(CodePosition newPosition) throws EaterException;
 
 }

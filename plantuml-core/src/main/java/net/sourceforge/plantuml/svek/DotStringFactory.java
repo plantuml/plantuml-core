@@ -11,10 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.sourceforge.plantuml.BaseFile;
-import net.sourceforge.plantuml.ISkinParam;
 import net.sourceforge.plantuml.StringUtils;
-import net.sourceforge.plantuml.UmlDiagramType;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
 import net.sourceforge.plantuml.baraye.Entity;
 import net.sourceforge.plantuml.baraye.EntityFactory;
 import net.sourceforge.plantuml.command.Position;
@@ -25,7 +22,10 @@ import net.sourceforge.plantuml.cucadiagram.dot.GraphvizVersion;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.geom.Moveable;
 import net.sourceforge.plantuml.klimt.geom.Rankdir;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 import net.sourceforge.plantuml.security.SFile;
+import net.sourceforge.plantuml.skin.UmlDiagramType;
+import net.sourceforge.plantuml.style.ISkinParam;
 
 public class DotStringFactory implements Moveable {
 

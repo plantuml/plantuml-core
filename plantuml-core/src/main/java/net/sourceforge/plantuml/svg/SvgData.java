@@ -91,8 +91,8 @@ public final class SvgData {
 		newString.append(";\" ");
 		newString.append("width=\"" + Math.round(getWidth()) + "pt\" ");
 		newString.append("height=\"" + Math.round(getHeight()) + "pt\" ");
-		newString.append("viewBox=\"" + Math.round(startX) + " " + Math.round(startY) + " " + Math.round(getWidth()) + " "
-				+ Math.round(getHeight()) + "\"");
+		newString.append("viewBox=\"" + Math.round(startX) + " " + Math.round(startY) + " " + Math.round(getWidth())
+				+ " " + Math.round(getHeight()) + "\"");
 		// newString.append("viewBox=\"" + Math.round(minX) + " " +
 		// Math.round(minY) + " " + Math.round(getWidth()) + " "
 		// + Math.round(getHeight()) + "\"");

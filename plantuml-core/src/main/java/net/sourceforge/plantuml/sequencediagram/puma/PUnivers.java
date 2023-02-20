@@ -15,8 +15,8 @@ public class PUnivers {
 	}
 
 	public void addFixedLink(PSegment segment1, double position1, PSegment segment2, double position2) {
-		final FixedLink link = new FixedLink(new SegmentPosition(segment1, position1), new SegmentPosition(segment2,
-				position2));
+		final FixedLink link = new FixedLink(new SegmentPosition(segment1, position1),
+				new SegmentPosition(segment2, position2));
 		links.add(link);
 
 	}

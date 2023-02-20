@@ -11,11 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sourceforge.plantuml.klimt.UAntiAliasing;
-import net.sourceforge.plantuml.klimt.color.ColorMapper;
-import net.sourceforge.plantuml.klimt.color.HColor;
-import net.sourceforge.plantuml.klimt.color.HColors;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.g2d.UGraphicG2d;
 import net.sourceforge.plantuml.utils.Log;
 
 public class EmptyImageBuilder {

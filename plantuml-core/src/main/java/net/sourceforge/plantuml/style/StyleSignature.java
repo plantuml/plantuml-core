@@ -1,7 +1,7 @@
 package net.sourceforge.plantuml.style;
 
-import net.sourceforge.plantuml.cucadiagram.Stereostyles;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
+import net.sourceforge.plantuml.stereo.Stereostyles;
+import net.sourceforge.plantuml.stereo.Stereotype;
 
 public interface StyleSignature {
 

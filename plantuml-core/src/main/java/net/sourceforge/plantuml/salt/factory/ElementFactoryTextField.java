@@ -1,11 +1,11 @@
 package net.sourceforge.plantuml.salt.factory;
 
-import net.atmp.ISkinSimple;
 import net.sourceforge.plantuml.klimt.font.UFont;
 import net.sourceforge.plantuml.salt.DataSource;
 import net.sourceforge.plantuml.salt.Terminated;
 import net.sourceforge.plantuml.salt.element.Element;
 import net.sourceforge.plantuml.salt.element.ElementTextField;
+import net.sourceforge.plantuml.style.ISkinSimple;
 
 public class ElementFactoryTextField implements ElementFactory {
 
@@ -25,7 +25,8 @@ public class ElementFactoryTextField implements ElementFactory {
 		final String text = next.getElement();
 		final UFont font = UFont.byDefault(12);
 		return new Terminated<Element>(
-				new ElementTextField(text.substring(1, text.length() - 1), font, spriteContainer), next.getTerminator());
+				new ElementTextField(text.substring(1, text.length() - 1), font, spriteContainer),
+				next.getTerminator());
 	}
 
 	public boolean ready() {

@@ -6,7 +6,7 @@ import net.sourceforge.plantuml.api.PSystemFactory;
 import net.sourceforge.plantuml.core.Diagram;
 import net.sourceforge.plantuml.core.DiagramType;
 import net.sourceforge.plantuml.core.UmlSource;
-import net.sourceforge.plantuml.graphic.GraphicPosition;
+import net.sourceforge.plantuml.klimt.geom.GraphicPosition;
 
 public class PSystemWelcomeFactory implements PSystemFactory {
 

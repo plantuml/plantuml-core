@@ -1,8 +1,9 @@
 package net.sourceforge.plantuml.sequencediagram.graphic;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 import net.sourceforge.plantuml.sequencediagram.MessageExoType;
 import net.sourceforge.plantuml.sequencediagram.NotePosition;
 import net.sourceforge.plantuml.skin.Area;
@@ -13,7 +14,6 @@ import net.sourceforge.plantuml.skin.Context2D;
 import net.sourceforge.plantuml.skin.rose.AbstractComponentRoseArrow;
 import net.sourceforge.plantuml.skin.rose.ComponentRoseArrow;
 import net.sourceforge.plantuml.skin.rose.Rose;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 import net.sourceforge.plantuml.url.Url;
 
 public class MessageExoArrow extends Arrow {
@@ -23,8 +23,8 @@ public class MessageExoArrow extends Arrow {
 	private final boolean shortArrow;
 	private final ArrowConfiguration arrowConfiguration;
 
-	public MessageExoArrow(double startingY, Rose skin, ArrowComponent arrow, LivingParticipantBox p, MessageExoType type,
-			Url url, boolean shortArrow, ArrowConfiguration arrowConfiguration) {
+	public MessageExoArrow(double startingY, Rose skin, ArrowComponent arrow, LivingParticipantBox p,
+			MessageExoType type, Url url, boolean shortArrow, ArrowConfiguration arrowConfiguration) {
 		super(startingY, skin, arrow, url);
 		this.p = p;
 		this.type = type;
@@ -119,8 +119,8 @@ public class MessageExoArrow extends Arrow {
 	}
 
 	private XDimension2D getActualDimension(StringBounder stringBounder, double maxX) {
-		return new XDimension2D(getActualWidth(stringBounder, maxX), getArrowComponent().getPreferredHeight(
-				stringBounder));
+		return new XDimension2D(getActualWidth(stringBounder, maxX),
+				getArrowComponent().getPreferredHeight(stringBounder));
 	}
 
 	@Override

@@ -6,10 +6,10 @@ import net.sourceforge.plantuml.activitydiagram3.PositionedNote;
 import net.sourceforge.plantuml.activitydiagram3.ftile.Ftile;
 import net.sourceforge.plantuml.activitydiagram3.ftile.FtileFactory;
 import net.sourceforge.plantuml.activitydiagram3.ftile.FtileFactoryDelegator;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.graphic.USymbol;
-import net.sourceforge.plantuml.graphic.VerticalAlignment;
+import net.sourceforge.plantuml.decoration.symbol.USymbol;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.creole.Display;
+import net.sourceforge.plantuml.klimt.geom.VerticalAlignment;
 import net.sourceforge.plantuml.style.Style;
 
 public class FtileFactoryDelegatorCreateGroup extends FtileFactoryDelegator {

@@ -10,7 +10,6 @@ public class ParticipantBoxSimple implements Pushable {
 	private double pos = 0;
 	private final String name;
 
-	
 	public ParticipantBoxSimple(double pos) {
 		this(pos, null);
 	}
@@ -32,7 +31,7 @@ public class ParticipantBoxSimple implements Pushable {
 	public void pushToLeft(double deltaX) {
 		pos += deltaX;
 	}
-	
+
 	public double getPreferredWidth(StringBounder stringBounder) {
 		return 0;
 	}
@@ -40,6 +39,5 @@ public class ParticipantBoxSimple implements Pushable {
 	public Collection<Segment> getDelays(StringBounder stringBounder) {
 		return Collections.emptyList();
 	}
-
 
 }

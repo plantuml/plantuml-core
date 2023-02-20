@@ -3,10 +3,10 @@ package net.sourceforge.plantuml.activitydiagram3.command;
 import net.sourceforge.plantuml.activitydiagram3.ActivityDiagram3;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.SingleLineCommand2;
-import net.sourceforge.plantuml.cucadiagram.Display;
 import net.sourceforge.plantuml.klimt.color.ColorParser;
 import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexConcat;
 import net.sourceforge.plantuml.regex.RegexLeaf;
@@ -47,8 +47,7 @@ public class CommandIf2 extends SingleLineCommand2<ActivityDiagram3> {
 	protected CommandExecutionResult executeArg(ActivityDiagram3 diagram, LineLocation location, RegexResult arg)
 			throws NoSuchColorException {
 		final String s = arg.get("COLOR", 0);
-		final HColor color = s == null ? null
-				: diagram.getSkinParam().getIHtmlColorSet().getColor(s);
+		final HColor color = s == null ? null : diagram.getSkinParam().getIHtmlColorSet().getColor(s);
 
 		String test = arg.get("TEST", 0);
 		if (test.length() == 0) {

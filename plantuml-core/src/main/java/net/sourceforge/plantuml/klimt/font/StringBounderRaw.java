@@ -3,7 +3,7 @@ package net.sourceforge.plantuml.klimt.font;
 import java.awt.font.FontRenderContext;
 import java.awt.font.LineMetrics;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 import net.sourceforge.plantuml.text.RichText;
 import net.sourceforge.plantuml.text.StyledString;
 

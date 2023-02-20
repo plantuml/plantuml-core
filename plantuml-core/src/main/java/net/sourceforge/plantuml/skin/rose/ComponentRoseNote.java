@@ -1,36 +1,36 @@
 package net.sourceforge.plantuml.skin.rose;
 
-import net.atmp.ISkinSimple;
-import net.sourceforge.plantuml.creole.Stencil;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.graphic.SymbolContext;
-import net.sourceforge.plantuml.graphic.color.Colors;
+import net.sourceforge.plantuml.klimt.Fashion;
 import net.sourceforge.plantuml.klimt.UPath;
 import net.sourceforge.plantuml.klimt.UStroke;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.color.Colors;
+import net.sourceforge.plantuml.klimt.creole.Display;
+import net.sourceforge.plantuml.klimt.creole.Stencil;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphicStencil;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
 import net.sourceforge.plantuml.skin.AbstractTextualComponent;
 import net.sourceforge.plantuml.skin.Area;
+import net.sourceforge.plantuml.style.ISkinSimple;
 import net.sourceforge.plantuml.style.PName;
 import net.sourceforge.plantuml.style.Style;
 import net.sourceforge.plantuml.svek.image.Opale;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
-import net.sourceforge.plantuml.ugraphic.UGraphicStencil;
 
 final public class ComponentRoseNote extends AbstractTextualComponent implements Stencil {
 
 	private final double paddingX;
 	private final double paddingY;
-	private final SymbolContext symbolContext;
+	private final Fashion symbolContext;
 	private final double roundCorner;
 	private final HorizontalAlignment position;
 
 	public ComponentRoseNote(Style style, Display strings, double paddingX, double paddingY,
 			ISkinSimple spriteContainer, HorizontalAlignment textAlignment, HorizontalAlignment position,
 			Colors colors) {
-		super(style, style.wrapWidth(), textAlignment == HorizontalAlignment.CENTER ? 15 : 6, 15, 5,
-				spriteContainer, strings, true);
+		super(style, style.wrapWidth(), textAlignment == HorizontalAlignment.CENTER ? 15 : 6, 15, 5, spriteContainer,
+				strings, true);
 		this.paddingX = paddingX;
 		this.paddingY = paddingY;
 		this.position = position;

@@ -1,13 +1,11 @@
 package net.sourceforge.plantuml.sequencediagram.command;
 
-import net.sourceforge.plantuml.ISkinParam;
 import net.sourceforge.plantuml.StringUtils;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.SingleLineCommand2;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
 import net.sourceforge.plantuml.klimt.color.ColorType;
 import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.klimt.font.FontParam;
 import net.sourceforge.plantuml.klimt.font.UFont;
 import net.sourceforge.plantuml.regex.IRegex;
@@ -20,6 +18,8 @@ import net.sourceforge.plantuml.sequencediagram.LifeEventType;
 import net.sourceforge.plantuml.sequencediagram.Participant;
 import net.sourceforge.plantuml.sequencediagram.ParticipantType;
 import net.sourceforge.plantuml.sequencediagram.SequenceDiagram;
+import net.sourceforge.plantuml.stereo.Stereotype;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.url.Url;
 import net.sourceforge.plantuml.url.UrlBuilder;
 import net.sourceforge.plantuml.url.UrlMode;
@@ -88,8 +88,8 @@ public abstract class CommandParticipant extends SingleLineCommand2<SequenceDiag
 					diagram.getSkinParam().getIHtmlColorSet()), stereotypePositionTop);
 		}
 		final String s = arg.get("COLOR", 0);
-		participant.setSpecificColorTOBEREMOVED(ColorType.BACK, s == null ? null
-				: diagram.getSkinParam().getIHtmlColorSet().getColor(s));
+		participant.setSpecificColorTOBEREMOVED(ColorType.BACK,
+				s == null ? null : diagram.getSkinParam().getIHtmlColorSet().getColor(s));
 
 		final String urlString = arg.get("URL", 0);
 		if (urlString != null) {

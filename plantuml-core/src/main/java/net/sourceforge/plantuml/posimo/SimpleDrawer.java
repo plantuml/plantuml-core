@@ -6,8 +6,8 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 
 public class SimpleDrawer {
 
@@ -53,8 +53,8 @@ public class SimpleDrawer {
 	}
 
 	private void drawRectCentered(Graphics2D g2d, final XPoint2D pos, final XDimension2D dim) {
-		final Rectangle2D rect = new Rectangle2D.Double(pos.getX() - dim.getWidth() / 2, pos.getY() - dim.getHeight()
-				/ 2, dim.getWidth(), dim.getHeight());
+		final Rectangle2D rect = new Rectangle2D.Double(pos.getX() - dim.getWidth() / 2,
+				pos.getY() - dim.getHeight() / 2, dim.getWidth(), dim.getHeight());
 		g2d.draw(rect);
 	}
 

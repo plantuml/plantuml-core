@@ -1,5 +1,6 @@
 package net.sourceforge.plantuml.klimt;
 
+import net.sourceforge.plantuml.klimt.shape.UPolygon;
 import net.sourceforge.plantuml.utils.Direction;
 
 public abstract class Arrows {

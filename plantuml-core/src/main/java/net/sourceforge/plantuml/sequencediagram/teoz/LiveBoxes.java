@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import net.sourceforge.plantuml.ISkinParam;
-import net.sourceforge.plantuml.graphic.SymbolContext;
+import net.sourceforge.plantuml.klimt.Fashion;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.sequencediagram.AbstractMessage;
 import net.sourceforge.plantuml.sequencediagram.Event;
@@ -20,7 +20,7 @@ import net.sourceforge.plantuml.sequencediagram.Participant;
 import net.sourceforge.plantuml.skin.Context2D;
 import net.sourceforge.plantuml.skin.SimpleContext2D;
 import net.sourceforge.plantuml.skin.rose.Rose;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.style.ISkinParam;
 
 public class LiveBoxes {
 
@@ -117,7 +117,7 @@ public class LiveBoxes {
 		return false;
 	}
 
-	private SymbolContext getActivateColor(Event event) {
+	private Fashion getActivateColor(Event event) {
 		if (event instanceof LifeEvent) {
 			final LifeEvent le = (LifeEvent) event;
 			if (le.isActivate())
@@ -166,7 +166,7 @@ public class LiveBoxes {
 			if (position != null) {
 				assert position <= totalHeight : "position=" + position + " totalHeight=" + totalHeight;
 				indent = getLevelAt(event, EventsHistoryMode.CONSIDERE_FUTURE_DEACTIVATE);
-				final SymbolContext activateColor = getActivateColor(event);
+				final Fashion activateColor = getActivateColor(event);
 				final Step step = new Step(Math.max(createY, position), isNextEventADestroy(event), indent,
 						activateColor);
 				stair.addStep(step);

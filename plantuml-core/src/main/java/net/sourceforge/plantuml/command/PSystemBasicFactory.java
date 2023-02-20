@@ -19,7 +19,6 @@ public abstract class PSystemBasicFactory<P extends AbstractPSystem> extends PSy
 		super(diagramType);
 	}
 
-	
 	public PSystemBasicFactory() {
 		this(DiagramType.UML);
 	}

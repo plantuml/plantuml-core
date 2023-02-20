@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-import net.sourceforge.plantuml.klimt.comp.CompressionMode;
+import net.sourceforge.plantuml.klimt.compress.CompressionMode;
+import net.sourceforge.plantuml.klimt.compress.UShapeIgnorableForCompression;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.geom.MinMax;
 import net.sourceforge.plantuml.klimt.geom.USegment;
 import net.sourceforge.plantuml.klimt.geom.USegmentType;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 
 public class UPath extends AbstractShadowable implements Iterable<USegment>, UShapeIgnorableForCompression {
 

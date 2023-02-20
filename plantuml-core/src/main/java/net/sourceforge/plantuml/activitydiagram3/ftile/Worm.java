@@ -7,20 +7,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-import net.sourceforge.plantuml.awt.geom.XLine2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-import net.sourceforge.plantuml.cucadiagram.LinkStyle;
-import net.sourceforge.plantuml.graphic.HtmlColorAndStyle;
+import net.sourceforge.plantuml.decoration.HtmlColorAndStyle;
+import net.sourceforge.plantuml.decoration.LinkStyle;
 import net.sourceforge.plantuml.klimt.Arrows;
-import net.sourceforge.plantuml.klimt.ULine;
-import net.sourceforge.plantuml.klimt.UPolygon;
 import net.sourceforge.plantuml.klimt.UStroke;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColor;
-import net.sourceforge.plantuml.klimt.comp.CompressionMode;
+import net.sourceforge.plantuml.klimt.compress.CompressionMode;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.geom.MinMax;
+import net.sourceforge.plantuml.klimt.geom.XLine2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.shape.ULine;
+import net.sourceforge.plantuml.klimt.shape.UPolygon;
 import net.sourceforge.plantuml.style.Style;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 import net.sourceforge.plantuml.utils.Direction;
 
 public class Worm implements Iterable<XPoint2D> {

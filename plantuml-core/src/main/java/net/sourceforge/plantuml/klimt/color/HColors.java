@@ -3,7 +3,7 @@ package net.sourceforge.plantuml.klimt.color;
 import java.awt.Color;
 
 import net.sourceforge.plantuml.klimt.UChange;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 
 public class HColors {
 

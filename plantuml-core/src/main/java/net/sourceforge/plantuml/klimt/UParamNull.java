@@ -20,7 +20,7 @@ public class UParamNull implements UParam {
 	public boolean isHidden() {
 		return false;
 	}
-	
+
 	public UPattern getPattern() {
 		return UPattern.FULL;
 	}

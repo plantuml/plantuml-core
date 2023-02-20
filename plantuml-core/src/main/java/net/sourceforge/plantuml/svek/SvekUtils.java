@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Locale;
 
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 import net.sourceforge.plantuml.security.SFile;
 import net.sourceforge.plantuml.utils.Log;
 

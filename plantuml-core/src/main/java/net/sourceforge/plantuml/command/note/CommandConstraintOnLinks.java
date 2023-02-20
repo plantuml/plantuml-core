@@ -2,10 +2,10 @@ package net.sourceforge.plantuml.command.note;
 
 import java.util.List;
 
+import net.atmp.Link;
 import net.sourceforge.plantuml.baraye.CucaDiagram;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.SingleLineCommand2;
-import net.sourceforge.plantuml.cucadiagram.Link;
 import net.sourceforge.plantuml.klimt.color.ColorParser;
 import net.sourceforge.plantuml.klimt.color.ColorType;
 import net.sourceforge.plantuml.klimt.color.NoSuchColorException;

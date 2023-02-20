@@ -5,14 +5,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import net.sourceforge.plantuml.klimt.ULine;
-import net.sourceforge.plantuml.klimt.URectangle;
 import net.sourceforge.plantuml.klimt.UStroke;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.HColors;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.shape.ULine;
+import net.sourceforge.plantuml.klimt.shape.URectangle;
 import net.sourceforge.plantuml.sequencediagram.graphic.Segment;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class RectangleTask {
 
@@ -78,8 +78,7 @@ public class RectangleTask {
 				ug.apply(UTranslate.dx(segment.getPos1())).draw(partial);
 		} else {
 			final double x1 = width * completion / 100;
-			ug.apply(HColors.none()).apply(UTranslate.dx(segment.getPos1()))
-					.draw(PathUtils.UtoLeft(x1, height, round));
+			ug.apply(HColors.none()).apply(UTranslate.dx(segment.getPos1())).draw(PathUtils.UtoLeft(x1, height, round));
 			ug.apply(documentBackground.bg()).apply(HColors.none()).apply(UTranslate.dx(segment.getPos1() + x1))
 					.draw(PathUtils.UtoRight(width * (100 - completion) / 100, height, round));
 			ug.apply(HColors.none().bg()).apply(UTranslate.dx(segment.getPos1())).draw(partial);

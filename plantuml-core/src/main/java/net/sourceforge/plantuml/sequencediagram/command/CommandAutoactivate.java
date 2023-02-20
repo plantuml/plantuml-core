@@ -23,7 +23,8 @@ public class CommandAutoactivate extends SingleLineCommand2<SequenceDiagram> {
 	}
 
 	@Override
-	protected CommandExecutionResult executeArg(SequenceDiagram sequenceDiagram, LineLocation location, RegexResult arg) {
+	protected CommandExecutionResult executeArg(SequenceDiagram sequenceDiagram, LineLocation location,
+			RegexResult arg) {
 		sequenceDiagram.setAutoactivate("on".equalsIgnoreCase(arg.get("ON", 0)));
 		return CommandExecutionResult.ok();
 	}

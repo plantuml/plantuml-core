@@ -73,14 +73,16 @@ public class CodeIteratorIf extends AbstractCodeIterator {
 		}
 	}
 
-	private void executeIf(TContext context, TMemory memory, StringLocated s) throws EaterException, EaterExceptionLocated {
+	private void executeIf(TContext context, TMemory memory, StringLocated s)
+			throws EaterException, EaterExceptionLocated {
 		final EaterIf condition = new EaterIf(s);
 		condition.analyze(context, memory);
 		final boolean isTrue = condition.isTrue();
 		memory.addIf(ExecutionContextIf.fromValue(isTrue));
 	}
 
-	private void executeElseIf(TContext context, TMemory memory, StringLocated s) throws EaterException, EaterExceptionLocated {
+	private void executeElseIf(TContext context, TMemory memory, StringLocated s)
+			throws EaterException, EaterExceptionLocated {
 		final ExecutionContextIf poll = (ExecutionContextIf) memory.peekIf();
 		if (poll == null) {
 			throw EaterException.located("No if related to this else");

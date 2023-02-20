@@ -1,12 +1,12 @@
 package net.sourceforge.plantuml.skin;
 
-import net.sourceforge.plantuml.graphic.UDrawable;
 import net.sourceforge.plantuml.klimt.UStroke;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UEllipse;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.shape.UDrawable;
+import net.sourceforge.plantuml.klimt.shape.UEllipse;
 
 public class CircleInterface implements UDrawable {
 
@@ -24,9 +24,9 @@ public class CircleInterface implements UDrawable {
 
 	public void drawU(UGraphic ug) {
 		final UEllipse head = new UEllipse(headDiam, headDiam);
-		
-		ug.apply(new UStroke(thickness)).apply(backgroundColor.bg())
-		.apply(foregroundColor).apply(new UTranslate(thickness, thickness)).draw(head);
+
+		ug.apply(new UStroke(thickness)).apply(backgroundColor.bg()).apply(foregroundColor)
+				.apply(new UTranslate(thickness, thickness)).draw(head);
 	}
 
 	public double getPreferredWidth(StringBounder stringBounder) {

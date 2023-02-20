@@ -6,10 +6,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import net.sourceforge.plantuml.UmlDiagramType;
 import net.sourceforge.plantuml.baraye.CucaDiagram;
 import net.sourceforge.plantuml.core.DiagramDescription;
 import net.sourceforge.plantuml.core.UmlSource;
+import net.sourceforge.plantuml.skin.UmlDiagramType;
 
 public abstract class AbstractEntityDiagram extends CucaDiagram {
 

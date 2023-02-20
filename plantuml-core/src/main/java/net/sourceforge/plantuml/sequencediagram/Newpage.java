@@ -1,6 +1,6 @@
 package net.sourceforge.plantuml.sequencediagram;
 
-import net.sourceforge.plantuml.cucadiagram.Display;
+import net.sourceforge.plantuml.klimt.creole.Display;
 
 public class Newpage extends AbstractEvent implements Event {
 

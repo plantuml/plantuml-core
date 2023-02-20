@@ -2,8 +2,12 @@ package net.sourceforge.plantuml.cucadiagram;
 
 import java.util.List;
 
+import net.atmp.Link;
+import net.atmp.LinkArg;
 import net.sourceforge.plantuml.baraye.CucaDiagram;
 import net.sourceforge.plantuml.baraye.Entity;
+import net.sourceforge.plantuml.decoration.LinkDecor;
+import net.sourceforge.plantuml.decoration.LinkType;
 
 public class Magma {
 

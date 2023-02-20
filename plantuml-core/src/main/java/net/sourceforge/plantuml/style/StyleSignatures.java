@@ -3,8 +3,8 @@ package net.sourceforge.plantuml.style;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sourceforge.plantuml.cucadiagram.Stereostyles;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
+import net.sourceforge.plantuml.stereo.Stereostyles;
+import net.sourceforge.plantuml.stereo.Stereotype;
 
 public class StyleSignatures implements StyleSignature {
 

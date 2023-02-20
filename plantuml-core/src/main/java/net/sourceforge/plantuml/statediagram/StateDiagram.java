@@ -2,15 +2,15 @@ package net.sourceforge.plantuml.statediagram;
 
 import java.util.Map;
 
-import net.sourceforge.plantuml.UmlDiagramType;
+import net.atmp.Link;
 import net.sourceforge.plantuml.baraye.Entity;
 import net.sourceforge.plantuml.classdiagram.AbstractEntityDiagram;
 import net.sourceforge.plantuml.core.UmlSource;
-import net.sourceforge.plantuml.cucadiagram.Display;
 import net.sourceforge.plantuml.cucadiagram.GroupType;
 import net.sourceforge.plantuml.cucadiagram.LeafType;
-import net.sourceforge.plantuml.cucadiagram.Link;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.plasma.Quark;
+import net.sourceforge.plantuml.skin.UmlDiagramType;
 
 public class StateDiagram extends AbstractEntityDiagram {
 

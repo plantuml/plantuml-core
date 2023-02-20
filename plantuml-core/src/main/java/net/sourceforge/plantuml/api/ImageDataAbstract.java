@@ -1,8 +1,7 @@
 package net.sourceforge.plantuml.api;
 
-
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.core.ImageData;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public abstract class ImageDataAbstract implements ImageData {
 
@@ -14,8 +13,7 @@ public abstract class ImageDataAbstract implements ImageData {
 		this.width = width;
 		this.height = height;
 	}
-	
-	
+
 	public ImageDataAbstract(XDimension2D dim) {
 		this((int) dim.getWidth(), (int) dim.getHeight());
 	}

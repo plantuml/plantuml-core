@@ -1,6 +1,5 @@
 package net.sourceforge.plantuml.real;
 
-
 abstract class AbstractReal implements Real {
 
 	private final RealLine line;

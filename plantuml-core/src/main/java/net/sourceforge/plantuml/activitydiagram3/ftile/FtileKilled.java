@@ -3,8 +3,8 @@ package net.sourceforge.plantuml.activitydiagram3.ftile;
 import java.util.Collection;
 import java.util.Set;
 
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class FtileKilled extends AbstractFtile {
 
@@ -14,7 +14,7 @@ public class FtileKilled extends AbstractFtile {
 		super(tileToKill.skinParam());
 		this.tile = tileToKill;
 	}
-	
+
 	@Override
 	public Collection<Ftile> getMyChildren() {
 		return tile.getMyChildren();

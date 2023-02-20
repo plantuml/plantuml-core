@@ -1,6 +1,6 @@
 package net.sourceforge.plantuml.baraye;
 
-import net.sourceforge.plantuml.cucadiagram.Link;
+import net.atmp.Link;
 
 public abstract class EntityUtils {
 

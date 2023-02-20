@@ -6,11 +6,11 @@ import net.sourceforge.plantuml.activitydiagram3.ftile.FtileFactoryDelegator;
 import net.sourceforge.plantuml.activitydiagram3.ftile.FtileGeometry;
 import net.sourceforge.plantuml.activitydiagram3.ftile.FtileMargedRight;
 import net.sourceforge.plantuml.activitydiagram3.ftile.FtileUtils;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-import net.sourceforge.plantuml.graphic.Rainbow;
-import net.sourceforge.plantuml.graphic.TextBlock;
+import net.sourceforge.plantuml.decoration.Rainbow;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
 
 public class FtileFactoryDelegatorAssembly extends FtileFactoryDelegator {
 
@@ -56,7 +56,8 @@ public class FtileFactoryDelegatorAssembly extends FtileFactoryDelegator {
 			if (width < maxX) {
 				result = new FtileMargedRight(result, maxX);
 			}
-			// System.err.println("FtileFactoryDelegatorAssembly result=" + result.calculateDimension(stringBounder));
+			// System.err.println("FtileFactoryDelegatorAssembly result=" +
+			// result.calculateDimension(stringBounder));
 		}
 		return result;
 	}

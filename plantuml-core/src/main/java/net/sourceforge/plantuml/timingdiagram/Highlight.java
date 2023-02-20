@@ -1,24 +1,24 @@
 package net.sourceforge.plantuml.timingdiagram;
 
-import net.sourceforge.plantuml.ISkinParam;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.graphic.TextBlock;
-import net.sourceforge.plantuml.graphic.color.Colors;
-import net.sourceforge.plantuml.klimt.ULine;
-import net.sourceforge.plantuml.klimt.URectangle;
 import net.sourceforge.plantuml.klimt.UStroke;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.ColorType;
+import net.sourceforge.plantuml.klimt.color.Colors;
 import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.HColors;
+import net.sourceforge.plantuml.klimt.creole.Display;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.FontConfiguration;
 import net.sourceforge.plantuml.klimt.font.FontParam;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.klimt.shape.ULine;
+import net.sourceforge.plantuml.klimt.shape.URectangle;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.style.PName;
 import net.sourceforge.plantuml.style.SName;
 import net.sourceforge.plantuml.style.Style;
 import net.sourceforge.plantuml.style.StyleSignatureBasic;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class Highlight {
 
@@ -47,17 +47,17 @@ public class Highlight {
 
 	private HColor getBackColor() {
 		final HColor result = colors.getColor(ColorType.BACK);
-		if (result == null) 
+		if (result == null)
 			return getStyle().value(PName.BackGroundColor).asColor(skinParam.getIHtmlColorSet());
-		
+
 		return result;
 	}
 
 	private HColor getLineColor() {
 		final HColor result = colors.getColor(ColorType.LINE);
-		if (result == null) 
+		if (result == null)
 			return getStyle().value(PName.LineColor).asColor(skinParam.getIHtmlColorSet());
-		
+
 		return result;
 	}
 

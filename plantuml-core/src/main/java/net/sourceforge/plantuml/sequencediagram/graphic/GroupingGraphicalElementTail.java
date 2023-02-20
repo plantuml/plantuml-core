@@ -1,9 +1,9 @@
 package net.sourceforge.plantuml.sequencediagram.graphic;
 
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.sequencediagram.InGroupableList;
 import net.sourceforge.plantuml.skin.Context2D;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 class GroupingGraphicalElementTail extends GroupingGraphicalElement {
 

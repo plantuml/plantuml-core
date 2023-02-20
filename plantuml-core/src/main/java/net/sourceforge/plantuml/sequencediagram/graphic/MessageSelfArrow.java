@@ -1,14 +1,14 @@
 package net.sourceforge.plantuml.sequencediagram.graphic;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 import net.sourceforge.plantuml.sequencediagram.NotePosition;
 import net.sourceforge.plantuml.skin.Area;
 import net.sourceforge.plantuml.skin.ArrowComponent;
 import net.sourceforge.plantuml.skin.Context2D;
 import net.sourceforge.plantuml.skin.rose.Rose;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 import net.sourceforge.plantuml.url.Url;
 
 class MessageSelfArrow extends Arrow {
@@ -39,8 +39,8 @@ class MessageSelfArrow extends Arrow {
 	protected void drawInternalU(UGraphic ug, double maxX, Context2D context) {
 		final StringBounder stringBounder = ug.getStringBounder();
 		ug = ug.apply(new UTranslate(getStartingX(stringBounder), getStartingY() + deltaY));
-		final Area area = new Area(new XDimension2D(getPreferredWidth(stringBounder),
-				getPreferredHeight(stringBounder)));
+		final Area area = new Area(
+				new XDimension2D(getPreferredWidth(stringBounder), getPreferredHeight(stringBounder)));
 		area.setDeltaX1(deltaY);
 		startUrl(ug);
 		getArrowComponent().drawU(ug, area, context);
@@ -50,7 +50,8 @@ class MessageSelfArrow extends Arrow {
 	@Override
 	public double getStartingX(StringBounder stringBounder) {
 		// if (OptionFlags.STRICT_SELFMESSAGE_POSITION) {
-		// final double pos1 = p1.getLiveThicknessAt(stringBounder, getArrowYEndLevel(stringBounder)).getSegment()
+		// final double pos1 = p1.getLiveThicknessAt(stringBounder,
+		// getArrowYEndLevel(stringBounder)).getSegment()
 		// .getPos2();
 		// return pos1;
 		// }

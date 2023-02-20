@@ -57,7 +57,8 @@ public class CodeIteratorAffectation extends AbstractCodeIterator {
 			}
 	}
 
-	private void executeAffectation(TContext context, TMemory memory, StringLocated s) throws EaterException, EaterExceptionLocated {
+	private void executeAffectation(TContext context, TMemory memory, StringLocated s)
+			throws EaterException, EaterExceptionLocated {
 		new EaterAffectation(s).analyze(context, memory);
 	}
 

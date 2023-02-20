@@ -2,7 +2,7 @@ package net.sourceforge.plantuml.project.lang;
 
 import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.HColors;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 
 public class CenterBorderColor {
 

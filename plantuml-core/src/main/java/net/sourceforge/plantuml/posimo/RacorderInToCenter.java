@@ -1,11 +1,11 @@
 package net.sourceforge.plantuml.posimo;
 
-import net.sourceforge.plantuml.awt.geom.XCubicCurve2D;
-import net.sourceforge.plantuml.awt.geom.XLine2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-import net.sourceforge.plantuml.awt.geom.XRectangle2D;
-import net.sourceforge.plantuml.klimt.DotPath;
 import net.sourceforge.plantuml.klimt.geom.BezierUtils;
+import net.sourceforge.plantuml.klimt.geom.XCubicCurve2D;
+import net.sourceforge.plantuml.klimt.geom.XLine2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.geom.XRectangle2D;
+import net.sourceforge.plantuml.klimt.shape.DotPath;
 
 public class RacorderInToCenter extends RacorderAbstract implements Racorder {
 

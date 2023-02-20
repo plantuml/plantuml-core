@@ -2,9 +2,9 @@ package net.sourceforge.plantuml.compositediagram;
 
 import java.util.Map;
 
-import net.sourceforge.plantuml.UmlDiagramType;
 import net.sourceforge.plantuml.classdiagram.AbstractEntityDiagram;
 import net.sourceforge.plantuml.core.UmlSource;
+import net.sourceforge.plantuml.skin.UmlDiagramType;
 
 public class CompositeDiagram extends AbstractEntityDiagram {
 

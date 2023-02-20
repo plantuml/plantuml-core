@@ -2,9 +2,9 @@ package net.sourceforge.plantuml.salt.element;
 
 import java.util.List;
 
-import net.sourceforge.plantuml.klimt.ULine;
 import net.sourceforge.plantuml.klimt.UTranslate;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.shape.ULine;
 
 public class Grid2 {
 

@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
-import net.sourceforge.plantuml.creole.atom.AtomImg;
+import net.sourceforge.plantuml.klimt.creole.atom.AtomImg;
 import net.sourceforge.plantuml.log.Logme;
 import net.sourceforge.plantuml.security.SFile;
 import net.sourceforge.plantuml.utils.Base64Coder;

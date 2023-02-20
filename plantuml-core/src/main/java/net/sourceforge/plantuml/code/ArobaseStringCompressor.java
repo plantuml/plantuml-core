@@ -14,7 +14,8 @@ import net.sourceforge.plantuml.text.StringLocated;
 
 public class ArobaseStringCompressor implements StringCompressor {
 
-	private final static Pattern2 pattern = MyPattern.cmpile("(?s)^[%s]*(@startuml[^\\n\\r]*)?[%s]*(.*?)[%s]*(@enduml)?[%s]*$");
+	private final static Pattern2 pattern = MyPattern
+			.cmpile("(?s)^[%s]*(@startuml[^\\n\\r]*)?[%s]*(.*?)[%s]*(@enduml)?[%s]*$");
 
 	public String compress(final String data) throws IOException {
 		final ReadLine r = new UncommentReadLine(ReadLineReader.create(new StringReader(data), "COMPRESS"));
@@ -78,9 +79,9 @@ public class ArobaseStringCompressor implements StringCompressor {
 
 	private String clean1(String s) {
 		final Matcher2 m = pattern.matcher(s);
-		if (m.matches()) 
+		if (m.matches())
 			return m.group(2);
-		
+
 		return s;
 	}
 

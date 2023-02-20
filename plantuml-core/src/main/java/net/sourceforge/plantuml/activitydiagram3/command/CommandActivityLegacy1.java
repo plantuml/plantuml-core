@@ -4,8 +4,8 @@ import net.sourceforge.plantuml.activitydiagram3.ActivityDiagram3;
 import net.sourceforge.plantuml.activitydiagram3.ftile.BoxStyle;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.SingleLineCommand2;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.graphic.color.Colors;
+import net.sourceforge.plantuml.klimt.color.Colors;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexConcat;
 import net.sourceforge.plantuml.regex.RegexLeaf;
@@ -27,7 +27,8 @@ public class CommandActivityLegacy1 extends SingleLineCommand2<ActivityDiagram3>
 
 	@Override
 	protected CommandExecutionResult executeArg(ActivityDiagram3 diagram, LineLocation location, RegexResult arg) {
-		return diagram.addActivity(Display.getWithNewlines(arg.get("LABEL", 0)), BoxStyle.PLAIN, null, Colors.empty(), null);
+		return diagram.addActivity(Display.getWithNewlines(arg.get("LABEL", 0)), BoxStyle.PLAIN, null, Colors.empty(),
+				null);
 	}
 
 }

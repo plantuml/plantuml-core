@@ -1,6 +1,6 @@
 package net.sourceforge.plantuml.cucadiagram;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public enum NoteLinkStrategy {
 	NORMAL, HALF_PRINTED_FULL, HALF_NOT_PRINTED;

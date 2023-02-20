@@ -5,8 +5,7 @@ public interface EventWithDeactivate extends Event {
 	public void setPosYendLevel(double posYendLevel);
 
 	public double getPosYendLevel();
-	
-	public boolean addLifeEvent(LifeEvent lifeEvent);
 
+	public boolean addLifeEvent(LifeEvent lifeEvent);
 
 }

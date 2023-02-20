@@ -9,10 +9,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+import net.sourceforge.plantuml.klimt.sprite.ResourcesUtils;
 import net.sourceforge.plantuml.preproc.ReadLine;
 import net.sourceforge.plantuml.preproc.ReadLineReader;
 import net.sourceforge.plantuml.preproc.Stdlib;
-import net.sourceforge.plantuml.sprite.ResourcesUtils;
 import net.sourceforge.plantuml.utils.Log;
 
 import static com.plantuml.api.cheerpj.StaticMemory.cheerpjPath;

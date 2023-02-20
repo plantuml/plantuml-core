@@ -3,11 +3,11 @@ package net.sourceforge.plantuml;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import net.atmp.ImageBuilder;
 import net.sourceforge.plantuml.core.ImageData;
 import net.sourceforge.plantuml.core.UmlSource;
-import net.sourceforge.plantuml.graphic.UDrawable;
-import net.sourceforge.plantuml.ugraphic.ImageBuilder;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.shape.UDrawable;
 
 // This class doesnt feel like a wonderful idea, just a stepping stone towards something
 public abstract class PlainDiagram extends AbstractPSystem {

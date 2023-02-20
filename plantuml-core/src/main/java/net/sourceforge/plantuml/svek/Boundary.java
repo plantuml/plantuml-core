@@ -1,14 +1,14 @@
 package net.sourceforge.plantuml.svek;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.graphic.AbstractTextBlock;
-import net.sourceforge.plantuml.graphic.SymbolContext;
+import net.sourceforge.plantuml.klimt.Fashion;
 import net.sourceforge.plantuml.klimt.UPath;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColors;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UEllipse;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.shape.AbstractTextBlock;
+import net.sourceforge.plantuml.klimt.shape.UEllipse;
 
 public class Boundary extends AbstractTextBlock {
 
@@ -16,10 +16,10 @@ public class Boundary extends AbstractTextBlock {
 
 	private final double radius = 12;
 	private final double left = 17;
-	
-	private final SymbolContext symbolContext;
 
-	public Boundary(SymbolContext symbolContext) {
+	private final Fashion symbolContext;
+
+	public Boundary(Fashion symbolContext) {
 		this.symbolContext = symbolContext;
 	}
 

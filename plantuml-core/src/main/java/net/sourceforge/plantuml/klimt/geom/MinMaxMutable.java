@@ -1,7 +1,5 @@
 package net.sourceforge.plantuml.klimt.geom;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-
 public class MinMaxMutable {
 
 	private double maxX;

@@ -1,14 +1,14 @@
 package net.sourceforge.plantuml;
 
-import static net.sourceforge.plantuml.graphic.GraphicStrings.createBlackOnWhite;
+import static net.sourceforge.plantuml.klimt.shape.GraphicStrings.createBlackOnWhite;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
 import net.sourceforge.plantuml.core.UmlSource;
-import net.sourceforge.plantuml.graphic.GraphicPosition;
-import net.sourceforge.plantuml.graphic.UDrawable;
+import net.sourceforge.plantuml.klimt.geom.GraphicPosition;
+import net.sourceforge.plantuml.klimt.shape.UDrawable;
 
 public abstract class PlainStringsDiagram extends PlainDiagram {
 

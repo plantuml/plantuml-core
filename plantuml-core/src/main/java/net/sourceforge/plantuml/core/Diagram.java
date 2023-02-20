@@ -5,8 +5,8 @@ import java.io.OutputStream;
 
 import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.api.ApiStable;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.creole.Display;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 
 /**
  * Represents a single diagram. A Diagram could be a UML (sequence diagram,

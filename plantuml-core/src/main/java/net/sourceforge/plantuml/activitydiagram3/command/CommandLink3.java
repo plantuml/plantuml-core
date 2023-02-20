@@ -3,7 +3,7 @@ package net.sourceforge.plantuml.activitydiagram3.command;
 import net.sourceforge.plantuml.activitydiagram3.ActivityDiagram3;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.SingleLineCommand2;
-import net.sourceforge.plantuml.graphic.Rainbow;
+import net.sourceforge.plantuml.decoration.Rainbow;
 import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
 import net.sourceforge.plantuml.regex.IRegex;
@@ -31,8 +31,7 @@ public class CommandLink3 extends SingleLineCommand2<ActivityDiagram3> {
 	protected CommandExecutionResult executeArg(ActivityDiagram3 diagram, LineLocation location, RegexResult arg)
 			throws NoSuchColorException {
 		final String s = arg.get("COLOR", 0);
-		final HColor color = s == null ? null
-				: diagram.getSkinParam().getIHtmlColorSet().getColor(s);
+		final HColor color = s == null ? null : diagram.getSkinParam().getIHtmlColorSet().getColor(s);
 		if (color != null) {
 			diagram.setColorNextArrow(Rainbow.fromColor(color, null));
 		}

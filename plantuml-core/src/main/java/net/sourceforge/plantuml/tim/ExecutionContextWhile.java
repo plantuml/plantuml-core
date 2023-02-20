@@ -25,7 +25,8 @@ public class ExecutionContextWhile {
 		return new ExecutionContextWhile(whileExpression, codePosition);
 	}
 
-	public TValue conditionValue(LineLocation location, TContext context, TMemory memory) throws EaterException, EaterExceptionLocated {
+	public TValue conditionValue(LineLocation location, TContext context, TMemory memory)
+			throws EaterException, EaterExceptionLocated {
 		return whileExpression.getResult(location, context, memory);
 	}
 

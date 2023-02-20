@@ -12,7 +12,7 @@ public class Mirror {
 		if (v < 0 || v > max) {
 			throw new IllegalArgumentException();
 		}
-		//return v;
+		// return v;
 		return max - v;
 	}
 

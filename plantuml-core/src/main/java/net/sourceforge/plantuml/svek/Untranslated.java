@@ -1,6 +1,6 @@
 package net.sourceforge.plantuml.svek;
 
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 
 public interface Untranslated extends IEntityImage {
 

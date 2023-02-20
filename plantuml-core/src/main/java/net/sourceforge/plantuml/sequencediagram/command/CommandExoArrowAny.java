@@ -3,9 +3,9 @@ package net.sourceforge.plantuml.sequencediagram.command;
 import net.sourceforge.plantuml.StringUtils;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.SingleLineCommand2;
-import net.sourceforge.plantuml.cucadiagram.Display;
 import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexResult;
 import net.sourceforge.plantuml.sequencediagram.LifeEventType;
@@ -119,8 +119,7 @@ abstract class CommandExoArrowAny extends SingleLineCommand2<SequenceDiagram> {
 
 		final String s = arg.get("LIFECOLOR", 0);
 
-		final HColor activationColor = s == null ? null
-				: diagram.getSkinParam().getIHtmlColorSet().getColor(s);
+		final HColor activationColor = s == null ? null : diagram.getSkinParam().getIHtmlColorSet().getColor(s);
 
 		if (activationSpec != null) {
 			switch (activationSpec.charAt(0)) {

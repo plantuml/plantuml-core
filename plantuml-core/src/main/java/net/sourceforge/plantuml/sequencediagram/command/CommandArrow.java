@@ -9,12 +9,11 @@ import net.sourceforge.plantuml.StringUtils;
 import net.sourceforge.plantuml.classdiagram.command.CommandLinkClass;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.SingleLineCommand2;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
 import net.sourceforge.plantuml.descdiagram.command.CommandLinkElement;
 import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.HColorSet;
 import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexConcat;
 import net.sourceforge.plantuml.regex.RegexLeaf;
@@ -30,6 +29,7 @@ import net.sourceforge.plantuml.skin.ArrowConfiguration;
 import net.sourceforge.plantuml.skin.ArrowDecoration;
 import net.sourceforge.plantuml.skin.ArrowHead;
 import net.sourceforge.plantuml.skin.ArrowPart;
+import net.sourceforge.plantuml.stereo.Stereotype;
 import net.sourceforge.plantuml.url.Url;
 import net.sourceforge.plantuml.url.UrlBuilder;
 import net.sourceforge.plantuml.url.UrlMode;
@@ -290,8 +290,7 @@ public class CommandArrow extends SingleLineCommand2<SequenceDiagram> {
 
 		final String s = arg.get("LIFECOLOR", 0);
 
-		final HColor activationColor = s == null ? null
-				: diagram.getSkinParam().getIHtmlColorSet().getColor(s);
+		final HColor activationColor = s == null ? null : diagram.getSkinParam().getIHtmlColorSet().getColor(s);
 
 		if (activationSpec != null)
 			return manageActivations(activationSpec, diagram, p1, p2, activationColor);

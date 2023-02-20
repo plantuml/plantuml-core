@@ -1,11 +1,11 @@
 package net.sourceforge.plantuml.salt.factory;
 
-import net.atmp.ISkinSimple;
 import net.sourceforge.plantuml.klimt.font.UFont;
 import net.sourceforge.plantuml.salt.DataSource;
 import net.sourceforge.plantuml.salt.Terminated;
 import net.sourceforge.plantuml.salt.element.Element;
 import net.sourceforge.plantuml.salt.element.ElementDroplist;
+import net.sourceforge.plantuml.style.ISkinSimple;
 
 public class ElementFactoryDroplist implements ElementFactory {
 
@@ -14,7 +14,7 @@ public class ElementFactoryDroplist implements ElementFactory {
 
 	public ElementFactoryDroplist(DataSource dataSource, ISkinSimple spriteContainer) {
 		this.dataSource = dataSource;
-		this.spriteContainer = spriteContainer; 
+		this.spriteContainer = spriteContainer;
 	}
 
 	public Terminated<Element> create() {

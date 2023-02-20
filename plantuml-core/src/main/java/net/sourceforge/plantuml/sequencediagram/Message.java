@@ -3,7 +3,7 @@ package net.sourceforge.plantuml.sequencediagram;
 import java.util.Collections;
 import java.util.List;
 
-import net.sourceforge.plantuml.cucadiagram.Display;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.skin.ArrowConfiguration;
 import net.sourceforge.plantuml.style.StyleBuilder;
 

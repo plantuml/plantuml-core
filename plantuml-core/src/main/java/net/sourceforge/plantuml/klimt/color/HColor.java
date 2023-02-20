@@ -19,7 +19,7 @@ public abstract class HColor implements UChange {
 	public Color toColor(ColorMapper mapper) {
 		throw new UnsupportedOperationException();
 	}
-	
+
 	final public String toRGB(ColorMapper mapper) {
 		final Color color = toColor(mapper);
 		return StringUtils.sharp000000(color.getRGB());
@@ -38,8 +38,6 @@ public abstract class HColor implements UChange {
 		s = s.substring(s.length() - 2);
 		return toRGB(mapper) + s;
 	}
-
-
 
 	public HColor lighten(int ratio) {
 		return this;

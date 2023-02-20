@@ -3,7 +3,7 @@ package net.sourceforge.plantuml.timingdiagram.command;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.Position;
 import net.sourceforge.plantuml.command.SingleLineCommand2;
-import net.sourceforge.plantuml.cucadiagram.Display;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexConcat;
 import net.sourceforge.plantuml.regex.RegexLeaf;
@@ -45,7 +45,8 @@ public class CommandNote extends SingleLineCommand2<TimingDiagram> {
 		}
 		final Display note = Display.getWithNewlines(arg.get("NOTE", 0));
 		final TimeTick now = diagram.getNow();
-		// final Colors colors = color().getColor(arg, diagram.getSkinParam().getIHtmlColorSet());
+		// final Colors colors = color().getColor(arg,
+		// diagram.getSkinParam().getIHtmlColorSet());
 		player.addNote(now, note, Position.fromString(arg.get("POSITION", 0)));
 		return CommandExecutionResult.ok();
 	}

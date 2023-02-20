@@ -1,21 +1,21 @@
 package net.sourceforge.plantuml.skin.rose;
 
-import net.atmp.ISkinSimple;
-import net.sourceforge.plantuml.LineBreakStrategy;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.graphic.SymbolContext;
-import net.sourceforge.plantuml.graphic.TextBlock;
+import net.sourceforge.plantuml.klimt.Fashion;
+import net.sourceforge.plantuml.klimt.LineBreakStrategy;
 import net.sourceforge.plantuml.klimt.Shadowable;
-import net.sourceforge.plantuml.klimt.URectangle;
 import net.sourceforge.plantuml.klimt.UStroke;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.creole.Display;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.klimt.shape.URectangle;
 import net.sourceforge.plantuml.skin.AbstractTextualComponent;
 import net.sourceforge.plantuml.skin.Area;
+import net.sourceforge.plantuml.style.ISkinSimple;
 import net.sourceforge.plantuml.style.PName;
 import net.sourceforge.plantuml.style.Style;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class ComponentRoseParticipant extends AbstractTextualComponent {
 
@@ -35,7 +35,7 @@ public class ComponentRoseParticipant extends AbstractTextualComponent {
 
 		this.roundCorner = style.value(PName.RoundCorner).asInt(false);
 		this.diagonalCorner = style.value(PName.DiagonalCorner).asInt(false);
-		final SymbolContext biColor = style.getSymbolContext(getIHtmlColorSet());
+		final Fashion biColor = style.getSymbolContext(getIHtmlColorSet());
 		this.stroke = style.getStroke();
 
 		this.padding = padding;

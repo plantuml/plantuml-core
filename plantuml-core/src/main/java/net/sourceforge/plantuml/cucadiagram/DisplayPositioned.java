@@ -1,7 +1,8 @@
 package net.sourceforge.plantuml.cucadiagram;
 
-import net.sourceforge.plantuml.graphic.VerticalAlignment;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.klimt.geom.VerticalAlignment;
 
 public class DisplayPositioned extends DisplayPositionned {
 

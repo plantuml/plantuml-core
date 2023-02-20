@@ -20,8 +20,8 @@ import h.ST_Agnode_s;
 import h.ST_Agobj_s;
 import h.ST_Agraph_s;
 import h.ST_Agsym_s;
-import smetana.core.__ptr__;
 import smetana.core.Globals;
+import smetana.core.__ptr__;
 
 public class obj__c {
 

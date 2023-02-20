@@ -6,14 +6,14 @@ import java.util.List;
 import net.sourceforge.plantuml.StringUtils;
 import net.sourceforge.plantuml.WithSprite;
 import net.sourceforge.plantuml.command.note.SingleMultiFactoryCommand;
+import net.sourceforge.plantuml.klimt.sprite.Sprite;
+import net.sourceforge.plantuml.klimt.sprite.SpriteColorBuilder4096;
+import net.sourceforge.plantuml.klimt.sprite.SpriteGrayLevel;
 import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexConcat;
 import net.sourceforge.plantuml.regex.RegexLeaf;
 import net.sourceforge.plantuml.regex.RegexOptional;
 import net.sourceforge.plantuml.regex.RegexResult;
-import net.sourceforge.plantuml.sprite.Sprite;
-import net.sourceforge.plantuml.sprite.SpriteColorBuilder4096;
-import net.sourceforge.plantuml.sprite.SpriteGrayLevel;
 import net.sourceforge.plantuml.utils.BlocLines;
 import net.sourceforge.plantuml.utils.LineLocation;
 
@@ -56,7 +56,8 @@ public final class CommandFactorySprite implements SingleMultiFactoryCommand<Wit
 	}
 
 	public Command<WithSprite> createMultiLine(boolean withBracket) {
-		return new CommandMultilines2<WithSprite>(getRegexConcatMultiLine(), MultilinesStrategy.REMOVE_STARTING_QUOTE, Trim.BOTH) {
+		return new CommandMultilines2<WithSprite>(getRegexConcatMultiLine(), MultilinesStrategy.REMOVE_STARTING_QUOTE,
+				Trim.BOTH) {
 
 			@Override
 			public String getPatternEnd() {

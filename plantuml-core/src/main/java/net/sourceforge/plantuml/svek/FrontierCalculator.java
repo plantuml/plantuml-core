@@ -2,9 +2,9 @@ package net.sourceforge.plantuml.svek;
 
 import java.util.Collection;
 
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
 import net.sourceforge.plantuml.cucadiagram.EntityPosition;
 import net.sourceforge.plantuml.klimt.geom.ClusterPosition;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 
 public class FrontierCalculator {
 

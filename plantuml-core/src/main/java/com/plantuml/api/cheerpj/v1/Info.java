@@ -2,6 +2,7 @@ package com.plantuml.api.cheerpj.v1;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import java.io.IOException;
 import java.io.StringReader;
 import java.util.Collections;
 import java.util.List;
@@ -28,6 +29,17 @@ public class Info {
 		try {
 			result = TranscoderUtil.getDefaultTranscoder().decode(text);
 		} catch (NoPlantumlCompressionException e) {
+			e.printStackTrace();
+			result = "";
+		}
+		 return Global.JSString(result);
+	}
+
+	public static Object encode(String text) {
+		String result;
+		try {
+			result = TranscoderUtil.getDefaultTranscoder().encode(text);
+		} catch (IOException e) {
 			e.printStackTrace();
 			result = "";
 		}

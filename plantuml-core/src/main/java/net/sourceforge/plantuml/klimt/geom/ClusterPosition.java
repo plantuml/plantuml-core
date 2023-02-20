@@ -1,8 +1,5 @@
 package net.sourceforge.plantuml.klimt.geom;
 
-import net.sourceforge.plantuml.awt.geom.XCubicCurve2D;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
 import net.sourceforge.plantuml.klimt.UTranslate;
 
 public class ClusterPosition {

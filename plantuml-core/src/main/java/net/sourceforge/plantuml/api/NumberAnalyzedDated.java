@@ -7,7 +7,6 @@ import java.util.prefs.Preferences;
 import net.sourceforge.plantuml.log.Logme;
 import net.sourceforge.plantuml.utils.Log;
 
-
 public class NumberAnalyzedDated extends NumberAnalyzed {
 
 	private final AtomicLong created = new AtomicLong();
@@ -70,11 +69,10 @@ public class NumberAnalyzedDated extends NumberAnalyzed {
 		}
 		try {
 			final StringTokenizer st = new StringTokenizer(value, ";");
-			return new NumberAnalyzedDated(name, Long.parseLong(st.nextToken(), 36),
-					Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36), Long.parseLong(
-							st.nextToken(), 36), Long.parseLong(st.nextToken(), 36),
-					Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36), Long.parseLong(
-							st.nextToken(), 36), st.nextToken());
+			return new NumberAnalyzedDated(name, Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36),
+					Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36),
+					Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36),
+					Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36), st.nextToken());
 		} catch (Exception e) {
 			Logme.error(e);
 			Log.info("Error reading " + value);

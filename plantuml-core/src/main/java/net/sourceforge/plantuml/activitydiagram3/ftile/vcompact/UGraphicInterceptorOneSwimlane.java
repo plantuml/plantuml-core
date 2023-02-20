@@ -7,12 +7,12 @@ import java.util.Set;
 import net.sourceforge.plantuml.activitydiagram3.ftile.Connection;
 import net.sourceforge.plantuml.activitydiagram3.ftile.Ftile;
 import net.sourceforge.plantuml.activitydiagram3.ftile.Swimlane;
-import net.sourceforge.plantuml.graphic.UGraphicDelegator;
 import net.sourceforge.plantuml.klimt.UChange;
-import net.sourceforge.plantuml.klimt.ULine;
 import net.sourceforge.plantuml.klimt.UShape;
 import net.sourceforge.plantuml.klimt.color.HColors;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphicDelegator;
+import net.sourceforge.plantuml.klimt.shape.ULine;
 
 public class UGraphicInterceptorOneSwimlane extends UGraphicDelegator {
 

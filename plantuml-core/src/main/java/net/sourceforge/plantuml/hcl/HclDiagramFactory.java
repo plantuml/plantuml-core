@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import net.sourceforge.plantuml.UmlDiagramType;
 import net.sourceforge.plantuml.command.PSystemAbstractFactory;
 import net.sourceforge.plantuml.core.Diagram;
 import net.sourceforge.plantuml.core.DiagramType;
@@ -14,6 +13,7 @@ import net.sourceforge.plantuml.json.JsonValue;
 import net.sourceforge.plantuml.jsondiagram.JsonDiagram;
 import net.sourceforge.plantuml.jsondiagram.StyleExtractor;
 import net.sourceforge.plantuml.log.Logme;
+import net.sourceforge.plantuml.skin.UmlDiagramType;
 import net.sourceforge.plantuml.yaml.Highlighted;
 
 public class HclDiagramFactory extends PSystemAbstractFactory {

@@ -2,8 +2,8 @@ package net.sourceforge.plantuml.klimt.font;
 
 import java.awt.Font;
 
-import net.sourceforge.plantuml.ISkinParam;
-import net.sourceforge.plantuml.UmlDiagramType;
+import net.sourceforge.plantuml.skin.UmlDiagramType;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.style.SName;
 import net.sourceforge.plantuml.style.StyleSignatureBasic;
 
@@ -11,7 +11,6 @@ interface FontParamConstant {
 	String FAMILY = "SansSerif";
 	String COLOR = "black";
 }
-
 
 public enum FontParam {
 	TIMING(12, Font.PLAIN), //

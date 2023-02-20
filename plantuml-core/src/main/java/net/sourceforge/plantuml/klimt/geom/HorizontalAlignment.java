@@ -3,10 +3,9 @@ package net.sourceforge.plantuml.klimt.geom;
 import java.util.Objects;
 
 import net.sourceforge.plantuml.StringUtils;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.graphic.TextBlock;
 import net.sourceforge.plantuml.klimt.UTranslate;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
 
 public enum HorizontalAlignment {
 

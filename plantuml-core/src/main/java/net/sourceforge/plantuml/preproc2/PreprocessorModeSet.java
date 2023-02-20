@@ -5,8 +5,7 @@ import net.sourceforge.plantuml.preproc.ImportedFiles;
 public interface PreprocessorModeSet {
 
 	public ImportedFiles getImportedFiles();
-	
-	public String getCharset();
 
+	public String getCharset();
 
 }

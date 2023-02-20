@@ -16,7 +16,6 @@ public abstract class SingleLineCommand2<S extends Diagram> implements Command<S
 	private final IRegex pattern;
 	private final boolean doTrim;
 
-	
 	public SingleLineCommand2(IRegex pattern) {
 		this(true, pattern);
 	}

@@ -5,17 +5,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-import net.sourceforge.plantuml.awt.geom.XRectangle2D;
+import net.atmp.Link;
 import net.sourceforge.plantuml.baraye.Entity;
-import net.sourceforge.plantuml.cucadiagram.Link;
-import net.sourceforge.plantuml.klimt.ULine;
-import net.sourceforge.plantuml.klimt.UPolygon;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.geom.XRectangle2D;
+import net.sourceforge.plantuml.klimt.shape.ULine;
+import net.sourceforge.plantuml.klimt.shape.UPolygon;
 import net.sourceforge.plantuml.svek.Bibliotekon;
 import net.sourceforge.plantuml.svek.SvekLine;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class Neighborhood {
 

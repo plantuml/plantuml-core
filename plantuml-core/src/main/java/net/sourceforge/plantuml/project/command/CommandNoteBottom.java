@@ -2,8 +2,8 @@ package net.sourceforge.plantuml.project.command;
 
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.CommandMultilines;
-import net.sourceforge.plantuml.cucadiagram.Display;
 import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.project.GanttDiagram;
 import net.sourceforge.plantuml.utils.BlocLines;
 

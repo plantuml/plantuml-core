@@ -103,8 +103,8 @@ import h.ST_rank_t;
 import smetana.core.CArray;
 import smetana.core.CArrayOfStar;
 import smetana.core.CString;
-import smetana.core.Memory;
 import smetana.core.Globals;
+import smetana.core.Memory;
 import smetana.core.ZType;
 
 

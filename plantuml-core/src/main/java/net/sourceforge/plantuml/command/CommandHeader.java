@@ -1,7 +1,7 @@
 package net.sourceforge.plantuml.command;
 
 import net.sourceforge.plantuml.TitledDiagram;
-import net.sourceforge.plantuml.cucadiagram.Display;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.klimt.font.FontParam;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
 import net.sourceforge.plantuml.regex.IRegex;

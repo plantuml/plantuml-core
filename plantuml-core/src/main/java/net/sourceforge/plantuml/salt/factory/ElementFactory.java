@@ -6,7 +6,7 @@ import net.sourceforge.plantuml.salt.element.Element;
 public interface ElementFactory {
 
 	Terminated<Element> create();
-	
+
 	boolean ready();
 
 }

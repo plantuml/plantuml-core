@@ -23,8 +23,8 @@ import gen.annotation.Reviewed;
 import h.ST_dt_s;
 import smetana.core.CFunction;
 import smetana.core.CFunctionAbstract;
-import smetana.core.Globals;
 import smetana.core.FieldOffset;
+import smetana.core.Globals;
 import smetana.core.__ptr__;
 
 public class dtview__c {

@@ -1,9 +1,9 @@
 package net.sourceforge.plantuml.skin;
 
-import net.sourceforge.plantuml.graphic.SymbolContext;
-import net.sourceforge.plantuml.graphic.TextBlock;
-import net.sourceforge.plantuml.graphic.USymbol;
-import net.sourceforge.plantuml.graphic.USymbols;
+import net.sourceforge.plantuml.decoration.symbol.USymbol;
+import net.sourceforge.plantuml.decoration.symbol.USymbols;
+import net.sourceforge.plantuml.klimt.Fashion;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
 
 public enum ActorStyle {
 
@@ -20,7 +20,7 @@ public enum ActorStyle {
 		throw new IllegalStateException();
 	}
 
-	public TextBlock getTextBlock(SymbolContext symbolContext) {
+	public TextBlock getTextBlock(Fashion symbolContext) {
 		if (this == STICKMAN)
 			return new ActorStickMan(symbolContext, false);
 		else if (this == STICKMAN_BUSINESS)

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import net.atmp.Link;
 import net.sourceforge.plantuml.cucadiagram.Bodier;
 import net.sourceforge.plantuml.cucadiagram.BodierJSon;
 import net.sourceforge.plantuml.cucadiagram.BodierMap;
@@ -15,12 +16,11 @@ import net.sourceforge.plantuml.cucadiagram.GroupType;
 import net.sourceforge.plantuml.cucadiagram.HideOrShow2;
 import net.sourceforge.plantuml.cucadiagram.ICucaDiagram;
 import net.sourceforge.plantuml.cucadiagram.LeafType;
-import net.sourceforge.plantuml.cucadiagram.Link;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
 import net.sourceforge.plantuml.cucadiagram.entity.IEntityFactory;
 import net.sourceforge.plantuml.plasma.Plasma;
 import net.sourceforge.plantuml.plasma.Quark;
 import net.sourceforge.plantuml.skin.VisibilityModifier;
+import net.sourceforge.plantuml.stereo.Stereotype;
 
 public final class EntityFactory implements IEntityFactory {
 

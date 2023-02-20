@@ -107,7 +107,6 @@ public class Png {
 			final String base64 = os64.toString();
 			 return Global.JSString(base64);
 
-
 		} catch (Throwable t) {
 			WasmLog.log("Fatal error " + t);
 			return JsonResult.fromCrash(start, t);

@@ -9,10 +9,10 @@ import java.util.Set;
 import net.sourceforge.plantuml.activitydiagram3.ftile.Ftile;
 import net.sourceforge.plantuml.activitydiagram3.ftile.FtileGeometry;
 import net.sourceforge.plantuml.activitydiagram3.ftile.Swimlane;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public class FtileIfNude extends FtileDimensionMemoize {
 
@@ -26,7 +26,7 @@ public class FtileIfNude extends FtileDimensionMemoize {
 		this.tile2 = tile2;
 		this.in = in;
 	}
-	
+
 	@Override
 	public Collection<Ftile> getMyChildren() {
 		return Arrays.asList(tile1, tile2);

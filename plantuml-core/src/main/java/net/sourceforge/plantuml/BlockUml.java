@@ -13,7 +13,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import net.atmp.ISkinSimple;
 import net.sourceforge.plantuml.code.AsciiEncoder;
 import net.sourceforge.plantuml.code.Transcoder;
 import net.sourceforge.plantuml.code.TranscoderUtil;
@@ -24,6 +23,7 @@ import net.sourceforge.plantuml.preproc.Defines;
 import net.sourceforge.plantuml.preproc.FileWithSuffix;
 import net.sourceforge.plantuml.preproc2.PreprocessorModeSet;
 import net.sourceforge.plantuml.regex.Matcher2;
+import net.sourceforge.plantuml.style.ISkinSimple;
 import net.sourceforge.plantuml.text.BackSlash;
 import net.sourceforge.plantuml.text.StringLocated;
 import net.sourceforge.plantuml.tim.TimLoader;

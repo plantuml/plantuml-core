@@ -1,8 +1,8 @@
 package net.sourceforge.plantuml.posimo;
 
-import net.sourceforge.plantuml.awt.geom.XLine2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-import net.sourceforge.plantuml.awt.geom.XRectangle2D;
+import net.sourceforge.plantuml.klimt.geom.XLine2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.geom.XRectangle2D;
 
 public class LineRectIntersection {
 

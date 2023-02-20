@@ -25,8 +25,8 @@ public class TimeHeaderParameters {
 	private final Set<Day> verticalSeparatorBefore;
 
 	public TimeHeaderParameters(Map<Day, HColor> colorDays, double scale, Day min, Day max, HColorSet colorSet,
-			Style timelineStyle, Style closedStyle, Locale locale, OpenClose openClose, Map<DayOfWeek, HColor> colorDaysOfWeek,
-			Set<Day> verticalSeparatorBefore) {
+			Style timelineStyle, Style closedStyle, Locale locale, OpenClose openClose,
+			Map<DayOfWeek, HColor> colorDaysOfWeek, Set<Day> verticalSeparatorBefore) {
 		this.colorDays = colorDays;
 		this.scale = scale;
 		this.min = min;

@@ -3,10 +3,8 @@ package net.sourceforge.plantuml.sequencediagram.graphic;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sourceforge.plantuml.ISkinParam;
 import net.sourceforge.plantuml.OptionFlags;
-import net.sourceforge.plantuml.PaddingParam;
-import net.sourceforge.plantuml.cucadiagram.Display;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.sequencediagram.InGroupable;
 import net.sourceforge.plantuml.sequencediagram.Message;
@@ -18,6 +16,8 @@ import net.sourceforge.plantuml.skin.ArrowConfiguration;
 import net.sourceforge.plantuml.skin.ArrowHead;
 import net.sourceforge.plantuml.skin.Component;
 import net.sourceforge.plantuml.skin.ComponentType;
+import net.sourceforge.plantuml.skin.PaddingParam;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.style.Style;
 
 class Step1Message extends Step1Abstract {

@@ -2,17 +2,17 @@ package net.sourceforge.plantuml.activitydiagram3;
 
 import java.util.Objects;
 
-import net.sourceforge.plantuml.ISkinParam;
 import net.sourceforge.plantuml.activitydiagram3.ftile.Ftile;
 import net.sourceforge.plantuml.activitydiagram3.ftile.FtileFactory;
 import net.sourceforge.plantuml.activitydiagram3.ftile.FtileKilled;
 import net.sourceforge.plantuml.activitydiagram3.ftile.Swimlane;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
-import net.sourceforge.plantuml.graphic.VerticalAlignment;
 import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.font.FontParam;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.font.UFont;
+import net.sourceforge.plantuml.klimt.geom.VerticalAlignment;
+import net.sourceforge.plantuml.style.ISkinParam;
 
 public class InstructionSpot extends MonoSwimable implements Instruction {
 
@@ -43,7 +43,7 @@ public class InstructionSpot extends MonoSwimable implements Instruction {
 		return result;
 	}
 
-	
+
 	@Override
 	public CommandExecutionResult add(Instruction other) {
 		throw new UnsupportedOperationException();

@@ -19,9 +19,9 @@ import h.ST_Agraph_s;
 import h.ST_Agrec_s;
 import h.ST_Agtag_s;
 import smetana.core.CString;
+import smetana.core.Globals;
 import smetana.core.__ptr__;
 import smetana.core.size_t;
-import smetana.core.Globals;
 
 public class rec__c {
 

@@ -8,25 +8,25 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-import net.atmp.ISkinSimple;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
+import net.atmp.PixelImage;
 import net.sourceforge.plantuml.core.Diagram;
-import net.sourceforge.plantuml.creole.Neutron;
-import net.sourceforge.plantuml.creole.atom.Atom;
-import net.sourceforge.plantuml.graphic.AbstractTextBlock;
-import net.sourceforge.plantuml.graphic.Line;
-import net.sourceforge.plantuml.klimt.UImage;
+import net.sourceforge.plantuml.klimt.AffineTransformType;
 import net.sourceforge.plantuml.klimt.UShape;
+import net.sourceforge.plantuml.klimt.creole.Neutron;
+import net.sourceforge.plantuml.klimt.creole.atom.Atom;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.shape.AbstractTextBlock;
+import net.sourceforge.plantuml.klimt.shape.Line;
+import net.sourceforge.plantuml.klimt.shape.UImage;
+import net.sourceforge.plantuml.klimt.shape.UImageSvg;
 import net.sourceforge.plantuml.log.Logme;
 import net.sourceforge.plantuml.preproc.Defines;
 import net.sourceforge.plantuml.security.SImageIO;
+import net.sourceforge.plantuml.style.ISkinSimple;
 import net.sourceforge.plantuml.text.StringLocated;
-import net.sourceforge.plantuml.ugraphic.AffineTransformType;
-import net.sourceforge.plantuml.ugraphic.PixelImage;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
-import net.sourceforge.plantuml.ugraphic.UImageSvg;
 
 public class EmbeddedDiagram extends AbstractTextBlock implements Line, Atom {
 

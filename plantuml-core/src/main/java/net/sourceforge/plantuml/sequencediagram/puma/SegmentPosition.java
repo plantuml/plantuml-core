@@ -16,7 +16,7 @@ public class SegmentPosition {
 
 	public PSegment getSegment() {
 		return segment;
-		
+
 	}
 
 }

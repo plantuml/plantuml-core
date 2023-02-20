@@ -1,12 +1,12 @@
 package net.sourceforge.plantuml.posimo;
 
-import net.sourceforge.plantuml.awt.geom.XLine2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.geom.XLine2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 
 public class LineSegmentIntersection {
 
 	private final XPoint2D inter;
-	
+
 	// http://local.wasp.uwa.edu.au/~pbourke/geometry/lineline2d/
 
 	public LineSegmentIntersection(XLine2D segment, XLine2D lineB) {

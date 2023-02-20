@@ -7,7 +7,7 @@ public class ValueColor extends ValueAbstract {
 
 	private final HColor color;
 	private final int priority;
-	
+
 	@Override
 	public String toString() {
 		return color.toString();

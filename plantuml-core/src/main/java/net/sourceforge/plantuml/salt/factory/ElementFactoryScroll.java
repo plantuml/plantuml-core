@@ -28,8 +28,9 @@ public class ElementFactoryScroll extends AbstractElementFactoryComplex {
 			positionner.add(next);
 		}
 		final Terminated<String> next = getDataSource().next();
-		return new Terminated<Element>(new ElementPyramidScrolled(positionner, getDictionary(),
-				ScrollStrategy.fromDesc(header)), next.getTerminator());
+		return new Terminated<Element>(
+				new ElementPyramidScrolled(positionner, getDictionary(), ScrollStrategy.fromDesc(header)),
+				next.getTerminator());
 	}
 
 	public boolean ready() {

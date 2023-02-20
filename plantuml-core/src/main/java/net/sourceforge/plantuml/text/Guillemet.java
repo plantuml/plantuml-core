@@ -41,8 +41,8 @@ public class Guillemet {
 		if (this == DOUBLE_COMPARATOR) {
 			return st;
 		}
-		return st.replaceAll("\\<\\<\\s?((?:\\<&\\w+\\>|[^<>])+?)\\s?\\>\\>", Matcher.quoteReplacement(start) + "$1"
-				+ Matcher.quoteReplacement(end));
+		return st.replaceAll("\\<\\<\\s?((?:\\<&\\w+\\>|[^<>])+?)\\s?\\>\\>",
+				Matcher.quoteReplacement(start) + "$1" + Matcher.quoteReplacement(end));
 	}
 
 	public String manageGuillemetStrict(String st) {

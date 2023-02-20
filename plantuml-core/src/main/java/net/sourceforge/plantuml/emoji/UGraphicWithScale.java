@@ -4,7 +4,7 @@ import java.awt.geom.AffineTransform;
 
 import net.sourceforge.plantuml.klimt.UChange;
 import net.sourceforge.plantuml.klimt.UShape;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 
 public class UGraphicWithScale {
 

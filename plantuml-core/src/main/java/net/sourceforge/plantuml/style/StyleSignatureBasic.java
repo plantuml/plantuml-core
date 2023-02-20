@@ -7,9 +7,9 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import net.sourceforge.plantuml.cucadiagram.Stereostyles;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
-import net.sourceforge.plantuml.cucadiagram.StereotypeDecoration;
+import net.sourceforge.plantuml.stereo.Stereostyles;
+import net.sourceforge.plantuml.stereo.Stereotype;
+import net.sourceforge.plantuml.stereo.StereotypeDecoration;
 import net.sourceforge.plantuml.url.Url;
 
 public class StyleSignatureBasic implements StyleSignature {

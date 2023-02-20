@@ -4,13 +4,13 @@ import java.util.Objects;
 import java.util.Set;
 
 import net.sourceforge.plantuml.SpecificBackcolorable;
-import net.sourceforge.plantuml.cucadiagram.Display;
 import net.sourceforge.plantuml.cucadiagram.EntityPortion;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
-import net.sourceforge.plantuml.graphic.SymbolContext;
-import net.sourceforge.plantuml.graphic.color.Colors;
+import net.sourceforge.plantuml.klimt.Fashion;
 import net.sourceforge.plantuml.klimt.color.ColorType;
+import net.sourceforge.plantuml.klimt.color.Colors;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.creole.Display;
+import net.sourceforge.plantuml.stereo.Stereotype;
 import net.sourceforge.plantuml.style.MergeStrategy;
 import net.sourceforge.plantuml.style.Style;
 import net.sourceforge.plantuml.style.StyleBuilder;
@@ -104,14 +104,14 @@ public class Participant implements SpecificBackcolorable, WithStyle {
 		return initialLife;
 	}
 
-	private SymbolContext liveBackcolors;
+	private Fashion liveBackcolors;
 
-	public final void incInitialLife(SymbolContext colors) {
+	public final void incInitialLife(Fashion colors) {
 		initialLife++;
 		this.liveBackcolors = colors;
 	}
 
-	public SymbolContext getLiveSpecificBackColors() {
+	public Fashion getLiveSpecificBackColors() {
 		return liveBackcolors;
 	}
 

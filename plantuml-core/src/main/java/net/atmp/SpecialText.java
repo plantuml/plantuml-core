@@ -1,12 +1,12 @@
 package net.atmp;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.graphic.TextBlock;
-import net.sourceforge.plantuml.klimt.UShapeIgnorableForCompression;
 import net.sourceforge.plantuml.klimt.UTranslate;
-import net.sourceforge.plantuml.klimt.comp.CompressionMode;
-import net.sourceforge.plantuml.ugraphic.UEmpty;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.compress.CompressionMode;
+import net.sourceforge.plantuml.klimt.compress.UShapeIgnorableForCompression;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.klimt.shape.UEmpty;
 
 public class SpecialText implements UShapeIgnorableForCompression {
 

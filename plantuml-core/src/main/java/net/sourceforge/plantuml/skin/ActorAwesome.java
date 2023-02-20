@@ -1,15 +1,15 @@
 package net.sourceforge.plantuml.skin;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.graphic.AbstractTextBlock;
-import net.sourceforge.plantuml.graphic.SymbolContext;
-import net.sourceforge.plantuml.graphic.TextBlock;
+import net.sourceforge.plantuml.klimt.Fashion;
 import net.sourceforge.plantuml.klimt.UPath;
 import net.sourceforge.plantuml.klimt.UStroke;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UEllipse;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.shape.AbstractTextBlock;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.klimt.shape.UEllipse;
 
 public class ActorAwesome extends AbstractTextBlock implements TextBlock {
 
@@ -20,9 +20,9 @@ public class ActorAwesome extends AbstractTextBlock implements TextBlock {
 	private final double radius = 8;
 	private final double bodyHeight = 28;
 
-	private final SymbolContext symbolContext;
+	private final Fashion symbolContext;
 
-	public ActorAwesome(SymbolContext symbolContext) {
+	public ActorAwesome(Fashion symbolContext) {
 		this.symbolContext = symbolContext.withStroke(new UStroke(1.5));
 	}
 
@@ -36,8 +36,8 @@ public class ActorAwesome extends AbstractTextBlock implements TextBlock {
 		path.cubicTo(collar, collar, bodyWidth / 2 - shoulder - collar, collar, bodyWidth / 2 - shoulder, 0);
 		path.cubicTo(bodyWidth / 2 - shoulder / 2, 0, bodyWidth / 2, shoulder / 2, bodyWidth / 2, shoulder);
 		path.lineTo(bodyWidth / 2, bodyHeight - radius);
-		path.cubicTo(bodyWidth / 2, bodyHeight - radius / 2, bodyWidth / 2 - radius / 2, bodyHeight, bodyWidth / 2
-				- radius, bodyHeight);
+		path.cubicTo(bodyWidth / 2, bodyHeight - radius / 2, bodyWidth / 2 - radius / 2, bodyHeight,
+				bodyWidth / 2 - radius, bodyHeight);
 		path.lineTo(-bodyWidth / 2 + radius, bodyHeight);
 		path.cubicTo(-bodyWidth / 2 + radius / 2, bodyHeight, -bodyWidth / 2, bodyHeight - radius / 2, -bodyWidth / 2,
 				bodyHeight - radius);

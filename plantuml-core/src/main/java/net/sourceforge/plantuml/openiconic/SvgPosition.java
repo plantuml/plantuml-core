@@ -2,7 +2,7 @@ package net.sourceforge.plantuml.openiconic;
 
 import java.awt.geom.AffineTransform;
 
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 
 public class SvgPosition {
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.core.ImageData;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 
 public interface CucaDiagramFileMaker {
 

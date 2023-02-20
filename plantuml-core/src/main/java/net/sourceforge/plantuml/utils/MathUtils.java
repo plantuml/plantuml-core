@@ -1,6 +1,6 @@
 package net.sourceforge.plantuml.utils;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public class MathUtils {
 

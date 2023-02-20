@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import net.sourceforge.plantuml.cucadiagram.StereotypeDecoration;
+import net.sourceforge.plantuml.stereo.StereotypeDecoration;
 
 public class FromSkinparamToStyle {
 
@@ -202,7 +202,6 @@ public class FromSkinparamToStyle {
 		addConvert("lifelineStrategy", PName.LineStyle, SName.lifeLine);
 		addConvert("wrapWidth", PName.MaximumWidth, SName.element);
 		addConvert("HyperlinkUnderline", PName.HyperlinkUnderlineThickness, SName.element);
-
 
 	}
 

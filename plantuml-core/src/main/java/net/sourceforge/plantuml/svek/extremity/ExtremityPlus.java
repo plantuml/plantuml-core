@@ -1,12 +1,12 @@
 package net.sourceforge.plantuml.svek.extremity;
 
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-import net.sourceforge.plantuml.graphic.UDrawable;
-import net.sourceforge.plantuml.klimt.ULine;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColor;
-import net.sourceforge.plantuml.ugraphic.UEllipse;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.shape.UDrawable;
+import net.sourceforge.plantuml.klimt.shape.UEllipse;
+import net.sourceforge.plantuml.klimt.shape.ULine;
 
 class ExtremityPlus extends Extremity {
 
@@ -24,12 +24,11 @@ class ExtremityPlus extends Extremity {
 		this.py = y;
 		this.backgroundColor = backgroundColor;
 	}
-	
+
 	@Override
 	public XPoint2D somePoint() {
 		return new XPoint2D(px, py);
 	}
-
 
 	public static UDrawable create(XPoint2D p1, double angle, HColor backgroundColor) {
 		final double x = p1.getX() - radius + radius * Math.sin(angle);

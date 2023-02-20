@@ -2,6 +2,7 @@ package net.sourceforge.plantuml.sequencediagram;
 
 public enum GroupingType {
 	START, ELSE, END;
+
 	public static GroupingType getType(String s) {
 		if (s.equalsIgnoreCase("opt")) {
 			return GroupingType.START;

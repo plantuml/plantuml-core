@@ -1,7 +1,7 @@
 package net.sourceforge.plantuml.sequencediagram.teoz;
 
-import net.sourceforge.plantuml.graphic.UDrawable;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.shape.UDrawable;
 
 public abstract class CommonTile implements Tile, UDrawable {
 

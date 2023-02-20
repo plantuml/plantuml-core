@@ -1,14 +1,14 @@
 package net.sourceforge.plantuml.sequencediagram;
 
-import net.sourceforge.plantuml.graphic.SymbolContext;
+import net.sourceforge.plantuml.klimt.Fashion;
 
 public class LifeEvent extends AbstractEvent implements Event {
 
 	private final Participant p;
 	private final LifeEventType type;
-	private final SymbolContext backcolor;
+	private final Fashion backcolor;
 
-	public LifeEvent(Participant p, LifeEventType type, SymbolContext backcolor) {
+	public LifeEvent(Participant p, LifeEventType type, Fashion backcolor) {
 		this.p = p;
 		this.type = type;
 		this.backcolor = backcolor;
@@ -27,7 +27,7 @@ public class LifeEvent extends AbstractEvent implements Event {
 		return type;
 	}
 
-	public SymbolContext getSpecificColors() {
+	public Fashion getSpecificColors() {
 		return backcolor;
 	}
 

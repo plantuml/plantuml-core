@@ -31,7 +31,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import net.sourceforge.plantuml.FileUtils;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.code.TranscoderUtil;
 import net.sourceforge.plantuml.klimt.UGroupType;
 import net.sourceforge.plantuml.klimt.UPath;
@@ -40,11 +39,12 @@ import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.HColorGradient;
 import net.sourceforge.plantuml.klimt.geom.USegment;
 import net.sourceforge.plantuml.klimt.geom.USegmentType;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.shape.UImageSvg;
 import net.sourceforge.plantuml.log.Logme;
 import net.sourceforge.plantuml.security.SImageIO;
 import net.sourceforge.plantuml.security.SecurityProfile;
 import net.sourceforge.plantuml.security.SecurityUtils;
-import net.sourceforge.plantuml.ugraphic.UImageSvg;
 import net.sourceforge.plantuml.utils.Base64Coder;
 import net.sourceforge.plantuml.utils.Log;
 import net.sourceforge.plantuml.xml.XmlFactories;
@@ -539,6 +539,7 @@ public class SvgGraphics {
 				elt.setAttribute(ent.getKey(), ent.getValue());
 
 			elt.setTextContent(text);
+			// elt.appendChild(document.createCDATASection(text));
 			getG().appendChild(elt);
 
 			// http://forum.plantuml.net/9158/hyperlink-without-underline
@@ -594,6 +595,7 @@ public class SvgGraphics {
 		// // Sets the standalone property in the first line of
 		// // the output file.
 		transformer.setOutputProperty(OutputKeys.STANDALONE, "no");
+		transformer.setOutputProperty(OutputKeys.ENCODING, "us-ascii");
 		// transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, "SVG 1.1");
 		// transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
 

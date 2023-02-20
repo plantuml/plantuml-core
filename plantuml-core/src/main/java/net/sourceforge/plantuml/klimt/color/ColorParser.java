@@ -1,6 +1,5 @@
 package net.sourceforge.plantuml.klimt.color;
 
-import net.sourceforge.plantuml.graphic.color.Colors;
 import net.sourceforge.plantuml.regex.RegexLeaf;
 import net.sourceforge.plantuml.regex.RegexResult;
 

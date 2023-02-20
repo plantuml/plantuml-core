@@ -1,6 +1,6 @@
 package net.sourceforge.plantuml.version;
 
-import static net.sourceforge.plantuml.graphic.GraphicPosition.BACKGROUND_CORNER_BOTTOM_RIGHT;
+import static net.sourceforge.plantuml.klimt.geom.GraphicPosition.BACKGROUND_CORNER_BOTTOM_RIGHT;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

@@ -1,13 +1,13 @@
 package net.sourceforge.plantuml.svek;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.klimt.ULine;
-import net.sourceforge.plantuml.klimt.URectangle;
 import net.sourceforge.plantuml.klimt.UStroke;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.HColors;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.shape.ULine;
+import net.sourceforge.plantuml.klimt.shape.URectangle;
 
 public final class RoundedContainer {
 
@@ -45,7 +45,7 @@ public final class RoundedContainer {
 			rect.setDeltaShadow(shadowing);
 			ug.apply(HColors.transparent().bg()).draw(rect);
 			rect.setDeltaShadow(0);
-			
+
 		}
 		final double headerHeight = titleHeight + attributeHeight;
 

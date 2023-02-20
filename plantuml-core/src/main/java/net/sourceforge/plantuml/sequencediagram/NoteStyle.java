@@ -28,8 +28,7 @@ public enum NoteStyle {
 	}
 
 	public StyleSignatureBasic getDefaultStyleDefinition() {
-		return StyleSignatureBasic.of(SName.root, SName.element, SName.sequenceDiagram,
-				SName.note);
+		return StyleSignatureBasic.of(SName.root, SName.element, SName.sequenceDiagram, SName.note);
 	}
 
 }

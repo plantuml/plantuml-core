@@ -23,8 +23,8 @@ import h.ST_dt_s;
 import smetana.core.CFunction;
 import smetana.core.CFunctionAbstract;
 import smetana.core.CString;
-import smetana.core.Memory;
 import smetana.core.Globals;
+import smetana.core.Memory;
 import smetana.core.__ptr__;
 
 public class id__c {

@@ -8,15 +8,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import net.sourceforge.plantuml.ISkinParam;
-import net.sourceforge.plantuml.Pragma;
-import net.sourceforge.plantuml.UmlDiagramType;
+import net.atmp.Link;
 import net.sourceforge.plantuml.baraye.Entity;
 import net.sourceforge.plantuml.baraye.EntityFactory;
 import net.sourceforge.plantuml.cucadiagram.EntityPortion;
 import net.sourceforge.plantuml.cucadiagram.GroupHierarchy;
-import net.sourceforge.plantuml.cucadiagram.Link;
 import net.sourceforge.plantuml.cucadiagram.PortionShower;
+import net.sourceforge.plantuml.skin.Pragma;
+import net.sourceforge.plantuml.skin.UmlDiagramType;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.svek.DotMode;
 
 final public class DotData implements PortionShower {

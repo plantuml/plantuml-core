@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 
 public class Cluster implements Clusterable {
 
@@ -19,7 +19,7 @@ public class Cluster implements Clusterable {
 	private double y;
 	private double width;
 	private double height;
-	
+
 	private final double titleWidth;
 	private final double titleHeight;
 
@@ -84,7 +84,7 @@ public class Cluster implements Clusterable {
 		}
 		return null;
 	}
-	
+
 	public XPoint2D getPosition() {
 		return new XPoint2D(x, y);
 	}
@@ -120,6 +120,5 @@ public class Cluster implements Clusterable {
 	public void moveSvek(double deltaX, double deltaY) {
 		throw new UnsupportedOperationException();
 	}
-
 
 }

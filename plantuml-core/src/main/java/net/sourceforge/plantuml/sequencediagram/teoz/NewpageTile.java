@@ -1,9 +1,9 @@
 package net.sourceforge.plantuml.sequencediagram.teoz;
 
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.real.Real;
 import net.sourceforge.plantuml.sequencediagram.Event;
 import net.sourceforge.plantuml.sequencediagram.Newpage;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class NewpageTile extends AbstractTile {
 

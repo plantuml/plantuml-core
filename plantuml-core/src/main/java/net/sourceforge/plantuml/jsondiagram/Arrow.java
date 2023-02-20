@@ -1,10 +1,10 @@
 package net.sourceforge.plantuml.jsondiagram;
 
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-import net.sourceforge.plantuml.klimt.ULine;
 import net.sourceforge.plantuml.klimt.UPath;
 import net.sourceforge.plantuml.klimt.UStroke;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.shape.ULine;
 
 public class Arrow {
 
@@ -26,12 +26,11 @@ public class Arrow {
 
 		final double factor = .4;
 		final double factor2 = .3;
-		
+
 		final XPoint2D p3 = getPoint(p1, alpha + Math.PI / 2, dist * factor);
 		final XPoint2D p4 = getPoint(p1, alpha - Math.PI / 2, dist * factor);
 		final XPoint2D p11 = getPoint(p1, alpha, dist * factor2);
 
-		
 		final UPath path = new UPath();
 		path.moveTo(p4);
 		path.lineTo(p11);

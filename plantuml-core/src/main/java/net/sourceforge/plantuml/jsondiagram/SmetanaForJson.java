@@ -17,21 +17,20 @@ import h.ST_Agnode_s;
 import h.ST_Agnodeinfo_t;
 import h.ST_Agraph_s;
 import h.ST_GVC_s;
-import net.sourceforge.plantuml.ISkinParam;
-import net.sourceforge.plantuml.UmlDiagramType;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.json.JsonValue;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.skin.UmlDiagramType;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.style.PName;
 import net.sourceforge.plantuml.style.SName;
 import net.sourceforge.plantuml.style.Style;
 import net.sourceforge.plantuml.style.StyleSignatureBasic;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 import net.sourceforge.plantuml.yaml.Highlighted;
 import smetana.core.CString;
-import smetana.core.Macro;
 import smetana.core.Globals;
 import smetana.core.debug.SmetanaDebug;
 
@@ -94,8 +93,8 @@ public class SmetanaForJson {
 
 	private ST_Agnode_s manageOneNode(Globals zz, JsonValue current, List<Highlighted> highlighted) {
 		final TextBlockJson block = new TextBlockJson(skinParam, current, highlighted);
-		final ST_Agnode_s node1 = createNode(zz, block.calculateDimension(stringBounder), block.size(), current.isArray(),
-				(int) block.getWidthColA(stringBounder), (int) block.getWidthColB(stringBounder));
+		final ST_Agnode_s node1 = createNode(zz, block.calculateDimension(stringBounder), block.size(),
+				current.isArray(), (int) block.getWidthColA(stringBounder), (int) block.getWidthColB(stringBounder));
 		nodes.add(new InternalNode(block, node1));
 		final List<JsonValue> children = block.children();
 		final List<String> keys = block.keys();
@@ -197,7 +196,8 @@ public class SmetanaForJson {
 		return edge;
 	}
 
-	private ST_Agnode_s createNode(Globals zz, XDimension2D dim, int size, boolean isArray, int colAwidth, int colBwidth) {
+	private ST_Agnode_s createNode(Globals zz, XDimension2D dim, int size, boolean isArray, int colAwidth,
+			int colBwidth) {
 		final String width = "" + (dim.getWidth() / 72);
 		final String height = "" + (dim.getHeight() / 72);
 

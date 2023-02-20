@@ -1,31 +1,31 @@
 package net.sourceforge.plantuml.descdiagram;
 
-import net.sourceforge.plantuml.ColorParam;
-import net.sourceforge.plantuml.ISkinParam;
-import net.sourceforge.plantuml.LineParam;
-import net.sourceforge.plantuml.SkinParamUtils;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.baraye.Entity;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
-import net.sourceforge.plantuml.graphic.TextBlock;
-import net.sourceforge.plantuml.graphic.TextBlockUtils;
-import net.sourceforge.plantuml.klimt.URectangle;
 import net.sourceforge.plantuml.klimt.UStroke;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.ColorType;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.creole.Display;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.FontConfiguration;
 import net.sourceforge.plantuml.klimt.font.FontParam;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.font.UFont;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.klimt.geom.PlacementStrategyY1Y2;
+import net.sourceforge.plantuml.klimt.geom.ULayoutGroup;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.klimt.shape.TextBlockUtils;
+import net.sourceforge.plantuml.klimt.shape.URectangle;
+import net.sourceforge.plantuml.skin.ColorParam;
+import net.sourceforge.plantuml.skin.LineParam;
+import net.sourceforge.plantuml.skin.SkinParamUtils;
+import net.sourceforge.plantuml.stereo.Stereotype;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.svek.AbstractEntityImage;
 import net.sourceforge.plantuml.svek.ShapeType;
 import net.sourceforge.plantuml.text.Guillemet;
-import net.sourceforge.plantuml.ugraphic.PlacementStrategyY1Y2;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
-import net.sourceforge.plantuml.ugraphic.ULayoutGroup;
 import net.sourceforge.plantuml.url.Url;
 
 public class EntityImageDomain extends AbstractEntityImage {
@@ -47,7 +47,8 @@ public class EntityImageDomain extends AbstractEntityImage {
 					FontConfiguration.create(getSkinParam(), FontParam.DESIGNED_DOMAIN_STEREOTYPE, stereotype),
 					HorizontalAlignment.CENTER, skinParam);
 		}
-		this.tag = new BoxedCharacter(typeLetter, 8, UFont.byDefault(8), stereotype.getHtmlColor(), null, fc.getColor());
+		this.tag = new BoxedCharacter(typeLetter, 8, UFont.byDefault(8), stereotype.getHtmlColor(), null,
+				fc.getColor());
 
 		this.url = entity.getUrl99();
 	}
@@ -67,8 +68,8 @@ public class EntityImageDomain extends AbstractEntityImage {
 
 	private XDimension2D getNameAndSteretypeDimension(StringBounder stringBounder) {
 		final XDimension2D nameDim = name.calculateDimension(stringBounder);
-		final XDimension2D stereoDim = stereo == null ? new XDimension2D(0, 0) : stereo
-				.calculateDimension(stringBounder);
+		final XDimension2D stereoDim = stereo == null ? new XDimension2D(0, 0)
+				: stereo.calculateDimension(stringBounder);
 		final XDimension2D nameAndStereo = new XDimension2D(Math.max(nameDim.getWidth(), stereoDim.getWidth()),
 				nameDim.getHeight() + stereoDim.getHeight());
 		return nameAndStereo;

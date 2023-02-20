@@ -1,5 +1,6 @@
 package net.sourceforge.plantuml.command.note;
 
+import net.atmp.Link;
 import net.sourceforge.plantuml.StringUtils;
 import net.sourceforge.plantuml.baraye.CucaDiagram;
 import net.sourceforge.plantuml.command.Command;
@@ -10,10 +11,9 @@ import net.sourceforge.plantuml.command.Position;
 import net.sourceforge.plantuml.command.SingleLineCommand2;
 import net.sourceforge.plantuml.command.Trim;
 import net.sourceforge.plantuml.cucadiagram.CucaNote;
-import net.sourceforge.plantuml.cucadiagram.Link;
-import net.sourceforge.plantuml.graphic.color.Colors;
 import net.sourceforge.plantuml.klimt.color.ColorParser;
 import net.sourceforge.plantuml.klimt.color.ColorType;
+import net.sourceforge.plantuml.klimt.color.Colors;
 import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
 import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexConcat;
@@ -62,7 +62,8 @@ public final class CommandFactoryNoteOnLink implements SingleMultiFactoryCommand
 	}
 
 	public Command<CucaDiagram> createMultiLine(boolean withBracket) {
-		return new CommandMultilines2<CucaDiagram>(getRegexConcatMultiLine(), MultilinesStrategy.KEEP_STARTING_QUOTE, Trim.BOTH) {
+		return new CommandMultilines2<CucaDiagram>(getRegexConcatMultiLine(), MultilinesStrategy.KEEP_STARTING_QUOTE,
+				Trim.BOTH) {
 
 			@Override
 			public String getPatternEnd() {

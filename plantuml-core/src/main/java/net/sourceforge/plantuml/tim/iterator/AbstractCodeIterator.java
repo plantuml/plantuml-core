@@ -18,10 +18,9 @@ public abstract class AbstractCodeIterator implements CodeIterator {
 	final public CodePosition getCodePosition() {
 		return source.getCodePosition();
 	}
-	
+
 	final public void jumpToCodePosition(CodePosition newPosition) throws EaterException {
 		source.jumpToCodePosition(newPosition);
 	}
-
 
 }

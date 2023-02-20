@@ -3,7 +3,6 @@ package net.sourceforge.plantuml.compositediagram;
 import java.util.List;
 import java.util.Map;
 
-import net.atmp.ISkinSimple;
 import net.sourceforge.plantuml.command.Command;
 import net.sourceforge.plantuml.command.CommonCommands;
 import net.sourceforge.plantuml.command.PSystemCommandFactory;
@@ -12,6 +11,7 @@ import net.sourceforge.plantuml.compositediagram.command.CommandCreatePackageBlo
 import net.sourceforge.plantuml.compositediagram.command.CommandEndPackageBlock;
 import net.sourceforge.plantuml.compositediagram.command.CommandLinkBlock;
 import net.sourceforge.plantuml.core.UmlSource;
+import net.sourceforge.plantuml.style.ISkinSimple;
 
 public class CompositeDiagramFactory extends PSystemCommandFactory {
 

@@ -1,9 +1,9 @@
 package net.sourceforge.plantuml.sequencediagram.teoz;
 
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.real.Real;
 import net.sourceforge.plantuml.sequencediagram.Event;
 import net.sourceforge.plantuml.sequencediagram.HSpace;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class HSpaceTile extends AbstractTile implements Tile {
 
@@ -26,7 +26,6 @@ public class HSpaceTile extends AbstractTile implements Tile {
 	public YGauge getYGauge() {
 		return yGauge;
 	}
-
 
 	public void drawU(UGraphic ug) {
 	}

@@ -2,7 +2,7 @@ package net.sourceforge.plantuml.sequencediagram.command;
 
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.SingleLineCommand2;
-import net.sourceforge.plantuml.cucadiagram.Display;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexConcat;
 import net.sourceforge.plantuml.regex.RegexLeaf;
@@ -29,7 +29,8 @@ public class CommandNewpage extends SingleLineCommand2<SequenceDiagram> {
 	}
 
 	@Override
-	protected CommandExecutionResult executeArg(SequenceDiagram sequenceDiagram, LineLocation location, RegexResult arg) {
+	protected CommandExecutionResult executeArg(SequenceDiagram sequenceDiagram, LineLocation location,
+			RegexResult arg) {
 		final String label = arg.get("LABEL", 0);
 		final Display strings = label == null ? Display.NULL : Display.getWithNewlines(label);
 		sequenceDiagram.newpage(strings);

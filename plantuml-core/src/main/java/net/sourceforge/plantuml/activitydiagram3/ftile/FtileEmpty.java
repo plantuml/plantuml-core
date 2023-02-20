@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import net.sourceforge.plantuml.ISkinParam;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.style.ISkinParam;
 
 public class FtileEmpty extends AbstractFtile {
 

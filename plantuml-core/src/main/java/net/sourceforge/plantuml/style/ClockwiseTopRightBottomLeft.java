@@ -1,7 +1,7 @@
 package net.sourceforge.plantuml.style;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public class ClockwiseTopRightBottomLeft {
 

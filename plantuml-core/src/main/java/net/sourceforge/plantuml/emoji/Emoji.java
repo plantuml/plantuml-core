@@ -13,8 +13,8 @@ import java.util.TreeMap;
 
 import net.sourceforge.plantuml.emoji.data.Dummy;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.log.Logme;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 // Emojji from https://twemoji.twitter.com/
 // Shorcut from https://api.github.com/emojis

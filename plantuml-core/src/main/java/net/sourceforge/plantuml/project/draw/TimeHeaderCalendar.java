@@ -3,10 +3,10 @@ package net.sourceforge.plantuml.project.draw;
 import java.util.Locale;
 
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.project.TimeHeaderParameters;
 import net.sourceforge.plantuml.project.time.Day;
 import net.sourceforge.plantuml.project.timescale.TimeScale;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public abstract class TimeHeaderCalendar extends TimeHeader {
 

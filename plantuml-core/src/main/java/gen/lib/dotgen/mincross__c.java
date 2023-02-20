@@ -94,8 +94,8 @@ import smetana.core.CArrayOfStar;
 import smetana.core.CFunction;
 import smetana.core.CFunctionAbstract;
 import smetana.core.CString;
-import smetana.core.Memory;
 import smetana.core.Globals;
+import smetana.core.Memory;
 import smetana.core.ZType;
 
 /* 

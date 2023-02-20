@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-import net.sourceforge.plantuml.graphic.AbstractTextBlock;
-import net.sourceforge.plantuml.graphic.TextBlock;
-import net.sourceforge.plantuml.klimt.ULine;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColors;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.shape.AbstractTextBlock;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.klimt.shape.ULine;
 
 public class TilesField extends AbstractTextBlock implements TextBlock {
 
@@ -220,8 +220,8 @@ public class TilesField extends AbstractTextBlock implements TextBlock {
 			final TileArea dest = p.getDest();
 			final XPoint2D pstart = getPoint2D(dimSingle, start);
 			final XPoint2D pdest = getPoint2D(dimSingle, dest);
-			ug.apply(new UTranslate(x + pstart.getX(), y + pstart.getY())).draw(new ULine(pdest.getX() - pstart.getX(), pdest.getY()
-			- pstart.getY()));
+			ug.apply(new UTranslate(x + pstart.getX(), y + pstart.getY()))
+					.draw(new ULine(pdest.getX() - pstart.getX(), pdest.getY() - pstart.getY()));
 		}
 	}
 

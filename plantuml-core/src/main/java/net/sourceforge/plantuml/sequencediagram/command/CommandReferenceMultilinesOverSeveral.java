@@ -6,9 +6,9 @@ import java.util.List;
 import net.sourceforge.plantuml.StringUtils;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.CommandMultilines;
-import net.sourceforge.plantuml.cucadiagram.Display;
 import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.regex.RegexConcat;
 import net.sourceforge.plantuml.regex.RegexLeaf;
 import net.sourceforge.plantuml.regex.RegexOptional;
@@ -55,8 +55,7 @@ public class CommandReferenceMultilinesOverSeveral extends CommandMultilines<Seq
 			return CommandExecutionResult.error("Cannot parse line " + firstLine);
 
 		final String s1 = arg.get("REF", 0);
-		final HColor backColorElement = s1 == null ? null
-				: diagram.getSkinParam().getIHtmlColorSet().getColor(s1);
+		final HColor backColorElement = s1 == null ? null : diagram.getSkinParam().getIHtmlColorSet().getColor(s1);
 		// final HtmlColor backColorGeneral =
 		// HtmlColorSetSimple.instance().getColorIfValid(line0.get(1));
 

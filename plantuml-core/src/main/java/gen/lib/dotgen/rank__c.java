@@ -78,8 +78,8 @@ import h.ST_elist;
 import h.ST_point;
 import smetana.core.CArrayOfStar;
 import smetana.core.CString;
-import smetana.core.Memory;
 import smetana.core.Globals;
+import smetana.core.Memory;
 import smetana.core.ZType;
 
 public class rank__c {

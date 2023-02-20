@@ -1,6 +1,7 @@
 package net.sourceforge.plantuml.cucadiagram;
 
 import net.sourceforge.plantuml.api.ApiWarning;
+import net.sourceforge.plantuml.klimt.creole.Display;
 
 /**
  * 

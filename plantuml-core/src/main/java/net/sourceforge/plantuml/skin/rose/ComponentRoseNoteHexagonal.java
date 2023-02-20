@@ -1,22 +1,22 @@
 package net.sourceforge.plantuml.skin.rose;
 
-import net.atmp.ISkinSimple;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.graphic.SymbolContext;
-import net.sourceforge.plantuml.graphic.color.Colors;
-import net.sourceforge.plantuml.klimt.UPolygon;
+import net.sourceforge.plantuml.klimt.Fashion;
 import net.sourceforge.plantuml.klimt.UStroke;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.color.Colors;
+import net.sourceforge.plantuml.klimt.creole.Display;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.shape.UPolygon;
 import net.sourceforge.plantuml.skin.AbstractTextualComponent;
 import net.sourceforge.plantuml.skin.Area;
+import net.sourceforge.plantuml.style.ISkinSimple;
 import net.sourceforge.plantuml.style.Style;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 final public class ComponentRoseNoteHexagonal extends AbstractTextualComponent {
 
 	private final int cornersize = 10;
-	private final SymbolContext symbolContext;
+	private final Fashion symbolContext;
 
 	public ComponentRoseNoteHexagonal(Style style, Display strings, ISkinSimple spriteContainer, Colors colors) {
 		super(style, style.wrapWidth(), 12, 12, 4, spriteContainer, strings, false);

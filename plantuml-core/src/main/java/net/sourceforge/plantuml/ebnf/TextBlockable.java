@@ -1,7 +1,7 @@
 package net.sourceforge.plantuml.ebnf;
 
-import net.sourceforge.plantuml.ISkinParam;
-import net.sourceforge.plantuml.graphic.TextBlock;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.style.ISkinParam;
 
 public interface TextBlockable {
 

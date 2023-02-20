@@ -4,21 +4,21 @@ import java.util.List;
 
 import net.sourceforge.plantuml.Hideable;
 import net.sourceforge.plantuml.StringUtils;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
 import net.sourceforge.plantuml.baraye.Entity;
 import net.sourceforge.plantuml.cucadiagram.EntityPosition;
 import net.sourceforge.plantuml.cucadiagram.Together;
 import net.sourceforge.plantuml.klimt.Shadowable;
-import net.sourceforge.plantuml.klimt.UPolygon;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.geom.ClusterPosition;
 import net.sourceforge.plantuml.klimt.geom.Positionable;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.shape.UPolygon;
 import net.sourceforge.plantuml.svek.image.EntityImageDescription;
 import net.sourceforge.plantuml.svek.image.EntityImageLollipopInterface;
 import net.sourceforge.plantuml.svek.image.EntityImagePort;
 import net.sourceforge.plantuml.svek.image.EntityImageStateBorder;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 import net.sourceforge.plantuml.utils.Direction;
 
 public class SvekNode implements Positionable, Hideable {

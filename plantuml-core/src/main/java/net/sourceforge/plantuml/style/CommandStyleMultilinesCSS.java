@@ -1,6 +1,5 @@
 package net.sourceforge.plantuml.style;
 
-import net.sourceforge.plantuml.SkinParam;
 import net.sourceforge.plantuml.TitledDiagram;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.CommandMultilines2;
@@ -9,6 +8,7 @@ import net.sourceforge.plantuml.command.Trim;
 import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexConcat;
 import net.sourceforge.plantuml.regex.RegexLeaf;
+import net.sourceforge.plantuml.skin.SkinParam;
 import net.sourceforge.plantuml.style.parser.StyleParser;
 import net.sourceforge.plantuml.style.parser.StyleParsingException;
 import net.sourceforge.plantuml.utils.BlocLines;

@@ -3,25 +3,25 @@ package net.sourceforge.plantuml.activitydiagram3;
 import java.util.Collection;
 import java.util.Objects;
 
-import net.sourceforge.plantuml.ISkinParam;
-import net.sourceforge.plantuml.LineBreakStrategy;
 import net.sourceforge.plantuml.activitydiagram3.ftile.Ftile;
 import net.sourceforge.plantuml.activitydiagram3.ftile.FtileFactory;
 import net.sourceforge.plantuml.activitydiagram3.ftile.Swimlane;
 import net.sourceforge.plantuml.activitydiagram3.ftile.WeldingPoint;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
-import net.sourceforge.plantuml.creole.CreoleMode;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.graphic.Rainbow;
-import net.sourceforge.plantuml.graphic.TextBlock;
-import net.sourceforge.plantuml.graphic.TextBlockUtils;
-import net.sourceforge.plantuml.graphic.color.Colors;
+import net.sourceforge.plantuml.decoration.Rainbow;
+import net.sourceforge.plantuml.klimt.LineBreakStrategy;
+import net.sourceforge.plantuml.klimt.color.Colors;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.creole.CreoleMode;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.klimt.font.FontConfiguration;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.klimt.shape.TextBlockUtils;
 import net.sourceforge.plantuml.sequencediagram.NotePosition;
 import net.sourceforge.plantuml.sequencediagram.NoteType;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.style.PName;
 import net.sourceforge.plantuml.style.SName;
 import net.sourceforge.plantuml.style.Style;
@@ -62,8 +62,9 @@ public class Branch {
 		this.labelPositive = Objects.requireNonNull(labelPositive);
 
 		final Style style = getDefaultStyleDefinitionDiamond().getMergedStyle(styleBuilder);
-		this.color = color == null ? style.value(PName.BackGroundColor).asColor(
-				styleBuilder.getSkinParam().getIHtmlColorSet()) : color;
+		this.color = color == null
+				? style.value(PName.BackGroundColor).asColor(styleBuilder.getSkinParam().getIHtmlColorSet())
+				: color;
 
 		this.list = new InstructionList(swimlane);
 	}
@@ -146,7 +147,7 @@ public class Branch {
 		return ftile;
 	}
 
-	
+
 	public ISkinParam skinParam() {
 		return ftile.skinParam();
 	}

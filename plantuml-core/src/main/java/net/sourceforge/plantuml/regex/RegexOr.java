@@ -10,7 +10,6 @@ public class RegexOr extends RegexComposed implements IRegex {
 
 	private final String name;
 
-	
 	public RegexOr(IRegex... partial) {
 		this(null, partial);
 	}

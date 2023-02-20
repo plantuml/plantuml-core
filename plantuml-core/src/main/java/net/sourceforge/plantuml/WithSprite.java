@@ -1,7 +1,7 @@
 package net.sourceforge.plantuml;
 
 import net.sourceforge.plantuml.core.Diagram;
-import net.sourceforge.plantuml.sprite.Sprite;
+import net.sourceforge.plantuml.klimt.sprite.Sprite;
 
 public interface WithSprite extends Diagram {
 

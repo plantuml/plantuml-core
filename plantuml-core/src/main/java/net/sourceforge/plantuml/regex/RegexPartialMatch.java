@@ -8,9 +8,9 @@ import java.util.List;
 public class RegexPartialMatch implements Iterable<String> {
 
 	private final List<String> data = new ArrayList<>();
-	
+
 	public RegexPartialMatch(String name) {
-		
+
 	}
 
 	public void add(String group) {

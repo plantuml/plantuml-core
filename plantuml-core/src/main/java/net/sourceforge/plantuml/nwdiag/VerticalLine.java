@@ -2,10 +2,10 @@ package net.sourceforge.plantuml.nwdiag;
 
 import java.util.Set;
 
-import net.sourceforge.plantuml.graphic.UDrawable;
 import net.sourceforge.plantuml.klimt.UPath;
 import net.sourceforge.plantuml.klimt.color.HColors;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.shape.UDrawable;
 
 public class VerticalLine implements UDrawable {
 

@@ -28,6 +28,16 @@ public class TranscoderImpl implements Transcoder {
 	}
 
 
+	public String encode(String text) throws IOException {
+		final String stringAnnoted = stringCompressor.compress(text);
+		final byte[] data;
+			data = stringAnnoted.getBytes(UTF_8);
+
+		final byte[] compressedData = compression.compress(data);
+
+		return urlEncoder.encode(compressedData);
+	}
+
 	public String decode(String code) throws NoPlantumlCompressionException {
 		try {
 			final byte compressedData[] = urlEncoder.decode(code);

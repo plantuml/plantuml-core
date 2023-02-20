@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sourceforge.plantuml.klimt.color.HColors;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.geom.MinMax;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class Zad {
 

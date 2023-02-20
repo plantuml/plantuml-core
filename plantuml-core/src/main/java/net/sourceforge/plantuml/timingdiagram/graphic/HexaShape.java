@@ -1,25 +1,25 @@
 package net.sourceforge.plantuml.timingdiagram.graphic;
 
-import net.sourceforge.plantuml.graphic.SymbolContext;
-import net.sourceforge.plantuml.graphic.UDrawable;
-import net.sourceforge.plantuml.klimt.UPolygon;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.Fashion;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.shape.UDrawable;
+import net.sourceforge.plantuml.klimt.shape.UPolygon;
 
 public class HexaShape implements UDrawable {
 
 	private final double width;
 	private final double height;
-	private final SymbolContext context;
+	private final Fashion context;
 
 	private final double delta = 12;
 
-	private HexaShape(double width, double height, SymbolContext context) {
+	private HexaShape(double width, double height, Fashion context) {
 		this.width = width;
 		this.height = height;
 		this.context = context;
 	}
 
-	public static HexaShape create(double width, double height, SymbolContext context) {
+	public static HexaShape create(double width, double height, Fashion context) {
 		return new HexaShape(width, height, context);
 	}
 

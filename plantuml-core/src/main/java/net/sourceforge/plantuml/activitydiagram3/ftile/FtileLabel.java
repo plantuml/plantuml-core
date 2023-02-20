@@ -1,6 +1,6 @@
 package net.sourceforge.plantuml.activitydiagram3.ftile;
 
-import net.sourceforge.plantuml.ISkinParam;
+import net.sourceforge.plantuml.style.ISkinParam;
 
 public class FtileLabel extends FtileEmpty {
 

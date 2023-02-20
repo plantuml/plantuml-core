@@ -5,8 +5,8 @@ import net.sourceforge.plantuml.command.CommandMultilines2;
 import net.sourceforge.plantuml.command.MultilinesStrategy;
 import net.sourceforge.plantuml.command.Position;
 import net.sourceforge.plantuml.command.Trim;
-import net.sourceforge.plantuml.cucadiagram.Display;
 import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexConcat;
 import net.sourceforge.plantuml.regex.RegexLeaf;
@@ -28,7 +28,8 @@ public class CommandNoteLong extends CommandMultilines2<TimingDiagram> {
 	}
 
 	@Override
-	protected CommandExecutionResult executeNow(final TimingDiagram diagram, BlocLines lines) throws NoSuchColorException {
+	protected CommandExecutionResult executeNow(final TimingDiagram diagram, BlocLines lines)
+			throws NoSuchColorException {
 
 		final RegexResult line0 = getStartingPattern().matcher(lines.getFirst().getTrimmed().getString());
 		lines = lines.subExtract(1, 1);
@@ -40,7 +41,8 @@ public class CommandNoteLong extends CommandMultilines2<TimingDiagram> {
 		}
 		final Display note = lines.toDisplay();
 		final TimeTick now = diagram.getNow();
-		// final Colors colors = color().getColor(arg, diagram.getSkinParam().getIHtmlColorSet());
+		// final Colors colors = color().getColor(arg,
+		// diagram.getSkinParam().getIHtmlColorSet());
 		player.addNote(now, note, Position.fromString(line0.get("POSITION", 0)));
 		return CommandExecutionResult.ok();
 	}

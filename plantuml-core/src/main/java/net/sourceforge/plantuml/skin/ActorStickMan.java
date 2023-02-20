@@ -1,17 +1,17 @@
 package net.sourceforge.plantuml.skin;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-import net.sourceforge.plantuml.graphic.AbstractTextBlock;
-import net.sourceforge.plantuml.graphic.SymbolContext;
-import net.sourceforge.plantuml.graphic.TextBlock;
-import net.sourceforge.plantuml.klimt.ULine;
+import net.sourceforge.plantuml.klimt.Fashion;
 import net.sourceforge.plantuml.klimt.UPath;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColors;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UEllipse;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.shape.AbstractTextBlock;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.klimt.shape.UEllipse;
+import net.sourceforge.plantuml.klimt.shape.ULine;
 
 public class ActorStickMan extends AbstractTextBlock implements TextBlock {
 
@@ -22,10 +22,10 @@ public class ActorStickMan extends AbstractTextBlock implements TextBlock {
 	private final double legsY = 15;
 	private final double headDiam = 16;
 
-	private final SymbolContext symbolContext;
+	private final Fashion symbolContext;
 	private final boolean actorBusiness;
 
-	ActorStickMan(SymbolContext symbolContext, boolean actorBusiness) {
+	ActorStickMan(Fashion symbolContext, boolean actorBusiness) {
 		this.symbolContext = symbolContext;
 		this.actorBusiness = actorBusiness;
 	}

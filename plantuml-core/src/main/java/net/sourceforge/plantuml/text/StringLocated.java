@@ -15,7 +15,6 @@ final public class StringLocated {
 	private long fox = -1;
 	private TLineType type;
 
-	
 	public StringLocated(String s, LineLocation location) {
 		this(s, location, null);
 	}

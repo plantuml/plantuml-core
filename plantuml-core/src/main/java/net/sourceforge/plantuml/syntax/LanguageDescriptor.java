@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sourceforge.plantuml.SkinParam;
 import net.sourceforge.plantuml.klimt.color.HColorSet;
+import net.sourceforge.plantuml.skin.SkinParam;
 import net.sourceforge.plantuml.utils.Cypher;
 
 public class LanguageDescriptor {
@@ -173,7 +173,7 @@ public class LanguageDescriptor {
 		keyword.add("stereotype");
 		keyword.add("split");
 		keyword.add("style");
-		keyword.add("sprite");		
+		keyword.add("sprite");
 		keyword.add("circle");
 		keyword.add("empty");
 		keyword.add("members");
@@ -189,7 +189,6 @@ public class LanguageDescriptor {
 		keyword.add("dashed");
 		keyword.add("bold");
 		keyword.add("map");
-
 
 		preproc.add("!exit");
 		preproc.add("!include");

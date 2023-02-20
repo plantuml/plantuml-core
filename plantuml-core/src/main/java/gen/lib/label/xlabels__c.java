@@ -29,8 +29,8 @@ import h.ST_xlabel_t;
 import smetana.core.CArray;
 import smetana.core.CFunction;
 import smetana.core.CFunctionAbstract;
-import smetana.core.Memory;
 import smetana.core.Globals;
+import smetana.core.Memory;
 
 
 public class xlabels__c {

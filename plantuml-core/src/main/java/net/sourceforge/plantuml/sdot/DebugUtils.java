@@ -8,7 +8,6 @@ import h.ST_bezier;
 import h.ST_pointf;
 import h.ST_splines;
 import h.ST_textlabel_t;
-import smetana.core.Macro;
 
 public class DebugUtils {
 
@@ -16,12 +15,12 @@ public class DebugUtils {
 		// System.err.println("*********** PRINT EDGE ********** " + getUID(e));
 		final ST_Agedgeinfo_t data = (ST_Agedgeinfo_t) e.data.castTo(ST_Agedgeinfo_t.class);
 		final ST_splines splines = (ST_splines) data.spl;
-		//ST_boxf bb = (ST_boxf) splines.bb;
+		// ST_boxf bb = (ST_boxf) splines.bb;
 		// final bezier list = (bezier) splines.getPtr("list");
 		// System.err.println("splines.UID=" + ((StarStruct) splines).getUID36());
 		System.err.println("splines.size=" + splines.size);
-		//System.err.println("bb.LL=" + pointftoString((ST_pointf) bb.LL));
-		//System.err.println("bb.UR=" + pointftoString((ST_pointf) bb.UR));
+		// System.err.println("bb.LL=" + pointftoString((ST_pointf) bb.LL));
+		// System.err.println("bb.UR=" + pointftoString((ST_pointf) bb.UR));
 		printDebugBezier(splines.list.get__(0));
 
 		ST_textlabel_t label = data.label;
@@ -61,9 +60,9 @@ public class DebugUtils {
 		System.err.println("rw=" + data.rw);
 		System.err.println("coord=" + pointftoString((ST_pointf) data.coord));
 
-		//ST_boxf bb = (ST_boxf) data.bb;
-		//System.err.println("bb.LL=" + pointftoString((ST_pointf) bb.LL));
-		//System.err.println("bb.UR=" + pointftoString((ST_pointf) bb.UR));
+		// ST_boxf bb = (ST_boxf) data.bb;
+		// System.err.println("bb.LL=" + pointftoString((ST_pointf) bb.LL));
+		// System.err.println("bb.UR=" + pointftoString((ST_pointf) bb.UR));
 		// TODO Auto-generated method stub
 	}
 

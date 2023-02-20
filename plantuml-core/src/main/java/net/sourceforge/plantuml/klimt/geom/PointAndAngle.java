@@ -1,7 +1,5 @@
 package net.sourceforge.plantuml.klimt.geom;
 
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-
 public class PointAndAngle {
 
 	private final XPoint2D pt;

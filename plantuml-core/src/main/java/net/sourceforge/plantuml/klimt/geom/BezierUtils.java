@@ -1,11 +1,5 @@
 package net.sourceforge.plantuml.klimt.geom;
 
-import net.sourceforge.plantuml.awt.geom.XCubicCurve2D;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.awt.geom.XLine2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-import net.sourceforge.plantuml.awt.geom.XRectangle2D;
-
 public class BezierUtils {
 
 	static public double getEndingAngle(final XCubicCurve2D left) {

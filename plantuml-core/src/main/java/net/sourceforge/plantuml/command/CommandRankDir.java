@@ -1,6 +1,5 @@
 package net.sourceforge.plantuml.command;
 
-import net.sourceforge.plantuml.SkinParam;
 import net.sourceforge.plantuml.StringUtils;
 import net.sourceforge.plantuml.TitledDiagram;
 import net.sourceforge.plantuml.klimt.geom.Rankdir;
@@ -8,6 +7,7 @@ import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexConcat;
 import net.sourceforge.plantuml.regex.RegexLeaf;
 import net.sourceforge.plantuml.regex.RegexResult;
+import net.sourceforge.plantuml.skin.SkinParam;
 import net.sourceforge.plantuml.utils.LineLocation;
 
 public class CommandRankDir extends SingleLineCommand2<TitledDiagram> {

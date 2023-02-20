@@ -1,7 +1,7 @@
 package net.sourceforge.plantuml.activitydiagram3.ftile;
 
 import net.sourceforge.plantuml.klimt.Arrows;
-import net.sourceforge.plantuml.klimt.UPolygon;
+import net.sourceforge.plantuml.klimt.shape.UPolygon;
 
 public class ArrowsTriangle extends Arrows {
 

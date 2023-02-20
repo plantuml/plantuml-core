@@ -1,7 +1,7 @@
 package net.sourceforge.plantuml.activitydiagram3.ftile;
 
-import net.sourceforge.plantuml.graphic.TextBlock;
 import net.sourceforge.plantuml.klimt.UShape;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
 
 public class CenteredText implements UShape {
 

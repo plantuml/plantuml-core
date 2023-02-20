@@ -8,8 +8,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.atmp.Link;
 import net.sourceforge.plantuml.baraye.Entity;
-import net.sourceforge.plantuml.cucadiagram.Link;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 
 public class Bibliotekon {

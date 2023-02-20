@@ -47,8 +47,8 @@ import h.ST_Agraph_s;
 import h.ST_nodequeue;
 import smetana.core.CArrayOfStar;
 import smetana.core.CString;
-import smetana.core.Memory;
 import smetana.core.Globals;
+import smetana.core.Memory;
 import smetana.core.ZType;
 import smetana.core.jmp_buf;
 

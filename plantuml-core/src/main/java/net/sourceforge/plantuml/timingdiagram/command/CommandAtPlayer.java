@@ -20,7 +20,7 @@ public class CommandAtPlayer extends SingleLineCommand2<TimingDiagram> {
 		return RegexConcat.build(CommandAtPlayer.class.getName(), RegexLeaf.start(), //
 				new RegexLeaf("@"), //
 				new RegexLeaf("PLAYER", CommandTimeMessage.PLAYER_CODE), //
-				RegexLeaf.spaceZeroOrMore(), // 
+				RegexLeaf.spaceZeroOrMore(), //
 				RegexLeaf.end());
 	}
 

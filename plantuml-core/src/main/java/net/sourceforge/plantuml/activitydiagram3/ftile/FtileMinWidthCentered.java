@@ -1,10 +1,10 @@
 package net.sourceforge.plantuml.activitydiagram3.ftile;
 
 import net.sourceforge.plantuml.activitydiagram3.ftile.vertical.FtileDecorate;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public class FtileMinWidthCentered extends FtileDecorate {
 

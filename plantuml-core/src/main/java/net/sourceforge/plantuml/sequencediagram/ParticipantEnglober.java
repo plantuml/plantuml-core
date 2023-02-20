@@ -4,9 +4,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.creole.Display;
+import net.sourceforge.plantuml.stereo.Stereotype;
 
 public class ParticipantEnglober {
 

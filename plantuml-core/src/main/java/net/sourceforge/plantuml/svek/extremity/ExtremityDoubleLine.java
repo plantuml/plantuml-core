@@ -2,10 +2,10 @@ package net.sourceforge.plantuml.svek.extremity;
 
 import java.awt.geom.AffineTransform;
 
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-import net.sourceforge.plantuml.klimt.ULine;
 import net.sourceforge.plantuml.klimt.UTranslate;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.shape.ULine;
 
 class ExtremityDoubleLine extends Extremity {
 

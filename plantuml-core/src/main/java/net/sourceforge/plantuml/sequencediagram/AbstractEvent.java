@@ -15,10 +15,9 @@ public abstract class AbstractEvent implements Event {
 	public boolean hasUrl() {
 		return false;
 	}
-	
-	public final void setY(double y) {
-		
-	}
 
+	public final void setY(double y) {
+
+	}
 
 }

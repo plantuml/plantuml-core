@@ -4,7 +4,6 @@ import net.sourceforge.plantuml.baraye.Entity;
 import net.sourceforge.plantuml.classdiagram.ClassDiagram;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.SingleLineCommand2;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
 import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
 import net.sourceforge.plantuml.klimt.font.FontParam;
 import net.sourceforge.plantuml.plasma.Quark;
@@ -12,6 +11,7 @@ import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexConcat;
 import net.sourceforge.plantuml.regex.RegexLeaf;
 import net.sourceforge.plantuml.regex.RegexResult;
+import net.sourceforge.plantuml.stereo.Stereotype;
 import net.sourceforge.plantuml.utils.LineLocation;
 
 public class CommandStereotype extends SingleLineCommand2<ClassDiagram> {

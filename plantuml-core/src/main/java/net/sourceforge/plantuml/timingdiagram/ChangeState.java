@@ -3,12 +3,12 @@ package net.sourceforge.plantuml.timingdiagram;
 import java.util.Arrays;
 import java.util.List;
 
-import net.sourceforge.plantuml.ISkinParam;
-import net.sourceforge.plantuml.graphic.SymbolContext;
-import net.sourceforge.plantuml.graphic.color.Colors;
+import net.sourceforge.plantuml.klimt.Fashion;
 import net.sourceforge.plantuml.klimt.UStroke;
 import net.sourceforge.plantuml.klimt.color.ColorType;
+import net.sourceforge.plantuml.klimt.color.Colors;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.style.PName;
 import net.sourceforge.plantuml.style.Style;
 
@@ -67,9 +67,8 @@ public class ChangeState implements Comparable<ChangeState> {
 		return style.getStroke();
 	}
 
-	public SymbolContext getContext(ISkinParam skinParam, Style style) {
-		return new SymbolContext(getBackColor(skinParam, style), getLineColor(skinParam, style))
-				.withStroke(getStroke(style));
+	public Fashion getContext(ISkinParam skinParam, Style style) {
+		return new Fashion(getBackColor(skinParam, style), getLineColor(skinParam, style)).withStroke(getStroke(style));
 	}
 
 	public final boolean isBlank() {

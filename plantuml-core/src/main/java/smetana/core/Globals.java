@@ -11,7 +11,6 @@ import static smetana.core.Macro.ARR_TYPE_NORM;
 import static smetana.core.Macro.ARR_TYPE_TEE;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 import com.plantuml.api.cheerpj.WasmLog;

@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.Set;
 
 import net.sourceforge.plantuml.activitydiagram3.LinkRendering;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public class FtileHeightFixedCentered extends AbstractFtile {
 
@@ -20,13 +20,12 @@ public class FtileHeightFixedCentered extends AbstractFtile {
 		this.tile = tile;
 		this.fixedHeight = fixedHeight;
 	}
-	
+
 	@Override
 	public Collection<Ftile> getMyChildren() {
 		return Collections.singleton(tile);
 		// return tile.getMyChildren();
 	}
-
 
 	@Override
 	public LinkRendering getInLinkRendering() {

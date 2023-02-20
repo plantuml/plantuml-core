@@ -158,14 +158,12 @@ public byte[] getBytes() {
 			}
 		return null;
 	}
-	
+
 	/**
 	 * Check SecurityProfile to see if this URL can be opened.
 	 */
 	private boolean isUrlOk() {
 			return true;
 	}
-
-
 
 }

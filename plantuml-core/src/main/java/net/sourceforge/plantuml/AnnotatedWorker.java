@@ -1,9 +1,10 @@
 package net.sourceforge.plantuml;
 
 import net.sourceforge.plantuml.cucadiagram.DisplayPositioned;
-import net.sourceforge.plantuml.graphic.TextBlock;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.svek.DecorateEntityImage;
 import net.sourceforge.plantuml.svek.TextBlockBackcolored;
 

@@ -3,8 +3,6 @@ package net.sourceforge.plantuml.klimt.geom;
 import java.awt.geom.AffineTransform;
 import java.util.Arrays;
 
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
-
 public class USegment {
 
 	private final double coord[];

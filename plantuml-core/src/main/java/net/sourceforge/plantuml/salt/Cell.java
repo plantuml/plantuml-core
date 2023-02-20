@@ -1,6 +1,5 @@
 package net.sourceforge.plantuml.salt;
 
-
 public class Cell {
 
 	private int minRow;
@@ -14,7 +13,7 @@ public class Cell {
 		minCol = col;
 		maxCol = col;
 	}
-	
+
 	public void mergeLeft() {
 		maxCol++;
 	}
@@ -34,7 +33,7 @@ public class Cell {
 	public int getMaxCol() {
 		return maxCol;
 	}
-	
+
 	public int getNbRows() {
 		return maxRow - minRow + 1;
 	}

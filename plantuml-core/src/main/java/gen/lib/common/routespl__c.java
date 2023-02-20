@@ -21,8 +21,8 @@ import h.ST_boxf;
 import h.ST_path;
 import h.ST_pointf;
 import smetana.core.CArray;
-import smetana.core.Memory;
 import smetana.core.Globals;
+import smetana.core.Memory;
 import smetana.core.ZType;
 
 public class routespl__c {

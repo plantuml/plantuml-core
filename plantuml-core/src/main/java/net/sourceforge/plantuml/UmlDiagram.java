@@ -1,6 +1,6 @@
 package net.sourceforge.plantuml;
 
-import static net.sourceforge.plantuml.ugraphic.ImageBuilder.plainImageBuilder;
+import static net.atmp.ImageBuilder.plainImageBuilder;
 
 import java.awt.Color;
 import java.awt.geom.AffineTransform;
@@ -16,8 +16,8 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
+import net.atmp.PixelImage;
 import net.sourceforge.plantuml.api.ImageDataSimple;
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.core.Diagram;
 import net.sourceforge.plantuml.core.ImageData;
@@ -25,23 +25,24 @@ import net.sourceforge.plantuml.core.UmlSource;
 import net.sourceforge.plantuml.cucadiagram.DisplaySection;
 import net.sourceforge.plantuml.cucadiagram.UnparsableGraphvizException;
 import net.sourceforge.plantuml.fun.IconLoader;
-import net.sourceforge.plantuml.graphic.GraphicPosition;
-import net.sourceforge.plantuml.graphic.GraphicStrings;
-import net.sourceforge.plantuml.graphic.UDrawable;
-import net.sourceforge.plantuml.klimt.UImage;
+import net.sourceforge.plantuml.klimt.AffineTransformType;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.FontParam;
+import net.sourceforge.plantuml.klimt.geom.GraphicPosition;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.shape.GraphicStrings;
+import net.sourceforge.plantuml.klimt.shape.UDrawable;
+import net.sourceforge.plantuml.klimt.shape.UImage;
 import net.sourceforge.plantuml.log.Logme;
 import net.sourceforge.plantuml.security.SFile;
 import net.sourceforge.plantuml.security.SImageIO;
 import net.sourceforge.plantuml.security.SecurityUtils;
+import net.sourceforge.plantuml.skin.UmlDiagramType;
 import net.sourceforge.plantuml.style.NoStyleAvailableException;
 import net.sourceforge.plantuml.svek.EmptySvgException;
 import net.sourceforge.plantuml.svek.GraphvizCrash;
 import net.sourceforge.plantuml.svek.TextBlockBackcolored;
-import net.sourceforge.plantuml.ugraphic.AffineTransformType;
-import net.sourceforge.plantuml.ugraphic.PixelImage;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 import net.sourceforge.plantuml.utils.Log;
 import net.sourceforge.plantuml.version.Version;
 

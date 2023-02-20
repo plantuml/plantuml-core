@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 import net.sourceforge.plantuml.activitydiagram3.ftile.vertical.FtileDecorate;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 
 class FtileWithConnection extends FtileDecorate {
 

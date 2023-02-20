@@ -1,6 +1,6 @@
 package net.sourceforge.plantuml.klimt.font;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public interface StringBounder {
 

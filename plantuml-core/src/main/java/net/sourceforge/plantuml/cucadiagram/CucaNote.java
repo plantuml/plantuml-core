@@ -1,7 +1,8 @@
 package net.sourceforge.plantuml.cucadiagram;
 
 import net.sourceforge.plantuml.command.Position;
-import net.sourceforge.plantuml.graphic.color.Colors;
+import net.sourceforge.plantuml.klimt.color.Colors;
+import net.sourceforge.plantuml.klimt.creole.Display;
 
 public class CucaNote {
 

@@ -1,17 +1,18 @@
 package net.sourceforge.plantuml.project.draw;
 
 import net.sourceforge.plantuml.SpriteContainerEmpty;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.graphic.TextBlock;
-import net.sourceforge.plantuml.graphic.TextBlockUtils;
-import net.sourceforge.plantuml.klimt.ULine;
-import net.sourceforge.plantuml.klimt.URectangle;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.HColorSet;
+import net.sourceforge.plantuml.klimt.creole.Display;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.FontConfiguration;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.klimt.shape.TextBlockUtils;
+import net.sourceforge.plantuml.klimt.shape.ULine;
+import net.sourceforge.plantuml.klimt.shape.URectangle;
 import net.sourceforge.plantuml.project.LabelStrategy;
 import net.sourceforge.plantuml.project.core.Task;
 import net.sourceforge.plantuml.project.core.TaskAttribute;
@@ -25,7 +26,6 @@ import net.sourceforge.plantuml.style.SName;
 import net.sourceforge.plantuml.style.Style;
 import net.sourceforge.plantuml.style.StyleBuilder;
 import net.sourceforge.plantuml.style.StyleSignatureBasic;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 import net.sourceforge.plantuml.url.Url;
 import net.sourceforge.plantuml.utils.Direction;
 
@@ -103,8 +103,7 @@ public class TaskDrawSeparator implements TaskDraw {
 		final ClockwiseTopRightBottomLeft margin = getStyle().getMargin();
 		ug = ug.apply(new UTranslate(0, margin.getTop()));
 
-		final HColor backColor = getStyle().value(PName.BackGroundColor)
-				.asColor(colorSet);
+		final HColor backColor = getStyle().value(PName.BackGroundColor).asColor(colorSet);
 
 		if (backColor.isTransparent() == false) {
 			final double height = padding.getTop() + getTextHeight(stringBounder) + padding.getBottom();

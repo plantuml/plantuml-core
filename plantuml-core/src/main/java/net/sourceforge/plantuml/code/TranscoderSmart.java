@@ -25,4 +25,9 @@ public class TranscoderSmart implements Transcoder {
 		// return zlib.decode(code);
 	}
 
+	public String encode(String text) throws IOException {
+		// Right now, we still use the legacy encoding.
+		// This will be changed in the incoming months
+		return zlib.encode(text);
+	}
 }

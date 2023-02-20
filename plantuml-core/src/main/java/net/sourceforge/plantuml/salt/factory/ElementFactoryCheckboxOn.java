@@ -3,13 +3,13 @@ package net.sourceforge.plantuml.salt.factory;
 import java.util.Arrays;
 import java.util.List;
 
-import net.atmp.ISkinSimple;
 import net.sourceforge.plantuml.StringUtils;
 import net.sourceforge.plantuml.klimt.font.UFont;
 import net.sourceforge.plantuml.salt.DataSource;
 import net.sourceforge.plantuml.salt.Terminated;
 import net.sourceforge.plantuml.salt.element.Element;
 import net.sourceforge.plantuml.salt.element.ElementRadioCheckbox;
+import net.sourceforge.plantuml.style.ISkinSimple;
 
 public class ElementFactoryCheckboxOn implements ElementFactory {
 

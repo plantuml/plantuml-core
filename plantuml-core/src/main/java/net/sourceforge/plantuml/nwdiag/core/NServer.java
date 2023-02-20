@@ -4,21 +4,21 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sourceforge.plantuml.ComponentStyle;
-import net.sourceforge.plantuml.ISkinParam;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.graphic.SymbolContext;
-import net.sourceforge.plantuml.graphic.TextBlock;
-import net.sourceforge.plantuml.graphic.TextBlockUtils;
-import net.sourceforge.plantuml.graphic.USymbol;
-import net.sourceforge.plantuml.graphic.USymbols;
+import net.sourceforge.plantuml.decoration.symbol.USymbol;
+import net.sourceforge.plantuml.decoration.symbol.USymbols;
+import net.sourceforge.plantuml.klimt.Fashion;
 import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.NoSuchColorException;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.klimt.font.FontConfiguration;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.klimt.shape.TextBlockUtils;
 import net.sourceforge.plantuml.nwdiag.next.NBar;
 import net.sourceforge.plantuml.nwdiag.next.NServerDraw;
 import net.sourceforge.plantuml.skin.ActorStyle;
+import net.sourceforge.plantuml.skin.ComponentStyle;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.style.SName;
 import net.sourceforge.plantuml.style.Style;
 import net.sourceforge.plantuml.style.StyleBuilder;
@@ -97,7 +97,7 @@ public class NServer {
 	public NServerDraw getDraw(double topMargin, Map<Network, String> conns, List<Network> networks,
 			ISkinParam skinParam) {
 		final StyleBuilder styleBuilder = skinParam.getCurrentStyleBuilder();
-		SymbolContext symbolContext = getStyleDefinition(SName.server).getMergedStyle(styleBuilder)
+		Fashion symbolContext = getStyleDefinition(SName.server).getMergedStyle(styleBuilder)
 				.getSymbolContext(skinParam.getIHtmlColorSet());
 		if (backcolor != null)
 			try {

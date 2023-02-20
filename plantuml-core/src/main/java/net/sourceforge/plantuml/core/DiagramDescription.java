@@ -1,6 +1,5 @@
 package net.sourceforge.plantuml.core;
 
-
 public class DiagramDescription {
 	private final String description;
 

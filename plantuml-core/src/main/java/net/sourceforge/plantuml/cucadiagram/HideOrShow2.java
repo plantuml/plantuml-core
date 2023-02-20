@@ -1,6 +1,8 @@
 package net.sourceforge.plantuml.cucadiagram;
 
 import net.sourceforge.plantuml.baraye.Entity;
+import net.sourceforge.plantuml.stereo.Stereotag;
+import net.sourceforge.plantuml.stereo.Stereotype;
 
 public class HideOrShow2 {
 

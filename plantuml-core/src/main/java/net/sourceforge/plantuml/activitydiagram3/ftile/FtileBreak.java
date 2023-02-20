@@ -4,8 +4,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import net.sourceforge.plantuml.ISkinParam;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.style.ISkinParam;
 
 public class FtileBreak extends FtileEmpty implements WeldingPoint {
 

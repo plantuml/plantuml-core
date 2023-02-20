@@ -3,7 +3,7 @@ package net.sourceforge.plantuml.klimt;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 
 public class UClip implements UChange {
 

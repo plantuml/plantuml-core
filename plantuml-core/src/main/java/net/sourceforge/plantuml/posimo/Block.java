@@ -2,8 +2,8 @@ package net.sourceforge.plantuml.posimo;
 
 import java.util.Locale;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 
 public class Block implements Clusterable {
 
@@ -61,10 +61,9 @@ public class Block implements Clusterable {
 	public final void setY(double y) {
 		this.y = y;
 	}
-	
+
 	public void moveSvek(double deltaX, double deltaY) {
 		throw new UnsupportedOperationException();
 	}
-
 
 }

@@ -68,8 +68,8 @@ import h.ST_textlabel_t;
 import h.ST_xlabel_t;
 import smetana.core.CArray;
 import smetana.core.CString;
-import smetana.core.Memory;
 import smetana.core.Globals;
+import smetana.core.Memory;
 import smetana.core.ZType;
 
 public class postproc__c {

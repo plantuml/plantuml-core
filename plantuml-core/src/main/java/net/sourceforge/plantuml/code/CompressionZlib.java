@@ -8,6 +8,29 @@ import net.sourceforge.plantuml.code.deflate.Decompressor;
 
 public class CompressionZlib implements Compression {
 
+	private static final int COMPRESSION_LEVEL = 9;
+
+	public byte[] compress(byte[] in) {
+
+		if (in.length == 0)
+			return null;
+
+		int len = in.length * 2;
+		if (len < 1000)
+			len = 1000;
+
+		// Compress the bytes
+		final Deflater compresser = new Deflater(COMPRESSION_LEVEL, true);
+		compresser.setInput(in);
+		compresser.finish();
+
+		final byte[] output = new byte[len];
+		final int compressedDataLength = compresser.deflate(output);
+		if (compresser.finished() == false)
+			return null;
+
+		return copyArray(output, compressedDataLength);
+	}
 
 	public ByteArray decompress(byte[] input) throws NoPlantumlCompressionException {
 		final byte padded[] = new byte[input.length + 256];

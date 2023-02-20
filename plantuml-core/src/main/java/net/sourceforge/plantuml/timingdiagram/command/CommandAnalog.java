@@ -2,12 +2,12 @@ package net.sourceforge.plantuml.timingdiagram.command;
 
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.command.SingleLineCommand2;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
 import net.sourceforge.plantuml.regex.IRegex;
 import net.sourceforge.plantuml.regex.RegexConcat;
 import net.sourceforge.plantuml.regex.RegexLeaf;
 import net.sourceforge.plantuml.regex.RegexOptional;
 import net.sourceforge.plantuml.regex.RegexResult;
+import net.sourceforge.plantuml.stereo.Stereotype;
 import net.sourceforge.plantuml.timingdiagram.PlayerAnalog;
 import net.sourceforge.plantuml.timingdiagram.TimingDiagram;
 import net.sourceforge.plantuml.utils.LineLocation;

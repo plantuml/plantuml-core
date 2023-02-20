@@ -1,6 +1,6 @@
 package net.sourceforge.plantuml.activitydiagram3.ftile;
 
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 
 public enum SnakeDirection {
 	VERTICAL_THEN_HORIZONTAL, HORIZONTAL_THEN_VERTICAL;

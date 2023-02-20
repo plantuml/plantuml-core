@@ -14,30 +14,30 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.Stack;
 
-import net.sourceforge.plantuml.ColorParam;
+import net.atmp.ImageBuilder;
 import net.sourceforge.plantuml.FileFormat;
 import net.sourceforge.plantuml.FileFormatOption;
 import net.sourceforge.plantuml.OptionFlags;
 import net.sourceforge.plantuml.UmlDiagram;
-import net.sourceforge.plantuml.UmlDiagramType;
 import net.sourceforge.plantuml.command.CommandExecutionResult;
 import net.sourceforge.plantuml.core.DiagramDescription;
 import net.sourceforge.plantuml.core.ImageData;
 import net.sourceforge.plantuml.core.UmlSource;
-import net.sourceforge.plantuml.cucadiagram.Display;
 import net.sourceforge.plantuml.cucadiagram.EntityPortion;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
-import net.sourceforge.plantuml.graphic.SymbolContext;
-import net.sourceforge.plantuml.graphic.TextBlock;
+import net.sourceforge.plantuml.klimt.Fashion;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.creole.Display;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
 import net.sourceforge.plantuml.log.Logme;
 import net.sourceforge.plantuml.sequencediagram.graphic.FileMaker;
 import net.sourceforge.plantuml.sequencediagram.graphic.SequenceDiagramFileMakerPuma2;
 import net.sourceforge.plantuml.sequencediagram.teoz.SequenceDiagramFileMakerTeoz;
+import net.sourceforge.plantuml.skin.ColorParam;
+import net.sourceforge.plantuml.skin.UmlDiagramType;
 import net.sourceforge.plantuml.skin.rose.Rose;
+import net.sourceforge.plantuml.stereo.Stereotype;
 import net.sourceforge.plantuml.style.ClockwiseTopRightBottomLeft;
-import net.sourceforge.plantuml.ugraphic.ImageBuilder;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class SequenceDiagram extends UmlDiagram {
 
@@ -273,7 +273,7 @@ public class SequenceDiagram extends UmlDiagram {
 		if (lastDelay != null)
 			return "You cannot Activate/Deactivate just after a ...";
 
-		final LifeEvent lifeEvent = new LifeEvent(p, lifeEventType, new SymbolContext(backcolor, linecolor));
+		final LifeEvent lifeEvent = new LifeEvent(p, lifeEventType, new Fashion(backcolor, linecolor));
 		events.add(lifeEvent);
 		if (lifeEventType == LifeEventType.CREATE) {
 			pendingCreate = lifeEvent;
@@ -281,7 +281,7 @@ public class SequenceDiagram extends UmlDiagram {
 		}
 		if (lastEventWithDeactivate == null) {
 			if (lifeEventType == LifeEventType.ACTIVATE) {
-				p.incInitialLife(new SymbolContext(backcolor, linecolor));
+				p.incInitialLife(new Fashion(backcolor, linecolor));
 				return null;
 			}
 			if (p.getInitialLife() == 0)

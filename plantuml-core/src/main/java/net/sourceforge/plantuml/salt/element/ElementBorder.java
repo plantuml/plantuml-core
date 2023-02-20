@@ -1,10 +1,10 @@
 package net.sourceforge.plantuml.salt.element;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.awt.geom.XPoint2D;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 import net.sourceforge.plantuml.utils.MathUtils;
 
 public class ElementBorder extends AbstractElement {
@@ -44,7 +44,8 @@ public class ElementBorder extends AbstractElement {
 		final XPoint2D pA = new XPoint2D(dimWest.getWidth(), dimNorth.getHeight());
 		final XPoint2D pB = new XPoint2D(dimToUse.getWidth() - dimEast.getWidth(), dimNorth.getHeight());
 		final XPoint2D pC = new XPoint2D(dimWest.getWidth(), dimToUse.getHeight() - dimSouth.getHeight());
-		// final XPoint2D pD = new XPoint2D(dimToUse.getWidth() - dimEast.getWidth(), dimToUse.getHeight()
+		// final XPoint2D pD = new XPoint2D(dimToUse.getWidth() - dimEast.getWidth(),
+		// dimToUse.getHeight()
 		// - dimSouth.getHeight());
 
 		north.drawU(ug, zIndex, dimToUse);

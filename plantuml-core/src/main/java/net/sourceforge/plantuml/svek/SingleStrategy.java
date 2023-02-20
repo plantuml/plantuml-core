@@ -1,6 +1,5 @@
 package net.sourceforge.plantuml.svek;
 
-
 public enum SingleStrategy {
 
 	SQUARE, HLINE, VLINE;

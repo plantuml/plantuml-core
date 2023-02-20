@@ -90,8 +90,8 @@ public class NumberAnalyzed implements INumberAnalyzed {
 		try {
 			final StringTokenizer st = new StringTokenizer(value, ";");
 			return new NumberAnalyzed(name, Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36),
-					Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36), Long.parseLong(
-							st.nextToken(), 36), Long.parseLong(st.nextToken(), 36));
+					Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36),
+					Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36));
 		} catch (Exception e) {
 			Logme.error(e);
 			Log.info("Error reading " + value);

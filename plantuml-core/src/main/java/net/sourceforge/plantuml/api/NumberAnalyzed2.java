@@ -7,7 +7,6 @@ import java.util.prefs.Preferences;
 import net.sourceforge.plantuml.log.Logme;
 import net.sourceforge.plantuml.utils.Log;
 
-
 public class NumberAnalyzed2 implements INumberAnalyzed {
 
 	private static final int SLIDING_WINDOW = 512;
@@ -64,8 +63,8 @@ public class NumberAnalyzed2 implements INumberAnalyzed {
 		try {
 			final StringTokenizer st = new StringTokenizer(value, ";");
 			return new NumberAnalyzed2(name, Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36),
-					Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36), Long.parseLong(
-							st.nextToken(), 36), Long.parseLong(st.nextToken(), 36));
+					Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36),
+					Long.parseLong(st.nextToken(), 36), Long.parseLong(st.nextToken(), 36));
 		} catch (Exception e) {
 			Logme.error(e);
 			Log.info("Error reading " + value);

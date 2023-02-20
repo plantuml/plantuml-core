@@ -1,6 +1,6 @@
 package net.sourceforge.plantuml.svek.extremity;
 
-import net.sourceforge.plantuml.graphic.UDrawable;
+import net.sourceforge.plantuml.klimt.shape.UDrawable;
 
 public interface MiddleFactory {
 

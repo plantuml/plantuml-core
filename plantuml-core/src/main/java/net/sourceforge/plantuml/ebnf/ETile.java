@@ -1,15 +1,15 @@
 package net.sourceforge.plantuml.ebnf;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.graphic.AbstractTextBlock;
-import net.sourceforge.plantuml.klimt.ULine;
+import net.sourceforge.plantuml.klimt.CopyForegroundColorToBackgroundColor;
 import net.sourceforge.plantuml.klimt.UPath;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.shape.AbstractTextBlock;
+import net.sourceforge.plantuml.klimt.shape.ULine;
 import net.sourceforge.plantuml.style.SName;
 import net.sourceforge.plantuml.style.StyleSignatureBasic;
-import net.sourceforge.plantuml.ugraphic.CopyForegroundColorToBackgroundColor;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public abstract class ETile extends AbstractTextBlock {
 

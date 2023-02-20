@@ -2,15 +2,15 @@ package net.sourceforge.plantuml.sequencediagram.graphic;
 
 import java.util.Objects;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 import net.sourceforge.plantuml.sequencediagram.InGroupable;
 import net.sourceforge.plantuml.sequencediagram.NotePosition;
 import net.sourceforge.plantuml.skin.Area;
 import net.sourceforge.plantuml.skin.Component;
 import net.sourceforge.plantuml.skin.Context2D;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 import net.sourceforge.plantuml.url.Url;
 
 final class NoteBox extends GraphicalElement implements InGroupable {
@@ -91,8 +91,8 @@ final class NoteBox extends GraphicalElement implements InGroupable {
 		} else if (position == NotePosition.OVER) {
 			xStart = (int) (p1.getParticipantBox().getCenterX(stringBounder) - getPreferredWidth(stringBounder) / 2);
 		} else if (position == NotePosition.OVER_SEVERAL) {
-			final double centre = (p1.getParticipantBox().getCenterX(stringBounder) + p2.getParticipantBox()
-					.getCenterX(stringBounder)) / 2.0;
+			final double centre = (p1.getParticipantBox().getCenterX(stringBounder)
+					+ p2.getParticipantBox().getCenterX(stringBounder)) / 2.0;
 			xStart = (int) (centre - getPreferredWidth(stringBounder) / 2.0);
 		} else {
 			throw new IllegalStateException();

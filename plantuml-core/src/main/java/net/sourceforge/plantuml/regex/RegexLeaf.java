@@ -19,7 +19,6 @@ public class RegexLeaf implements IRegex {
 
 	private int count = -1;
 
-	
 	public RegexLeaf(String regex) {
 		this(null, regex);
 	}

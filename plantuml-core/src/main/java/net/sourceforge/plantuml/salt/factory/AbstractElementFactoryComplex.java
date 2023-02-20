@@ -13,7 +13,6 @@ public abstract class AbstractElementFactoryComplex implements ElementFactory {
 	final private DataSource dataSource;
 	final private Collection<ElementFactory> factories = new ArrayList<>();
 	final private SaltDictionary dictionary;
-	
 
 	public AbstractElementFactoryComplex(DataSource dataSource, SaltDictionary dictionary) {
 		this.dataSource = dataSource;

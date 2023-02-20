@@ -14,7 +14,6 @@ public class Url implements EnsureVisible {
 	private final String label;
 	private boolean member;
 
-	
 	public Url(String url, String tooltip) {
 		this(url, tooltip, null);
 	}

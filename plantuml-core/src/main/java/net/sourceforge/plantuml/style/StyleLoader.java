@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import net.sourceforge.plantuml.FileSystem;
-import net.sourceforge.plantuml.SkinParam;
 import net.sourceforge.plantuml.security.SFile;
+import net.sourceforge.plantuml.skin.SkinParam;
 import net.sourceforge.plantuml.style.parser.StyleParser;
 import net.sourceforge.plantuml.style.parser.StyleParsingException;
 import net.sourceforge.plantuml.utils.BlocLines;

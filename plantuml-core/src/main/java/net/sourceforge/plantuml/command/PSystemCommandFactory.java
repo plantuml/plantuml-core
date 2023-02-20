@@ -27,7 +27,6 @@ public abstract class PSystemCommandFactory extends PSystemAbstractFactory {
 
 	public abstract AbstractPSystem createEmptyDiagram(UmlSource source, Map<String, String> skinParam);
 
-	
 	protected PSystemCommandFactory() {
 		this(DiagramType.UML);
 	}

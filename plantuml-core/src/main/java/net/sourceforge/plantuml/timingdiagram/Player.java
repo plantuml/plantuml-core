@@ -1,19 +1,19 @@
 package net.sourceforge.plantuml.timingdiagram;
 
-import net.sourceforge.plantuml.ISkinParam;
 import net.sourceforge.plantuml.command.Position;
-import net.sourceforge.plantuml.cucadiagram.Display;
-import net.sourceforge.plantuml.cucadiagram.Stereotype;
-import net.sourceforge.plantuml.graphic.SymbolContext;
-import net.sourceforge.plantuml.graphic.TextBlock;
-import net.sourceforge.plantuml.graphic.UDrawable;
-import net.sourceforge.plantuml.graphic.color.Colors;
+import net.sourceforge.plantuml.klimt.Fashion;
 import net.sourceforge.plantuml.klimt.UStroke;
+import net.sourceforge.plantuml.klimt.color.Colors;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.klimt.font.FontConfiguration;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
+import net.sourceforge.plantuml.klimt.shape.UDrawable;
 import net.sourceforge.plantuml.skin.ArrowConfiguration;
+import net.sourceforge.plantuml.stereo.Stereotype;
+import net.sourceforge.plantuml.style.ISkinParam;
 import net.sourceforge.plantuml.style.PName;
 import net.sourceforge.plantuml.style.SName;
 import net.sourceforge.plantuml.style.Style;
@@ -57,13 +57,13 @@ public abstract class Player implements TimeProjected {
 		return style.getStroke();
 	}
 
-	final protected SymbolContext getContext() {
+	final protected Fashion getContext() {
 
 		final Style style = getStyleSignature().getMergedStyle(skinParam.getCurrentStyleBuilder());
 		final HColor lineColor = style.value(PName.LineColor).asColor(skinParam.getIHtmlColorSet());
 		final HColor backgroundColor = style.value(PName.BackGroundColor).asColor(skinParam.getIHtmlColorSet());
 
-		return new SymbolContext(backgroundColor, lineColor).withStroke(getStroke());
+		return new Fashion(backgroundColor, lineColor).withStroke(getStroke());
 	}
 
 	final protected TextBlock getTitle() {

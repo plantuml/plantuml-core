@@ -5,19 +5,19 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import net.sourceforge.plantuml.UmlDiagramType;
 import net.sourceforge.plantuml.command.PSystemAbstractFactory;
 import net.sourceforge.plantuml.core.Diagram;
 import net.sourceforge.plantuml.core.DiagramType;
 import net.sourceforge.plantuml.core.UmlSource;
-import net.sourceforge.plantuml.cucadiagram.Display;
 import net.sourceforge.plantuml.cucadiagram.DisplayPositioned;
-import net.sourceforge.plantuml.graphic.VerticalAlignment;
 import net.sourceforge.plantuml.json.JsonValue;
 import net.sourceforge.plantuml.jsondiagram.JsonDiagram;
 import net.sourceforge.plantuml.jsondiagram.StyleExtractor;
+import net.sourceforge.plantuml.klimt.creole.Display;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
+import net.sourceforge.plantuml.klimt.geom.VerticalAlignment;
 import net.sourceforge.plantuml.log.Logme;
+import net.sourceforge.plantuml.skin.UmlDiagramType;
 import net.sourceforge.plantuml.style.parser.StyleParsingException;
 
 public class YamlDiagramFactory extends PSystemAbstractFactory {

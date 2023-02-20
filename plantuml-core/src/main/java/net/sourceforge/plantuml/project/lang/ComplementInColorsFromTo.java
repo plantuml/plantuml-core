@@ -19,14 +19,10 @@ public class ComplementInColorsFromTo implements Something {
 		final String arg1 = arg.get("COMPLEMENT" + suffix, 1);
 		final String arg2 = arg.get("COMPLEMENT" + suffix, 2);
 		final String arg3 = arg.get("COMPLEMENT" + suffix, 3);
-		final HColor from0 = arg0 == null ? null
-				: diagram.getIHtmlColorSet().getColorOrWhite(arg0);
-		final HColor from1 = arg1 == null ? null
-				: diagram.getIHtmlColorSet().getColorOrWhite(arg1);
-		final HColor to0 = arg2 == null ? null
-				: diagram.getIHtmlColorSet().getColorOrWhite(arg2);
-		final HColor to1 = arg3 == null ? null
-				: diagram.getIHtmlColorSet().getColorOrWhite(arg3);
+		final HColor from0 = arg0 == null ? null : diagram.getIHtmlColorSet().getColorOrWhite(arg0);
+		final HColor from1 = arg1 == null ? null : diagram.getIHtmlColorSet().getColorOrWhite(arg1);
+		final HColor to0 = arg2 == null ? null : diagram.getIHtmlColorSet().getColorOrWhite(arg2);
+		final HColor to1 = arg3 == null ? null : diagram.getIHtmlColorSet().getColorOrWhite(arg3);
 		final CenterBorderColor result[] = new CenterBorderColor[] { new CenterBorderColor(from0, from1),
 				new CenterBorderColor(to0, to1) };
 		return Failable.ok(result);

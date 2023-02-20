@@ -3,14 +3,14 @@ package net.sourceforge.plantuml.project.draw;
 import java.util.Map;
 import java.util.Set;
 
-import net.sourceforge.plantuml.graphic.TextBlock;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
 import net.sourceforge.plantuml.project.TimeHeaderParameters;
 import net.sourceforge.plantuml.project.time.Day;
 import net.sourceforge.plantuml.project.time.MonthYear;
 import net.sourceforge.plantuml.project.timescale.TimeScaleDaily;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class TimeHeaderDaily extends TimeHeaderCalendar {
 

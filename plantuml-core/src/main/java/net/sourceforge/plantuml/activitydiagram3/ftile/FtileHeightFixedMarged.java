@@ -6,8 +6,8 @@ import java.util.Set;
 
 import net.sourceforge.plantuml.activitydiagram3.LinkRendering;
 import net.sourceforge.plantuml.klimt.UTranslate;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class FtileHeightFixedMarged extends AbstractFtile {
 
@@ -21,13 +21,12 @@ public class FtileHeightFixedMarged extends AbstractFtile {
 		this.ymargin1 = ymargin1;
 		this.ymargin2 = ymargin2;
 	}
-	
+
 	@Override
 	public Collection<Ftile> getMyChildren() {
 		return Collections.singleton(tile);
 		// return tile.getMyChildren();
 	}
-
 
 	@Override
 	public LinkRendering getInLinkRendering() {

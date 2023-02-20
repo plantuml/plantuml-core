@@ -8,15 +8,15 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sourceforge.plantuml.awt.geom.XDimension2D;
-import net.sourceforge.plantuml.graphic.AbstractTextBlock;
-import net.sourceforge.plantuml.graphic.TextBlock;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.shape.AbstractTextBlock;
+import net.sourceforge.plantuml.klimt.shape.TextBlock;
 import net.sourceforge.plantuml.log.Logme;
 import net.sourceforge.plantuml.openiconic.data.DummyIcon;
 import net.sourceforge.plantuml.security.SFile;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
 
 public class OpenIcon {
 

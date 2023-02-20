@@ -1,0 +1,28 @@
+package net.sourceforge.plantuml.klimt.creole.atom;
+
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.font.StringBounder;
+import net.sourceforge.plantuml.klimt.geom.XDimension2D;
+import net.sourceforge.plantuml.klimt.shape.TileImageSvg;
+
+public class AtomImgSvg extends AbstractAtom implements Atom {
+
+	private final TileImageSvg tileImageSvg;
+
+	public AtomImgSvg(TileImageSvg tileImageSvg) {
+		this.tileImageSvg = tileImageSvg;
+	}
+
+	public XDimension2D calculateDimension(StringBounder stringBounder) {
+		return tileImageSvg.calculateDimension(stringBounder);
+	}
+
+	public double getStartingAltitude(StringBounder stringBounder) {
+		return 0;
+	}
+
+	public void drawU(UGraphic ug) {
+		tileImageSvg.drawU(ug);
+	}
+
+}

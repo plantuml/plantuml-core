@@ -2,7 +2,7 @@ package net.sourceforge.plantuml.posimo;
 
 import java.util.Objects;
 
-import net.sourceforge.plantuml.klimt.DotPath;
+import net.sourceforge.plantuml.klimt.shape.DotPath;
 
 public class Path {
 

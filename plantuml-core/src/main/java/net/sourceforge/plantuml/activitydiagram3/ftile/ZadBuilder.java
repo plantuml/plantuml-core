@@ -4,16 +4,15 @@ import static net.sourceforge.plantuml.utils.ObjectUtils.instanceOfAny;
 
 import net.sourceforge.plantuml.klimt.UBackground;
 import net.sourceforge.plantuml.klimt.UChange;
-import net.sourceforge.plantuml.klimt.URectangle;
 import net.sourceforge.plantuml.klimt.UShape;
 import net.sourceforge.plantuml.klimt.UStroke;
 import net.sourceforge.plantuml.klimt.UTranslate;
 import net.sourceforge.plantuml.klimt.color.HColor;
+import net.sourceforge.plantuml.klimt.drawing.UGraphic;
+import net.sourceforge.plantuml.klimt.drawing.UGraphicNo;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.geom.MinMax;
-import net.sourceforge.plantuml.ugraphic.UGraphic;
-import net.sourceforge.plantuml.ugraphic.UGraphicNo;
-
+import net.sourceforge.plantuml.klimt.shape.URectangle;
 
 public class ZadBuilder extends UGraphicNo {
 
