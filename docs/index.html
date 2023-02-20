@@ -103,10 +103,10 @@ where:
 <a href=svg.html>Working demo</a>
 
 
-<h3>PNG generation (Base64)</h3>
+<h3>PNG generation</h3>
 
 <p>
-Note that PNG generation is slow, because data compression takes time.
+Note that PNG generation is slower, because data compression takes time.
 
 <p>
 Once again, you have to load the runtime provided by Leaning Technology:
@@ -128,7 +128,7 @@ cheerpjRunMain("com.plantuml.api.cheerpj.v1.RunInit", "/app/plantuml-core.jar")
 Finally, you can get the PNG version of any diagram:
 <p>
 <code>
-cjCall("com.plantuml.api.cheerpj.v1.Png", "convertToBase64", "light", text);
+cjCall("com.plantuml.api.cheerpj.v1.Png", "convertToBlob", "light", text, "/files/result.png");
 </code>
 
 <p>
@@ -139,7 +139,7 @@ where:
 </ul>
 
 <p>
-<a href=png64.html>Working demo</a>
+<a href=png.html>Working demo</a>
 
 
 <h3>Complete list of available functions</h3>

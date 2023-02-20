@@ -27,9 +27,33 @@ visibility: hidden;
   width: 100%;
   height: 100%;
 }
+#lean {
+	background-color: #F2F2FF;
+	padding: 0px;
+	margin: 0px;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	width: 100%;
+	height: 80px;
+}
+#lean p {
+	margin: 30px 0 0px 120px;
+}
+
+#lean img {
+	position: fixed;
+	margin: 10px 30px 0 30px;
+}
 </style>
   
 <body>
+<div id=lean>
+<a href=https://docs.leaningtech.com/cheerpj><img src=cheerpj.png width=70></a>
+<p><i>Powered by <a href=https://docs.leaningtech.com/cheerpj>CheerpJ</a>, a Leaning Technologies Java tool</i>
+</p>
+</div>
 <div id=popup>ERROR</div>
 	<div id=debugjava>(...init in progress...)</div>
 
@@ -45,8 +69,32 @@ Alice -> Bob : Hello!
 <div class=cell><img id="render-image"></div>
 
 </div><!--container-->
+	<div>
+	<button onclick='permlink()'>PermLink</button><a id=permlink href=.></a>
+	</div>
 
 <script>
+function permlink() {
+	if (version_displayed==0)
+		return;
+	text = document.getElementById('uml').value;
+	console.log("text="+text);
+	cjCall("com.plantuml.api.cheerpj.v1.Info", "encode", text).then((res) => {
+		console.log("res="+res);
+		var url = window.location.href;
+		var x = url.indexOf("?");
+		if (x==-1)
+			url = url + "?" + res;
+		else
+			url = url.substr(0,x) + "?" + res;
+		// alert(url);
+		document.getElementById('permlink').innerText="Permink to this page";
+		document.getElementById('permlink').href=url;
+
+	});
+	
+}
+
 var _inprogress = false;
 var version_input = 0;
 var version_displayed = 0;
@@ -57,6 +105,7 @@ function done() {
 	const current = version_input;
 	if (_inprogress) return;
 	_inprogress = true;
+	document.getElementById('permlink').innerText="";
 	cjCall("com.plantuml.api.cheerpj.v1.Png", "convertToBlob", "light", text, "/files/result.png").then((res) => {
 			const obj = JSON.parse(res);
 			if (obj.status=='ok') {
@@ -74,9 +123,23 @@ function done() {
 	});
 }
 
+var url = window.location.href;
+var x = url.lastIndexOf("?");
+if (x>0)
+	document.getElementById('uml').value = "...in progress...";
+
 cheerpjInit({disableLoadTimeReporting:true,disableErrorReporting:true}).then( (val0) => {
 	cheerpjRunMain("com.plantuml.api.cheerpj.v1.RunInit", "/app/plantuml-core/plantuml-core.jar", "/app/", "debugjava").then ( (val1) => {
-		done();
+		if (x>0) {
+			var encoded = url.substr(x+1);
+			console.log(encoded);
+			cjCall("com.plantuml.api.cheerpj.v1.Info", "decode", encoded).then((res) => {
+				document.getElementById('uml').value = res;
+				done();
+			});
+			
+		} else		
+			done();
 	});
 });
   </script>

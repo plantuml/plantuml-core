@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>SVG in dark mode</title>
+<title>SVG</title>
 <script src="https://cjrtnc.leaningtech.com/2.3/loader.js"></script>
 </head>
 <style>
@@ -9,6 +9,12 @@ body {
 background-color: #1B1B1B;
 xcolor: #8CB4FF;
 color: #FFFFFF;
+}
+body a:link {
+color: #8CB4FF;
+}
+body a:visited {
+color: #8CB4FF;
 }
 textarea {
 background-color: #1B1B1B;
@@ -27,7 +33,7 @@ color: #FFFFFF;
 }
 
 #popup {
-background-color: #444;
+	background-color: #444;
 	padding: 10px;
 	position: absolute;
 	top: 0px;
@@ -39,9 +45,33 @@ background-color: #444;
 	width: 100%;
 	height: 100%;
 }
+#lean {
+	background-color: #777;
+	padding: 0px;
+	margin: 0px;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	width: 100%;
+	height: 80px;
+}
+#lean p {
+	margin: 30px 0 0px 120px;
+}
+
+#lean img {
+	position: fixed;
+	margin: 10px 30px 0 30px;
+}
 </style>
 
 <body>
+<div id=lean>
+<a href=https://docs.leaningtech.com/cheerpj><img src=cheerpj.png width=70></a>
+<p><i>Powered by <a href=https://docs.leaningtech.com/cheerpj>CheerpJ</a>, a Leaning Technologies Java tool</i>
+</p>
+</div>
 	<div id=popup>ERROR</div>
 	<div id=debugjava>(...init in progress...)</div>
 
@@ -60,8 +90,32 @@ Alice -> Bob : Hello!
 
 	</div>
 	<!--container-->
+	<div>
+	<button onclick='permlink()'>PermLink</button><a id=permlink href=.></a>
+	</div>
 
 	<script>
+	function permlink() {
+		if (version_displayed==0)
+			return;
+		text = document.getElementById('uml').value;
+		console.log("text="+text);
+		cjCall("com.plantuml.api.cheerpj.v1.Info", "encode", text).then((res) => {
+			console.log("res="+res);
+			var url = window.location.href;
+			var x = url.indexOf("?");
+			if (x==-1)
+				url = url + "?" + res;
+			else
+				url = url.substr(0,x) + "?" + res;
+			// alert(url);
+			document.getElementById('permlink').innerText="Permink to this page";
+			document.getElementById('permlink').href=url;
+
+		});
+		
+	}
+
 var _inprogress = false;
 var version_input = 0;
 var version_displayed = 0;
@@ -72,6 +126,7 @@ function done() {
 	const current = version_input;
 	if (_inprogress) return;
 	_inprogress = true;
+	document.getElementById('permlink').innerText="";
 	cjCall("com.plantuml.api.cheerpj.v1.Svg", "convert", "dark", text).then((res) => {
 		if (res.startsWith("<")) {
 			document.getElementById("popup").style.visibility = "hidden";
