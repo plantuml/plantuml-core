@@ -80,7 +80,7 @@ public class CommandCreateMap extends CommandMultilines2<AbstractEntityDiagram> 
 			assert line.length() > 0;
 			final boolean ok = entity1.getBodier().addFieldOrMethod(line);
 			if (ok == false)
-				return CommandExecutionResult.error("Map definition should contains key => value");
+				return CommandExecutionResult.error("Map definition should contain key => value");
 
 			if (BodierMap.getLinkedEntry(line) != null) {
 				final String linkStr = BodierMap.getLinkedEntry(line);
