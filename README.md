@@ -99,4 +99,8 @@ where:
 | Command | Method | Description | Arguments |  Return |
 | --- | --- | --- | --- | --- |
 | `Svg` |  `convert` | Generate an diagram using SVG format |  <ol><li>`mode`: either `"dark"` or `"light"`</li><li>`text`: the text source of the diagram</li></ol> | Either: <ul><li>The SVG source code generated if everything is ok</li><li>Or a JSON description of what was wrong</li></ul> 
+| `Png` |  `convertToBase64` | Generate an diagram using PNG format encoded in Base64 |  <ol><li>`mode`: either `"dark"` or `"light"`</li><li>`text`: the text source of the diagram</li></ol> | Either: <ul><li>A Base64 String of a PNG imag</li><li>Or a JSON description of what was wrong</li></ul> 
+| `Png` |  `convertToBlob` | Generate an diagram in PNG to a Blob |  <ol><li>`mode`: either `"dark"` or `"light"`</li><li>`text`: the text source of the diagram</li><li>`pathOut`: path of the Blob</li></ol> | A JSON description of the conversion.<br><br>The image itself is in the Blob. 
+| `Raw` |  `convertToBlob` | Generate an diagram in raw (uncompressed) graphics to a Blob |  <ol><li>`mode`: either `"dark"` or `"light"`</li><li>`text`: the text source of the diagram</li><li>`pathOut`: path of the Blob</li></ol> | A JSON description of the conversion.<br><br>The image itself is in the Blob in raw format (RGBA). 
+| `Info` |  `decode` | Decode a [PlantUML Text Encoding encoded String](https://plantuml.com/text-encoding). |  <ol><li>`text`: some encoded String</li></ol> | The decoded text of the diagram.
 
