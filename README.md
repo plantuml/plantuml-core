@@ -33,3 +33,33 @@ All those pages are intentionally as simple as possible, so that people could qu
   * [Using a raw canvas](https://plantuml.github.io/plantuml-core/raw.html), the fastest solution (same [in dark mode](https://plantuml.github.io/plantuml-core/raw-dark.html))
   * [Generating SVG](https://plantuml.github.io/plantuml-core/svg.html) (same in [dark mode](https://plantuml.github.io/plantuml-core/svg-dark.html))
   * [Generating PNG](https://plantuml.github.io/plantuml-core/png.html) (same in [dark mode](https://plantuml.github.io/plantuml-core/png-dark.html))
+
+
+## Javascript API
+### SVG generation
+
+First, you have to load the runtime provided by Leaning Technology:
+
+```
+<script src="https://cjrtnc.leaningtech.com/2.3/loader.js"></script>
+```
+
+Then, you have to init PlantUML itself:
+
+```
+cheerpjRunMain("com.plantuml.api.cheerpj.v1.RunInit", "/app/plantuml-core.jar")
+```
+
+The `/app/` is a [virtual file-system that is the root of your webserver](https://docs.leaningtech.com/cheerpj/File-System-support). In the previous example, it means that both files `plantuml-core.jar` and `plantuml-core.jar.js` must be stored at the root of your server (so something like `http://127.0.0.1:8080/plantuml-core.jar.js`).
+
+Finally, you can get the SVG version of any diagram:
+
+```
+cjCall("com.plantuml.api.cheerpj.v1.Svg", "convert", "light", text);
+```
+
+where:
+
+  * `"light"`: could be either `dark` or `light` depending of the theme you want to use.
+  * `text`: String that contains the diagram source text.
+
