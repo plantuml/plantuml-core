@@ -148,7 +148,7 @@ if (x>0)
 	document.getElementById('uml').value = "...in progress...";
 
 cheerpjInit({disableLoadTimeReporting:true,disableErrorReporting:true}).then( (val0) => {
-	cheerpjRunMain("com.plantuml.api.cheerpj.v1.RunInit", "/app/plantuml-core/plantuml-core.jar", "/app/", "debugjava").then ( (val1) => {
+	cheerpjRunMain("com.plantuml.api.cheerpj.v1.RunInit", "/app/plantuml-core/plantuml-core.jar", "/app/plantuml-core/", "debugjava").then ( (val1) => {
 		if (x>0) {
 			var encoded = url.substr(x+1);
 			console.log(encoded);
