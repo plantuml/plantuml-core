@@ -63,3 +63,33 @@ where:
   * `"light"`: could be either `dark` or `light` depending of the theme you want to use.
   * `text`: String that contains the diagram source text.
 
+[Working demo](https://plantuml.github.io/plantuml-core/svg.html)
+
+### PNG generation
+Note that PNG generation is slower, because data compression takes time.
+
+Once again, you have to load the runtime provided by Leaning Technology:
+
+```
+<script src="https://cjrtnc.leaningtech.com/2.3/loader.js"></script>
+```
+
+Then, you have to init PlantUML itself:
+
+```
+cheerpjRunMain("com.plantuml.api.cheerpj.v1.RunInit", "/app/plantuml-core.jar")
+```
+
+Finally, you can get the PNG version of any diagram:
+
+```
+cjCall("com.plantuml.api.cheerpj.v1.Png", "convertToBlob", "light", text, "/files/result.png");
+```
+
+where:
+
+  * `"light"`: could be either `dark` or `light` depending of the theme you want to use.
+  * `text`: String that contains the diagram source text.
+
+[Working demo](https://plantuml.github.io/plantuml-core/png.html)
+
