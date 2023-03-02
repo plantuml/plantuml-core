@@ -93,3 +93,10 @@ where:
 
 [Working demo](https://plantuml.github.io/plantuml-core/png.html)
 
+
+### Complete list of available functions
+
+| Command | Method | Description | Arguments |  Return |
+| --- | --- | --- | --- | --- |
+| `Svg` |  `convert` | Generate an diagram using SVG format |  <ol><li>`mode`: either `"dark"` or `"light"`</li><li>`text`: the text source of the diagram</li></ol> | Either: <ul><li>The SVG source code generated if everything is ok</li><li>Or a JSON description of what was wrong</li></ul> 
+
