@@ -96,7 +96,7 @@ where:
 
 ### Complete list of available functions
 
-| Command | Method | Description | Arguments |  Return |
+| Class | Method | Description | Arguments |  Return |
 | --- | --- | --- | --- | --- |
 | `Svg` |  `convert` | Generate an diagram using SVG format |  <ol><li>`mode`: either `"dark"` or `"light"`</li><li>`text`: the text source of the diagram</li></ol> | Either: <ul><li>The SVG source code generated if everything is ok</li><li>Or a JSON description of what was wrong</li></ul> 
 | `Png` |  `convertToBase64` | Generate an diagram using PNG format encoded in Base64 |  <ol><li>`mode`: either `"dark"` or `"light"`</li><li>`text`: the text source of the diagram</li></ol> | Either: <ul><li>A Base64 String of a PNG imag</li><li>Or a JSON description of what was wrong</li></ul> 
