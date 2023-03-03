@@ -102,5 +102,37 @@ where:
 | `Png` |  `convertToBase64` | Generate an diagram using PNG format encoded in Base64 |  <ol><li>`mode`: either `"dark"` or `"light"`</li><li>`text`: the text source of the diagram</li></ol> | Either: <ul><li>A Base64 String of a PNG imag</li><li>Or a JSON description of what was wrong</li></ul> 
 | `Png` |  `convertToBlob` | Generate an diagram in PNG to a Blob |  <ol><li>`mode`: either `"dark"` or `"light"`</li><li>`text`: the text source of the diagram</li><li>`pathOut`: path of the Blob</li></ol> | A JSON description of the conversion.<br><br>The image itself is in the Blob. 
 | `Raw` |  `convertToBlob` | Generate an diagram in raw (uncompressed) graphics to a Blob |  <ol><li>`mode`: either `"dark"` or `"light"`</li><li>`text`: the text source of the diagram</li><li>`pathOut`: path of the Blob</li></ol> | A JSON description of the conversion.<br><br>The image itself is in the Blob in raw format (RGBA). 
-| `Info` |  `decode` | Decode a [PlantUML Text Encoding encoded String](https://plantuml.com/text-encoding). |  <ol><li>`text`: some encoded String</li></ol> | The decoded text of the diagram.
+| `Info` |  `decode` | Decode a [PlantUML Text Encoding encoded String](https://plantuml.com/text-encoding). |  <ol><li>`text`: some encoded string</li></ol> | The decoded text of the diagram.
+| `Info` |  `encode` | Encode some diagram text to a [PlantUML Text Encoding encoded String](https://plantuml.com/text-encoding). |  <ol><li>`text`: The text of the diagram</li></ol> | The encoded string.
+| `Info` |  `syntaxCheck` | Check if a text diagram is syntaxically correct. |  <ol><li>`text`: The text source of the diagram</li></ol> | A JSON description of the syntax.
+
+## Limitations
+
+
+### Need for a web server
+
+Even if this is a 100% Javascript application, [it does NOT run by simple opening the HTML page directly from disk](https://docs.leaningtech.com/cheerpj/Frequently-Asked-Questions#my-application-compiled-with-cheerpj-does-not-work-and-i-just-see-the-cheerpj-runtime-ready-on-the-top-of-the-screen-whats-going-on).
+
+The URL in the browser should always start with `http://` or `https://`, if it starts with `file://` CheerpJ will not work. You need to use a local web server during testing.
+
+If you have python installed, you can for example use in the current directory `python3 -m http.server 8080` or `python -m http.server 8080`
+
+### Smetana limitation
+
+This version of PlantUML depends on [Smetana, a port from C to Java of GraphViz/DOT source code](https://plantuml.com/smetana02).
+
+Simple diagrams are working fine, however, this port is not 100% finished, so there might be some issue on complex diagrams.
+
+
+### Startup time
+
+The startup time may be improved.
+
+To take advantage of parallel downloads, and reduce download and startup time, CheerpJ allows [to pre-specify a list of resources](https://docs.leaningtech.com/cheerpj/Startup-time-optimization) (CheerpJ runtime modules) to be loaded at startup.
+
+This feature is not used with PlantUML up to now.
+
+
+
+
 
