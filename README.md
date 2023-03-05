@@ -5,6 +5,11 @@ Thanks for [CheerpJ](https://docs.leaningtech.com/cheerpj/), we have published a
 
 This implementation runs within [a simple browser](https://plantuml.github.io/plantuml-core/raw.html).
 
+The goal of this core project is to provide a very basic library, so that **other libraries could be built from it**:
+
+  * Improved editor [PlantUML.js](https://github.com/plantuml/plantuml.js) by [Sakir Temel](https://github.com/sakirtemel)
+
+
 ## What is CheerpJ?
 
 [CheerpJ](https://docs.leaningtech.com/cheerpj/) is a Java bytecode to WebAssembly and JavaScript compiler, compatible with 100% of Java, which allows to compile any Java SE application, library or Java applet into a WebAssembly/JavaScript application.
@@ -66,7 +71,7 @@ where:
 [Working demo](https://plantuml.github.io/plantuml-core/svg.html)
 
 ### PNG generation
-Note that PNG generation is slower, because data compression takes time.
+Note that PNG generation is slower, because PNG compression takes time.
 
 Once again, you have to load the runtime provided by Leaning Technology:
 
