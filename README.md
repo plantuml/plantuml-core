@@ -128,6 +128,11 @@ This version of PlantUML depends on [Smetana, a port from C to Java of GraphViz/
 
 Simple diagrams are working fine, however, this port is not 100% finished, so there might be some issue on complex diagrams.
 
+### CheerpJ Licence
+
+CheerpJ Licence is provided for non commercial use.
+[See licence details here](LICENCE-CHEERPJ.md).
+
 
 ### Startup time
 
