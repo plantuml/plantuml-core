@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.sourceforge.plantuml.classdiagram.command.CommandHideShowByGender;
 import net.sourceforge.plantuml.classdiagram.command.CommandHideShowByVisibility;
+import net.sourceforge.plantuml.classdiagram.command.CommandNamespaceSeparator;
 import net.sourceforge.plantuml.sequencediagram.command.CommandSkin;
 import net.sourceforge.plantuml.statediagram.command.CommandHideEmptyDescription;
 import net.sourceforge.plantuml.style.CommandStyleImport;
@@ -72,6 +73,7 @@ public final class CommonCommands {
 
 		cmds.add(CommandHeader.ME);
 		cmds.add(CommandMultilinesHeader.ME);
+		cmds.add(CommandNamespaceSeparator.ME);
 	}
 
 }

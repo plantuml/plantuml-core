@@ -2,7 +2,7 @@
 package net.sourceforge.plantuml.klimt.geom;
 
 public class XCubicCurve2D {
-	// :: remove file when __HAXE__
+	// ::remove file when __HAXE__
 
 	public double x1;
 	public double y1;

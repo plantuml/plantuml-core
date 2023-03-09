@@ -21,6 +21,7 @@ import net.sourceforge.plantuml.klimt.shape.UHidden;
 import net.sourceforge.plantuml.url.Url;
 
 public abstract class AbstractCommonUGraphic implements UGraphic {
+    // ::remove file when __HAXE__
 
 	private UStroke stroke = UStroke.simple();
 	private UPattern pattern = UPattern.FULL;

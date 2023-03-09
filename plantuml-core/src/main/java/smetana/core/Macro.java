@@ -49,6 +49,7 @@ final public class Macro {
 	}
 
 	public static __ptr__ UNSUPPORTED(String comment) {
+		SmetanaDebug.LIST_METHODS();
 		throw new UnsupportedOperationException(comment);
 	}
 

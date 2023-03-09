@@ -19,10 +19,15 @@ import net.sourceforge.plantuml.utils.Log;
 public class StringUtils {
 
 	public static String goUpperCase(String s) {
-		// ::comment when __HAXE__
+		// ::revert when __HAXE__
 		return s.toUpperCase(Locale.ENGLISH);
-		// ::uncomment when __HAXE__
 		// return s.toUpperCase();
+	}
+
+	public static String goLowerCase(String s) {
+		// ::revert when __HAXE__
+		return s.toLowerCase(Locale.ENGLISH);
+		// return s.toLowerCase();
 	}
 
 	public static String eventuallyRemoveStartingAndEndingDoubleQuote(String s, String format) {
@@ -200,10 +205,6 @@ public class StringUtils {
 
 	public static char goUpperCase(char c) {
 		return goUpperCase("" + c).charAt(0);
-	}
-
-	public static String goLowerCase(String s) {
-		return s.toLowerCase(Locale.ENGLISH);
 	}
 
 	public static char goLowerCase(char c) {
@@ -510,6 +511,7 @@ public class StringUtils {
 
 		return h;
 	}
+
 
 	public static String sharp000000(int color) {
 		final int v = 0xFFFFFF & color;

@@ -9,30 +9,26 @@ import net.sourceforge.plantuml.klimt.geom.EnsureVisible;
 import net.sourceforge.plantuml.text.BackSlash;
 
 public class Url implements EnsureVisible {
-    // ::remove folder when __HAXE__
-
 	private final String url;
 	private final String tooltip;
 	private final String label;
 	private boolean member;
 
-	public Url(String url, String tooltip) {
-		this(url, tooltip, null);
-	}
-
 	public Url(String url, String tooltip, String label) {
 		url = StringUtils.eventuallyRemoveStartingAndEndingDoubleQuote(url, "\"");
 		this.url = url;
-		if (tooltip == null) {
+		// ::revert when __HAXE__
+		if (tooltip == null)
 			this.tooltip = url;
-		} else {
+		else
 			this.tooltip = BackSlash.manageNewLine(tooltip);
-		}
-		if (label == null || label.length() == 0) {
+		// this.tooltip = url;
+
+		if (label == null || label.length() == 0)
 			this.label = url;
-		} else {
+		else
 			this.label = label;
-		}
+
 	}
 
 	public static boolean isLatex(String pendingUrl) {
@@ -55,6 +51,7 @@ public class Url implements EnsureVisible {
 		return label;
 	}
 
+	// ::comment when __HAXE__
 	@Override
 	public String toString() {
 		return super.toString() + " " + url + " " + visible.getCoords(1.0);
@@ -87,11 +84,11 @@ public class Url implements EnsureVisible {
 		public int compare(Url url1, Url url2) {
 			final double surface1 = url1.visible.getSurface();
 			final double surface2 = url2.visible.getSurface();
-			if (surface1 > surface2) {
+			if (surface1 > surface2)
 				return 1;
-			} else if (surface1 < surface2) {
+			else if (surface1 < surface2)
 				return -1;
-			}
+
 			return 0;
 		}
 	};

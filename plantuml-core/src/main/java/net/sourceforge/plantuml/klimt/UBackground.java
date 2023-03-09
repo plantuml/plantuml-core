@@ -4,7 +4,6 @@ package net.sourceforge.plantuml.klimt;
 import net.sourceforge.plantuml.klimt.color.HColor;
 
 public interface UBackground extends UChange {
-	// ::remove file when __HAXE__
 
 	public HColor getBackColor();
 

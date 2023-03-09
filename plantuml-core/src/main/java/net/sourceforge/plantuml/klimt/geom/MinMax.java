@@ -8,7 +8,6 @@ import net.sourceforge.plantuml.klimt.drawing.UGraphic;
 import net.sourceforge.plantuml.klimt.shape.URectangle;
 
 public class MinMax {
-	// :: remove file when __HAXE__
 
 	private final double maxX;
 	private final double maxY;
@@ -119,6 +118,7 @@ public class MinMax {
 		return new XDimension2D(maxX - minX, maxY - minY);
 	}
 
+	// ::comment when __HAXE__
 	public void drawGray(UGraphic ug) {
 		draw(ug, HColors.GRAY);
 	}

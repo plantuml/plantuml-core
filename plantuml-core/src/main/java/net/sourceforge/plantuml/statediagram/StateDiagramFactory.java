@@ -75,7 +75,6 @@ public class StateDiagramFactory extends PSystemCommandFactory {
 
 		CommonCommands.addCommonCommands1(cmds);
 		cmds.add(new CommandHideShow2());
-		cmds.add(new CommandNamespaceSeparator());
 	}
 
 }
