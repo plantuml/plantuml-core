@@ -11,7 +11,6 @@ import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
 import net.sourceforge.plantuml.klimt.sprite.SpriteContainer;
 
 public interface ISkinSimple extends SpriteContainer {
-    // ::remove file when __HAXE__
 
 	public String getValue(String key);
 

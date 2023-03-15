@@ -21,7 +21,6 @@ import net.sourceforge.plantuml.plasma.Quark;
 import net.sourceforge.plantuml.skin.UmlDiagramType;
 
 public abstract class AbstractClassOrObjectDiagram extends AbstractEntityDiagram {
-	// ::remove folder when __HAXE__
 
 	public AbstractClassOrObjectDiagram(UmlSource source, UmlDiagramType type, Map<String, String> orig) {
 		super(source, type, orig);
@@ -191,7 +190,7 @@ public abstract class AbstractClassOrObjectDiagram extends AbstractEntityDiagram
 			if (entity1.getQuark().getParent() == entity2.getQuark().getParent())
 				quark = entity1.getQuark().getParent().child(idShort);
 			else
-				quark = quarkInContext(cleanId(idShort), false);
+				quark = quarkInContext(true, cleanId(idShort));
 			point = reallyCreateLeaf(quark, Display.getWithNewlines(""), LeafType.POINT_FOR_ASSOCIATION, null);
 
 		}

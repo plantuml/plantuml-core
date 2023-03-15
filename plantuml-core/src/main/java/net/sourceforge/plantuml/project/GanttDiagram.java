@@ -79,6 +79,7 @@ import net.sourceforge.plantuml.style.SName;
 import net.sourceforge.plantuml.style.Style;
 import net.sourceforge.plantuml.style.StyleSignatureBasic;
 import net.sourceforge.plantuml.svek.GraphvizCrash;
+import net.sourceforge.plantuml.text.BackSlash;
 
 public class GanttDiagram extends TitledDiagram implements ToTaskDraw, WithSprite {
 
@@ -197,11 +198,11 @@ public class GanttDiagram extends TitledDiagram implements ToTaskDraw, WithSprit
 
 					final HColor back = timelineStyle.value(PName.BackGroundColor).asColor(getIHtmlColorSet());
 					if (back.isTransparent() == false) {
-						final URectangle rect1 = new URectangle(calculateDimension(ug.getStringBounder()).getWidth(),
+						final URectangle rect1 = URectangle.build(calculateDimension(ug.getStringBounder()).getWidth(),
 								timeHeader.getTimeHeaderHeight());
 						ug.apply(back.bg()).draw(rect1);
 						if (showFootbox) {
-							final URectangle rect2 = new URectangle(
+							final URectangle rect2 = URectangle.build(
 									calculateDimension(ug.getStringBounder()).getWidth(),
 									timeHeader.getTimeFooterHeight());
 							ug.apply(back.bg()).apply(UTranslate.dy(totalHeightWithoutFooter)).draw(rect2);
@@ -222,7 +223,8 @@ public class GanttDiagram extends TitledDiagram implements ToTaskDraw, WithSprit
 
 				} catch (Throwable t) {
 					Logme.error(t);
-					final UDrawable crash = new GraphvizCrash(getSource().getPlainString(), false, t);
+					final UDrawable crash = new GraphvizCrash(getSource().getPlainString(BackSlash.lineSeparator()),
+							false, t);
 					crash.drawU(ug);
 
 				}

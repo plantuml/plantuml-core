@@ -2,7 +2,6 @@
 package net.sourceforge.plantuml;
 
 public enum OptionPreprocOutputMode {
-	// ::remove file when __HAXE__
 	NORMAL, CYPHER
 
 }

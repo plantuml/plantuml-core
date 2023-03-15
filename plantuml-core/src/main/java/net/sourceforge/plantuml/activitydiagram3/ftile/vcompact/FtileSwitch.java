@@ -31,7 +31,6 @@ import net.sourceforge.plantuml.klimt.shape.TextBlock;
 import net.sourceforge.plantuml.svek.ConditionStyle;
 
 class FtileSwitch extends AbstractFtile {
-    // ::remove folder when __HAXE__
 
 	private final double xSeparation = 20;
 

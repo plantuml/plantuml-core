@@ -6,7 +6,6 @@ import net.sourceforge.plantuml.klimt.font.FontConfiguration;
 import net.sourceforge.plantuml.klimt.font.StringBounder;
 
 public class UText implements UShape {
-	// ::remove file when __HAXE__
 
 	private final String text;
 	private final FontConfiguration font;
@@ -24,8 +23,8 @@ public class UText implements UShape {
 		this.orientation = orientation;
 	}
 
-	public UText(String text, FontConfiguration font) {
-		this(text, font, 0);
+	public static UText build(String text, FontConfiguration font) {
+		return new UText(text, font, 0);
 	}
 
 	public UText withOrientation(int orientation) {

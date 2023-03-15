@@ -12,7 +12,6 @@ import net.sourceforge.plantuml.klimt.font.UFontContext;
 import net.sourceforge.plantuml.klimt.shape.UText;
 
 public class DriverTextAsPathSvg implements UDriver<UText, SvgGraphics> {
-    // ::remove folder when __HAXE__
 
 	private final ClipContainer clipContainer;
 

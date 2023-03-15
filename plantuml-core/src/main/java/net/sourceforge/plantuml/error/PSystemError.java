@@ -57,7 +57,6 @@ import net.sourceforge.plantuml.version.PSystemVersion;
 import net.sourceforge.plantuml.version.Version;
 
 public abstract class PSystemError extends PlainDiagram {
-    // ::remove folder when __HAXE__
 
 	// Dodgy kludge for testing - we will need a different approach if we want to
 	// test addMessageDedication() etc.

@@ -223,7 +223,6 @@ public class HColorSet {
 			return me.isColorValid(s1) && me.isColorValid(s2);
 		}
 
-		// ::comment when __HAXE__
 		HColorGradient buildInternal() {
 			return HColors.gradient(me.build(s1), me.build(s2), sep);
 		}
@@ -257,7 +256,6 @@ public class HColorSet {
 	}
 
 	private Gradient gradientFromString(String s) {
-		// ::comment when __HAXE__
 		final Matcher2 m = MyPattern.cmpile("[-\\\\|/]").matcher(s);
 		if (m.find()) {
 			final char sep = m.group(0).charAt(0);
@@ -295,7 +293,6 @@ public class HColorSet {
 		if (automatic != null)
 			return automatic.buildInternal();
 
-		// ::comment when __HAXE__
 		final Gradient gradient = gradientFromString(s);
 		if (gradient != null)
 			return gradient.buildInternal();
@@ -331,7 +328,6 @@ public class HColorSet {
 		final Color color;
 		if (s.equalsIgnoreCase("transparent") || s.equalsIgnoreCase("background")) {
 			return HColors.none();
-			// ::comment when __HAXE__
 		} else if (s.equalsIgnoreCase("automatic")) {
 			return new HColorAutomagic();
 		} else if (s.matches("[0-9A-Fa-f]")) {

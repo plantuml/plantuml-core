@@ -13,7 +13,6 @@ public class UFont {
 	private final Font font;
 	private final String family;
 
-	// ::comment when __HAXE__
 	private static final Set<String> names = new HashSet<>();
 
 	static {
@@ -56,7 +55,6 @@ public class UFont {
 	}
 
 	private static boolean doesFamilyExists(String name) {
-		// ::revert when __HAXE__
 		return names.contains(name.toLowerCase());
 		// return true;
 	}
@@ -161,7 +159,6 @@ public class UFont {
 		return font.toString()/* + " " + font.getPSName() */;
 	}
 
-	// ::comment when __HAXE__
 
 	@Override
 	public int hashCode() {

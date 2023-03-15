@@ -14,7 +14,6 @@ import net.sourceforge.plantuml.log.Logme;
 import net.sourceforge.plantuml.security.SImageIO;
 
 public class IconLoader {
-    // ::remove folder when __HAXE__
 
 	private static final int NUMBER_OF_ICONS = 31;
 

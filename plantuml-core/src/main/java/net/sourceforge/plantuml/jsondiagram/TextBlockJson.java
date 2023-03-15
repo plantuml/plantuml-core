@@ -36,7 +36,6 @@ import net.sourceforge.plantuml.yaml.Highlighted;
 
 //See TextBlockMap
 public class TextBlockJson extends AbstractTextBlock {
-    // ::remove folder when __HAXE__
 
 	private final List<Line> lines = new ArrayList<>();
 
@@ -241,7 +240,7 @@ public class TextBlockJson extends AbstractTextBlock {
 			trueWidth = 30;
 
 		final double round = styleNode.value(PName.RoundCorner).asDouble();
-		final URectangle fullNodeRectangle = new URectangle(trueWidth, y).rounded(round);
+		final URectangle fullNodeRectangle = URectangle.build(trueWidth, y).rounded(round);
 		final HColor backColor = styleNode.value(PName.BackGroundColor).asColor(skinParam.getIHtmlColorSet());
 		ugNode.apply(backColor.bg()).apply(backColor).draw(fullNodeRectangle);
 
@@ -254,7 +253,7 @@ public class TextBlockJson extends AbstractTextBlock {
 			final UGraphic ugline = ugSeparator.apply(UTranslate.dy(y));
 			final double heightOfRow = line.getHeightOfRow(stringBounder);
 			if (line.highlighted != null) {
-				final URectangle back = new URectangle(trueWidth - 2, heightOfRow).rounded(4);
+				final URectangle back = URectangle.build(trueWidth - 2, heightOfRow).rounded(4);
 				final Style styleNodeHighlight = StyleSignatureBasic
 						.of(SName.root, SName.element, diagramType, SName.node, SName.highlight)
 						.withTOBECHANGED(line.highlighted.getStereotype()).getMergedStyle(styleBuilder);

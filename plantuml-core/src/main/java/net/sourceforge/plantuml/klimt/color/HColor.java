@@ -70,7 +70,6 @@ public abstract class HColor implements UChange {
 		return true;
 	}
 
-	// ::comment when __HAXE__
 	public String asString() {
 		return "?" + getClass().getSimpleName();
 	}

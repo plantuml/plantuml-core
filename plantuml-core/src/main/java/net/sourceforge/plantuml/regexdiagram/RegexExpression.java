@@ -7,7 +7,6 @@ import java.util.List;
 import net.sourceforge.plantuml.utils.CharInspector;
 
 public class RegexExpression {
-    // ::remove folder when __HAXE__
 
 	public static List<ReToken> parse(CharInspector it) {
 		final List<ReToken> result = new ArrayList<>();

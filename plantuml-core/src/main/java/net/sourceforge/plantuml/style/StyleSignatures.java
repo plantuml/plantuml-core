@@ -8,7 +8,6 @@ import net.sourceforge.plantuml.stereo.Stereostyles;
 import net.sourceforge.plantuml.stereo.Stereotype;
 
 public class StyleSignatures implements StyleSignature {
-    // ::remove file when __HAXE__
 
 	private final List<StyleSignature> all = new ArrayList<StyleSignature>();
 

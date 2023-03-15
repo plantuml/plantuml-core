@@ -19,7 +19,6 @@ import net.sourceforge.plantuml.klimt.geom.XRectangle2D;
 import net.sourceforge.plantuml.style.ISkinSimple;
 
 public class TextBlockTitle implements TextBlock {
-    // ::remove file when __HAXE__
 
 	private final double outMargin = 2;
 

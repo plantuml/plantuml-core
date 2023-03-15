@@ -6,7 +6,6 @@ import net.sourceforge.plantuml.klimt.color.HColorSet;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
 
 public abstract class ValueAbstract implements Value {
-    // ::remove file when __HAXE__
 
 	public String asString() {
 		throw new UnsupportedOperationException("Class=" + getClass());

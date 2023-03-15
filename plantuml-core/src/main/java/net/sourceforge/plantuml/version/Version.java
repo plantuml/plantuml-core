@@ -7,12 +7,11 @@ import net.sourceforge.plantuml.log.Logme;
 import net.sourceforge.plantuml.security.SURL;
 
 public class Version {
-    // ::remove folder when __HAXE__
 
 	private static final int MAJOR_SEPARATOR = 1000000;
 
 	public static int version() {
-		return 1202302;
+		return 1202304;
 	}
 
 	public static int versionPatched() {
@@ -48,7 +47,7 @@ public class Version {
 	}
 
 	public static int beta() {
-		final int beta = 7;
+		final int beta = 2;
 		return beta;
 	}
 
@@ -61,7 +60,7 @@ public class Version {
 	}
 
 	public static long compileTime() {
-		return 1677403547300L;
+		return 1678388629831L;
 	}
 
 	public static String compileTimeString() {

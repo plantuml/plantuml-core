@@ -23,7 +23,6 @@ import net.sourceforge.plantuml.utils.Direction;
 import net.sourceforge.plantuml.utils.LineLocation;
 
 abstract class CommandLinkStateCommon extends SingleLineCommand2<StateDiagram> {
-    // ::remove folder when __HAXE__
 
 	CommandLinkStateCommon(IRegex pattern) {
 		super(pattern);
@@ -132,7 +131,7 @@ abstract class CommandLinkStateCommon extends SingleLineCommand2<StateDiagram> {
 
 		if (code.startsWith("=") && code.endsWith("=")) {
 			final String codeString1 = removeEquals(code);
-			final Quark<Entity> quark = diagram.quarkInContext(diagram.cleanId(codeString1), false);
+			final Quark<Entity> quark = diagram.quarkInContext(true, diagram.cleanId(codeString1));
 			if (quark.getData() != null)
 				return quark.getData();
 			return diagram.reallyCreateLeaf(quark, Display.getWithNewlines(quark), LeafType.SYNCHRO_BAR, null);
@@ -141,7 +140,7 @@ abstract class CommandLinkStateCommon extends SingleLineCommand2<StateDiagram> {
 		if (diagram.getCurrentGroup().getName().equals(code))
 			return diagram.getCurrentGroup();
 
-		final Quark<Entity> quark = diagram.quarkInContext(diagram.cleanId(code), false);
+		final Quark<Entity> quark = diagram.quarkInContext(true, diagram.cleanId(code));
 		if (diagram.checkConcurrentStateOk(quark) == false)
 			return null;
 

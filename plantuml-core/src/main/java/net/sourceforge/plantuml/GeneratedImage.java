@@ -4,7 +4,6 @@ package net.sourceforge.plantuml;
 import java.io.File;
 
 public interface GeneratedImage extends Comparable<GeneratedImage> {
-	// ::remove file when __HAXE__
 
 	public File getPngFile();
 

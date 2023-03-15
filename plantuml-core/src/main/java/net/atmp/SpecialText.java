@@ -10,7 +10,6 @@ import net.sourceforge.plantuml.klimt.shape.TextBlock;
 import net.sourceforge.plantuml.klimt.shape.UEmpty;
 
 public class SpecialText implements UShapeIgnorableForCompression {
-    // ::remove folder when __HAXE__
 
 	private final TextBlock title;
 

@@ -2,7 +2,6 @@
 package net.sourceforge.plantuml.style.parser;
 
 public class StyleParsingException extends Exception {
-    // ::remove folder when __HAXE__
 
 	public StyleParsingException(String msg) {
 		super(msg);

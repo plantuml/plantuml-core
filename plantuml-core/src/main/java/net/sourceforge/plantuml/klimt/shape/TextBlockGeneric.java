@@ -8,7 +8,6 @@ import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public class TextBlockGeneric extends AbstractTextBlock implements TextBlock {
-    // ::remove file when __HAXE__
 
 	private final TextBlock textBlock;
 	private final HColor background;
@@ -29,7 +28,7 @@ public class TextBlockGeneric extends AbstractTextBlock implements TextBlock {
 		ug = ug.apply(background.bg());
 		ug = ug.apply(border);
 		final XDimension2D dim = calculateDimension(ug.getStringBounder());
-		ug.apply(new UStroke(2, 2, 1)).draw(new URectangle(dim.getWidth(), dim.getHeight()));
+		ug.apply(new UStroke(2, 2, 1)).draw(URectangle.build(dim.getWidth(), dim.getHeight()));
 
 		textBlock.drawU(ug);
 	}

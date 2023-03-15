@@ -11,7 +11,6 @@ import net.sourceforge.plantuml.klimt.geom.VerticalAlignment;
 import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public class TextBlockHorizontal extends AbstractTextBlock implements TextBlock {
-    // ::remove file when __HAXE__
 
 	private final List<TextBlock> blocks = new ArrayList<>();
 	private final VerticalAlignment alignment;

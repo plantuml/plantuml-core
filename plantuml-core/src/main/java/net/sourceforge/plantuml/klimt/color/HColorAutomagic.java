@@ -2,7 +2,6 @@
 package net.sourceforge.plantuml.klimt.color;
 
 class HColorAutomagic extends HColor {
-	// ::remove file when __HAXE__
 
 	@Override
 	public HColor getAppropriateColor(HColor back) {

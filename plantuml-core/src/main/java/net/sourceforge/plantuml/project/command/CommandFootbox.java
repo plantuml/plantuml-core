@@ -11,7 +11,6 @@ import net.sourceforge.plantuml.regex.RegexResult;
 import net.sourceforge.plantuml.utils.LineLocation;
 
 public class CommandFootbox extends SingleLineCommand2<GanttDiagram> {
-    // ::remove folder when __HAXE__
 
 	public CommandFootbox() {
 		super(getRegexConcat());

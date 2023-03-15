@@ -8,7 +8,6 @@ import net.sourceforge.plantuml.core.UmlSource;
 import net.sourceforge.plantuml.skin.UmlDiagramType;
 
 public class CompositeDiagram extends AbstractEntityDiagram {
-	// ::remove folder when __HAXE__
 
 	public CompositeDiagram(UmlSource source, Map<String, String> skinParam) {
 		super(source, UmlDiagramType.COMPOSITE, skinParam);

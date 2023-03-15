@@ -5,7 +5,6 @@ import net.sourceforge.plantuml.klimt.color.HColor;
 import net.sourceforge.plantuml.klimt.color.HColorSet;
 
 public class ValueColor extends ValueAbstract {
-    // ::remove file when __HAXE__
 
 	private final HColor color;
 	private final int priority;

@@ -23,7 +23,6 @@ import net.sourceforge.plantuml.security.SFile;
 import net.sourceforge.plantuml.utils.Log;
 
 public class SourceStringReader {
-	// ::remove file when __HAXE__
 
 	final private List<BlockUml> blocks;
 

@@ -12,7 +12,6 @@ import net.sourceforge.plantuml.klimt.shape.UDrawable;
 
 // This class doesnt feel like a wonderful idea, just a stepping stone towards something
 public abstract class PlainDiagram extends AbstractPSystem {
-	// ::remove file when __HAXE__
 
 	public PlainDiagram(UmlSource source) {
 		super(source);

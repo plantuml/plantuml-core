@@ -6,7 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public final class SmetanaDebug {
-	// ::remove folder when __HAXE__
 	static private final Map<String, String> methods = new LinkedHashMap<String, String>();
 
 	static public void LOG(String s) {

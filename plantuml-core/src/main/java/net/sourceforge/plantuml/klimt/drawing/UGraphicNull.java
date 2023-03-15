@@ -10,19 +10,21 @@ import net.sourceforge.plantuml.klimt.color.HColors;
 import net.sourceforge.plantuml.klimt.geom.EnsureVisible;
 
 public class UGraphicNull extends AbstractUGraphic<String> implements EnsureVisible {
-    // ::remove file when __HAXE__
 
 	@Override
 	protected AbstractCommonUGraphic copyUGraphic() {
-		return new UGraphicNull(this);
+		final UGraphicNull result = new UGraphicNull(this);
+		return result;
 	}
 
 	private UGraphicNull(UGraphicNull other) {
-		super(other);
+		super(FileFormat.PNG.getDefaultStringBounder());
+		copy(other);
 	}
 
 	public UGraphicNull() {
-		super(HColors.BLACK, ColorMapper.IDENTITY, FileFormat.PNG.getDefaultStringBounder(), "foo");
+		super(FileFormat.PNG.getDefaultStringBounder());
+		copy(HColors.BLACK, ColorMapper.IDENTITY, "foo");
 	}
 
 	@Override

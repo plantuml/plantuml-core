@@ -8,7 +8,6 @@ import net.sourceforge.plantuml.klimt.MutableImage;
 import net.sourceforge.plantuml.klimt.UShape;
 
 public class UImage implements UShape {
-    // ::remove file when __HAXE__
 
 	private final MutableImage image;
 	private final String formula;

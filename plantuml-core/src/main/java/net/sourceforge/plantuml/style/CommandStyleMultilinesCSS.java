@@ -15,7 +15,6 @@ import net.sourceforge.plantuml.style.parser.StyleParsingException;
 import net.sourceforge.plantuml.utils.BlocLines;
 
 public class CommandStyleMultilinesCSS extends CommandMultilines2<TitledDiagram> {
-    // ::remove file when __HAXE__
 
 	public static final CommandStyleMultilinesCSS ME = new CommandStyleMultilinesCSS();
 

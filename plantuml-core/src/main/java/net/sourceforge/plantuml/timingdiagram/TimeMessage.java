@@ -16,7 +16,6 @@ import net.sourceforge.plantuml.style.StyleBuilder;
 import net.sourceforge.plantuml.style.StyleSignatureBasic;
 
 public class TimeMessage extends WithLinkType {
-    // ::remove folder when __HAXE__
 
 	private final TickInPlayer tickInPlayer1;
 	private final TickInPlayer tickInPlayer2;

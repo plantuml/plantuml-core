@@ -37,7 +37,6 @@ public enum HorizontalAlignment {
 		return result;
 	}
 
-	// ::comment when __HAXE__
 	public String getGraphVizValue() {
 		return toString().substring(0, 1).toLowerCase();
 	}

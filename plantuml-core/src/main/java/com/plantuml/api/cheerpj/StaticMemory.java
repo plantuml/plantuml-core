@@ -2,7 +2,6 @@
 package com.plantuml.api.cheerpj;
 
 public class StaticMemory {
-    // ::remove folder when __HAXE__
 
 	public static String cheerpjPath = "/app/";
 	public static String elementIdDebugJava;

@@ -146,7 +146,6 @@ public class XLine2D implements UDrawable {
 		return null;
 	}
 
-	// ::comment when __HAXE__
 	public void drawU(UGraphic ug) {
 		ug = ug.apply(new UTranslate(x1, y1));
 		final ULine line = new ULine(x2 - x1, y2 - y1);

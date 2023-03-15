@@ -7,7 +7,6 @@ import java.util.Iterator;
 import java.util.List;
 
 public class RegexPartialMatch implements Iterable<String> {
-    // ::remove folder when __HAXE__
 
 	private final List<String> data = new ArrayList<>();
 

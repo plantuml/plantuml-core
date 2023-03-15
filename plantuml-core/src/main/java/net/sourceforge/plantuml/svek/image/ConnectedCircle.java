@@ -22,7 +22,7 @@ public class ConnectedCircle implements UDrawable {
 	}
 
 	public void drawU(UGraphic ug) {
-		final UEllipse circle = new UEllipse(2 * radius, 2 * radius);
+		final UEllipse circle = UEllipse.build(2 * radius, 2 * radius);
 		// ug.draw(circle);
 		for (Double angle : angles) {
 			final double delta = 30;
@@ -32,7 +32,7 @@ public class ConnectedCircle implements UDrawable {
 		ug = ug.apply(HColors.GREEN).apply(HColors.GREEN.bg());
 		for (XPoint2D pt : points) {
 			final UTranslate tr = UTranslate.point(pt);
-			// ug.apply(tr).draw(new UEllipse(2, 2));
+			// ug.apply(tr).draw(UEllipse.build(2, 2));
 		}
 
 	}

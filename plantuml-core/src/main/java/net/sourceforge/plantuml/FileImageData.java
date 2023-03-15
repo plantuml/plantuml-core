@@ -5,7 +5,6 @@ import net.sourceforge.plantuml.core.ImageData;
 import net.sourceforge.plantuml.security.SFile;
 
 public class FileImageData {
-	// ::remove file when __HAXE__
 
 	public static final int ERROR = 400;
 	public static final int CRASH = 503;

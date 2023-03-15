@@ -9,7 +9,6 @@ import net.sourceforge.plantuml.klimt.UShape;
 import net.sourceforge.plantuml.utils.SignatureUtils;
 
 public class UImageSvg implements UShape {
-    // ::remove file when __HAXE__
 
 	private final String svg;
 	private final double scale;

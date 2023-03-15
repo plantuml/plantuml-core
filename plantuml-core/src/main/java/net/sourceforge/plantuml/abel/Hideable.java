@@ -2,7 +2,6 @@
 package net.sourceforge.plantuml.abel;
 
 public interface Hideable {
-    // ::remove folder when __HAXE__
 
 	public boolean isHidden();
 

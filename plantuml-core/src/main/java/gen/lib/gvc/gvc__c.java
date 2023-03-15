@@ -15,7 +15,6 @@ import smetana.core.CString;
 import smetana.core.Globals;
 
 public class gvc__c {
-    // ::remove folder when __HAXE__
 
 
 //3 f3vdhir2c7dz3pvmx9d3m4lx1

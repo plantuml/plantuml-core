@@ -15,7 +15,6 @@ import net.sourceforge.plantuml.regex.RegexLeaf;
 import net.sourceforge.plantuml.regex.RegexResult;
 
 public class SubjectToday implements Subject {
-    // ::remove folder when __HAXE__
 
 	public static final Subject ME = new SubjectToday();
 

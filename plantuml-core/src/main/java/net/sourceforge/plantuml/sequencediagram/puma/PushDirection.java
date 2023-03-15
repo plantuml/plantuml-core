@@ -2,7 +2,6 @@
 package net.sourceforge.plantuml.sequencediagram.puma;
 
 public enum PushDirection {
-    // ::remove folder when __HAXE__
 
 	TOLEFT, TORIGHT
 }

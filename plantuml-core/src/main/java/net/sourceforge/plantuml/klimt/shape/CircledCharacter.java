@@ -9,7 +9,6 @@ import net.sourceforge.plantuml.klimt.font.UFont;
 import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public class CircledCharacter extends AbstractTextBlock implements TextBlock {
-    // ::remove file when __HAXE__
 
 	private final String c;
 	private final UFont font;
@@ -33,7 +32,7 @@ public class CircledCharacter extends AbstractTextBlock implements TextBlock {
 			ug = ug.apply(spotBorder);
 
 		ug = ug.apply(spotBackColor.bg());
-		ug.draw(new UEllipse(radius * 2, radius * 2));
+		ug.draw(UEllipse.build(radius * 2, radius * 2));
 		ug = ug.apply(fontColor);
 		ug = ug.apply(new UTranslate(radius, radius));
 		ug.draw(new UCenteredCharacter(c.charAt(0), font));

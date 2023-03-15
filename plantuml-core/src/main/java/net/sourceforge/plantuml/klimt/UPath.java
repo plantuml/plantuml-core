@@ -15,7 +15,6 @@ import net.sourceforge.plantuml.klimt.geom.USegmentType;
 import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 
 public class UPath extends AbstractShadowable implements Iterable<USegment>, UShapeIgnorableForCompression {
-	// ::remove file when __HAXE__
 
 	private final String comment;
 	private final String codeLine;
@@ -31,8 +30,8 @@ public class UPath extends AbstractShadowable implements Iterable<USegment>, USh
 		this.codeLine = codeLine;
 	}
 
-	public UPath() {
-		this(null, null);
+	public static UPath none() {
+		return new UPath(null, null);
 	}
 
 	public void add(double[] coord, USegmentType pathType) {

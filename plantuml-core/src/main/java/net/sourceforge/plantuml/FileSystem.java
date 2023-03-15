@@ -8,7 +8,6 @@ import net.sourceforge.plantuml.security.SecurityUtils;
 import net.sourceforge.plantuml.utils.Log;
 
 public class FileSystem {
-	// ::remove file when __HAXE__
 
 	private final static FileSystem singleton = new FileSystem();
 

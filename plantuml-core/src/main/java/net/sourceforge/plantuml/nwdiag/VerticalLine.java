@@ -24,7 +24,7 @@ public class VerticalLine implements UDrawable {
 		ug = ug.apply(HColors.none().bg());
 		boolean drawn = false;
 		double current = y1;
-		UPath path = new UPath();
+		UPath path = UPath.none();
 		path.moveTo(0, current);
 		for (Double step : skip) {
 			if (step < y1) {
@@ -42,7 +42,7 @@ public class VerticalLine implements UDrawable {
 				}
 			}
 			ug.draw(path);
-			path = new UPath();
+			path = UPath.none();
 			current = step + 9;
 			path.moveTo(0, current);
 			if (current >= y2) {

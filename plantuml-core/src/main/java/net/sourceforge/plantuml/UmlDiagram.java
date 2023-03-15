@@ -48,7 +48,6 @@ import net.sourceforge.plantuml.utils.Log;
 import net.sourceforge.plantuml.version.Version;
 
 public abstract class UmlDiagram extends TitledDiagram implements Diagram, Annotated, WithSprite {
-	// ::remove file when __HAXE__
 
 	private boolean rotation;
 
@@ -148,7 +147,7 @@ public abstract class UmlDiagram extends TitledDiagram implements Diagram, Annot
 		if (source == null)
 			return "";
 
-		return source.getPlainString();
+		return source.getPlainString("\n");
 	}
 
 	static private List<String> getFailureText1(Throwable exception, String graphvizVersion, String textDiagram) {

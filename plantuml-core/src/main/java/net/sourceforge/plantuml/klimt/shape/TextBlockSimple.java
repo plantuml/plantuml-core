@@ -16,7 +16,6 @@ import net.sourceforge.plantuml.klimt.sprite.SpriteContainer;
 import net.sourceforge.plantuml.regex.MyPattern;
 
 public final class TextBlockSimple extends AbstractTextBlock implements TextBlock {
-    // ::remove file when __HAXE__
 
 	private List<Line> lines;
 

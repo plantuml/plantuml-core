@@ -2,5 +2,13 @@
 package net.sourceforge.plantuml.tim;
 
 public enum TVariableScope {
-	LOCAL, GLOBAL
+	LOCAL, GLOBAL;
+
+	public static TVariableScope lazzyParse(String value) {
+		if ("local".equalsIgnoreCase(value))
+			return LOCAL;
+		if ("global".equalsIgnoreCase(value))
+			return GLOBAL;
+		return null;
+	}
 }

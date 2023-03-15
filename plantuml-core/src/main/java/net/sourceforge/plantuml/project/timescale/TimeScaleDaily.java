@@ -5,7 +5,6 @@ import net.sourceforge.plantuml.project.core.PrintScale;
 import net.sourceforge.plantuml.project.time.Day;
 
 public final class TimeScaleDaily implements TimeScale {
-    // ::remove folder when __HAXE__
 
 	private final TimeScaleWink basic;
 	private final double delta;

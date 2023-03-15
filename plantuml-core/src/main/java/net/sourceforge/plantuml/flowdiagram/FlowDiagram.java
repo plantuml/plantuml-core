@@ -41,7 +41,6 @@ import net.sourceforge.plantuml.skin.UmlDiagramType;
 import net.sourceforge.plantuml.style.ClockwiseTopRightBottomLeft;
 
 public class FlowDiagram extends UmlDiagram implements TextBlock {
-    // ::remove folder when __HAXE__
 
 	private static double SINGLE_SIZE_X = 100;
 	private static double SINGLE_SIZE_Y = 35;
@@ -127,7 +126,7 @@ public class FlowDiagram extends UmlDiagram implements TextBlock {
 		}
 		ug = ug.apply(HColors.MY_RED);
 		ug = ug.apply(HColors.MY_RED.bg());
-		final UShape arrow = new UEllipse(7, 7);
+		final UShape arrow = UEllipse.build(7, 7);
 		for (Path p : field.getPaths()) {
 			final TileArea start = p.getStart();
 			final TileArea dest = p.getDest();

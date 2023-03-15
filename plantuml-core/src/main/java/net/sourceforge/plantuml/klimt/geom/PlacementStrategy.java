@@ -6,7 +6,6 @@ import java.util.Map;
 import net.sourceforge.plantuml.klimt.shape.TextBlock;
 
 public interface PlacementStrategy {
-	// ::remove file when __HAXE__
 
 	public void add(TextBlock block);
 

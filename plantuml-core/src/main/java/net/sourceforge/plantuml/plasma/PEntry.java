@@ -2,7 +2,6 @@
 package net.sourceforge.plantuml.plasma;
 
 class PEntry<DATA> {
-    // ::remove folder when __HAXE__
 
 	final Quark<DATA> first;
 	int counter = 1;

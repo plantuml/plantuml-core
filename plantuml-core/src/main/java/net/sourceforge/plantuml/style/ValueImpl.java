@@ -10,7 +10,6 @@ import net.sourceforge.plantuml.klimt.color.HColors;
 import net.sourceforge.plantuml.klimt.geom.HorizontalAlignment;
 
 public class ValueImpl implements Value {
-    // ::remove file when __HAXE__
 
 	private final DarkString value;
 

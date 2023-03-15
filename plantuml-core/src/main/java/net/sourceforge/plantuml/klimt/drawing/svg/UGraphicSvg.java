@@ -29,7 +29,7 @@ import net.sourceforge.plantuml.url.Url;
 public class UGraphicSvg extends AbstractUGraphic<SvgGraphics> implements ClipContainer {
 
 	private final boolean textAsPath;
-	private final SvgOption option;
+	private /* final */ SvgOption option;
 
 	public double dpiFactor() {
 		return 1;
@@ -37,18 +37,23 @@ public class UGraphicSvg extends AbstractUGraphic<SvgGraphics> implements ClipCo
 
 	@Override
 	protected AbstractCommonUGraphic copyUGraphic() {
-		return new UGraphicSvg(this);
+		final UGraphicSvg result = new UGraphicSvg(getStringBounder(), textAsPath);
+		result.copy(this);
+		result.option = this.option;
+		return result;
 	}
 
-	private UGraphicSvg(UGraphicSvg other) {
-		super(other);
-		this.textAsPath = other.textAsPath;
-		this.option = other.option;
+	private UGraphicSvg(StringBounder stringBounder, boolean textAsPath) {
+		super(stringBounder);
+		this.textAsPath = textAsPath;
 		register();
 	}
 
-	public UGraphicSvg(SvgOption option, boolean textAsPath, long seed, StringBounder stringBounder) {
-		this(option, new SvgGraphics(seed, option), textAsPath, stringBounder);
+	public static UGraphicSvg build(SvgOption option, boolean textAsPath, long seed, StringBounder stringBounder) {
+		final UGraphicSvg result = new UGraphicSvg(stringBounder, textAsPath);
+		result.copy(option.getBackcolor(), option.getColorMapper(), new SvgGraphics(seed, option));
+		result.option = option;
+		return result;
 	}
 
 	@Override
@@ -64,13 +69,6 @@ public class UGraphicSvg extends AbstractUGraphic<SvgGraphics> implements ClipCo
 	@Override
 	protected void afterDraw() {
 		getGraphicObject().setHidden(false);
-	}
-
-	private UGraphicSvg(SvgOption option, SvgGraphics svg, boolean textAsPath, StringBounder stringBounder) {
-		super(option.getBackcolor(), option.getColorMapper(), stringBounder, svg);
-		this.textAsPath = textAsPath;
-		this.option = option;
-		register();
 	}
 
 	private void register() {

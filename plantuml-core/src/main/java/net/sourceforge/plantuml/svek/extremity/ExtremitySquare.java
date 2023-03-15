@@ -9,7 +9,6 @@ import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 import net.sourceforge.plantuml.klimt.shape.URectangle;
 
 class ExtremitySquare extends Extremity {
-    // ::remove folder when __HAXE__
 
 	private final HColor backgroundColor;
 	private final XPoint2D dest;
@@ -28,7 +27,7 @@ class ExtremitySquare extends Extremity {
 	public void drawU(UGraphic ug) {
 		ug.apply(UStroke.withThickness(1.5)).apply(backgroundColor.bg())
 				.apply(new UTranslate(dest.getX() - radius, dest.getY() - radius))
-				.draw(new URectangle(radius * 2, radius * 2));
+				.draw(URectangle.build(radius * 2, radius * 2));
 	}
 
 }

@@ -29,7 +29,6 @@ import net.sourceforge.plantuml.svek.Ports;
 import net.sourceforge.plantuml.svek.WithPorts;
 
 public class TextBlockMap extends AbstractTextBlock implements WithPorts {
-    // ::remove folder when __HAXE__
 
 	private final ISkinParam skinParam;
 	private final FontConfiguration fontConfiguration;
@@ -155,7 +154,7 @@ public class TextBlockMap extends AbstractTextBlock implements WithPorts {
 		}
 
 		public void drawU(UGraphic ug) {
-			final UShape point = new UEllipse(getDiameter(), getDiameter());
+			final UShape point = UEllipse.build(getDiameter(), getDiameter());
 			ug = ug.apply(color).apply(color.bg());
 			ug.draw(point);
 		}

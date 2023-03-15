@@ -56,13 +56,13 @@ public class Blotter implements UDrawable {
 	private UShape getRectangleBackground(int i, double height) {
 		final double width = dim.getWidth();
 		if (round == 0)
-			return new URectangle(width, height);
+			return URectangle.build(width, height);
 
 		if (changes.size() == 1)
-			return new URectangle(width, height).rounded(round);
+			return URectangle.build(width, height).rounded(round);
 
 		if (i == 0) {
-			final UPath result = new UPath();
+			final UPath result = UPath.none();
 			result.moveTo(round / 2, 0);
 			result.lineTo(width - round / 2, 0);
 			result.arcTo(round / 2, round / 2, 0, 0, 1, width, round / 2);
@@ -74,7 +74,7 @@ public class Blotter implements UDrawable {
 			return result;
 		}
 		if (i == changes.size() - 1) {
-			final UPath result = new UPath();
+			final UPath result = UPath.none();
 			result.moveTo(0, 0);
 			result.lineTo(width, 0);
 			result.lineTo(width, height - round / 2);
@@ -86,7 +86,7 @@ public class Blotter implements UDrawable {
 			return result;
 
 		}
-		return new URectangle(width, height);
+		return URectangle.build(width, height);
 	}
 
 	public void closeChanges() {

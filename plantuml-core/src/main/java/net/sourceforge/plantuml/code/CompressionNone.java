@@ -2,7 +2,6 @@
 package net.sourceforge.plantuml.code;
 
 public class CompressionNone implements Compression {
-    // ::remove folder when __HAXE__
 
 	public byte[] compress(byte[] in) {
 		return in;

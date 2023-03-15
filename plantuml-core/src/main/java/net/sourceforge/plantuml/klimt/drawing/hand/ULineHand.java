@@ -7,7 +7,6 @@ import net.sourceforge.plantuml.klimt.UPath;
 import net.sourceforge.plantuml.klimt.shape.ULine;
 
 public class ULineHand {
-    // ::remove folder when __HAXE__
 
 	private UPath path;
 

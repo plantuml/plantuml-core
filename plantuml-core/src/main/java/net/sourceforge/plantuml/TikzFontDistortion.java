@@ -4,7 +4,6 @@ package net.sourceforge.plantuml;
 import java.util.StringTokenizer;
 
 public class TikzFontDistortion {
-	// ::remove file when __HAXE__
 
 	private final double magnify;
 	private final double distortion;

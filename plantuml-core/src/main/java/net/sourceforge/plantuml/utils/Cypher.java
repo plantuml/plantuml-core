@@ -19,7 +19,6 @@ import java.util.regex.Pattern;
 import net.sourceforge.plantuml.log.Logme;
 
 public class Cypher {
-	// ::remove file when __HAXE__
 
 	final private static Pattern p = Pattern.compile("[\\p{L}\\p{N}]+");
 

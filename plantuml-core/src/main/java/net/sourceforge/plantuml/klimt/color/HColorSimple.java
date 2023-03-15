@@ -26,7 +26,6 @@ public class HColorSimple extends HColor {
 		return sb.toString();
 	}
 
-	// ::comment when __HAXE__
 	@Override
 	public String asString() {
 		if (isTransparent())
@@ -102,7 +101,6 @@ public class HColorSimple extends HColor {
 		return HColorSimple.create(ColorUtils.getGrayScaleColor(color));
 	}
 
-	// ::comment when __HAXE__
 	public HColor asMonochrome(HColorSimple colorForMonochrome, double minGray, double maxGray) {
 		final Color tmp = ColorUtils.getGrayScaleColor(color);
 		final int gray = tmp.getGreen();

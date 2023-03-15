@@ -12,7 +12,6 @@ import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public class BigFrame extends AbstractTextBlock {
-    // ::remove file when __HAXE__
 	
 	private final TextBlock title;
 	private final double width;
@@ -39,7 +38,7 @@ public class BigFrame extends AbstractTextBlock {
 		ug = symbolContext.apply(ug);
 		final XDimension2D dimTitle = title.calculateDimension(stringBounder);
 		final double widthFull = dim.getWidth();
-		final Shadowable rectangle = new URectangle(widthFull, dim.getHeight()).rounded(symbolContext.getRoundCorner())
+		final Shadowable rectangle = URectangle.build(widthFull, dim.getHeight()).rounded(symbolContext.getRoundCorner())
 				.ignoreForCompressionOnX().ignoreForCompressionOnY();
 		rectangle.setDeltaShadow(symbolContext.getDeltaShadow());
 
@@ -56,7 +55,7 @@ public class BigFrame extends AbstractTextBlock {
 		}
 		final double textHeight = getYpos(dimTitle);
 
-		final UPath line = new UPath();
+		final UPath line = UPath.none();
 		line.setIgnoreForCompressionOnX();
 		line.moveTo(textWidth, 0);
 

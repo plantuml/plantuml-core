@@ -26,7 +26,6 @@ import net.sourceforge.plantuml.preproc.Defines;
 import com.leaningtech.client.Global;
 
 public class Svg {
-    // ::remove folder when __HAXE__
 
 	public static Object convert(String mode, String text) {
 		final long start = System.currentTimeMillis();

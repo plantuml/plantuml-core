@@ -107,7 +107,7 @@ public enum PackageStyle {
 	}
 
 	private void drawStorage(UGraphic ug, double width, double height, boolean shadowing) {
-		final URectangle shape = new URectangle(width, height).rounded(70);
+		final URectangle shape = URectangle.build(width, height).rounded(70);
 		if (shadowing) {
 			shape.setDeltaShadow(3.0);
 		}
@@ -116,12 +116,12 @@ public enum PackageStyle {
 
 	private void drawComponent1(UGraphic ug, double widthTotal, double heightTotal, boolean shadowing) {
 
-		final URectangle form = new URectangle(widthTotal, heightTotal);
+		final URectangle form = URectangle.build(widthTotal, heightTotal);
 		if (shadowing) {
 			form.setDeltaShadow(4);
 		}
 
-		final UShape small = new URectangle(10, 5);
+		final UShape small = URectangle.build(10, 5);
 
 		ug.draw(form);
 
@@ -132,13 +132,13 @@ public enum PackageStyle {
 
 	private void drawComponent2(UGraphic ug, double widthTotal, double heightTotal, boolean shadowing) {
 
-		final URectangle form = new URectangle(widthTotal, heightTotal);
+		final URectangle form = URectangle.build(widthTotal, heightTotal);
 		if (shadowing) {
 			form.setDeltaShadow(4);
 		}
 
-		final UShape small = new URectangle(15, 10);
-		final UShape tiny = new URectangle(4, 2);
+		final UShape small = URectangle.build(15, 10);
+		final UShape tiny = URectangle.build(4, 2);
 
 		ug.draw(form);
 
@@ -149,7 +149,7 @@ public enum PackageStyle {
 	}
 
 	private void drawRect(UGraphic ug, double width, double height, boolean shadowing) {
-		final URectangle shape = new URectangle(width, height);
+		final URectangle shape = URectangle.build(width, height);
 		if (shadowing) {
 			shape.setDeltaShadow(3.0);
 		}
@@ -165,7 +165,7 @@ public enum PackageStyle {
 	}
 
 	private UPath getSpecificFrontierForCloud(double width, double height) {
-		final UPath path = new UPath();
+		final UPath path = UPath.none();
 		path.moveTo(0, 10);
 		double x = 0;
 		for (int i = 0; i < width - 9; i += 10) {
@@ -191,7 +191,7 @@ public enum PackageStyle {
 	}
 
 	private void drawFrame(UGraphic ug, double width, double height, XDimension2D dimTitle, boolean shadowing) {
-		final URectangle shape = new URectangle(width, height);
+		final URectangle shape = URectangle.build(width, height);
 		if (shadowing) {
 			shape.setDeltaShadow(3.0);
 		}
@@ -211,7 +211,7 @@ public enum PackageStyle {
 			cornersize = 10;
 		}
 
-		final UPath polygon = new UPath();
+		final UPath polygon = UPath.none();
 		polygon.moveTo(textWidth, 1);
 
 		polygon.lineTo(textWidth, textHeight - cornersize);
@@ -242,7 +242,7 @@ public enum PackageStyle {
 	}
 
 	private void drawDatabase(UGraphic ug, double width, double height, boolean shadowing) {
-		final UPath shape = new UPath();
+		final UPath shape = UPath.none();
 		if (shadowing) {
 			shape.setDeltaShadow(3.0);
 		}
@@ -256,7 +256,7 @@ public enum PackageStyle {
 
 		ug.draw(shape);
 
-		final UPath closing = new UPath();
+		final UPath closing = UPath.none();
 		closing.moveTo(0, 10);
 		closing.cubicTo(10, 20, width / 2 - 10, 20, width / 2, 20);
 		closing.cubicTo(width / 2 + 10, 20, width - 10, 20, width, 10);
@@ -281,7 +281,7 @@ public enum PackageStyle {
 		ug.apply(new UTranslate(xTheoricalPosition, yTheoricalPosition)).draw(shape);
 
 		ug.apply(new UTranslate(xTheoricalPosition + width - 10, yTheoricalPosition + 10)).draw(new ULine(9, -9));
-		final UPath path = new UPath();
+		final UPath path = UPath.none();
 		path.moveTo(0, 0);
 		path.lineTo(width - 10, 0);
 		path.lineTo(width - 10, height - 10);

@@ -24,7 +24,6 @@ import net.sourceforge.plantuml.klimt.shape.TextBlock;
 import net.sourceforge.plantuml.klimt.shape.TextBlockUtils;
 
 public class Style {
-    // ::remove file when __HAXE__
 
 	private final Map<PName, Value> map;
 	private final StyleSignatureBasic signature;

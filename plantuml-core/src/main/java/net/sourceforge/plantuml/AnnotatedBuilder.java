@@ -29,7 +29,6 @@ import net.sourceforge.plantuml.style.StyleSignatureBasic;
 import net.sourceforge.plantuml.svek.DecorateEntityImage;
 
 public class AnnotatedBuilder {
-	// ::remove file when __HAXE__
 
 	private final Annotated annotated;
 	private final ISkinParam skinParam;

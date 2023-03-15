@@ -47,7 +47,6 @@ import net.sourceforge.plantuml.wbs.WBSDiagramFactory;
 import net.sourceforge.plantuml.yaml.YamlDiagramFactory;
 
 public class PSystemBuilder {
-	// ::remove file when __HAXE__
 
 	public static final long startTime = System.currentTimeMillis();
 
@@ -118,13 +117,20 @@ public class PSystemBuilder {
 		factories.add(new NwDiagramFactory(DiagramType.NW));
 		factories.add(new MindMapDiagramFactory());
 		factories.add(new WBSDiagramFactory());
+
 		 factories.add(new PSystemSudokuFactory());
+
+
+
 		factories.add(new PSystemCharlieFactory());
+
 		factories.add(new GanttDiagramFactory());
 		factories.add(new FlowDiagramFactory());
-		// factories.add(new PSystemTreeFactory(DiagramType.JUNGLE));
-		// factories.add(new PSystemCuteFactory(DiagramType.CUTE));
+
+
 		factories.add(new TimingDiagramFactory());
+
+
 		factories.add(new JsonDiagramFactory());
 		factories.add(new GitDiagramFactory());
 		factories.add(new YamlDiagramFactory());

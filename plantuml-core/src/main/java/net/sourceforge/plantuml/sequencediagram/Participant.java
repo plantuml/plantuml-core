@@ -21,7 +21,6 @@ import net.sourceforge.plantuml.style.WithStyle;
 import net.sourceforge.plantuml.url.Url;
 
 public class Participant implements SpecificBackcolorable, WithStyle {
-    // ::remove folder when __HAXE__
 
 	private final String code;
 	private Display display;

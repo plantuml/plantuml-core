@@ -7,7 +7,6 @@ public class UStroke implements UChange {
 	private final double dashSpace;
 	private final double thickness;
 
-	// ::comment when __HAXE__
 
 	@Override
 	public int hashCode() {

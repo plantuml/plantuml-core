@@ -10,7 +10,6 @@ import net.sourceforge.plantuml.log.Logme;
 import net.sourceforge.plantuml.security.SFile;
 
 public class GeneratedImageImpl implements GeneratedImage {
-	// ::remove file when __HAXE__
 
 	private final SFile pngFile;
 	private final String description;

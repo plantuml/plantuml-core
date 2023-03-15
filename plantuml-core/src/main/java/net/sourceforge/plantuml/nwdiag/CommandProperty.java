@@ -10,7 +10,6 @@ import net.sourceforge.plantuml.regex.RegexResult;
 import net.sourceforge.plantuml.utils.LineLocation;
 
 public class CommandProperty extends SingleLineCommand2<NwDiagram> {
-    // ::remove folder when __HAXE__
 
 	public CommandProperty() {
 		super(getRegexConcat());

@@ -111,7 +111,7 @@ public class SvgPath {
 	}
 
 	private UPath toUPath(double factorx, double factory) {
-		final UPath result = new UPath();
+		final UPath result = UPath.none();
 		Movement previous = null;
 		for (Movement move : movements) {
 			final char letter = move.getLetter();
@@ -157,7 +157,7 @@ public class SvgPath {
 	}
 
 	private UPath toUPath(AffineTransform at) {
-		final UPath result = new UPath();
+		final UPath result = UPath.none();
 		Movement previous = null;
 		for (Movement move : movements) {
 			final char letter = move.getLetter();

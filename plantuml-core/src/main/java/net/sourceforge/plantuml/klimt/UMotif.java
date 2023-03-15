@@ -11,7 +11,6 @@ import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 import net.sourceforge.plantuml.klimt.shape.DotPath;
 
 public class UMotif {
-	// ::remove file when __HAXE__
 
 	private final List<XPoint2D> points = new ArrayList<>();
 

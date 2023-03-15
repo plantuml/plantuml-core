@@ -14,7 +14,6 @@ import net.sourceforge.plantuml.plasma.Quark;
 import net.sourceforge.plantuml.skin.UmlDiagramType;
 
 public class StateDiagram extends AbstractEntityDiagram {
-	// ::remove folder when __HAXE__
 
 	private static final String CONCURRENT_PREFIX = "CONC";
 
@@ -48,13 +47,13 @@ public class StateDiagram extends AbstractEntityDiagram {
 		final Entity g = getCurrentGroup();
 		if (g.isRoot()) {
 			final String idShort = "*start*";
-			final Quark<Entity> quark = quarkInContext(cleanId(idShort), false);
+			final Quark<Entity> quark = quarkInContext(true, cleanId(idShort));
 			if (quark.getData() == null)
 				reallyCreateLeaf(quark, Display.getWithNewlines(""), LeafType.CIRCLE_START, null);
 			return quark.getData();
 		}
 		final String idShort = "*start*" + g.getName();
-		final Quark<Entity> quark = quarkInContext(cleanId(idShort), false);
+		final Quark<Entity> quark = quarkInContext(true, cleanId(idShort));
 		if (quark.getData() == null)
 			reallyCreateLeaf(quark, Display.getWithNewlines(""), LeafType.CIRCLE_START, null);
 		return quark.getData();
@@ -64,13 +63,13 @@ public class StateDiagram extends AbstractEntityDiagram {
 		final Entity p = getCurrentGroup();
 		if (p.isRoot()) {
 			final String idShort = "*end*";
-			final Quark<Entity> quark = quarkInContext(cleanId(idShort), false);
+			final Quark<Entity> quark = quarkInContext(true, cleanId(idShort));
 			if (quark.getData() == null)
 				reallyCreateLeaf(quark, Display.getWithNewlines(""), LeafType.CIRCLE_END, null);
 			return quark.getData();
 		}
 		final String idShort = "*end*" + p.getName();
-		final Quark<Entity> quark = quarkInContext(cleanId(idShort), false);
+		final Quark<Entity> quark = quarkInContext(true, cleanId(idShort));
 		if (quark.getData() == null)
 			reallyCreateLeaf(quark, Display.getWithNewlines(""), LeafType.CIRCLE_END, null);
 		return quark.getData();
@@ -80,24 +79,24 @@ public class StateDiagram extends AbstractEntityDiagram {
 		final Entity g = getCurrentGroup();
 		if (g.isRoot()) {
 			final String idShort = "*historical*";
-			final Quark<Entity> quark = quarkInContext(cleanId(idShort), false);
+			final Quark<Entity> quark = quarkInContext(true, cleanId(idShort));
 			if (quark.getData() == null)
 				reallyCreateLeaf(quark, Display.getWithNewlines(""), LeafType.PSEUDO_STATE, null);
 			return quark.getData();
 		}
 		final String idShort = "*historical*" + g.getName();
-		final Quark<Entity> quark = quarkInContext(cleanId(idShort), false);
+		final Quark<Entity> quark = quarkInContext(true, cleanId(idShort));
 		if (quark.getData() == null)
 			reallyCreateLeaf(quark, Display.getWithNewlines(""), LeafType.PSEUDO_STATE, null);
 		return quark.getData();
 	}
 
 	public Entity getHistorical(String idShort) {
-		final Quark<Entity> quark = quarkInContext(cleanId(idShort), false);
+		final Quark<Entity> quark = quarkInContext(true, cleanId(idShort));
 		gotoGroup(quark, Display.getWithNewlines(quark), GroupType.STATE);
 		final Entity g = getCurrentGroup();
 		final String tmp = "*historical*" + g.getName();
-		final Quark<Entity> ident = quarkInContext(tmp, false);
+		final Quark<Entity> ident = quarkInContext(true, tmp);
 		final Entity result = reallyCreateLeaf(ident, Display.getWithNewlines(ident), LeafType.PSEUDO_STATE, null);
 		endGroup();
 		return result;
@@ -107,14 +106,14 @@ public class StateDiagram extends AbstractEntityDiagram {
 		final Entity g = getCurrentGroup();
 		if (g.isRoot()) {
 			final String idShort = "*deephistory*";
-			final Quark<Entity> quark = quarkInContext(cleanId(idShort), false);
+			final Quark<Entity> quark = quarkInContext(true, cleanId(idShort));
 			if (quark.getData() == null)
 				reallyCreateLeaf(quark, Display.getWithNewlines(""), LeafType.DEEP_HISTORY, null);
 			return quark.getData();
 		}
 
 		final String idShort = "*deephistory*" + g.getName();
-		final Quark<Entity> quark = quarkInContext(cleanId(idShort), false);
+		final Quark<Entity> quark = quarkInContext(true, cleanId(idShort));
 		if (quark.getData() == null)
 			reallyCreateLeaf(quark, Display.getWithNewlines(""), LeafType.DEEP_HISTORY, null);
 		return quark.getData();
@@ -122,12 +121,12 @@ public class StateDiagram extends AbstractEntityDiagram {
 	}
 
 	public Entity getDeepHistory(String idShort) {
-		final Quark<Entity> quark = quarkInContext(cleanId(idShort), false);
+		final Quark<Entity> quark = quarkInContext(true, cleanId(idShort));
 
 		gotoGroup(quark, Display.getWithNewlines(quark), GroupType.STATE);
 		final Entity g = getCurrentGroup();
 		final String tmp = "*deephistory*" + g.getName();
-		final Quark<Entity> ident = quarkInContext(cleanId(tmp), false);
+		final Quark<Entity> ident = quarkInContext(true, cleanId(tmp));
 		final Entity result = reallyCreateLeaf(ident, Display.getWithNewlines(""), LeafType.DEEP_HISTORY, null);
 		endGroup();
 		return result;
@@ -141,7 +140,7 @@ public class StateDiagram extends AbstractEntityDiagram {
 			super.endGroup();
 
 		final String tmp1 = this.getUniqueSequence(CONCURRENT_PREFIX);
-		final Quark<Entity> ident1 = quarkInContext(cleanId(tmp1), false);
+		final Quark<Entity> ident1 = quarkInContext(true, cleanId(tmp1));
 
 		gotoGroup(ident1, Display.create(""), GroupType.CONCURRENT_STATE);
 		getCurrentGroup().setConcurrentSeparator(direction);

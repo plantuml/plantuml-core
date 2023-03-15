@@ -11,7 +11,6 @@ import net.sourceforge.plantuml.klimt.geom.MinMax;
 import net.sourceforge.plantuml.klimt.geom.XPoint2D;
 
 public class UPolygon extends AbstractShadowable {
-    // ::remove file when __HAXE__
 
 	private final List<XPoint2D> all = new ArrayList<XPoint2D>();
 	private final String name;

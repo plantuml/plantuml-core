@@ -7,7 +7,6 @@ import net.sourceforge.plantuml.cucadiagram.DisplaySection;
 import net.sourceforge.plantuml.klimt.creole.Display;
 
 public interface Annotated {
-	// ::remove file when __HAXE__
 
 	public DisplayPositionned getTitle();
 

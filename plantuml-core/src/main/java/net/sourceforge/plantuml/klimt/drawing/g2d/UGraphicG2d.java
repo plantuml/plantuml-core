@@ -69,11 +69,13 @@ public class UGraphicG2d extends AbstractUGraphic<Graphics2D> implements EnsureV
 
 	@Override
 	protected AbstractCommonUGraphic copyUGraphic() {
-		return new UGraphicG2d(this);
+		final UGraphicG2d result = new UGraphicG2d(this);
+		return result;
 	}
 
 	private UGraphicG2d(UGraphicG2d other) {
-		super(other);
+		super(other.getStringBounder());
+		copy(other);
 		this.dpiFactor = other.dpiFactor;
 		this.bufferedImage = other.bufferedImage;
 		this.urls = other.urls;
@@ -92,7 +94,8 @@ public class UGraphicG2d extends AbstractUGraphic<Graphics2D> implements EnsureV
 		 public UGraphicG2d(HColor defaultBackground, ColorMapper colorMapper,
 		 StringBounder stringBounder, Graphics2D g2d,
 		 double dpiFactor, double dx, double dy, FileFormat format) {
-		super(defaultBackground, colorMapper, stringBounder, g2d);
+		super(stringBounder);
+		copy(defaultBackground, colorMapper, g2d);
 		this.format = format;
 		this.dpiFactor = dpiFactor;
 		if (dpiFactor != 1.0)

@@ -28,7 +28,6 @@ import net.sourceforge.plantuml.svek.ShapeType;
 import net.sourceforge.plantuml.url.Url;
 
 public class EntityImageLollipopInterface extends AbstractEntityImage {
-    // ::remove folder when __HAXE__
 
 	private static final int SIZE = 10;
 
@@ -71,7 +70,7 @@ public class EntityImageLollipopInterface extends AbstractEntityImage {
 		if (getEntity().getLeafType() == LeafType.LOLLIPOP_HALF) {
 			circle = new UEllipse(SIZE, SIZE, angle - 90, 180);
 		} else {
-			circle = new UEllipse(SIZE, SIZE);
+			circle = UEllipse.build(SIZE, SIZE);
 			if (getSkinParam().shadowing(getEntity().getStereotype()))
 				circle.setDeltaShadow(shadow);
 		}

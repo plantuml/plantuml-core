@@ -11,7 +11,6 @@ import net.sourceforge.plantuml.sequencediagram.SequenceDiagram;
 import net.sourceforge.plantuml.utils.LineLocation;
 
 public class CommandHideUnlinked extends SingleLineCommand2<SequenceDiagram> {
-    // ::remove folder when __HAXE__
 
 	public CommandHideUnlinked() {
 		super(getRegexConcat());

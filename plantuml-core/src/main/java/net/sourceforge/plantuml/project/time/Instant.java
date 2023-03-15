@@ -4,7 +4,6 @@ package net.sourceforge.plantuml.project.time;
 import net.sourceforge.plantuml.project.Value;
 
 public class Instant implements Comparable<Instant>, Value {
-    // ::remove folder when __HAXE__
 
 	private final long ms;
 

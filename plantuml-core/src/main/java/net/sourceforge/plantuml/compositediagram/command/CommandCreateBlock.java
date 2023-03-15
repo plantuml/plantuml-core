@@ -16,7 +16,6 @@ import net.sourceforge.plantuml.regex.RegexResult;
 import net.sourceforge.plantuml.utils.LineLocation;
 
 public class CommandCreateBlock extends SingleLineCommand2<CompositeDiagram> {
-    // ::remove folder when __HAXE__
 
 	public CommandCreateBlock() {
 		super(getRegexConcat());
@@ -40,7 +39,7 @@ public class CommandCreateBlock extends SingleLineCommand2<CompositeDiagram> {
 	protected CommandExecutionResult executeArg(CompositeDiagram diagram, LineLocation location, RegexResult arg) {
 		String display = arg.get("DISPLAY", 0);
 		final String idShort = arg.get("CODE", 0);
-		final Quark<Entity> quark = diagram.quarkInContext(idShort, false);
+		final Quark<Entity> quark = diagram.quarkInContext(true, idShort);
 		if (display == null)
 			display = quark.getName();
 

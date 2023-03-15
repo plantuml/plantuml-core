@@ -94,7 +94,6 @@ public class HColors {
 		return TRANSPARENT;
 	}
 
-	// ::comment when __HAXE__
 
 	public static HColor noGradient(HColor color) {
 		if (color instanceof HColorGradient)

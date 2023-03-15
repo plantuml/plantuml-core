@@ -24,7 +24,6 @@ import static com.plantuml.api.cheerpj.StaticMemory.cheerpjPath;
 import java.io.FileInputStream;
 
 public class Emoji {
-	// ::remove folder when __HAXE__
 	private final static Map<String, Emoji> ALL = new HashMap<>();
 
 	static {

@@ -7,7 +7,6 @@ import net.sourceforge.plantuml.StringUtils;
 import net.sourceforge.plantuml.utils.LineLocation;
 
 final public class StringLocated {
-    // ::remove folder when __HAXE__
 
 	private final String s;
 	private final LineLocation location;

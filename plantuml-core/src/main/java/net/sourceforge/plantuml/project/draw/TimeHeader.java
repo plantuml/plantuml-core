@@ -23,7 +23,6 @@ import net.sourceforge.plantuml.style.PName;
 import net.sourceforge.plantuml.style.Style;
 
 public abstract class TimeHeader {
-    // ::remove folder when __HAXE__
 
 	protected final double Y_POS_ROW16() {
 		return 16;
@@ -138,7 +137,7 @@ public abstract class TimeHeader {
 
 		ug = ug.apply(HColors.none());
 		ug = ug.apply(new UTranslate(x1, getFullHeaderHeight()));
-		ug.draw(new URectangle(x2 - x1, height));
+		ug.draw(URectangle.build(x2 - x1, height));
 	}
 
 	protected final UGraphic goBold(UGraphic ug) {

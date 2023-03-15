@@ -10,7 +10,6 @@ import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.klimt.geom.XDimension2D;
 
 public class UHorizontalLine implements UShape {
-    // ::remove file when __HAXE__
 
 	private final double skipAtStart;
 	private final double skipAtEnd;
@@ -128,7 +127,7 @@ public class UHorizontalLine implements UShape {
 		final double y1 = y - dimTitle.getHeight() / 2 - 0.5;
 		ug = ug.apply(new UTranslate(x1, y1));
 		if (clearArea) {
-			ug.apply(getStroke()).draw(new URectangle(dimTitle));
+			ug.apply(getStroke()).draw(URectangle.build(dimTitle));
 		}
 		title.drawU(ug);
 	}

@@ -33,7 +33,6 @@ import net.sourceforge.plantuml.version.License;
 import net.sourceforge.plantuml.version.Version;
 
 public abstract class AbstractPSystem implements Diagram {
-	// ::remove file when __HAXE__
 
 	private final UmlSource source;
 	private Scale scale;
@@ -64,14 +63,14 @@ public abstract class AbstractPSystem implements Diagram {
 	}
 
 	final public String getMetadata() {
-		if (source == null) {
+		if (source == null) 
 			return getVersion();
-		}
-		final String rawString = source.getRawString();
-		final String plainString = source.getPlainString();
-		if (rawString != null && rawString.equals(plainString)) {
+		
+		final String rawString = source.getRawString("\n");
+		final String plainString = source.getPlainString("\n");
+		if (rawString != null && rawString.equals(plainString)) 
 			return rawString + BackSlash.NEWLINE + getVersion();
-		}
+		
 		return rawString + BackSlash.NEWLINE + plainString + BackSlash.NEWLINE + getVersion();
 	}
 
@@ -80,9 +79,9 @@ public abstract class AbstractPSystem implements Diagram {
 	}
 
 	final public long seed() {
-		if (source == null) {
+		if (source == null) 
 			return 42;
-		}
+		
 		return getSource().seed();
 	}
 
@@ -109,9 +108,9 @@ public abstract class AbstractPSystem implements Diagram {
 	}
 
 	public DisplayPositionned getTitle() {
-		if (source == null) {
+		if (source == null) 
 			return DisplayPositioned.single(Display.empty(), HorizontalAlignment.CENTER, VerticalAlignment.TOP);
-		}
+		
 		return DisplayPositioned.single(source.getTitle(), HorizontalAlignment.CENTER, VerticalAlignment.TOP);
 	}
 
@@ -194,7 +193,7 @@ public abstract class AbstractPSystem implements Diagram {
 	public void exportDiagramGraphic(UGraphic ug) {
 		final UFont font = UFont.monospaced(14);
 		final FontConfiguration fc = FontConfiguration.blackBlueTrue(font);
-		final UText text = new UText("Not implemented yet for " + getClass().getName(), fc);
+		final UText text = UText.build("Not implemented yet for " + getClass().getName(), fc);
 		ug.apply(new UTranslate(10, 10)).draw(text);
 	}
 

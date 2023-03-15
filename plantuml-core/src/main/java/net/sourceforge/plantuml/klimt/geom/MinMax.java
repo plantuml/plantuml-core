@@ -118,7 +118,6 @@ public class MinMax {
 		return new XDimension2D(maxX - minX, maxY - minY);
 	}
 
-	// ::comment when __HAXE__
 	public void drawGray(UGraphic ug) {
 		draw(ug, HColors.GRAY);
 	}
@@ -126,7 +125,7 @@ public class MinMax {
 	public void draw(UGraphic ug, HColor color) {
 		ug = ug.apply(color).apply(color.bg());
 		ug = ug.apply(new UTranslate(minX, minY));
-		ug.draw(new URectangle(getWidth(), getHeight()));
+		ug.draw(URectangle.build(getWidth(), getHeight()));
 	}
 
 	public MinMax translate(UTranslate translate) {

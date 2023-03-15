@@ -26,7 +26,6 @@ import net.sourceforge.plantuml.text.SvgCharSizeHack;
  * 
  */
 public enum FileFormat {
-	// ::remove file when __HAXE__
 	PNG("image/png"), //
 	RAW("image/raw"), //
 	SVG("image/svg+xml"); //

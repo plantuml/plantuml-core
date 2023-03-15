@@ -6,7 +6,6 @@ import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.skin.Context2D;
 
 abstract class GraphicalElement {
-    // ::remove folder when __HAXE__
 
 	private double startingY;
 

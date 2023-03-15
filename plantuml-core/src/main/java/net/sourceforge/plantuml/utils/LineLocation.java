@@ -7,7 +7,6 @@ package net.sourceforge.plantuml.utils;
  *
  */
 public interface LineLocation extends Comparable<LineLocation> {
-	// ::remove file when __HAXE__
 
 	/**
 	 * Position of the line, starting at 0.

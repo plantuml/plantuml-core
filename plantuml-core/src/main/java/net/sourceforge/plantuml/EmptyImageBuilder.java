@@ -16,7 +16,6 @@ import net.sourceforge.plantuml.klimt.font.StringBounder;
 import net.sourceforge.plantuml.utils.Log;
 
 public class EmptyImageBuilder {
-	// ::remove file when __HAXE__
 
 	private final BufferedImage im;
 	private final Graphics2D g2d;

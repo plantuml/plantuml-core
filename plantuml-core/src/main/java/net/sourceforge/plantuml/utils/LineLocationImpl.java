@@ -4,7 +4,6 @@ package net.sourceforge.plantuml.utils;
 import java.util.Objects;
 
 public class LineLocationImpl implements LineLocation {
-	// ::remove file when __HAXE__
 
 	private final String desc;
 	private final int position;

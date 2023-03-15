@@ -14,7 +14,6 @@ import net.sourceforge.plantuml.tim.TContext;
 import net.sourceforge.plantuml.tim.TMemory;
 
 public class Sub {
-    // ::remove folder when __HAXE__
 
 	private final String name;
 	private final List<StringLocated> lines = new ArrayList<>();

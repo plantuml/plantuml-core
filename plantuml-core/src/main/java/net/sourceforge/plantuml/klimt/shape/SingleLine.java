@@ -22,7 +22,6 @@ import net.sourceforge.plantuml.klimt.sprite.SpriteContainer;
 import net.sourceforge.plantuml.url.Url;
 
 public class SingleLine extends AbstractTextBlock implements Line {
-    // ::remove file when __HAXE__
 
 	private final List<TextBlock> blocs = new ArrayList<>();
 	private final HorizontalAlignment horizontalAlignment;

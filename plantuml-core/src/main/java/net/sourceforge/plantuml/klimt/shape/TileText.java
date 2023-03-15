@@ -12,7 +12,6 @@ import net.sourceforge.plantuml.url.Url;
 import net.sourceforge.plantuml.utils.Log;
 
 public class TileText extends AbstractTextBlock implements TextBlock {
-    // ::remove file when __HAXE__
 
 	private final String text;
 	private final FontConfiguration fontConfiguration;
@@ -62,7 +61,7 @@ public class TileText extends AbstractTextBlock implements TextBlock {
 					final double remainder = x % tabSize;
 					x += tabSize - remainder;
 				} else {
-					final UText utext = new UText(s, fontConfiguration);
+					final UText utext = UText.build(s, fontConfiguration);
 					final XDimension2D dim = ug.getStringBounder().calculateDimension(fontConfiguration.getFont(), s);
 					final int space = fontConfiguration.getSpace();
 					final double ypos;

@@ -36,7 +36,6 @@ import net.sourceforge.plantuml.style.StyleLoader;
 import net.sourceforge.plantuml.style.StyleSignatureBasic;
 
 public abstract class TitledDiagram extends AbstractPSystem implements Diagram, Annotated {
-	// ::remove file when __HAXE__
 
 	public static boolean FORCE_SMETANA = false;
 	public static boolean FORCE_ELK = false;

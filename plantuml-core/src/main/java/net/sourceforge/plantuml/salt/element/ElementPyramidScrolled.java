@@ -50,7 +50,7 @@ public class ElementPyramidScrolled extends ElementPyramid {
 	}
 
 	private UPath getTr0() {
-		final UPath poly = new UPath();
+		final UPath poly = UPath.none();
 		poly.moveTo(3, 0);
 		poly.lineTo(6, 5);
 		poly.lineTo(0, 5);
@@ -60,7 +60,7 @@ public class ElementPyramidScrolled extends ElementPyramid {
 	}
 
 	private UPath getTr180() {
-		final UPath poly = new UPath();
+		final UPath poly = UPath.none();
 		poly.moveTo(3, 5);
 		poly.lineTo(6, 0);
 		poly.lineTo(0, 0);
@@ -70,7 +70,7 @@ public class ElementPyramidScrolled extends ElementPyramid {
 	}
 
 	private UPath getTr90() {
-		final UPath poly = new UPath();
+		final UPath poly = UPath.none();
 		poly.moveTo(0, 3);
 		poly.lineTo(5, 6);
 		poly.lineTo(5, 0);
@@ -80,7 +80,7 @@ public class ElementPyramidScrolled extends ElementPyramid {
 	}
 
 	private UPath getTr270() {
-		final UPath poly = new UPath();
+		final UPath poly = UPath.none();
 		poly.moveTo(5, 3);
 		poly.lineTo(0, 6);
 		poly.lineTo(0, 0);
@@ -90,7 +90,7 @@ public class ElementPyramidScrolled extends ElementPyramid {
 	}
 
 	private void drawV(UGraphic ug, double width, double height) {
-		ug.draw(new URectangle(width, height));
+		ug.draw(URectangle.build(width, height));
 		ug.apply(UTranslate.dy(v2)).draw(ULine.hline(width));
 		ug.apply(UTranslate.dy(height - v2)).draw(ULine.hline(width));
 		ug.apply(new UTranslate(4, 4)).apply(getBlack().bg()).draw(getTr0());
@@ -98,7 +98,7 @@ public class ElementPyramidScrolled extends ElementPyramid {
 	}
 
 	private void drawH(UGraphic ug, double width, double height) {
-		ug.draw(new URectangle(width, height));
+		ug.draw(URectangle.build(width, height));
 		ug.apply(UTranslate.dx(v2)).draw(ULine.vline(height));
 		ug.apply(UTranslate.dx(width - v2)).draw(ULine.vline(height));
 		ug.apply(new UTranslate(4, 4)).apply(getBlack().bg()).draw(getTr90());

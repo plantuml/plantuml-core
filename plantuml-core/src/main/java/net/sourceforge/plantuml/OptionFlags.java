@@ -12,7 +12,6 @@ import net.sourceforge.plantuml.security.SecurityUtils;
 import net.sourceforge.plantuml.utils.Log;
 
 public class OptionFlags {
-	// ::remove file when __HAXE__
 
 	private static final OptionFlags singleton = new OptionFlags();
 	static public final boolean STRICT_SELFMESSAGE_POSITION = true;

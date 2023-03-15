@@ -12,11 +12,11 @@ public enum License {
 
 	MIT;
 
+
 	public static License getCurrent() {
-		return MIT;
+		 return MIT;
+
 	}
-
-
 
 	public List<String> getText1(LicenseInfo licenseInfo) {
 		final List<String> text = new ArrayList<>();
@@ -114,6 +114,7 @@ public enum License {
 
 	private void end3(final LicenseInfo licenseInfo, final List<String> text) {
 			addMit(licenseInfo, text);
+
 		text.add(" ");
 		text.add("Icons provided by OpenIconic :  https://useiconic.com/open");
 		text.add("Archimate sprites provided by Archi :  http://www.archimatetool.com");
@@ -129,4 +130,12 @@ public enum License {
 	}
 
 
+	public List<String> getTextFull() {
+		final List<String> text = new ArrayList<>();
+		final LicenseInfo licenseInfo = LicenseInfo.retrieveQuick();
+		header1(text, licenseInfo);
+		header2(text, licenseInfo, false);
+		end3(licenseInfo, text);
+		return text;
+	}
 }

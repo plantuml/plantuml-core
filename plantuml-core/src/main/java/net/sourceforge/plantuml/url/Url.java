@@ -17,7 +17,6 @@ public class Url implements EnsureVisible {
 	public Url(String url, String tooltip, String label) {
 		url = StringUtils.eventuallyRemoveStartingAndEndingDoubleQuote(url, "\"");
 		this.url = url;
-		// ::revert when __HAXE__
 		if (tooltip == null)
 			this.tooltip = url;
 		else
@@ -51,7 +50,6 @@ public class Url implements EnsureVisible {
 		return label;
 	}
 
-	// ::comment when __HAXE__
 	@Override
 	public String toString() {
 		return super.toString() + " " + url + " " + visible.getCoords(1.0);

@@ -6,7 +6,6 @@ import net.sourceforge.plantuml.tim.EaterException;
 import net.sourceforge.plantuml.tim.EaterExceptionLocated;
 
 public interface CodeIterator {
-    // ::remove folder when __HAXE__
 
 	public StringLocated peek() throws EaterException, EaterExceptionLocated;
 

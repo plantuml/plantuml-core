@@ -20,7 +20,6 @@ import net.sourceforge.plantuml.log.Logme;
 import net.sourceforge.plantuml.security.SFile;
 
 public class SignatureUtils {
-	// ::remove file when __HAXE__
 
 	// private static byte[] salting(String pass, byte[] salt) throws
 	// NoSuchAlgorithmException, InvalidKeySpecException,

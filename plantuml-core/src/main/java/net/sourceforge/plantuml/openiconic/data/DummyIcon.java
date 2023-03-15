@@ -2,6 +2,5 @@
 package net.sourceforge.plantuml.openiconic.data;
 
 public class DummyIcon {
-    // ::remove folder when __HAXE__
 
 }

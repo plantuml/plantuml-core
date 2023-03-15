@@ -17,7 +17,6 @@ import net.sourceforge.plantuml.style.Style;
 import net.sourceforge.plantuml.utils.Direction;
 
 public class WormTexted implements Iterable<XPoint2D> {
-	// ::remove folder when __HAXE__
 
 	private final Worm worm;
 	private TextBlock textBlock;

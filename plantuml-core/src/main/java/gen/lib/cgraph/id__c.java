@@ -29,7 +29,6 @@ import smetana.core.Memory;
 import smetana.core.__ptr__;
 
 public class id__c {
-    // ::remove folder when __HAXE__
 
 public static CFunction idopen = new CFunctionAbstract("idopen") {
 	

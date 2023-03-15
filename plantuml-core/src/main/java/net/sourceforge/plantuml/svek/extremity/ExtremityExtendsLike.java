@@ -100,7 +100,7 @@ abstract class ExtremityExtendsLike extends Extremity {
 			this.pos2 = getDotPos(XSUFFIX, +w, angle, DOTHSIZE, porig);
 
 			double s = DOTHSIZE + DOTHSIZE;
-			this.dot = new UEllipse(s, s);
+			this.dot = UEllipse.build(s, s);
 		}
 
 		public void drawU(UGraphic ug) {

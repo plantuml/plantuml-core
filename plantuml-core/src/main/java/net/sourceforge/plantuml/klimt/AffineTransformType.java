@@ -6,7 +6,6 @@ import java.awt.image.AffineTransformOp;
 public enum AffineTransformType {
 	TYPE_NEAREST_NEIGHBOR, TYPE_BILINEAR;
 
-	// ::comment when __HAXE__
 	public int toLegacyInt() {
 		switch (this) {
 		case TYPE_BILINEAR:
