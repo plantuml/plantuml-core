@@ -1,6 +1,7 @@
 # PlantUML going serverless
 
-> ⚠️ **This project is discontinued.** The `plantuml-core` / CheerpJ approach has been abandoned in favour of a native JavaScript build. Please use the main PlantUML repository instead: **[https://github.com/plantuml/plantuml](https://github.com/plantuml/plantuml)**
+> ⚠️ **This project is discontinued.** The `plantuml-core` / CheerpJ approach has been abandoned in favour of a native JavaScript build. Please use the main PlantUML repository instead:
+> https://plantuml.github.io/plantuml/js-plantuml/index.html
 
 ---
 
